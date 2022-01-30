@@ -1,3 +1,4 @@
+using Adresa.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace Adresa
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Adresa", Version = "v1" });
             });
+            services.AddSingleton<IAdresaRepository, AdresaRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
