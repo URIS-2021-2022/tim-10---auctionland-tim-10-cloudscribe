@@ -48,13 +48,13 @@ namespace Adresa.Controllers
         }
 
         [HttpPost]
-        public ActionResult<AdresaModel> CreateAdresa([FromBody] AdresaModel adresa) 
+        public ActionResult<AdresaConfirmation> CreateAdresa([FromBody] AdresaModel adresa) 
         {
             try
             {
-                AdresaModel a = adresaRepository.CreateAdresa(adresa);
-                string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = a.AdresaId });
-                return Created(location, a);
+                AdresaConfirmation conf = adresaRepository.CreateAdresa(adresa);
+                string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = conf.AdresaId });
+                return Created(location, conf);
             }
             catch (Exception)
             {
@@ -64,6 +64,24 @@ namespace Adresa.Controllers
         }
 
         [HttpPut]
+        public ActionResult<AdresaConfirmation> UpdateAdresa([FromBody] AdresaModel adresa)
+        {
+            try
+            {
+                if(adresaRepository.GetAdresaById(adresa.AdresaId) == null)
+                {
+                    return NotFound();
+                }
+
+                AdresaConfirmation conf = adresaRepository.UpdateAdresa(adresa);
+                return Ok(conf);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
+
+            }
+        }
 
 
         [HttpDelete("{adresaId}")]

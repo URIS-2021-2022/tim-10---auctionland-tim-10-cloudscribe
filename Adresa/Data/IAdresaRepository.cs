@@ -12,9 +12,9 @@ namespace Adresa.Data
 
         AdresaModel GetAdresaById(Guid adresaId);
 
-        AdresaModel CreateAdresa(AdresaModel adresaModel);
+        AdresaConfirmation CreateAdresa(AdresaModel adresaModel);
 
-        AdresaModel UpdateAdresa(AdresaModel adresaModel);
+        AdresaConfirmation UpdateAdresa(AdresaModel adresaModel);
 
         void DeleteAdresa(Guid adresaId);
 
