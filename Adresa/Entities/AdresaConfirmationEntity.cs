@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Adresa.Models
+namespace Adresa.Entities
 {
-    public class AdresaConfirmation
+    public class AdresaConfirmationEntity
     {
         public Guid AdresaId { get; set; }
 
@@ -17,9 +17,8 @@ namespace Adresa.Models
 
         public int PostanskiBroj { get; set; }
 
-        public Guid DrzavaId { get; set; }
+        //public Guid DrzavaId { get; set; }
 
         public string NazivDrzave { get; set; }
-
     }
 }

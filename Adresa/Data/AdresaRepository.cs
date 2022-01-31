@@ -1,4 +1,5 @@
-﻿using Adresa.Models;
+﻿using Adresa.Entities;
+using Adresa.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Adresa.Data
 {
     public class AdresaRepository : IAdresaRepository
     {
-        public static List<AdresaModel> Adrese { get; set; } = new List<AdresaModel>();
+        public static List<AdresaEntity> Adrese { get; set; } = new List<AdresaEntity>();
 
         public AdresaRepository()
         {
@@ -17,9 +18,9 @@ namespace Adresa.Data
 
         private void FillData()
         {
-            Adrese.AddRange(new List<AdresaModel>
+            Adrese.AddRange(new List<AdresaEntity>
             {
-                new AdresaModel
+                new AdresaEntity
                 {
                     AdresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                     Ulica = "Ulica1",
@@ -29,7 +30,7 @@ namespace Adresa.Data
                     DrzavaId = Guid.Parse("170960f3-f8e0-4614-aff2-653aadf5c720"),
                     NazivDrzave = "Drzava1"
                 },
-                new AdresaModel
+                new AdresaEntity
                 {
                     AdresaId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
                     Ulica = "Ulica2",
@@ -42,21 +43,21 @@ namespace Adresa.Data
             }); 
         }
 
-        public AdresaConfirmation CreateAdresa(AdresaModel adresaModel)
+        public AdresaConfirmationEntity CreateAdresa(AdresaEntity adresaModel)
         {
             adresaModel.AdresaId = Guid.NewGuid();
             Adrese.Add(adresaModel);
 
-            AdresaModel adresa = GetAdresaById(adresaModel.AdresaId);
+            AdresaEntity adresa = GetAdresaById(adresaModel.AdresaId);
 
-            return new AdresaConfirmation
+            return new AdresaConfirmationEntity
             {
                 AdresaId = adresa.AdresaId,
                 Ulica = adresa.Ulica,
                 Broj = adresa.Broj,
                 Mesto = adresa.Mesto,
                 PostanskiBroj = adresa.PostanskiBroj,
-                DrzavaId = adresa.DrzavaId,
+                //DrzavaId = adresa.DrzavaId,
                 NazivDrzave = adresa.NazivDrzave
             };
         }
@@ -66,19 +67,19 @@ namespace Adresa.Data
             Adrese.Remove(Adrese.FirstOrDefault(e => e.AdresaId == adresaId));
         }
 
-        public AdresaModel GetAdresaById(Guid adresaId)
+        public AdresaEntity GetAdresaById(Guid adresaId)
         {
             return Adrese.FirstOrDefault(e => e.AdresaId == adresaId);
         }
 
-        public List<AdresaModel> GetAdrese()
+        public List<AdresaEntity> GetAdrese()
         {
             return Adrese;
         }
 
-        public AdresaConfirmation UpdateAdresa(AdresaModel adresaModel)
+        public AdresaConfirmationEntity UpdateAdresa(AdresaEntity adresaModel)
         {
-            AdresaModel adresa = GetAdresaById(adresaModel.AdresaId);
+            AdresaEntity adresa = GetAdresaById(adresaModel.AdresaId);
             adresa.AdresaId = adresaModel.AdresaId;
             adresa.Ulica = adresaModel.Ulica;
             adresa.Broj = adresaModel.Broj;
@@ -87,13 +88,13 @@ namespace Adresa.Data
             adresa.DrzavaId = adresaModel.DrzavaId;
             adresa.NazivDrzave = adresaModel.NazivDrzave;
 
-            return new AdresaConfirmation {
+            return new AdresaConfirmationEntity {
                 AdresaId = adresa.AdresaId,
                 Ulica = adresa.Ulica,
                 Broj = adresa.Broj,
                 Mesto = adresa.Mesto,
                 PostanskiBroj = adresa.PostanskiBroj,
-                DrzavaId = adresa.DrzavaId,
+                //DrzavaId = adresa.DrzavaId,
                 NazivDrzave = adresa.NazivDrzave
             };
         }

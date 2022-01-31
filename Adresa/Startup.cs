@@ -1,6 +1,7 @@
-using Adresa.Data;
+﻿using Adresa.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -28,11 +29,18 @@ namespace Adresa
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(setup => {
+                setup.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters();//podrzavanje xml-a
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//adresaEntity se mapira na adresaDto
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Adresa", Version = "v1" });
             });
+
+
             services.AddSingleton<IAdresaRepository, AdresaRepository>();
         }
 
@@ -44,6 +52,17 @@ namespace Adresa
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adresa v1"));
+            } else
+            {
+                app.UseExceptionHandler(appBuilder => 
+                {
+                    appBuilder.Run(async context =>
+                    {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("Došlo je do neočekivane greške. Pokušajte kasnije.");
+                    });
+                     
+                });
             }
 
             app.UseHttpsRedirection();

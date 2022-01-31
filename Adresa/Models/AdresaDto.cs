@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace Adresa.Models
 {
-    public class AdresaModel
+    public class AdresaDto
     {
-        public Guid AdresaId { get; set; }
-
-        public string Ulica { get; set; }
-
-        public string Broj { get; set; }
+        public string UlicaBroj { get; set; }
         
         public string Mesto { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Adresa.Models;
+﻿using Adresa.Entities;
+using Adresa.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,13 @@ namespace Adresa.Data
 {
     public interface IAdresaRepository
     {
-        List<AdresaModel> GetAdrese();
+        List<AdresaEntity> GetAdrese();
 
-        AdresaModel GetAdresaById(Guid adresaId);
+        AdresaEntity GetAdresaById(Guid adresaId);
 
-        AdresaConfirmation CreateAdresa(AdresaModel adresaModel);
+        AdresaConfirmationEntity CreateAdresa(AdresaEntity adresaModel);
 
-        AdresaConfirmation UpdateAdresa(AdresaModel adresaModel);
+        AdresaConfirmationEntity UpdateAdresa(AdresaEntity adresaModel);
 
         void DeleteAdresa(Guid adresaId);
 
