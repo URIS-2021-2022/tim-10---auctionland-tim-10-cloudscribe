@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace Zalba.Entities
+namespace ZalbaService.Entities
 {
     public partial class Zalba
     {
         public int ZalbaId { get; set; }
         public string RazlogZalbe { get; set; }
-        public string Obrazlozenje { get; set; }
+        public string Obrazlozenje { get; set; }    
         public DateTime? DatumPodnosenja { get; set; }
         public DateTime? DatumResenja { get; set; }
         public string BrojResenja { get; set; }

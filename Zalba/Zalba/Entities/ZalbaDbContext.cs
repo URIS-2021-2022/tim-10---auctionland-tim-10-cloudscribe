@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace Zalba.Entities
+namespace ZalbaService.Entities
 {
     public partial class ZalbaDbContext : DbContext
     {
@@ -19,11 +19,9 @@ namespace Zalba.Entities
         {
         }
 
-        public virtual DbSet<Kurs> Kurs { get; set; }
         public virtual DbSet<RadnjaNaOsnovuZalbe> RadnjaNaOsnovuZalbe { get; set; }
         public virtual DbSet<StatusZalbe> StatusZalbe { get; set; }
         public virtual DbSet<TipZalbe> TipZalbe { get; set; }
-        public virtual DbSet<Uplata> Uplata { get; set; }
         public virtual DbSet<Zalba> Zalba { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,24 +34,6 @@ namespace Zalba.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Kurs>(entity =>
-            {
-                entity.ToTable("Kurs", "auctionLand");
-
-                entity.Property(e => e.KursId).HasColumnName("kursID");
-
-                entity.Property(e => e.Datum)
-                    .HasColumnName("datum")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.Valuta)
-                    .HasColumnName("valuta")
-                    .HasMaxLength(5);
-
-                entity.Property(e => e.Vrednost)
-                    .HasColumnName("vrednost")
-                    .HasColumnType("decimal(10, 2)");
-            });
 
             modelBuilder.Entity<RadnjaNaOsnovuZalbe>(entity =>
             {
@@ -88,32 +68,6 @@ namespace Zalba.Entities
                     .HasMaxLength(40);
             });
 
-            modelBuilder.Entity<Uplata>(entity =>
-            {
-                entity.ToTable("Uplata", "auctionLand");
-
-                entity.Property(e => e.UplataId).HasColumnName("uplataID");
-
-                entity.Property(e => e.BrojRacuna)
-                    .HasColumnName("brojRacuna")
-                    .HasMaxLength(30);
-
-                entity.Property(e => e.Datum)
-                    .HasColumnName("datum")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.Iznos)
-                    .HasColumnName("iznos")
-                    .HasColumnType("decimal(10, 2)");
-
-                entity.Property(e => e.PozivNaBroj)
-                    .HasColumnName("pozivNaBroj")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.SvrhaUplate)
-                    .HasColumnName("svrhaUplate")
-                    .HasMaxLength(50);
-            });
 
             modelBuilder.Entity<Zalba>(entity =>
             {
