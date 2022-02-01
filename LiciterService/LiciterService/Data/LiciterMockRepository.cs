@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Data
 {
-    public class LiciterRepository : ILiciterRepository
+    public class LiciterMockRepository : ILiciterRepository
     {
         public static List<Liciter> Liciteri { get; set; } = new List<Liciter>();
 
-        public LiciterRepository()
+        public LiciterMockRepository()
         {
             FillData();
         }

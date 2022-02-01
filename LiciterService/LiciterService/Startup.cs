@@ -29,7 +29,9 @@ namespace LiciterService
         {
 
             services.AddControllers();
-            services.AddSingleton<ILiciterRepository, LiciterRepository>();
+            services.AddSingleton<ILiciterRepository, LiciterMockRepository>();
+            services.AddSingleton<IKupacRepository, KupacMockRepository>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LiciterService", Version = "v1" });
