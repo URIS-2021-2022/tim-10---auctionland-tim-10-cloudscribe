@@ -57,7 +57,6 @@ namespace Adresa.Data
                 Broj = adresa.Broj,
                 Mesto = adresa.Mesto,
                 PostanskiBroj = adresa.PostanskiBroj,
-                //DrzavaId = adresa.DrzavaId,
                 NazivDrzave = adresa.NazivDrzave
             };
         }

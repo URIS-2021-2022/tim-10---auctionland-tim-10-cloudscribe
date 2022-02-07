@@ -16,6 +16,11 @@ namespace Adresa.Profiles
                 .ForMember(
                     dest => dest.UlicaBroj,
                     opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
-        }
+
+            /*CreateMap<AdresaEntity, AdresaConfirmationDto>()
+                .ForMember(
+                    dest => dest.UlicaBroj,
+                    opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
+        */}
     }
 }

@@ -2,6 +2,7 @@
 using Adresa.Entities;
 using Adresa.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -14,6 +15,8 @@ namespace Adresa.Controllers
 {
     [ApiController]
     [Route("api/adrese")]
+    //[Authorize]
+    [Produces("application/json", "applciation/xml")]
     public class AdresaController : ControllerBase
     {
         private readonly IAdresaRepository adresaRepository;
@@ -26,7 +29,12 @@ namespace Adresa.Controllers
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
-
+        /// <summary>
+        /// Vraća sve adrese
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         [HttpHead]
         public ActionResult<List<AdresaDto>> GetAdrese()
@@ -40,6 +48,13 @@ namespace Adresa.Controllers
                  
         }
 
+        /// <summary>
+        /// Vraća adresu na osnovu ID-ja prijave
+        /// </summary>
+        /// <param name="adresaId">ID adrese</param>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{adresaId}")]
         public ActionResult<AdresaDto> GetAdresa(Guid adresaId)
         {
@@ -49,9 +64,29 @@ namespace Adresa.Controllers
             {
                 return NotFound();
             }
-            return Ok(mapper.Map<AdresaConfirmationDto>(adresa));
+            return Ok(mapper.Map<AdresaDto>(adresa));
         }
 
+        /// <summary>
+        /// Kreira novu adresu
+        /// </summary>
+        /// <param name="adresa">Model adrese</param>
+        /// <remarks>
+        /// Primer zahteva za kreiranje nove adrese\
+        /// POST /api/adresa \
+        /// {   \
+        ///     "ulica": "Ulica3",
+        ///     "broj": "3",
+        ///     "mesto": "Mesto3",
+        ///     "postanskiBroj": 12345,
+        ///     "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192",
+        ///     "nazivDrzave": "Drzava3"
+        ///}
+        ///</remarks>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Consumes("application/json")]
         [HttpPost]
         public ActionResult<AdresaConfirmationDto> CreateAdresa([FromBody] AdresaCreationDto adresa) 
         {
@@ -72,6 +107,29 @@ namespace Adresa.Controllers
             }
         }
 
+        /// <summary>
+        /// Ažurira postojeću adresu
+        /// </summary>
+        /// <param name="adresa">Model adrese</param>
+        /// <remarks>
+        /// Primer zahteva za ažuriranje postojeće adrese\
+        /// POST /api/adresa \
+        /// {   \
+        ///     "adresaId" : "6a411c13-a195-48f7-8dbd-67596c3974c0",
+        ///     "ulica": "Ulica1",
+        ///     "broj": "10",
+        ///     "mesto": "Mesto10",
+        ///     "postanskiBroj": 123,
+        ///     "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720",
+        ///     "nazivDrzave": "Drzava1"
+        ///}
+        ///</remarks>
+        /// <returns></returns>
+        ///
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Consumes("application/json")]
         [HttpPut]
         public ActionResult<AdresaConfirmationDto> UpdateAdresa([FromBody] AdresaUpdateDto adresa)
         {
@@ -94,7 +152,14 @@ namespace Adresa.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Vrši brisanje jedne adrese na osnovu ID-ja
+        /// </summary>
+        /// <param name="adresaId">ID adrese</param>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpDelete("{adresaId}")]
         public IActionResult DeleteAdresa(Guid adresaId)
         {
@@ -115,6 +180,11 @@ namespace Adresa.Controllers
             }
         }
 
+        /// <summary>
+        /// Vreće opcije za rad sa adresama
+        /// </summary>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpOptions]
         public IActionResult GetAdresaOptions()
         {

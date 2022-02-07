@@ -15,11 +15,12 @@ namespace Adresa.Models
 
         public string Mesto { get; set; }
 
-        [MaxLength(7)]
         public int PostanskiBroj { get; set; }
 
         public Guid DrzavaId { get; set; }
         
         public string NazivDrzave { get; set; }
+
+      
     }
 }

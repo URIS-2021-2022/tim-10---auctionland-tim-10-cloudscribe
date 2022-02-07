@@ -11,7 +11,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Adresa
@@ -35,13 +37,29 @@ namespace Adresa
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//adresaEntity se mapira na adresaDto
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(setupAction =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Adresa", Version = "v1" });
+                setupAction.SwaggerDoc("AdresaOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo() 
+                { 
+                    Title = "Adresa API", 
+                    Version = "v1", 
+                    Description = "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled adresa.",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Andrijana Dragićević",
+                        Email = "andrijana.dragicevic@uns.ac.rs"
+                    }
+                });
+
+                var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                setupAction.IncludeXmlComments(xmlCommentsPath);
             });
 
 
             services.AddSingleton<IAdresaRepository, AdresaRepository>();
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,18 +68,16 @@ namespace Adresa
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Adresa v1"));
             } else
             {
-                app.UseExceptionHandler(appBuilder => 
+                app.UseExceptionHandler(appBuilder =>
                 {
                     appBuilder.Run(async context =>
                     {
                         context.Response.StatusCode = 500;
                         await context.Response.WriteAsync("Došlo je do neočekivane greške. Pokušajte kasnije.");
                     });
-                     
+
                 });
             }
 
@@ -70,6 +86,13 @@ namespace Adresa
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(setupAction => {
+                setupAction.SwaggerEndpoint("/swagger/AdresaOpenApiSpecification/swagger.json", "Adresa API");
+                setupAction.RoutePrefix = "";
+            });
 
             app.UseEndpoints(endpoints =>
             {

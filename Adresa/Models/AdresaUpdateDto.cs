@@ -10,14 +10,13 @@ namespace Adresa.Models
     {
         public Guid AdresaId { get; set; }
 
-        //[Required(ErrorMessage = "Obavezno je uneti naziv ulice.")]
+        [Required(ErrorMessage = "Obavezno je uneti naziv ulice.")]
         public string Ulica { get; set; }
 
         public string Broj { get; set; }
 
         public string Mesto { get; set; }
 
-        //[MaxLength(7)]
         public int PostanskiBroj { get; set; }
 
         public Guid DrzavaId { get; set; }

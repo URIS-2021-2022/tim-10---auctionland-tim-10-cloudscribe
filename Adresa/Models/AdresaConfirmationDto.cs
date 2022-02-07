@@ -7,15 +7,19 @@ namespace Adresa.Models
 {
     public class AdresaConfirmationDto
     {
+        /// <summary>
+        /// ID adrese
+        /// </summary>
         public Guid AdresaId { get; set; }
 
+        /// <summary>
+        /// Ulica i broj adrese
+        /// </summary>
         public string UlicaBroj { get; set; }
 
         public string Mesto { get; set; }
 
         public int PostanskiBroj { get; set; }
-
-        //public Guid DrzavaId { get; set; }
 
         public string NazivDrzave { get; set; }
 
