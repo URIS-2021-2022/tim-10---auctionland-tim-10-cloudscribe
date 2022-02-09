@@ -36,7 +36,7 @@ namespace Adresa.Data
 
         public AdresaEntity GetAdresaById(Guid adresaId)
         {
-            return context.Adrese.FirstOrDefault(e => e.AdresaId == adresaId);
+            return context.Adrese.FirstOrDefault(a => a.AdresaId == adresaId);
         }
 
         public List<AdresaEntity> GetAdrese()
