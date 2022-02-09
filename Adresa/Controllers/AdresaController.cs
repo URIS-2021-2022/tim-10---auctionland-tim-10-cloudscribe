@@ -100,7 +100,6 @@ namespace Adresa.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message); 
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
 
             }

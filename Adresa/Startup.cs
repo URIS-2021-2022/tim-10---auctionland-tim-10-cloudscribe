@@ -43,7 +43,7 @@ namespace Adresa
             {
                 setupAction.SwaggerDoc("AdresaOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo() 
                 { 
-                    Title = "Adresa API", 
+                    Title = "Adresa API",
                     Version = "v1", 
                     Description = "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled adresa.",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact
