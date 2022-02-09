@@ -19,7 +19,7 @@ namespace Adresa.Models
 
         public Guid DrzavaId { get; set; }
         
-        public string NazivDrzave { get; set; }
+        //public string NazivDrzave { get; set; }
 
       
     }

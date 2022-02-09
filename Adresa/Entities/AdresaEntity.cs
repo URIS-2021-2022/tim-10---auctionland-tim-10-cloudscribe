@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +12,7 @@ namespace Adresa.Entities
         /// <summary>
         /// ID adrese
         /// </summary>
+        [Key]
         public Guid AdresaId { get; set; }
 
         /// <summary>
@@ -35,11 +38,12 @@ namespace Adresa.Entities
         /// <summary>
         /// ID države
         /// </summary>
+        [ForeignKey("Drzava")]
         public Guid DrzavaId { get; set; }
 
         /// <summary>
-        /// Naziv države
+        /// Drzava
         /// </summary>
-        public string NazivDrzave { get; set; }
+        public DrzavaEntity Drzava { get; set; }
     }
 }

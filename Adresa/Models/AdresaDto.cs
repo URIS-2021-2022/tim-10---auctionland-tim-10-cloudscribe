@@ -30,10 +30,10 @@ namespace Adresa.Models
         /// </summary>
         public Guid DrzavaId { get; set; }
 
-        /// <summary>
+        /*/// <summary>
         /// Naziv države
         /// </summary>
-        public string NazivDrzave { get; set; }
+        public string NazivDrzave { get; set; }*/
 
     }
 }

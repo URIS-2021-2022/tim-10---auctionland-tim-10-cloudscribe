@@ -1,9 +1,11 @@
 ﻿using Adresa.Data;
+using Adresa.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -57,7 +59,10 @@ namespace Adresa
             });
 
 
-            services.AddSingleton<IAdresaRepository, AdresaRepository>();
+            //services.AddSingleton<IAdresaRepository, AdresaMockRepository>();
+            services.AddScoped<IAdresaRepository, AdresaRepository>();
+
+            services.AddDbContextPool<AdresaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AdresaDB")));
 
            
         }

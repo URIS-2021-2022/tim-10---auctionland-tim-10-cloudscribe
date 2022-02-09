@@ -79,8 +79,7 @@ namespace Adresa.Controllers
         ///     "broj": "3",
         ///     "mesto": "Mesto3",
         ///     "postanskiBroj": 12345,
-        ///     "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192",
-        ///     "nazivDrzave": "Drzava3"
+        ///     "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192"
         ///}
         ///</remarks>
         /// <returns></returns>
@@ -93,11 +92,11 @@ namespace Adresa.Controllers
             try
             {
                 AdresaEntity adresaEntity = mapper.Map<AdresaEntity>(adresa);
+                AdresaConfirmationEntity confirmation = adresaRepository.CreateAdresa(adresaEntity);
+                adresaRepository.SaveChanges();
 
-                var conf = adresaRepository.CreateAdresa(adresaEntity);
-
-                string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = conf.AdresaId });
-                return Created(location, mapper.Map<AdresaConfirmationDto>(conf));
+                string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = confirmation.AdresaId });
+                return Created(location, mapper.Map<AdresaConfirmationDto>(confirmation));
             }
             catch (Exception e)
             {
@@ -120,8 +119,7 @@ namespace Adresa.Controllers
         ///     "broj": "10",
         ///     "mesto": "Mesto10",
         ///     "postanskiBroj": 123,
-        ///     "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720",
-        ///     "nazivDrzave": "Drzava1"
+        ///     "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720"
         ///}
         ///</remarks>
         /// <returns></returns>
@@ -131,22 +129,28 @@ namespace Adresa.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPut]
-        public ActionResult<AdresaConfirmationDto> UpdateAdresa([FromBody] AdresaUpdateDto adresa)
+        public ActionResult<AdresaDto> UpdateAdresa([FromBody] AdresaUpdateDto adresa)
         {
             try
             {
-                if(adresaRepository.GetAdresaById(adresa.AdresaId) == null)
+                var oldAdresa = adresaRepository.GetAdresaById(adresa.AdresaId);
+                
+                if (oldAdresa == null)
                 {
                     return NotFound();
                 }
 
                 AdresaEntity adresaEntity = mapper.Map<AdresaEntity>(adresa);
-                Console.WriteLine(adresaEntity.Broj);
-                var conf = adresaRepository.UpdateAdresa(adresaEntity);
-                return Ok(mapper.Map<AdresaConfirmationDto>(conf));
+
+                mapper.Map(adresaEntity, oldAdresa);
+
+                adresaRepository.SaveChanges();
+                
+                return Ok(mapper.Map<AdresaDto>(oldAdresa));
             }
             catch (Exception)
             {
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
 
             }
@@ -172,6 +176,7 @@ namespace Adresa.Controllers
                     return NotFound();
                 }
                 adresaRepository.DeleteAdresa(adresaId);
+                adresaRepository.SaveChanges();
                 return NoContent();
 
             } catch(Exception)

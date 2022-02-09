@@ -30,8 +30,7 @@
                  "broj": "3",
                  "mesto": "Mesto3",
                  "postanskiBroj": 12345,
-                 "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192",
-                 "nazivDrzave": "Drzava3"
+                 "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192"
             }
             </remarks>
              <returns></returns>
@@ -50,8 +49,7 @@
                  "broj": "10",
                  "mesto": "Mesto10",
                  "postanskiBroj": 123,
-                 "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720",
-                 "nazivDrzave": "Drzava1"
+                 "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720"
             }
             </remarks>
              <returns></returns>
@@ -69,6 +67,11 @@
             Vreće opcije za rad sa adresama
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:Adresa.Entities.AdresaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu inicijalnim podacima
+            </summary>
         </member>
         <member name="P:Adresa.Entities.AdresaEntity.AdresaId">
             <summary>
@@ -100,9 +103,24 @@
             ID države
             </summary>
         </member>
-        <member name="P:Adresa.Entities.AdresaEntity.NazivDrzave">
+        <member name="P:Adresa.Entities.AdresaEntity.Drzava">
             <summary>
-            Naziv države
+            Drzava
+            </summary>
+        </member>
+        <member name="T:Adresa.Entities.DrzavaEntity">
+            <summary>
+            Model drzave
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.DrzavaEntity.DrzavaId">
+            <summary>
+            ID drzave
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.DrzavaEntity.NazivDrzave">
+            <summary>
+            Naziv drzave
             </summary>
         </member>
         <member name="P:Adresa.Models.AdresaConfirmationDto.AdresaId">
@@ -138,11 +156,6 @@
         <member name="P:Adresa.Models.AdresaDto.DrzavaId">
             <summary>
             ID države
-            </summary>
-        </member>
-        <member name="P:Adresa.Models.AdresaDto.NazivDrzave">
-            <summary>
-            Naziv države
             </summary>
         </member>
     </members>

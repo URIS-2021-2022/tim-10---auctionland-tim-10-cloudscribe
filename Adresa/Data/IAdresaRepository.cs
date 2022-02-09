@@ -15,9 +15,11 @@ namespace Adresa.Data
 
         AdresaConfirmationEntity CreateAdresa(AdresaEntity adresaModel);
 
-        AdresaConfirmationEntity UpdateAdresa(AdresaEntity adresaModel);
+        void UpdateAdresa(AdresaEntity adresaModel);
 
         void DeleteAdresa(Guid adresaId);
+
+        bool SaveChanges();
 
     }
 }

@@ -18,6 +18,7 @@ namespace Adresa.Profiles
                     opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
             CreateMap<AdresaCreationDto, AdresaEntity>();
             CreateMap<AdresaUpdateDto, AdresaEntity>();
+            CreateMap<AdresaEntity, AdresaEntity>();
         }
     }
 }
