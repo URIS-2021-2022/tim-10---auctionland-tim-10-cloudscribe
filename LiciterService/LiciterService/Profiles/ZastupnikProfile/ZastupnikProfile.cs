@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LiciterService.Entities.ZastupnikEntity;
-using LiciterService.Models.Zastupnik;
+using LiciterService.Entities;
 using LiciterService.Models;
 
 namespace LiciterService.Profiles
@@ -13,9 +12,11 @@ namespace LiciterService.Profiles
     {
       public ZastupnikProfile()
         {
-            /*CreateMap<Zastupnik, ZastupnikCreationDto>();
+            CreateMap<Zastupnik, ZastupnikDto>();
+            CreateMap<Zastupnik, ZastupnikCreationDto>();
             CreateMap<ZastupnikCreationDto, Zastupnik>();
-            CreateMap<Zastupnik, ZastupnikDto>();*/
+            CreateMap<Zastupnik, ZastupnikUpdateDto>();
+            CreateMap<ZastupnikUpdateDto, Zastupnik>();
         }
     }
 }

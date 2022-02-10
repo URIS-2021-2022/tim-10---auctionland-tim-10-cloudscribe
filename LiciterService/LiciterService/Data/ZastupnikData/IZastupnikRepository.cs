@@ -1,5 +1,4 @@
 ﻿using LiciterService.Entities;
-using LiciterService.Entities.ZastupnikEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using LiciterService.Entities.ZastupnikEntity;
-using LiciterService.Models.Zastupnik;
+using LiciterService.Entities;
+using LiciterService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LiciterService.Profiles.Zastupnik
+namespace LiciterService.Profiles
 {
     public class ZastupnikConfirmationProfile: Profile
     {

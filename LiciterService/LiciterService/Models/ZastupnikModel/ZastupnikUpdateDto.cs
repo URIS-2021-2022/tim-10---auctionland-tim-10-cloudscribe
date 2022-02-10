@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LiciterService.Models.Zastupnik
+namespace LiciterService.Models
 {
-    public class ZastupnikCreationDto
+    public class ZastupnikUpdateDto
     {
         public Guid ZastupnikId { get; set; }
         public string ImeZastupnika { get; set; }

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using LiciterService.Data;
 using LiciterService.Entities;
-using LiciterService.Entities.ZastupnikEntity;
 using LiciterService.Models;
-using LiciterService.Models.Zastupnik;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -67,10 +66,17 @@ namespace LiciterService.Controllers
             return Ok(mapper.Map<ZastupnikDto>(zastupnik));
         }
 
+        /// <summary>
+        /// Kreiranje zastupnika
+        /// </summary>
+        /// <param name="zastupnik"></param>
+        /// <returns></returns>
+        ///<response code="200">Vraća kreiranog zastupnika</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja zastupnika</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<KupacConfirmationDto> CreateZastupnik([FromBody] ZastupnikCreationDto zastupnik)
+        public ActionResult<ZastupnikConfirmationDto> CreateZastupnik([FromBody] ZastupnikCreationDto zastupnik)
         {
             try
             {
@@ -86,6 +92,77 @@ namespace LiciterService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
 
+        }
+
+        /// <summary>
+        /// Azuriranje zastupnika
+        /// </summary>
+        /// <param name="zastupnik"></param>
+        /// <returns></returns>
+        /// <response code="400">Zastupnik koji se ažurira nije pronađen</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja zastupnika</response>
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<ZastupnikConfirmationDto> UpdateZastupnik(ZastupnikUpdateDto zastupnik)
+        {
+            try
+            {
+                if (zastupnikRepository.GetZastupnikById(zastupnik.ZastupnikId) == null)
+                {
+                    return NotFound();
+                }
+                Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
+                ZastupnikConfirmation confirmation = zastupnikRepository.UpdateZastupnik(zastupnikEntity);
+                return Ok(mapper.Map<ZastupnikConfirmationDto>(confirmation));
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
+            }
+        }
+        /// <summary>
+        /// Brisanje zastupnika
+        /// </summary>
+        /// <param name="zastupnikId"></param>
+        /// <returns></returns>
+        /// <response code="404">Nije pronađen zastupnik za brisanje</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom brisanja zastupnika</response>
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpDelete("{zastupnikId}")]
+        public IActionResult DeleteZastupnik(Guid zastupnikId)
+        {
+            try
+            {
+                var zastupnik = zastupnikRepository.GetZastupnikById(zastupnikId);
+
+                if (zastupnik == null)
+                {
+                    return NotFound();
+                }
+
+                zastupnikRepository.DeleteZastupnik(zastupnikId);
+                return NoContent();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
+            }
+        }
+
+        /// <summary>
+        /// Vraca opcije za rad sa zastupnicima
+        /// </summary>
+        /// <returns></returns>
+        [HttpOptions]
+        [AllowAnonymous]
+        public IActionResult GetZastupnikOpctions()
+        {
+            Response.Headers.Add("Allow", "GET,POST,PUT, DELETE");
+            return Ok();
         }
     }
 }
