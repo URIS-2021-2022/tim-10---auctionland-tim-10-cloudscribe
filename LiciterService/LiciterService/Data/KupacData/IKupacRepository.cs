@@ -11,10 +11,10 @@ namespace LiciterService.Data
     {
         List<Kupac> GetKupci();
         Kupac GetKupacById(Guid kupacId);
-        Kupac CreateKupac(Kupac kupac);
-        void UpdateKupac(Kupac kupac);
+        KupacConfirmation CreateKupac(Kupac kupac);
+        KupacConfirmation UpdateKupac(Kupac kupac);
         void DeleteKupac(Guid kupacId);
         bool SaveChanges();
-        KupacDto CreateKupac(KupacDto kupac);
+        
     }
 }

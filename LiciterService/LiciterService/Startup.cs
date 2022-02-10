@@ -27,10 +27,14 @@ namespace LiciterService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers();
+        
+            services.AddControllers(setup =>
+               setup.ReturnHttpNotAcceptable = true //ako to nije zahtev koji ocekujemo vrati status 406, jedini zahtev koji mozemo da obradimo je json
+           ).AddXmlDataContractSerializerFormatters();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSingleton<ILiciterRepository, LiciterMockRepository>();
             services.AddSingleton<IKupacRepository, KupacMockRepository>();
+            services.AddSingleton<IZastupnikRepository, ZastupnikMockRepository>();
 
             services.AddSwaggerGen(c =>
             {

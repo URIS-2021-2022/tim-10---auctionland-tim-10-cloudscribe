@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Models
 {
-    public abstract class LiciterDto
+    public class LiciterDto
     {
 
         public Guid LiciterId { get; set; }
