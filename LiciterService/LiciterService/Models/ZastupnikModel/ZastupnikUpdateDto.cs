@@ -14,5 +14,7 @@ namespace LiciterService.Models
         public string Adresa { get; set; }
         public string NazivDrzave { get; set; }
         public int BrojTable { get; set; }
+        public Guid KupacId { get; set; }
+
     }
 }

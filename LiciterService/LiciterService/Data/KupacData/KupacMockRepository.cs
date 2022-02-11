@@ -29,7 +29,8 @@ namespace LiciterService.Data
                     DatumPrestankaZabrane=DateTime.Parse("2021-11-15T09:00:00"),
                     DuzinaTrajanjaZabrane=365,
                     ImaZabranu=true,
-                    OstvarenaPovrsina=1500000,
+                    OstvarenaPovrsina=1500000
+                    
                 },
                 new Kupac
                 {
@@ -41,6 +42,7 @@ namespace LiciterService.Data
                     DuzinaTrajanjaZabrane=365,
                     ImaZabranu=true,
                     OstvarenaPovrsina=15500,
+                   
                 }
             });
         }
@@ -72,7 +74,7 @@ namespace LiciterService.Data
         {
             Kupci.Remove(Kupci.FirstOrDefault(e => e.KupacId == kupacId));
         }
-        public KupacConfirmation UpdateKupac(Kupac kupac)
+        public void UpdateKupac(Kupac kupac)
         {
             var kup = GetKupacById(kupac.KupacId);
 
@@ -82,14 +84,6 @@ namespace LiciterService.Data
             kup.ImaZabranu = kupac.ImaZabranu;
             kup.OstvarenaPovrsina = kupac.OstvarenaPovrsina;
             kup.DuzinaTrajanjaZabrane = kupac.DuzinaTrajanjaZabrane;
-
-            return new KupacConfirmation
-            {
-                KupacId = kup.KupacId,
-                //ImaZabranu = kup.ImaZabranu,
-                ImeKupca = kup.ImeKupca,
-                PrezimeKupca = kup.PrezimeKupca
-            };
 
         }
         public bool SaveChanges()

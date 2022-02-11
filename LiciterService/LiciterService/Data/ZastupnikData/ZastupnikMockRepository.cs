@@ -26,7 +26,8 @@ namespace LiciterService.Data
                     Jmbg=163588962,
                     Adresa="Beogradska 25",
                     NazivDrzave="Srbija",
-                    BrojTable=255
+                    BrojTable=255,
+                    KupacId=Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36")
                 },
                 new Zastupnik
                 {
@@ -36,7 +37,8 @@ namespace LiciterService.Data
                     Jmbg=58966345,
                     Adresa="Narodnog Fronta 13",
                     NazivDrzave="Srbija",
-                    BrojTable=365
+                    BrojTable=365,
+                    KupacId=Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029")
                 }
             });
         }
@@ -75,7 +77,7 @@ namespace LiciterService.Data
             return true;
         }
 
-        public ZastupnikConfirmation UpdateZastupnik(Zastupnik zastupnik)
+        public void UpdateZastupnik(Zastupnik zastupnik)
         {
             var ovlascenoLice = GetZastupnikById(zastupnik.ZastupnikId);
             ovlascenoLice.ZastupnikId = zastupnik.ZastupnikId;
@@ -86,12 +88,6 @@ namespace LiciterService.Data
             ovlascenoLice.BrojTable = zastupnik.BrojTable;
             ovlascenoLice.NazivDrzave = zastupnik.NazivDrzave;
 
-            return new ZastupnikConfirmation
-            {
-                ZastupnikId = ovlascenoLice.ZastupnikId,
-                ImeZastupnika = ovlascenoLice.ImeZastupnika,
-                PrezimeZastupnika = ovlascenoLice.PrezimeZastupnika
-            };
         }
     }
 }

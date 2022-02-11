@@ -7,7 +7,7 @@ namespace LiciterService.Entities
 {
     public class Zastupnik
     {
-           
+         
         public Guid ZastupnikId { get; set; }
         public string ImeZastupnika { get; set; }
         public string PrezimeZastupnika { get; set; }
@@ -15,6 +15,10 @@ namespace LiciterService.Entities
         public string Adresa { get; set; }
         public string NazivDrzave { get; set; }
         public int BrojTable { get; set; }
-        //public Kupac Kupac { get; set; }
+
+        
+
+        public Guid KupacId { get; set; }
+        public Kupac Kupac { get; set; }
     }
 }

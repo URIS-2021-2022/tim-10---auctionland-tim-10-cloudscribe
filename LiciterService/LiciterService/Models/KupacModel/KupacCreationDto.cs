@@ -15,5 +15,6 @@ namespace LiciterService.Models
         public int DuzinaTrajanjaZabrane { get; set; }
         public bool ImaZabranu { get; set; }
         public int OstvarenaPovrsina { get; set; }
+       
     }
 }

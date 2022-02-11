@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiciterService.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,8 @@ namespace LiciterService.Models
         //public string Lice { get; set; }
         //public int JavnaNadmetanja { get; set; }
 
-        //Zastupnik moze da ima vise kupaca
-        //public virtual ICollection<Zastupnik> Zastupnik { get; set; }
+        public virtual ICollection<Zastupnik> Zastupnici { get; set; }
+
+
     }
 }

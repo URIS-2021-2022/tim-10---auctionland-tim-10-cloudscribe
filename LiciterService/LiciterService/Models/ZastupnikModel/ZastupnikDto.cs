@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiciterService.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace LiciterService.Models
         public string Adresa { get; set; }
         public string NazivDrzave { get; set; }
         public int BrojTable { get; set; }
-        //public Kupac Kupac { get; set; }
+
+        public Guid KupacId { get; set; }
+
     }
 }

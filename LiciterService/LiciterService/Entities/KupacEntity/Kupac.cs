@@ -7,6 +7,10 @@ namespace LiciterService.Entities
 {
     public class Kupac 
     {
+        public Kupac()
+        {
+            Zastupnici = new HashSet<Zastupnik>();
+        }
         public Guid KupacId { get; set; }
         public string ImeKupca { get; set; }
         public string PrezimeKupca { get; set; }
@@ -19,8 +23,8 @@ namespace LiciterService.Entities
         //public string Lice { get; set; }
         //public int JavnaNadmetanja { get; set; }
 
-        //Zastupnik moze da ima vise kupaca
-        //public virtual ICollection<Zastupnik> Zastupnik { get; set; }
+        //Jedan kupac moze da ima vise zastupnika
+        public virtual ICollection<Zastupnik> Zastupnici { get; set; }
 
     }
 }
