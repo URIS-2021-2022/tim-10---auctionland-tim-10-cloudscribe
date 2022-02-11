@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Parcela.Models
+namespace Parcela.Entities.DeoParcele
 {
     public class DeoParceleConfirmation
     {
 
-
-        public int povrsina { get; set; }
-
+        public Guid DeoParceleId { get; set; }
+        public int Povrsina { get; set; }
     }
 }

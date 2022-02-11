@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Parcela.Data
 {
-    interface IKatastarskaOpstinaRepository
+   public interface IKatastarskaOpstinaRepository
     {
     }
 }

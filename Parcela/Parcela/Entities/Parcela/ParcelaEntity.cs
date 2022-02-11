@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Parcela.Entities.DeoParcele;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,6 +13,7 @@ namespace Parcela.Entities.Parcela
 
         [Key]
         public Guid ParcelaId { get; set; }
+
 
         #region Parcela
 
@@ -45,6 +48,8 @@ namespace Parcela.Entities.Parcela
         public string ZasticenZonaStvarnoStanje { get; set; }
 
         public string OdvodnjavanjeStvarnoStanje { get; set; }
+
+        public List<DeoParceleEntity> DeloviParcele { get; set; }
 
         #endregion
     }

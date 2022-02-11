@@ -10,11 +10,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Parcela.Data.Parcela;
-using Parcela.Entities.Parcela;
+using Parcela.Entities.DeoParcele;
+using Parcela.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Parcela.Data.DeoParcele;
 
 namespace Parcela
 {
@@ -37,12 +39,14 @@ namespace Parcela
             }).AddXmlDataContractSerializerFormatters();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IParcelaRepository, ParcelaRepository>();
+            services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parcela", Version = "v1" });
             });
 
             services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB")));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

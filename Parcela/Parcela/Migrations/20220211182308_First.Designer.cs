@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Parcela.Entities.Parcela;
+using Parcela.Entities;
 
 namespace Parcela.Migrations
 {
     [DbContext(typeof(ParcelaContext))]
-    [Migration("20220210152559_ParcelaThirdMigration")]
-    partial class ParcelaThirdMigration
+    [Migration("20220211182308_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,41 @@ namespace Parcela.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Parcela.Entities.DeoParcele.DeoParceleEntity", b =>
+                {
+                    b.Property<Guid>("DeoParceleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Dodeljena")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("ParcelaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Povrsina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RedniBroj")
+                        .HasColumnType("int");
+
+                    b.HasKey("DeoParceleId");
+
+                    b.HasIndex("ParcelaId");
+
+                    b.ToTable("DeoParceleEntity");
+
+                    b.HasData(
+                        new
+                        {
+                            DeoParceleId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            Dodeljena = false,
+                            ParcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            Povrsina = 100,
+                            RedniBroj = 1
+                        });
+                });
 
             modelBuilder.Entity("Parcela.Entities.Parcela.ParcelaEntity", b =>
                 {
@@ -100,6 +135,22 @@ namespace Parcela.Migrations
                             ZasticenZonaStvarnoStanje = "ZZSS",
                             ZasticenaZona = "Z"
                         });
+                });
+
+            modelBuilder.Entity("Parcela.Entities.DeoParcele.DeoParceleEntity", b =>
+                {
+                    b.HasOne("Parcela.Entities.Parcela.ParcelaEntity", "Parcela")
+                        .WithMany("DeloviParcele")
+                        .HasForeignKey("ParcelaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parcela");
+                });
+
+            modelBuilder.Entity("Parcela.Entities.Parcela.ParcelaEntity", b =>
+                {
+                    b.Navigation("DeloviParcele");
                 });
 #pragma warning restore 612, 618
         }
