@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace LiciterService.Entities
         public int BrojTable { get; set; }
 
         
-
+        [ForeignKey("Kupac")]
         public Guid KupacId { get; set; }
         public Kupac Kupac { get; set; }
     }

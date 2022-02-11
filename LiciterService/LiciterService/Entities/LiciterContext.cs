@@ -11,9 +11,9 @@ namespace LiciterService.Entities
     {
         private readonly IConfiguration configuration;
 
-        public LiciterContext(DbContextOptions options, IConfiguration configuration): base(options)
+        public LiciterContext(DbContextOptions options): base(options)
         {
-            this.configuration = configuration;
+            
         }
 
         public DbSet<Liciter> Liciteri { get; set; }
@@ -31,13 +31,21 @@ namespace LiciterService.Entities
                 LiciterId = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e965b")
             });
 
-            builder.Entity<Kupac>()
-                .HasMany<Zastupnik>(k => k.Zastupnici)
-                .WithOne(z => z.Kupac)
-                .HasForeignKey(z => z.KupacId);
-                
-                            
-            /*builder.Entity<Kupac>().HasData(new
+            builder.Entity<Kupac>().HasData(new
+            {
+                KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
+                ImeKupca = "Maksim",
+                PrezimeKupca = "Gorki",
+                DatumPocetkaZabrane = DateTime.Parse("2020-11-15T09:00:00"),
+                DatumPrestankaZabrane = DateTime.Parse("2021-11-15T09:00:00"),
+                DuzinaTrajanjaZabrane = 365,
+                ImaZabranu = true,
+                OstvarenaPovrsina = 1500000
+            });
+
+
+
+            builder.Entity<Kupac>().HasData(new
             {
                 KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
                 ImeKupca = "Dzejn",
@@ -56,7 +64,8 @@ namespace LiciterService.Entities
                 Jmbg = 163588962,
                 Adresa = "Beogradska 25",
                 NazivDrzave = "Srbija",
-                BrojTable = 255
+                BrojTable = 255,
+                KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029")
             });
             builder.Entity<Zastupnik>().HasData(new
             {
@@ -66,8 +75,9 @@ namespace LiciterService.Entities
                 Jmbg = 58966345,
                 Adresa = "Narodnog Fronta 13",
                 NazivDrzave = "Srbija",
-                BrojTable = 365
-            });*/
+                BrojTable = 365,
+                KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36")
+            });
         }
     }
 }

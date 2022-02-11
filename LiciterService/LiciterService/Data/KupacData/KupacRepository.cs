@@ -44,9 +44,9 @@ namespace LiciterService.Data.KupacData
             return context.SaveChanges() > 0;
         }
 
-        public void  UpdateKupac(Kupac kupac)
+        public KupacConfirmation  UpdateKupac(Kupac kupac)
         {
-            //nije potrebno izvrsiti implementaciju
+            throw new NotImplementedException();
         }
     }
 }
