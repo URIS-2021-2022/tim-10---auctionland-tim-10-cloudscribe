@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lice</name>
+    </assembly>
+    <members>
+        <member name="M:Lice.Controllers.FizickoLiceController.GetFizickaLica">
+            <summary>
+            Vraća sva fizicka lica
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.FizickoLiceController.GetFizickoLice(System.Guid)">
+            <summary>
+            Vraća fizicko lice na osnovu ID-ja lica
+            </summary>
+            <param name="liceId">ID lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.FizickoLiceController.CreateFizickoLice(Lice.Models.FizickoLice.FizickoLiceCreationDto)">
+            <summary>
+            
+            </summary>
+            <param name="fizickoLice">Model fizickog lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.FizickoLiceController.UpdateFizickoLice(Lice.Models.FizickoLice.FizickoLiceUpdateDto)">
+            <summary>
+            Ažurira postojeće fizicko lice
+            </summary>
+            <param name="fizickoLice">Model fizickog lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.FizickoLiceController.DeleteFizickoLice(System.Guid)">
+            <summary>
+            Vrši brisanje jednog lica na osnovu ID-ja
+            </summary>
+            <param name="liceId">ID lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.FizickoLiceController.GetFizickoLiceOptions">
+            <summary>
+            Vreće opcije za rad sa fizickim licima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.GetPravnaLica">
+            <summary>
+            Vraća sva pravna lica
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.GetPravnoLice(System.Guid)">
+            <summary>
+            Vraća pravno lice na osnovu ID-ja lica
+            </summary>
+            <param name="liceId">ID lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.CreatePravnoLice(Lice.Models.PravnoLice.PravnoLiceCreationDto)">
+            <summary>
+            
+            </summary>
+            <param name="pravnoLice">Model pravnog lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.UpdatePravnoLice(Lice.Models.PravnoLice.PravnoLiceUpdateDto)">
+            <summary>
+            Ažurira postojeće pravno lice
+            </summary>
+            <param name="pravnoLice">Model pravnog lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.DeletePravnoLice(System.Guid)">
+            <summary>
+            Vrši brisanje jednog lica na osnovu ID-ja
+            </summary>
+            <param name="liceId">ID lica</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lice.Controllers.PravnoLiceController.GetPravnoLiceOptions">
+            <summary>
+            Vreće opcije za rad sa pravnim licima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.liceId">
+            <summary>
+            ID lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.ime">
+            <summary>
+            Ime fizickog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.prezime">
+            <summary>
+            Prezime fizickog lica
+            </summary>
+            
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceEntity.ime">
+            <summary>
+            Ime fizickog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceEntity.prezime">
+            <summary>
+            Prezime fizickog lica
+            </summary>
+            
+        </member>
+        <member name="P:Lice.Entities.LiceEntity.liceId">
+            <summary>
+            ID Lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.LiceEntity.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.LiceEntity.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.LiceEntity.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.LiceEntity.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.naziv">
+            <summary>
+            Naziv pravnog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.faks">
+            <summary>
+            Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceEntity.naziv">
+            <summary>
+            Naziv pravog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceEntity.faks">
+            <summary>
+            Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.liceId">
+            <summary>
+            ID Lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.ImePrezime">
+            <summary>
+            Ime i prezime fizickog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceCreationDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.ImePrezime">
+            <summary>
+            Ime i prezime fizickog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceUpdateDto.liceId">
+            <summary>
+            ID Lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceUpdateDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.liceId">
+            <summary>
+            ID Lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.naziv">
+            <summary>
+            Naziv pravog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.faks">
+            <summary>
+            Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceCreationDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.brojTelefona1">
+            <summary>
+            Prvi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.email">
+            <summary>
+            Email adresa lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.brojRacuna">
+            <summary>
+            Broj racuna lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.naziv">
+            <summary>
+            Naziv pravog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.faks">
+            <summary>
+            Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceUpdateDto.liceId">
+            <summary>
+            ID Lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceUpdateDto.brojTelefona2">
+            <summary>
+            Drugi broj telefona lica
+            </summary>
+        </member>
+    </members>
+</doc>

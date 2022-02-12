@@ -29,7 +29,7 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Vraća sva fizicka lica
+        /// Vraća sva fizička lica
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -47,7 +47,7 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Vraća fizicko lice na osnovu ID-ja lica
+        /// Vraća fizičko lice na osnovu ID-ja lica
         /// </summary>
         /// <param name="liceId">ID lica</param>
         /// <returns></returns>
@@ -66,9 +66,21 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Dodaje novo fizičko lice
         /// </summary>
-        /// <param name="fizickoLice">Model fizickog lica</param>
+        /// <param name="fizickoLice">Model fizičko lica</param>
+        /// /// <remarks>
+        /// Primer zahteva za kreiranje novog fizičkog lica\
+        /// POST /api/fizickaLica \
+        /// {   \
+        ///     "brojTelefona1": "062535856",
+        ///     "brojTelefona2": "061258457",
+        ///     "email": "fizicko2@gmail.com",
+        ///     "brojRacuna": "brRac3",
+        ///     "ime": "Ime3",
+        ///     "prezime": "Prezime3"
+        /// }
+        ///</remarks>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -93,9 +105,9 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Ažurira postojeće fizicko lice
+        /// Ažurira postojeće fizičko lice
         /// </summary>
-        /// <param name="fizickoLice">Model fizickog lica</param>
+        /// <param name="fizickoLice">Model fizičkog lica</param>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -160,7 +172,7 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Vreće opcije za rad sa fizickim licima
+        /// Vreće opcije za rad sa fizičkim licima
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]

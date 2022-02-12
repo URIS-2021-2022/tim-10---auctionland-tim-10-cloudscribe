@@ -66,11 +66,23 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Dodaje novo pravno lice
         /// </summary>
         /// <param name="pravnoLice">Model pravnog lica</param>
-        /// <returns></returns>
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        /// /// /// <remarks>
+        /// Primer zahteva za kreiranje novog lica\
+        /// POST /api/pravnaLica \
+        /// {   \
+        ///     "brojTelefona1": "064855446",
+        ///     "brojTelefona2": "066985684",
+        ///     "email": "email6",
+        ///     "brojRacuna": "brRac6",
+        ///     "naziv": "PravnoLice3",
+        ///     "faks": 125687
+        /// }
+    ///</remarks>
+    /// <returns></returns>
+    [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPost]
