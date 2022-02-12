@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Parcela.Models
+namespace Parcela.Models.ZasticenaZona
 {
-    public class ZasticenZonaModel
+    public class ZasticenaZonaCreationDto
     {
-
-        public Guid ZasticenZonaId { get; set; }
+        
 
         public int BrojZone { get; set; }
     }

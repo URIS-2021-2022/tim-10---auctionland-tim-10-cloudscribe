@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Parcela.Models
+namespace Parcela.Modelsc.KatastarskaOpstina
 {
-    public class KatastarskaOpstinaModel
+    public class KatastarskaOpstinaDto
     {
 
         public Guid KatastarskaOpstinaId { get; set; }

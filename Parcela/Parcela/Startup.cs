@@ -17,6 +17,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Parcela.Data.DeoParcele;
+using Parcela.Data.KatastarskaOpstina;
+using Parcela.Data.ZasticenaZona;
 
 namespace Parcela
 {
@@ -40,6 +42,8 @@ namespace Parcela
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IParcelaRepository, ParcelaRepository>();
             services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
+            services.AddScoped<IKatastarskaOpstinaRepository, KatastarskaOpstinaRepository>();
+            services.AddScoped<IZasticenaZonaRepository, ZasticenaZonaRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parcela", Version = "v1" });

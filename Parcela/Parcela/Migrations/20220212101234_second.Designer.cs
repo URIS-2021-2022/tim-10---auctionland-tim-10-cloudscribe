@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parcela.Entities;
 
 namespace Parcela.Migrations
 {
     [DbContext(typeof(ParcelaContext))]
-    partial class ParcelaContextModelSnapshot : ModelSnapshot
+    [Migration("20220212101234_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,27 +155,6 @@ namespace Parcela.Migrations
                             Povrsina = 100,
                             ZasticenZonaStvarnoStanje = "ZZSS",
                             ZasticenaZona = "Z"
-                        });
-                });
-
-            modelBuilder.Entity("Parcela.Entities.ZasticenaZona.ZasticenaZonaEntity", b =>
-                {
-                    b.Property<Guid>("ZasticenZonaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("BrojZone")
-                        .HasColumnType("int");
-
-                    b.HasKey("ZasticenZonaId");
-
-                    b.ToTable("ZasticenaZona");
-
-                    b.HasData(
-                        new
-                        {
-                            ZasticenZonaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                            BrojZone = 1
                         });
                 });
 
