@@ -7,6 +7,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <WarningLevel>3</WarningLevel>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <OutputPath></OutputPath>
+    <DocumentationFile>Lice.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

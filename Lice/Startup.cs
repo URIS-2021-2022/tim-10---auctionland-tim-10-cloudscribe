@@ -55,7 +55,7 @@ namespace Lice
 
                 var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
                 var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
-                //setupAction.IncludeXmlComments(xmlCommentsPath);
+                setupAction.IncludeXmlComments(xmlCommentsPath);
             });
 
             services.AddScoped<ILiceRepository, LiceRepository>();

@@ -25,8 +25,8 @@ namespace Lice.Entities
                 .HasData(new
                 {
                     liceId = Guid.Parse("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
-                    brojTelefona1 = 123456,
-                    brojTelefona2 = 789456,
+                    brojTelefona1 = "123456",
+                    brojTelefona2 = "789456",
                     email = "email1",
                     brojRacuna = "brRac1",
                     ime = "Ime1",
@@ -36,8 +36,8 @@ namespace Lice.Entities
                 .HasData(new
                 {
                     liceId = Guid.Parse("25499084-4d50-412b-9640-1ab07af33d4d"),
-                    brojTelefona1 = 456123,
-                    brojTelefona2 = 45214,
+                    brojTelefona1 = "456123",
+                    brojTelefona2 = "45214",
                     email = "email2",
                     brojRacuna = "brRac2",
                     naziv = "PravnoLice1",

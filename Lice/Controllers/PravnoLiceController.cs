@@ -80,7 +80,8 @@ namespace Lice.Controllers
             {
                 PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
                 PravnoLiceConfirmationEntity confirmation = pravnoLiceRepository.CreatePravnoLice(pravnoLiceEntity);
-
+                pravnoLiceRepository.SaveChanges();
+                
                 string location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { liceId = confirmation.liceId });
                 return Created(location, mapper.Map<PravnoLiceConfirmationDto>(confirmation));
             }

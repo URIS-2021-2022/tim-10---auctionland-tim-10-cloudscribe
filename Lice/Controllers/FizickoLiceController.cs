@@ -80,6 +80,7 @@ namespace Lice.Controllers
             {
                 FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
                 FizickoLiceConfirmationEntity confirmation = fizickoLiceRepository.CreateFizickoLice(fizickoLiceEntity);
+                fizickoLiceRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { liceId = confirmation.liceId });
                 return Created(location, mapper.Map<FizickoLiceConfirmationDto>(confirmation));

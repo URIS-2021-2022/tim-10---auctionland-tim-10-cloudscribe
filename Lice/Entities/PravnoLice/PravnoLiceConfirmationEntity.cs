@@ -12,12 +12,12 @@ namespace Lice.Entities
         /// <summary>
         /// Prvi broj telefona lica
         /// </summary>
-        public int brojTelefona1 { get; set; }
+        public string brojTelefona1 { get; set; }
 
         /// <summary>
         /// Drugi broj telefona lica
         /// </summary>
-        public int brojTelefona2 { get; set; }
+        public string brojTelefona2 { get; set; }
 
         /// <summary>
         /// Email adresa lica

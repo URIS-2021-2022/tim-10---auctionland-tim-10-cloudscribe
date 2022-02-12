@@ -12,12 +12,12 @@ namespace Lice.Models.FizickoLice
         /// <summary>
         /// Prvi broj telefona lica
         /// </summary>
-        public int brojTelefona1 { get; set; }
+        public string brojTelefona1 { get; set; }
 
         /// <summary>
         /// Drugi broj telefona lica
         /// </summary>
-        public int brojTelefona2 { get; set; }
+        public string brojTelefona2 { get; set; }
 
         [Required(ErrorMessage = "Obavezno je uneti email adresu.")]
         /// <summary>
