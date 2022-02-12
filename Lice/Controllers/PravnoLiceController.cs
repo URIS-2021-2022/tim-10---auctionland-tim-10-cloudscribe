@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Lice.Data;
 using Lice.Entities;
-using Lice.Models.FizickoLice;
+using Lice.Models.PravnoLice;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -13,76 +13,76 @@ using System.Threading.Tasks;
 namespace Lice.Controllers
 {
     [ApiController]
-    [Route("api/fizickaLica")]
+    [Route("api/pravnaLica")]
     [Produces("application/json", "applciation/xml")]
-    public class FizickoLiceController : ControllerBase
+    public class PravnoLiceController : ControllerBase
     {
-        private readonly IFizickoLiceRepository fizickoLiceRepository;
+        private readonly IPravnoLiceRepository pravnoLiceRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
-            this.fizickoLiceRepository = fizickoLiceRepository;
+            this.pravnoLiceRepository = pravnoLiceRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
 
         /// <summary>
-        /// Vraća sva fizicka lica
+        /// Vraća sva pravna lica
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         [HttpHead]
-        public ActionResult<List<FizickoLiceDto>> GetFizickaLica()
+        public ActionResult<List<PravnoLiceDto>> GetPravnaLica()
         {
-            var fizickaLica = fizickoLiceRepository.GetFizickaLica();
-            if (fizickaLica == null || fizickaLica.Count == 0)
+            var pravnaLica = pravnoLiceRepository.GetPravnaLica();
+            if (pravnaLica == null || pravnaLica.Count == 0)
             {
                 return NoContent();
             }
-            return Ok(mapper.Map<List<FizickoLiceDto>>(fizickaLica));
+            return Ok(mapper.Map<List<PravnoLiceDto>>(pravnaLica));
         }
 
         /// <summary>
-        /// Vraća fizicko lice na osnovu ID-ja lica
+        /// Vraća pravno lice na osnovu ID-ja lica
         /// </summary>
         /// <param name="liceId">ID lica</param>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{liceId}")]
-        public ActionResult<FizickoLiceDto> GetFizickoLice(Guid liceId)
+        public ActionResult<PravnoLiceDto> GetPravnoLice(Guid liceId)
         {
-            var fizickoLice = fizickoLiceRepository.GetFizickoLiceById(liceId);
+            var pravnoLice = pravnoLiceRepository.GetPravnoLiceById(liceId);
 
-            if (fizickoLice == null)
+            if (pravnoLice == null)
             {
                 return NotFound();
             }
-            return Ok(mapper.Map<FizickoLiceDto>(fizickoLice));
+            return Ok(mapper.Map<PravnoLiceDto>(pravnoLice));
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fizickoLice">Model fizickog lica</param>
+        /// <param name="pravnoLice">Model pravnog lica</param>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPost]
-        public ActionResult<FizickoLiceConfirmationDto> CreateFizickoLice([FromBody] FizickoLiceCreationDto fizickoLice)
+        public ActionResult<PravnoLiceConfirmationDto> CreatePravnoLice([FromBody] PravnoLiceCreationDto pravnoLice)
         {
             try
             {
-                FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
-                FizickoLiceConfirmationEntity confirmation = fizickoLiceRepository.CreateFizickoLice(fizickoLiceEntity);
+                PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
+                PravnoLiceConfirmationEntity confirmation = pravnoLiceRepository.CreatePravnoLice(pravnoLiceEntity);
 
-                string location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { liceId = confirmation.liceId });
-                return Created(location, mapper.Map<FizickoLiceConfirmationDto>(confirmation));
+                string location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { liceId = confirmation.liceId });
+                return Created(location, mapper.Map<PravnoLiceConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
@@ -92,33 +92,33 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Ažurira postojeće fizicko lice
+        /// Ažurira postojeće pravno lice
         /// </summary>
-        /// <param name="fizickoLice">Model fizickog lica</param>
+        /// <param name="pravnoLice">Model pravnog lica</param>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPut]
-        public ActionResult<FizickoLiceDto> UpdateFizickoLice([FromBody] FizickoLiceUpdateDto fizickoLice)
+        public ActionResult<PravnoLiceDto> UpdatePravnoLice([FromBody] PravnoLiceUpdateDto pravnoLice)
         {
             try
             {
-                var oldFizickoLice = fizickoLiceRepository.GetFizickoLiceById(fizickoLice.liceId);
+                var oldPravnoLice = pravnoLiceRepository.GetPravnoLiceById(pravnoLice.liceId);
 
-                if (oldFizickoLice == null)
+                if (oldPravnoLice == null)
                 {
                     return NotFound();
                 }
 
-                FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
+                PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
 
-                mapper.Map(fizickoLiceEntity, oldFizickoLice);
+                mapper.Map(pravnoLiceEntity, oldPravnoLice);
 
-                fizickoLiceRepository.SaveChanges();
+                pravnoLiceRepository.SaveChanges();
 
-                return Ok(mapper.Map<FizickoLiceDto>(oldFizickoLice));
+                return Ok(mapper.Map<PravnoLiceDto>(oldPravnoLice));
             }
             catch (Exception)
             {
@@ -136,19 +136,19 @@ namespace Lice.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpDelete("{liceId}")]
-        public IActionResult DeleteFizickoLice(Guid liceId)
+        public IActionResult DeletePravnoLice(Guid liceId)
         {
             try
             {
-                var fizickoLice = fizickoLiceRepository.GetFizickoLiceById(liceId);
+                var pravnoLice = pravnoLiceRepository.GetPravnoLiceById(liceId);
 
-                if(fizickoLice == null)
+                if (pravnoLice == null)
                 {
                     return NotFound();
                 }
 
-                fizickoLiceRepository.DeleteFizickoLice(liceId);
-                fizickoLiceRepository.SaveChanges();
+                pravnoLiceRepository.DeletePravnoLice(liceId);
+                pravnoLiceRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)
@@ -159,17 +159,15 @@ namespace Lice.Controllers
         }
 
         /// <summary>
-        /// Vreće opcije za rad sa fizickim licima
+        /// Vreće opcije za rad sa pravnim licima
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpOptions]
-        public IActionResult GetFizickoLiceOptions()
+        public IActionResult GetPravnoLiceOptions()
         {
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
             return Ok();
         }
-
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Lice.Entities;
+using Lice.Models.PravnoLice;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace Lice.Profiles
         public PravnoLiceConfirmationProfile()
         {
             CreateMap<PravnoLiceEntity, PravnoLiceConfirmationEntity>();
+
+
+            CreateMap<PravnoLiceConfirmationEntity, PravnoLiceConfirmationDto>();
+
+            CreateMap<PravnoLiceEntity, PravnoLiceConfirmationDto>();
         }
     }
 }
