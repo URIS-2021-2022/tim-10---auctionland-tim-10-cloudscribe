@@ -15,6 +15,7 @@ namespace LiciterService.Controllers
 {
     [ApiController]
     [Route("api/kupac")]
+    //[Authorize]
     public class KupacController : ControllerBase
     {
         
@@ -84,11 +85,9 @@ namespace LiciterService.Controllers
         {
             try
             {
-                Kupac kupacEntity = mapper.Map<Kupac>((KupacCreationDto)kupac);
+                Kupac kupacEntity = mapper.Map<Kupac>(kupac);
                 KupacConfirmation confirmation = kupacRepository.CreateKupac(kupacEntity);
-                //var confirmation= kupacRepository.CreateKupac(kupacEntity);
                 kupacRepository.SaveChanges();
-
                 string location = linkGenerator.GetPathByAction("GetKupac", "Kupac", new { kupacId = confirmation.KupacId });
                 return Created(location, mapper.Map<KupacConfirmationDto>(confirmation));
             }
@@ -113,15 +112,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<KupacConfirmationDto> UpdateKupac(KupacUpdateDto kupac)
         {
+            
             try
             {
-                if (kupacRepository.GetKupacById(kupac.KupacId) == null)
+                var oldKupac = kupacRepository.GetKupacById(kupac.KupacId);
+                if (oldKupac == null)
                 {
                     return NotFound();
                 }
                 Kupac kupacEntity = mapper.Map<Kupac>(kupac);
-                KupacConfirmation confirmation = kupacRepository.UpdateKupac(kupacEntity);
-                return Ok(mapper.Map<KupacConfirmationDto>(confirmation));
+                mapper.Map(kupacEntity, oldKupac);
+                kupacRepository.SaveChanges();
+                return Ok(mapper.Map<KupacConfirmationDto>(oldKupac));
             }
             catch (Exception)
             {

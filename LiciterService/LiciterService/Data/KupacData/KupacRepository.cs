@@ -44,7 +44,7 @@ namespace LiciterService.Data.KupacData
             return context.SaveChanges() > 0;
         }
 
-        public KupacConfirmation  UpdateKupac(Kupac kupac)
+        public void  UpdateKupac(Kupac kupac)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LiciterService.Data;
 using LiciterService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ namespace LiciterService.Controllers
 {
     [ApiController]
     [Route("api/liciter")]
+    //[Authorize]
     public class LiciterController: ControllerBase
     {
         private readonly ILiciterRepository liciterRepository;

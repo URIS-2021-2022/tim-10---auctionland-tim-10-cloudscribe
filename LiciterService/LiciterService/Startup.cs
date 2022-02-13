@@ -1,4 +1,4 @@
-using LiciterService.Data;
+﻿using LiciterService.Data;
 using LiciterService.Data.KupacData;
 using LiciterService.Data.LiciterData;
 using LiciterService.Entities;
@@ -35,20 +35,28 @@ namespace LiciterService
             services.AddControllers(setup =>
                setup.ReturnHttpNotAcceptable = true //ako to nije zahtev koji ocekujemo vrati status 406, jedini zahtev koji mozemo da obradimo je json
            ).AddXmlDataContractSerializerFormatters();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //services.AddSingleton<ILiciterRepository, LiciterMockRepository>();
-            //services.AddSingleton<IKupacRepository, KupacMockRepository>();
-            //services.AddSingleton<IZastupnikRepository, ZastupnikMockRepository>();
+          
             services.AddScoped<ILiciterRepository, LiciterRepository>();
             services.AddScoped<IKupacRepository, KupacRepository>();
             services.AddScoped<IZastupnikRepository, ZastupnikRepository>();
+
             services.AddDbContextPool<LiciterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiciterDB")));
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "LiciterService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "LiciterService", 
+                    Version = "v1" , 
+                    Description= "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled licitera.",
+                Contact=new Microsoft.OpenApi.Models.OpenApiContact
+                {
+                    Name = "Irina Kuzmanović",
+                        Email = "irinakuzmanovic@uns.ac.rs"
+                }
+                });
             });
-
-           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +67,9 @@ namespace LiciterService
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LiciterService v1"));
+                
             }
+
 
             app.UseHttpsRedirection();
 

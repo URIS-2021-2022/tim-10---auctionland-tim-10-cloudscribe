@@ -20,7 +20,7 @@ namespace LiciterService.Models
         //public string Lice { get; set; }
         //public int JavnaNadmetanja { get; set; }
 
-        public virtual ICollection<Zastupnik> Zastupnici { get; set; }
+        //public virtual ICollection<Zastupnik> Zastupnici { get; set; }
 
 
     }

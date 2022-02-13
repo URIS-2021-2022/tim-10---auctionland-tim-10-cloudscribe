@@ -15,6 +15,7 @@ namespace LiciterService.Controllers
 {
     [ApiController]
     [Route("api/zastupnik")]
+    //[Authorize]
     public class ZastupnikContoller: ControllerBase
     {
         private readonly IZastupnikRepository zastupnikRepository;
@@ -80,7 +81,7 @@ namespace LiciterService.Controllers
         {
             try
             {
-                Zastupnik zastupnikEntity = mapper.Map<Zastupnik>((ZastupnikCreationDto) zastupnik);
+                Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
                 ZastupnikConfirmation confirmation = zastupnikRepository.CreateZastupnik(zastupnikEntity);
                 zastupnikRepository.SaveChanges();
 
@@ -109,13 +110,15 @@ namespace LiciterService.Controllers
         {
             try
             {
-                if (zastupnikRepository.GetZastupnikById(zastupnik.ZastupnikId) == null)
+                var oldZastupnik = zastupnikRepository.GetZastupnikById(zastupnik.ZastupnikId);
+                if (oldZastupnik == null)
                 {
                     return NotFound();
                 }
                 Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
-                ZastupnikConfirmation confirmation = zastupnikRepository.UpdateZastupnik(zastupnikEntity);
-                return Ok(mapper.Map<ZastupnikConfirmationDto>(confirmation));
+                mapper.Map(zastupnikEntity, oldZastupnik);
+                zastupnikRepository.SaveChanges();
+                return Ok(mapper.Map<ZastupnikConfirmationDto>(oldZastupnik));
             }
             catch (Exception)
             {
