@@ -19,9 +19,9 @@ namespace OglasService.Controllers
     {
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
-        private readonly SluzbeniListRepository sluzbeniListRepository;
+        private readonly ISluzbeniListRepository sluzbeniListRepository;
 
-        public SluzbeniListController(IMapper mapper, LinkGenerator linkGenerator,SluzbeniListRepository sluzbeniListRepository)
+        public SluzbeniListController(IMapper mapper, LinkGenerator linkGenerator,ISluzbeniListRepository sluzbeniListRepository)
         {
             this.mapper = mapper;
             this.linkGenerator = linkGenerator;
