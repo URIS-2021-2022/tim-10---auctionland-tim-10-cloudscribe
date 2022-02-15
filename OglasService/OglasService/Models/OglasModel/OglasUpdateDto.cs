@@ -8,7 +8,7 @@ namespace OglasService.Models
     public class OglasUpdateDto
     {
         public Guid OglasId { get; set; }
-       // public List<String> GarantPlacanja { get; set; }
         public string TekstOglasa { get; set; }
+        public Guid SluzbeniListId { get; set; }
     }
 }

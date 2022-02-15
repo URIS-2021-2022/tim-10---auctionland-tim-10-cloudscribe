@@ -22,12 +22,14 @@ namespace OglasService.Entities
             builder.Entity<Oglas>().HasData(new
             {
                 OglasId= Guid.Parse("6a411c13-a195-48f7-8dbd-67596c397444"),
-                TekstOglasa= "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini"
+                TekstOglasa= "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini",
+                SluzbeniListId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c397412")
             });
             builder.Entity<Oglas>().HasData(new
             {
                 OglasId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c397498"),
-                TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini"
+                TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini",
+                SluzbeniListId= Guid.Parse("6a411c13-a195-48f7-8dbd-67596c397411")
             });
 
             builder.Entity<SluzbeniList>().HasData(new
@@ -35,7 +37,8 @@ namespace OglasService.Entities
                 SluzbeniListId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c397412"),
                 Opstina = "Novi Beograd",
                 BrojSluzbenogLista = 12,
-                DatumIzdavanja = DateTime.Parse("2020-11-15T09:00:00")
+                DatumIzdavanja = DateTime.Parse("2020-11-15T09:00:00"),
+                
             });
 
             builder.Entity<SluzbeniList>().HasData(new
