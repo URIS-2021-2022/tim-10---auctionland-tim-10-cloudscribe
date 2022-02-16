@@ -24,6 +24,11 @@ namespace Lice.Models.FizickoLice
         public string email { get; set; }
 
         /// <summary>
+        /// Opis prioriteta lica
+        /// </summary>
+        public string opisPrioriteta { get; set; }
+
+        /// <summary>
         /// Broj racuna lica
         /// </summary>
         public string brojRacuna { get; set; }

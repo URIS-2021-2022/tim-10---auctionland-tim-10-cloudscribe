@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -31,6 +32,11 @@ namespace Lice.Models.FizickoLice
         /// Broj racuna lica
         /// </summary>
         public string brojRacuna { get; set; }
+
+        /// <summary>
+        /// Opis prioriteta lica
+        /// </summary>
+        public string opisPrioriteta { get; set; }
 
         /// <summary>
         /// Ime i prezime fizickog lica

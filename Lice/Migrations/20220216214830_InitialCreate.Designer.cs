@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lice.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20220212204512_InitialCreate")]
+    [Migration("20220216214830_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,11 +43,37 @@ namespace Lice.Migrations
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("prioritetId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("liceId");
+
+                    b.HasIndex("prioritetId");
 
                     b.ToTable("Lica");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("LiceEntity");
+                });
+
+            modelBuilder.Entity("Lice.Entities.Prioritet.PrioritetEntity", b =>
+                {
+                    b.Property<Guid>("prioritetId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("opisPrioriteta")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("prioritetId");
+
+                    b.ToTable("Prioriteti");
+
+                    b.HasData(
+                        new
+                        {
+                            prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
+                            opisPrioriteta = "Vlasnik sistema za navodnjavanje"
+                        });
                 });
 
             modelBuilder.Entity("Lice.Entities.FizickoLiceEntity", b =>
@@ -70,6 +96,7 @@ namespace Lice.Migrations
                             brojTelefona1 = "123456",
                             brojTelefona2 = "789456",
                             email = "email1",
+                            prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
                             ime = "Ime1",
                             prezime = "Prezime1"
                         });
@@ -95,9 +122,21 @@ namespace Lice.Migrations
                             brojTelefona1 = "456123",
                             brojTelefona2 = "45214",
                             email = "email2",
+                            prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
                             faks = 125,
                             naziv = "PravnoLice1"
                         });
+                });
+
+            modelBuilder.Entity("Lice.Entities.LiceEntity", b =>
+                {
+                    b.HasOne("Lice.Entities.Prioritet.PrioritetEntity", "Prioritet")
+                        .WithMany()
+                        .HasForeignKey("prioritetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Prioritet");
                 });
 #pragma warning restore 612, 618
         }

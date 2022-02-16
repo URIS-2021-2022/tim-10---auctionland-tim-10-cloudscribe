@@ -30,6 +30,11 @@ namespace Lice.Entities
         public string brojRacuna { get; set; }
 
         /// <summary>
+        /// Opis prioriteta lica
+        /// </summary>
+        public string opisPrioriteta { get; set; }
+
+        /// <summary>
         /// Naziv pravnog lica
         /// </summary>
         public string naziv { get; set; }

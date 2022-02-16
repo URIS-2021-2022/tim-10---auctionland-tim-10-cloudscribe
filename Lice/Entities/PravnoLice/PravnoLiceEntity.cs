@@ -10,11 +10,6 @@ namespace Lice.Entities
     public class PravnoLiceEntity : LiceEntity
     {
         /// <summary>
-        /// ID pravnog lica
-        /// </summary>
-       // public Guid pravnoLiceId { get; set; }
-
-        /// <summary>
         /// Naziv pravog lica
         /// </summary>
         public string naziv { get; set; }

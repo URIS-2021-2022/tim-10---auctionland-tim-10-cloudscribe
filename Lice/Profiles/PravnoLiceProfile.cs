@@ -12,7 +12,8 @@ namespace Lice.Profiles
     {
         public PravnoLiceProfile()
         {
-            CreateMap<PravnoLiceEntity, PravnoLiceDto>();
+            CreateMap<PravnoLiceEntity, PravnoLiceDto>()
+            .ForMember(dest => dest.opisPrioriteta, opt => opt.MapFrom(src => src.Prioritet.opisPrioriteta)); ;
 
             CreateMap<PravnoLiceCreationDto, PravnoLiceEntity>();
             CreateMap<PravnoLiceUpdateDto, PravnoLiceEntity>();

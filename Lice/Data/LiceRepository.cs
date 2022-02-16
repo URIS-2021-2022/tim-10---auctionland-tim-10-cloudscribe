@@ -1,4 +1,5 @@
 ﻿using Lice.Entities;
+using Lice.Entities.Lice;
 using System;
 using System.Collections.Generic;
 using System.Linq;

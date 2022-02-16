@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lice.Entities.Prioritet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -35,6 +36,17 @@ namespace Lice.Entities
         /// </summary>
         public string brojRacuna { get; set; }
 
-        
+        /// <summary>
+        /// ID prioriteta
+        /// </summary>
+        [ForeignKey("Prioritet")]
+        public Guid prioritetId { get; set; }
+
+        /// <summary>
+        /// Prioritet
+        /// </summary>
+        public virtual PrioritetEntity Prioritet { get; set; }
+
+
     }
 }

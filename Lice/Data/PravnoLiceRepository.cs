@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Lice.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Lice.Data
 
         public List<PravnoLiceEntity> GetPravnaLica()
         {
-            return context.PravnaLica.ToList();
+            return context.PravnaLica.Include(p => p.Prioritet).ToList();
         }
 
         public PravnoLiceEntity GetPravnoLiceById(Guid liceId)

@@ -8,10 +8,10 @@ namespace Lice.Models.PravnoLice
 {
     public class PravnoLiceCreationDto
     {
-        [Required(ErrorMessage = "Obavezno je uneti broj telefona.")]
         /// <summary>
         /// Prvi broj telefona lica
         /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti broj telefona.")]
         public string brojTelefona1 { get; set; }
 
         /// <summary>
@@ -19,29 +19,34 @@ namespace Lice.Models.PravnoLice
         /// </summary>
         public string brojTelefona2 { get; set; }
 
-        [Required(ErrorMessage = "Obavezno je uneti email adresu.")]
         /// <summary>
         /// Email adresa lica
         /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti email adresu.")]
         public string email { get; set; }
-
-        [Required(ErrorMessage = "Obavezno je uneti broj racuna.")]
+        
         /// <summary>
         /// Broj racuna lica
         /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti broj racuna.")]
         public string brojRacuna { get; set; }
-
-        [Required(ErrorMessage = "Obavezno je uneti naziv.")]
+        
+        /// <summary>
+        /// ID prioriteta
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti ID prioriteta.")]
+        public Guid prioritetId { get; set; }
+        
         /// <summary>
         /// Naziv pravog lica
         /// </summary>
+       [Required(ErrorMessage = "Obavezno je uneti naziv.")]
         public string naziv { get; set; }
 
-
-        [Required(ErrorMessage = "Obavezno je uneti broj faksa.")]
         /// <summary>
         /// Broj faksa
         /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti broj faksa.")]
         public int faks { get; set; }
     }
 }

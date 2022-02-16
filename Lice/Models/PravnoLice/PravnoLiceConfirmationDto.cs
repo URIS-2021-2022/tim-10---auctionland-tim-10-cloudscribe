@@ -33,6 +33,11 @@ namespace Lice.Models.PravnoLice
         public string brojRacuna { get; set; }
 
         /// <summary>
+        /// Opis prioriteta lica
+        /// </summary>
+        public string opisPrioriteta { get; set; }
+
+        /// <summary>
         /// Naziv pravog lica
         /// </summary>
         public string naziv { get; set; }
