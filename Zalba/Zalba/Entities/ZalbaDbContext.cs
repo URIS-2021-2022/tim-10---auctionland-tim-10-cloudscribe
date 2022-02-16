@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -8,22 +6,48 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ZalbaService.Entities
 {
+    /// <summary>
+    /// Project's DB Context class which inherits DbContext class
+    /// </summary>
     public partial class ZalbaDbContext : DbContext
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public ZalbaDbContext()
         {
         }
 
+        /// <summary>
+        /// Constructor which takes DbContextOptions.
+        /// </summary>
+        /// <param name="options">DbContextOptions object</param>
         public ZalbaDbContext(DbContextOptions<ZalbaDbContext> options)
             : base(options)
         {
         }
 
+        /// <summary>
+        /// DbSet for table called RadnjaNaOsnovuZalbe
+        /// </summary>
         public virtual DbSet<RadnjaNaOsnovuZalbe> RadnjaNaOsnovuZalbe { get; set; }
+        /// <summary>
+        /// DbSet for table called StatusZalbe
+        /// </summary>
         public virtual DbSet<StatusZalbe> StatusZalbe { get; set; }
+        /// <summary>
+        /// DbSet for table called TipZalbe
+        /// </summary>
         public virtual DbSet<TipZalbe> TipZalbe { get; set; }
+        /// <summary>
+        /// DbSet for table called Zalba
+        /// </summary>
         public virtual DbSet<Zalba> Zalba { get; set; }
 
+        /// <summary>
+        /// Overriden method which defines the configuration options used for database connectivity
+        /// </summary>
+        /// <param name="optionsBuilder">DbContextOptionsBuilder object</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -31,7 +55,10 @@ namespace ZalbaService.Entities
                 optionsBuilder.UseSqlServer("Server=147.91.175.176;Database=it45g2018; User ID=it45g2018; Password=ftnftn2018; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;");
             }
         }
-
+        /// <summary>
+        /// Method for configuring models
+        /// </summary>
+        /// <param name="modelBuilder">ModelBuilder object</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

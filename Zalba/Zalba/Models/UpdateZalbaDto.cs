@@ -1,39 +1,45 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace ZalbaService.Models
+namespace ZalbaService.Entities
 {
     /// <summary>
-    /// DTO class which will be used for creation of Zalba entity
+    /// DTO class which will be used for updating Zalba entity
     /// </summary>
-    public class ZalbaDto
+    public class UpdateZalbaDto
     {
         /// <summary>
-        /// Reason why Zalba has been created.
+        /// Id of Zalba
         /// </summary>
-        [Required(ErrorMessage ="RazlogZalbe has to be populated.")]
+        public int ZalbaId { get; set; }
+
+        /// <summary>
+        /// Reason why Zalba is created
+        /// </summary>
         public string RazlogZalbe { get; set; }
+
         /// <summary>
-        /// Detailed reason why Zalba has been created.
+        /// Detailed reason why Zalba is created
         /// </summary>
-        [Required(ErrorMessage = "Obrazlozenje has to be populated.")]
         public string Obrazlozenje { get; set; }
+
         /// <summary>
-        /// Decision document's date
+        /// Date of resolving Zalba
         /// </summary>
         public DateTime DatumResenja { get; set; }
+
         /// <summary>
-        /// Decision document's unique identifier
+        /// Decision's document unique identifier
         /// </summary>
         public string BrojResenja { get; set; }
+
         /// <summary>
         /// Decision's unique identifier
         /// </summary>
         public string BrojOdluke { get; set; }
+
         /// <summary>
         /// TipZalbe's foreign key
         /// </summary>
-        [Range(1, int.MaxValue, ErrorMessage ="TipZalbeId has to be greater than 0.")]
         public int TipZalbeId { get; set; }
     }
 }

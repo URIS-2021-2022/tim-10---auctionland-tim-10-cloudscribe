@@ -7,16 +7,29 @@ using System.Collections.Generic;
 
 namespace ZalbaService.Entities
 {
+    /// <summary>
+    /// Entity class for TipZalbe
+    /// </summary>
     public partial class TipZalbe
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public TipZalbe()
         {
             Zalba = new HashSet<Zalba>();
         }
-
+        /// <summary>
+        /// Foreign key
+        /// </summary>
         public int TipZalbeId { get; set; }
+        /// <summary>
+        /// Type of zalba
+        /// </summary>
         public string TipZalbe1 { get; set; }
-
+        /// <summary>
+        /// List of zalba's which are connected to this entity
+        /// </summary>
         public virtual ICollection<Zalba> Zalba { get; set; }
     }
 }
