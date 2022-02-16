@@ -30,6 +30,24 @@ namespace Lice.Entities
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     opisPrioriteta = "Vlasnik sistema za navodnjavanje"
                 });
+            builder.Entity<PrioritetEntity>()
+                .HasData(new
+                {
+                    prioritetId = Guid.Parse("00cdf29d-e0d0-4207-87b2-16486eda55ab"),
+                    opisPrioriteta = ". Vlasnik zemljišta koje se graniči sa zemljištem koje se daje u zakup"
+                });
+            builder.Entity<PrioritetEntity>()
+                .HasData(new
+                {
+                    prioritetId = Guid.Parse("08062c01-9bfd-4c85-8501-f5ab8c026f2a"),
+                    opisPrioriteta = "Poljoprivrednik koji je upisan u Registar"
+                });
+            builder.Entity<PrioritetEntity>()
+                .HasData(new
+                {
+                    prioritetId = Guid.Parse("7c9752fc-86a9-41e6-b4b8-c22b1c9a6ab9"),
+                    opisPrioriteta = "Vlasnik zemljišta koje je najbliže zemljištu koje se daje u zakup"
+                });
             builder.Entity<FizickoLiceEntity>()
                 .HasData(new
                 {
