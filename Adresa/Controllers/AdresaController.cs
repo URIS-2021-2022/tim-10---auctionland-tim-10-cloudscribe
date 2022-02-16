@@ -98,7 +98,7 @@ namespace Adresa.Controllers
                 string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = confirmation.AdresaId });
                 return Created(location, mapper.Map<AdresaConfirmationDto>(confirmation));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
 
