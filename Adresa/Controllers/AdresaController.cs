@@ -122,7 +122,6 @@ namespace Adresa.Controllers
         ///}
         ///</remarks>
         /// <returns></returns>
-        ///
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
