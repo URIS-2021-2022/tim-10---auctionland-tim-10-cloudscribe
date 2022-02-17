@@ -15,10 +15,14 @@ namespace Parcela.Profiles
         {
             CreateMap<ParcelaEntity, ParcelaDto>()
                 .ForMember(
-                    dest => dest.StvarnoStanje,
-                    opt => opt.MapFrom(src => $"{src.KulturaStvarnoStanje} { src.KlasaStvarnoStanje} {src.OBradivostStvarnoStanje} {src.OdvodnjavanjeStvarnoStanje} {src.ZasticenZonaStvarnoStanje}"))
-                .ForMember(dest => dest.parcelaOpstine,
-                    opt => opt.MapFrom(src => $"{src.BrojParcele} {src.KatastarskaOpstina}"));
+                    dest => dest.KatastarskaOpstina,
+                    opt => opt.MapFrom(src => $"{ src.KatastarskaOpstinaEntity.ImeKatastarskeOpstine }"))
+                .ForMember(
+                    dest => dest.ZasticenaZona,
+                    opt => opt.MapFrom(src => $"{ src.ZasticenaZonaEntity.BrojZone}"));
+                    
+
+
             CreateMap<ParcelaCreationDto, ParcelaEntity>();
             CreateMap<ParcelaUpdateDto, ParcelaEntity>();
             CreateMap<ParcelaEntity, ParcelaEntity>();

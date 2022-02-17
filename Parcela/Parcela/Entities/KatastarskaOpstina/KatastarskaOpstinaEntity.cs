@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parcela.Entities.Parcela;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace Parcela.Entities.KatastarskaOpstina
         [Key]
         public Guid KatastarskaOpstinaId { get; set; }
 
+        [Required]
         public string ImeKatastarskeOpstine { get; set; }
+
+        public virtual List<ParcelaEntity> parcelaEntity { get; set; }
+
     }
 }

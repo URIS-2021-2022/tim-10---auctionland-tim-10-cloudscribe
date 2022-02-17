@@ -8,7 +8,7 @@ namespace Parcela.Data.Parcela
 {
     public interface IParcelaRepository
     {
-        List<Entities.Parcela.ParcelaEntity> GetParcela(string brojParcele = null, string katastarskaOpstina = null);
+        List<Entities.Parcela.ParcelaEntity> GetParcela();
 
         Entities.Parcela.ParcelaEntity GetParcelaById(Guid parcelaId);
 

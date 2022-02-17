@@ -23,6 +23,7 @@ namespace Parcela.Data.DeoParcele
         public DeoParceleConfirmation CreateDeoParcele(DeoParceleEntity deoParcele)
         {
             var createdDeoParcele = context.Add(deoParcele);
+            
             return mapper.Map<DeoParceleConfirmation>(createdDeoParcele.Entity);
         }
 

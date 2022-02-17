@@ -49,7 +49,7 @@ namespace Parcela
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parcela", Version = "v1" });
             });
 
-            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB")));
+            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB"))); //OVO RADI NE DIRAM NIŠTA
             
         }
 

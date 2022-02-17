@@ -22,7 +22,7 @@ namespace Parcela.Entities.DeoParcele
 
         [ForeignKey("Parcela")]
         public Guid ParcelaId { get; set; }
-        public ParcelaEntity Parcela { get; set; }
+        public virtual ParcelaEntity Parcela { get; set; }
         #endregion 
     }
 }

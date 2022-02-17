@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parcela.Entities.KatastarskaOpstina;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,15 +19,24 @@ namespace Parcela.Models.Parcela
 
         public Guid KorisnikId { get; set; }
 
-        public string parcelaOpstine { get; set; }
+        public string BrojParcele { get; set; }
+
+        
+        public Guid KatastarskaOpstinaId { get; set; }
+
+        public string KatastarskaOpstina { get; set; }
+
+        //public virtual KatastarskaOpstinaEntity KatastarskaOpstina { get; set; }
 
         public string BrojListaNepokretnosti { get; set; }
 
         public string Kultura { get; set; }
 
-        public string Klasa { get; set; }
+        public int Klasa { get; set; }
 
         public string Obradivost { get; set; }
+
+        public Guid ZasticenaZonaId { get; set; }
 
         public string ZasticenaZona { get; set; }
 
@@ -34,7 +44,6 @@ namespace Parcela.Models.Parcela
 
         public string Odvodnjavanje { get; set; }
 
-        public string StvarnoStanje { get; set; }
 
         #endregion
     }

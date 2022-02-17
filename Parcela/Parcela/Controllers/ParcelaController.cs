@@ -36,11 +36,11 @@ namespace Parcela.Controllers
         [HttpHead]   
         [ProducesResponseType(StatusCodes.Status200OK)] 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public ActionResult<List<ParcelaDto>> GetParcele(string brojParcele, string katastarskaOpstina)
+        public ActionResult<List<ParcelaDto>> GetParcele()
         {
 
 
-            var parcele = parcelaRepository.GetParcela(brojParcele, katastarskaOpstina);
+            var parcele = parcelaRepository.GetParcela();
             if(parcele == null || parcele.Count == 0)
             {
                 return NoContent();

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Parcela.Entities;
 using Parcela.Entities.Parcela;
 using System;
@@ -40,10 +41,9 @@ namespace Parcela.Data.Parcela
             context.Remove(parcelaDeletion);
         }
 
-        public List<ParcelaEntity> GetParcela(string brojParcele = null, string katastarskaOpstina = null)
+        public List<ParcelaEntity> GetParcela()
         {
-            return context.Parcela.Where(e => (brojParcele == null || e.BrojParcele == brojParcele) &&
-                                              (katastarskaOpstina == null || e.KatastarskaOpstina == katastarskaOpstina)).ToList();
+            return context.Parcela.Include( p => p.KatastarskaOpstinaEntity).Include(s => s.ZasticenaZonaEntity).ToList();
 
             /*
             return (from e in context.Parcela
