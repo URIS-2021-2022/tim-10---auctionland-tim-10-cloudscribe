@@ -11,16 +11,29 @@ using UplataService.Entities;
 
 namespace UplataService
 {
+    /// <summary>
+    /// Class used to configure project and its dependencies
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructor that acceps Configuration object.
+        /// </summary>
+        /// <param name="configuration">Configuration object.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration object which will be injected via constructor
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Method which will be called by the runtime and it's used to add services to the container
+        /// </summary>
+        /// <param name="services">Services object</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -62,7 +75,11 @@ namespace UplataService
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        ///  Methoc which will be called by the runtime and it configures the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app">ApplicationBuilder object.</param>
+        /// <param name="env">WebHostEnvironment object.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
