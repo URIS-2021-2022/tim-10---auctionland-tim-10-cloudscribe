@@ -20,12 +20,15 @@ namespace Adresa.Controllers
     public class AdresaController : ControllerBase
     {
         private readonly IAdresaRepository adresaRepository;
+        private readonly IDrzavaRepository drzavaRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        
 
-        public AdresaController(IAdresaRepository adresaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public AdresaController(IAdresaRepository adresaRepository, IDrzavaRepository drzavaRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.adresaRepository = adresaRepository;
+            this.drzavaRepository = drzavaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
@@ -92,7 +95,9 @@ namespace Adresa.Controllers
             try
             {
                 AdresaEntity adresaEntity = mapper.Map<AdresaEntity>(adresa);
+                adresaEntity.Drzava = drzavaRepository.GetDrzavaById(adresa.DrzavaId);
                 AdresaConfirmationEntity confirmation = adresaRepository.CreateAdresa(adresaEntity);
+                
                 adresaRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetAdresa", "Adresa", new { AdresaId = confirmation.AdresaId });
@@ -131,6 +136,7 @@ namespace Adresa.Controllers
         {
             try
             {
+                
                 var oldAdresa = adresaRepository.GetAdresaById(adresa.AdresaId);
                 
                 if (oldAdresa == null)
@@ -140,10 +146,13 @@ namespace Adresa.Controllers
 
                 AdresaEntity adresaEntity = mapper.Map<AdresaEntity>(adresa);
 
+                adresaEntity.Drzava = drzavaRepository.GetDrzavaById(adresa.DrzavaId);
+
+                
                 mapper.Map(adresaEntity, oldAdresa);
 
                 adresaRepository.SaveChanges();
-                
+
                 return Ok(mapper.Map<AdresaDto>(oldAdresa));
             }
             catch (Exception)

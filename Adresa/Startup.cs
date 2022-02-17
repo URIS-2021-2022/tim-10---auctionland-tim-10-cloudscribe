@@ -61,6 +61,7 @@ namespace Adresa
 
             //services.AddSingleton<IAdresaRepository, AdresaMockRepository>();
             services.AddScoped<IAdresaRepository, AdresaRepository>();
+            services.AddScoped<IDrzavaRepository, DrzavaRepository>();
 
             services.AddDbContextPool<AdresaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AdresaDB")));
 

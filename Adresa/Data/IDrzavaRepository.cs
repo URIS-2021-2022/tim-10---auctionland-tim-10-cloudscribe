@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adresa.Data
 {
-    interface IDrzavaRepository
+    public interface IDrzavaRepository
     {
         List<DrzavaEntity> GetDrzave();
         DrzavaEntity GetDrzavaById(Guid drzavaId);

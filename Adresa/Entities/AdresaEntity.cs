@@ -44,6 +44,6 @@ namespace Adresa.Entities
         /// <summary>
         /// Drzava
         /// </summary>
-        public DrzavaEntity Drzava { get; set; }
+        public virtual DrzavaEntity Drzava { get; set; }
     }
 }
