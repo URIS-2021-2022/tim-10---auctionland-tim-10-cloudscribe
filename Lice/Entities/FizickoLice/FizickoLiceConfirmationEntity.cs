@@ -33,9 +33,9 @@ namespace Lice.Entities
             public string brojRacuna { get; set; }
 
             /// <summary>
-            /// Opis prioriteta lica
+            /// ID prioriteta lica
             /// </summary>
-            public string opisPrioriteta { get; set; }
+            public Guid prioritetId { get; set; }
 
             /// <summary>
             /// Ime fizickog lica

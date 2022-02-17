@@ -68,7 +68,7 @@ namespace Lice.Controllers
         /// <summary>
         /// Dodaje novo fizičko lice
         /// </summary>
-        /// <param name="fizickoLice">Model fizičko lica</param>
+        /// <param name="fizickoLice">Model fizičkog lica</param>
         /// /// <remarks>
         /// Primer zahteva za kreiranje novog fizičkog lica\
         /// POST /api/fizickaLica \
@@ -77,6 +77,7 @@ namespace Lice.Controllers
         ///     "brojTelefona2": "061258457",
         ///     "email": "fizicko2@gmail.com",
         ///     "brojRacuna": "brRac3",
+        ///     "prioritetId": "",
         ///     "ime": "Ime3",
         ///     "prezime": "Prezime3"
         /// }
@@ -119,13 +120,18 @@ namespace Lice.Controllers
             try
             {
                 var oldFizickoLice = fizickoLiceRepository.GetFizickoLiceById(fizickoLice.liceId);
+                
 
                 if (oldFizickoLice == null)
                 {
                     return NotFound();
                 }
 
+                Console.WriteLine(oldFizickoLice.Prioritet.opisPrioriteta);
+
                 FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
+
+                Console.WriteLine(fizickoLiceEntity.liceId);
 
                 mapper.Map(fizickoLiceEntity, oldFizickoLice);
 

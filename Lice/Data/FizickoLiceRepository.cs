@@ -18,6 +18,17 @@ namespace Lice.Data
             this.context = context;
             this.mapper = mapper;
         }
+
+        public List<FizickoLiceEntity> GetFizickaLica()
+        {
+            return context.FizickaLica.Include(p => p.Prioritet).ToList();
+        }
+
+        public FizickoLiceEntity GetFizickoLiceById(Guid liceId)
+        {
+            return context.FizickaLica.Include(p => p.Prioritet).FirstOrDefault(a => a.liceId == liceId);
+        }
+       
         public FizickoLiceConfirmationEntity CreateFizickoLice(FizickoLiceEntity fizickoLice)
         {
             var createdEntity = context.Add(fizickoLice);
@@ -29,17 +40,6 @@ namespace Lice.Data
             var fizickoLice = GetFizickoLiceById(liceId);
             context.Remove(fizickoLice);
         }
-
-        public List<FizickoLiceEntity> GetFizickaLica()
-        {
-            return context.FizickaLica.Include(p => p.Prioritet).ToList();
-        }
-
-        public FizickoLiceEntity GetFizickoLiceById(Guid liceId)
-        {
-            return context.FizickaLica.FirstOrDefault(a => a.liceId == liceId);
-        }
-
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;
