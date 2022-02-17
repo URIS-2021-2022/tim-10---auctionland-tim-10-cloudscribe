@@ -25,15 +25,15 @@ namespace Adresa.Models
         /// </summary>
         public int PostanskiBroj { get; set; } 
 
-        /// <summary>
+        /*/// <summary>
         /// ID države
         /// </summary>
-        public Guid DrzavaId { get; set; }
+        public Guid DrzavaId { get; set; }*/
 
-        /*/// <summary>
-        /// Naziv države
+        /// <summary>
+        /// Naziv države adrese
         /// </summary>
-        public string NazivDrzave { get; set; }*/
+        public string NazivDrzave { get; set; }
 
     }
 }

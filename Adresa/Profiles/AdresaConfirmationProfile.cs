@@ -15,13 +15,19 @@ namespace Adresa.Profiles
             CreateMap<AdresaConfirmationEntity, AdresaConfirmationDto>()
                 .ForMember(
                     dest => dest.UlicaBroj,
-                    opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
+                    opt => opt.MapFrom(src => src.Ulica + " " + src.Broj))
+                .ForMember(
+                    dest => dest.NazivDrzave,
+                    opt => opt.MapFrom(src => src.NazivDrzave)); ;
 
             CreateMap<AdresaEntity, AdresaConfirmationDto>()
                 .ForMember(
                     dest => dest.UlicaBroj,
                     opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
-           CreateMap<AdresaEntity, AdresaConfirmationEntity>();
+           CreateMap<AdresaEntity, AdresaConfirmationEntity>()
+                .ForMember(
+                    dest => dest.NazivDrzave, 
+                    opt => opt.MapFrom(src => src.Drzava.NazivDrzave));
         }
     }
 }

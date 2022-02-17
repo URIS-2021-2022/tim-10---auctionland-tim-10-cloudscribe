@@ -17,7 +17,6 @@ namespace Adresa.Entities
 
         public int PostanskiBroj { get; set; }
 
-
         public string NazivDrzave { get; set; }
     }
 }

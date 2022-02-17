@@ -13,9 +13,12 @@ namespace Adresa.Profiles
         public AdresaProfile()
         {
             CreateMap<AdresaEntity, AdresaDto>()
-                .ForMember(
+                 .ForMember(
                     dest => dest.UlicaBroj,
-                    opt => opt.MapFrom(src => src.Ulica + " " + src.Broj));
+                    opt => opt.MapFrom(src => src.Ulica + " " + src.Broj))
+                .ForMember(
+                    dest => dest.NazivDrzave, 
+                    opt => opt.MapFrom(src => src.Drzava.NazivDrzave));
             CreateMap<AdresaCreationDto, AdresaEntity>();
             CreateMap<AdresaUpdateDto, AdresaEntity>();
             CreateMap<AdresaEntity, AdresaEntity>();

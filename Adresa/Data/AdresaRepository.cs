@@ -1,5 +1,6 @@
 ﻿using Adresa.Entities;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,17 @@ namespace Adresa.Data
         {
             return context.SaveChanges() > 0;
         }
+
+        public List<AdresaEntity> GetAdrese()
+        {
+            return context.Adrese.Include(d => d.Drzava).ToList();
+        }
+
+        public AdresaEntity GetAdresaById(Guid adresaId)
+        {
+            return context.Adrese.Include(d => d.Drzava).FirstOrDefault(a => a.AdresaId == adresaId);
+        }
+
         public AdresaConfirmationEntity CreateAdresa(AdresaEntity adresaModel)
         {
             var createdEntity = context.Add(adresaModel);
@@ -32,16 +44,6 @@ namespace Adresa.Data
         {
             var adresa = GetAdresaById(adresaId);
             context.Remove(adresa);
-        }
-
-        public AdresaEntity GetAdresaById(Guid adresaId)
-        {
-            return context.Adrese.FirstOrDefault(a => a.AdresaId == adresaId);
-        }
-
-        public List<AdresaEntity> GetAdrese()
-        {
-            return context.Adrese.ToList();
         }
 
         public void UpdateAdresa(AdresaEntity adresaModel)

@@ -48,7 +48,6 @@ namespace Adresa.Entities
                     Mesto = "Mesto1",
                     PostanskiBroj = 123,
                     DrzavaId = Guid.Parse("170960f3-f8e0-4614-aff2-653aadf5c720")
-                    //NazivDrzave = "Drzava1"
                 });
             builder.Entity<AdresaEntity>().HasData(
                 new AdresaEntity
@@ -59,7 +58,6 @@ namespace Adresa.Entities
                     Mesto = "Mesto2",
                     PostanskiBroj = 123456,
                     DrzavaId = Guid.Parse("c8a9ffbc-db56-46ff-a54a-948c91550189"),
-                    //NazivDrzave = "Drzava2"
                 });
         }
 
