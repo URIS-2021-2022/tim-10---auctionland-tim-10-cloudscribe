@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using ZalbaService.Entities;
 using ZalbaService.Models;
@@ -22,15 +23,6 @@ namespace ZalbaService.Data
         }
 
         /// <summary>
-        /// Method that applies local changes to database 
-        /// </summary>
-        /// <returns>true if number of affected entities is greater than 0 and false otherwise</returns>
-        public bool SaveChanges()
-        {
-            return context.SaveChanges() > 0;
-        }
-
-        /// <summary>
         /// Method that checks if entity with given id exists in the database
         /// </summary>
         /// <param name="id">Id of StatusZalbe</param>
@@ -46,7 +38,7 @@ namespace ZalbaService.Data
         /// <returns>List of StatusZalbe</returns>
         public IEnumerable<StatusZalbe> GetAllStatusZalbe()
         {
-            return context.StatusZalbe.ToList();
+            return context.StatusZalbe.Include("Zalba").ToList();
         }
 
         /// <summary>
@@ -73,38 +65,6 @@ namespace ZalbaService.Data
             }
 
             return 0;
-        }
-
-        /// <summary>
-        /// Method that saves new entity to the database
-        /// </summary>
-        /// <param name="statusZalbeDto"></param>
-        public void AddStatusZalbe(StatusZalbeDto statusZalbeDto)
-        {
-            StatusZalbe statusZalbe = new StatusZalbe
-            {
-                StatusZalbe1 = statusZalbeDto.StatusZalbe
-            };
-            context.Add(statusZalbe);
-        }
-
-        /// <summary>
-        /// Method that updates statusZalbe entity
-        /// </summary>
-        /// <param name="statusZalbe"></param>
-        public void UpdateStatusZalbe(StatusZalbe statusZalbe)
-        {
-            // Call contextUpdate because we're working with entity from db (and not dto)
-            context.Update(statusZalbe);
-        }
-
-        /// <summary>
-        /// Method that deletes statusZalbe entity
-        /// </summary>
-        /// <param name="statusZalbe"></param>
-        public void DeleteStatusZalbe(StatusZalbe statusZalbe)
-        {
-            context.Remove(statusZalbe);
         }
 
         /// <summary>

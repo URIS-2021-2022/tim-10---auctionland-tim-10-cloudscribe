@@ -10,12 +10,6 @@ namespace ZalbaService.Data
     public interface ITipZalbeRepository
     {
         /// <summary>
-        ///  Definition for SaveChanges
-        /// </summary>
-        /// <returns></returns>
-        public bool SaveChanges();
-
-        /// <summary>
         /// Definition for Exists
         /// </summary>
         /// <param name="id"></param>
@@ -47,24 +41,5 @@ namespace ZalbaService.Data
         /// </summary>
         /// <returns></returns>
         public IEnumerable<IdNameDto> GetIdNameDropdownItemsForTipZalbe();
-
-        /// <summary>
-        /// Definition for AddTipZalbe
-        /// </summary>
-        /// <param name="tipZalbeDto"></param>
-        public void AddTipZalbe(TipZalbeDto tipZalbeDto);
-
-        /// <summary>
-        /// Definition for UpdateTipZalbe
-        /// </summary>
-        /// <param name="tipZalbe"></param>
-        public void UpdateTipZalbe(TipZalbe tipZalbe);
-
-
-        /// <summary>
-        /// Definition for DeleteTipZalbe
-        /// </summary>
-        /// <param name="tipZalbe"></param>
-        public void DeleteTipZalbe(TipZalbe tipZalbe);
     }
 }

@@ -60,11 +60,6 @@ namespace ZalbaService.Data
             {
                 return "If brojResenja is populated, datumResenja has to be populated as well.";
             }
-
-            if (!Exists(TipZalbeId))
-            {
-                return "There is no TipZalbe with given TipZalbeId";
-            }
             return string.Empty;
         }
 

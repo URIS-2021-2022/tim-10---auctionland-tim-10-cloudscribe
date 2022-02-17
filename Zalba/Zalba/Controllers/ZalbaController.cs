@@ -84,6 +84,11 @@ namespace ZalbaService.Controllers
                 return BadRequest(validationResult);
             }
 
+            if (!tipZalbeRepository.Exists(zalbaDto.TipZalbeId))
+            {
+                return NotFound("There is no TipZalbe with given TipZalbeId");
+            }
+
             // Get statusZalbe
             int statusZalbeId = statusZalbeRepository.GetStatusZalbeIdByStatusZalbe("Otvorena");
 
@@ -187,6 +192,11 @@ namespace ZalbaService.Controllers
                 return BadRequest(validationResult);
             }
 
+            if (!tipZalbeRepository.Exists(updateZalbaDto.TipZalbeId))
+            {
+                return NotFound("There is no TipZalbe with given TipZalbeId");
+            }
+
             // Retrieving Zalba entity from the database based on the passed ZalbaID
             Zalba zalba = zalbaRepository.GetZalbaById(updateZalbaDto.ZalbaId);
 
@@ -235,7 +245,7 @@ namespace ZalbaService.Controllers
 
                 zalbaRepository.DeleteZalba(zalba);
 
-                if (!tipZalbeRepository.SaveChanges())
+                if (!zalbaRepository.SaveChanges())
                 {
                     throw new Exception("Zalba hasn't been deleted successfully.");
                 }

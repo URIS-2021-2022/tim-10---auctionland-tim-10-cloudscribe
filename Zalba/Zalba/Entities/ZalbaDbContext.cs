@@ -31,14 +31,17 @@ namespace ZalbaService.Entities
         /// DbSet for table called RadnjaNaOsnovuZalbe
         /// </summary>
         public virtual DbSet<RadnjaNaOsnovuZalbe> RadnjaNaOsnovuZalbe { get; set; }
+
         /// <summary>
         /// DbSet for table called StatusZalbe
         /// </summary>
         public virtual DbSet<StatusZalbe> StatusZalbe { get; set; }
+
         /// <summary>
         /// DbSet for table called TipZalbe
         /// </summary>
         public virtual DbSet<TipZalbe> TipZalbe { get; set; }
+
         /// <summary>
         /// DbSet for table called Zalba
         /// </summary>
@@ -55,6 +58,7 @@ namespace ZalbaService.Entities
                 optionsBuilder.UseSqlServer("Server=147.91.175.176;Database=it45g2018; User ID=it45g2018; Password=ftnftn2018; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;");
             }
         }
+
         /// <summary>
         /// Method for configuring models
         /// </summary>

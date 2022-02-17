@@ -18,14 +18,17 @@ namespace ZalbaService.Entities
         {
             Zalba = new HashSet<Zalba>();
         }
+
         /// <summary>
         /// Foreign key
         /// </summary>
         public int StatusZalbeId { get; set; }
+
         /// <summary>
         /// Status of zalba
         /// </summary>
         public string StatusZalbe1 { get; set; }
+
         /// <summary>
         /// List of zalba's which are connected to this entity
         /// </summary>

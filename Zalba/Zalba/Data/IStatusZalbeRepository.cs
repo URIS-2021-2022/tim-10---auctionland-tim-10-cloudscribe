@@ -10,12 +10,6 @@ namespace ZalbaService.Data
     public interface IStatusZalbeRepository
     {
         /// <summary>
-        ///  Definition for SaveChanges
-        /// </summary>
-        /// <returns></returns>
-        public bool SaveChanges();
-
-        /// <summary>
         /// Definition for Exists
         /// </summary>
         /// <param name="id"></param>
@@ -48,23 +42,5 @@ namespace ZalbaService.Data
         /// </summary>
         /// <returns></returns>
         public IEnumerable<IdNameDto> GetIdNameDropdownItemsForStatusZalbe();
-
-        /// <summary>
-        /// Definition for AddStatusZalbe
-        /// </summary>
-        /// <param name="statusZalbeDto"></param>
-        public void AddStatusZalbe(StatusZalbeDto statusZalbeDto);
-
-        /// <summary>
-        /// Definition for UpdateStatusZalbe
-        /// </summary>
-        /// <param name="statusZalbe"></param>
-        public void UpdateStatusZalbe(StatusZalbe statusZalbe);
-
-        /// <summary>
-        /// Definition for DeleteStatusZalbe
-        /// </summary>
-        /// <param name="statusZalbe"></param>
-        public void DeleteStatusZalbe(StatusZalbe statusZalbe);
     }
 }

@@ -23,10 +23,12 @@ namespace ZalbaService.Entities
         /// </summary>
 
         public int RadnjaNaOsnovuZalbeId { get; set; }
+
         /// <summary>
         /// Action to be taken after zalba is resolved
         /// </summary>
         public string RadnjaNaOsnovuZalbe1 { get; set; }
+
         /// <summary>
         /// List of zalba's which are connected to this entity
         /// </summary>

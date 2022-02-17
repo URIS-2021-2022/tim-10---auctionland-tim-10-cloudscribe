@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using ZalbaService.Entities;
 using ZalbaService.Models;
@@ -46,7 +47,7 @@ namespace ZalbaService.Data
         /// <returns>List of TipZalbe</returns>
         public IEnumerable<TipZalbe> GetAllTipZalbe()
         {
-            return context.TipZalbe.ToList();
+            return context.TipZalbe.Include("Zalba").ToList();
         }
 
         /// <summary>
@@ -75,37 +76,6 @@ namespace ZalbaService.Data
             return 0;
         }
 
-        /// <summary>
-        /// Method that saves new entity to the database
-        /// </summary>
-        /// <param name="tipZalbeDto"></param>
-        public void AddTipZalbe(TipZalbeDto tipZalbeDto)
-        {
-            TipZalbe tipZalbe = new TipZalbe
-            {
-               TipZalbe1 = tipZalbeDto.TipZalbe
-            };
-            context.Add(tipZalbe);
-        }
-
-        /// <summary>
-        /// Method that updates tipZalbe entity
-        /// </summary>
-        /// <param name="tipZalbe"></param>
-        public void UpdateTipZalbe(TipZalbe tipZalbe)
-        {
-            // Call contextUpdate because we're working with entity from db (and not dto)
-            context.Update(tipZalbe);
-        }
-
-        /// <summary>
-        /// Method that deletes tipZalbe entity
-        /// </summary>
-        /// <param name="tipZalbe"></param>
-        public void DeleteTipZalbe(TipZalbe tipZalbe)
-        {
-            context.Remove(tipZalbe);
-        }
 
         /// <summary>
         /// Method that gets all TipZalbe and maps them to IdNameDto list
