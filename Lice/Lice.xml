@@ -38,11 +38,25 @@
              <returns></returns>
         </member>
         <member name="M:Lice.Controllers.FizickoLiceController.UpdateFizickoLice(Lice.Models.FizickoLice.FizickoLiceUpdateDto)">
-            <summary>
-            Ažurira postojeće fizičko lice
-            </summary>
-            <param name="fizickoLice">Model fizičkog lica</param>
-            <returns></returns>
+             <summary>
+             Ažurira postojeće fizičko lice
+             </summary>
+             <param name="fizickoLice">Model fizičkog lica</param>
+             /// <remarks>
+             Primer zahteva za ažuriranje postojećeg fizičkog lica\
+             PUT /api/fizickaLica \
+             {   \
+                 "liceId": "",
+                 "brojTelefona1": "062535856",
+                 "brojTelefona2": "061258457",
+                 "email": "fizicko2@gmail.com",
+                 "brojRacuna": "brRac3",
+                 "prioritetId": "",
+                 "ime": "Ime3",
+                 "prezime": "Prezime3"
+             }
+            </remarks>
+             <returns></returns>
         </member>
         <member name="M:Lice.Controllers.FizickoLiceController.DeleteFizickoLice(System.Guid)">
             <summary>
@@ -75,14 +89,15 @@
              Dodaje novo pravno lice
              </summary>
              <param name="pravnoLice">Model pravnog lica</param>
-             /// /// <remarks>
-             Primer zahteva za kreiranje novog lica\
+             /// <remarks>
+             Primer zahteva za kreiranje novog pravnog lica\
              POST /api/pravnaLica \
              {   \
                  "brojTelefona1": "064855446",
                  "brojTelefona2": "066985684",
                  "email": "email6",
                  "brojRacuna": "brRac6",
+                 "prioritetId": "",
                  "naziv": "PravnoLice3",
                  "faks": 125687
              }
@@ -90,11 +105,25 @@
              <returns></returns>
         </member>
         <member name="M:Lice.Controllers.PravnoLiceController.UpdatePravnoLice(Lice.Models.PravnoLice.PravnoLiceUpdateDto)">
-            <summary>
-            Ažurira postojeće pravno lice
-            </summary>
-            <param name="pravnoLice">Model pravnog lica</param>
-            <returns></returns>
+             <summary>
+             Ažurira postojeće pravno lice
+             </summary>
+             <param name="pravnoLice">Model pravnog lica</param>
+             /// <remarks>
+             Primer zahteva za ažuriranje postojećeg pravnog lica\
+             PUT /api/pravnaLica \
+             {   \
+                 "liceId": "",
+                 "brojTelefona1": "064855446",
+                 "brojTelefona2": "066985684",
+                 "email": "email6",
+                 "brojRacuna": "brRac6",
+                 "prioritetId": "",
+                 "naziv": "PravnoLice3",
+                 "faks": 125687
+             }
+            </remarks>
+             <returns></returns>
         </member>
         <member name="M:Lice.Controllers.PravnoLiceController.DeletePravnoLice(System.Guid)">
             <summary>
@@ -134,9 +163,9 @@
             Broj racuna lica
             </summary>
         </member>
-        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.prioritetId">
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.opisPrioriteta">
             <summary>
-            ID prioriteta lica
+            Opis prioriteta lica
             </summary>
         </member>
         <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.ime">
@@ -276,9 +305,9 @@
             Broj racuna lica
             </summary>
         </member>
-        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.prioritetId">
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.opisPrioriteta">
             <summary>
-            ID prioriteta lica
+            Opis prioriteta lica
             </summary>
         </member>
         <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.ImePrezime">

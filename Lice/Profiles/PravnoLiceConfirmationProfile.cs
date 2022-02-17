@@ -12,10 +12,15 @@ namespace Lice.Profiles
     {
         public PravnoLiceConfirmationProfile()
         {
-            CreateMap<PravnoLiceEntity, PravnoLiceConfirmationEntity>();
+            CreateMap<PravnoLiceEntity, PravnoLiceConfirmationEntity>()
+                .ForMember(
+                    dest => dest.opisPrioriteta,
+                    opt => opt.MapFrom(src => src.Prioritet.opisPrioriteta));
 
-
-            CreateMap<PravnoLiceConfirmationEntity, PravnoLiceConfirmationDto>();
+            CreateMap<PravnoLiceConfirmationEntity, PravnoLiceConfirmationDto>()
+                .ForMember(
+                    dest => dest.opisPrioriteta,
+                    opt => opt.MapFrom(src => src.opisPrioriteta));
 
             CreateMap<PravnoLiceEntity, PravnoLiceConfirmationDto>();
         }

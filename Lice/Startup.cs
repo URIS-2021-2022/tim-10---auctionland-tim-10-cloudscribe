@@ -61,6 +61,7 @@ namespace Lice
             services.AddScoped<ILiceRepository, LiceRepository>();
             services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
             services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
+            services.AddScoped<IPrioritetRepository, PrioritetRepository>();
 
             services.AddDbContextPool<LiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiceDB")));
         }

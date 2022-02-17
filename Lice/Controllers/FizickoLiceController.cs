@@ -18,12 +18,14 @@ namespace Lice.Controllers
     public class FizickoLiceController : ControllerBase
     {
         private readonly IFizickoLiceRepository fizickoLiceRepository;
+        private readonly IPrioritetRepository prioritetRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.fizickoLiceRepository = fizickoLiceRepository;
+            this.prioritetRepository = prioritetRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
@@ -77,7 +79,7 @@ namespace Lice.Controllers
         ///     "brojTelefona2": "061258457",
         ///     "email": "fizicko2@gmail.com",
         ///     "brojRacuna": "brRac3",
-        ///     "prioritetId": "",
+        ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "ime": "Ime3",
         ///     "prezime": "Prezime3"
         /// }
@@ -92,6 +94,7 @@ namespace Lice.Controllers
             try
             {
                 FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
+                fizickoLiceEntity.Prioritet = prioritetRepository.GetPrioritetById(fizickoLice.prioritetId);
                 FizickoLiceConfirmationEntity confirmation = fizickoLiceRepository.CreateFizickoLice(fizickoLiceEntity);
                 fizickoLiceRepository.SaveChanges();
 
@@ -100,7 +103,6 @@ namespace Lice.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -109,6 +111,20 @@ namespace Lice.Controllers
         /// Ažurira postojeće fizičko lice
         /// </summary>
         /// <param name="fizickoLice">Model fizičkog lica</param>
+        /// /// <remarks>
+        /// Primer zahteva za ažuriranje postojećeg fizičkog lica\
+        /// PUT /api/fizickaLica \
+        /// {   \
+        ///     "liceId": "",
+        ///     "brojTelefona1": "062535856",
+        ///     "brojTelefona2": "061258457",
+        ///     "email": "fizicko2@gmail.com",
+        ///     "brojRacuna": "brRac3",
+        ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
+        ///     "ime": "Ime3",
+        ///     "prezime": "Prezime3"
+        /// }
+        ///</remarks>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -121,27 +137,20 @@ namespace Lice.Controllers
             {
                 var oldFizickoLice = fizickoLiceRepository.GetFizickoLiceById(fizickoLice.liceId);
                 
-
                 if (oldFizickoLice == null)
                 {
                     return NotFound();
                 }
 
-                Console.WriteLine(oldFizickoLice.Prioritet.opisPrioriteta);
-
                 FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
-
-                Console.WriteLine(fizickoLiceEntity.liceId);
-
+                fizickoLiceEntity.Prioritet = prioritetRepository.GetPrioritetById(fizickoLice.prioritetId);
                 mapper.Map(fizickoLiceEntity, oldFizickoLice);
-
                 fizickoLiceRepository.SaveChanges();
 
                 return Ok(mapper.Map<FizickoLiceDto>(oldFizickoLice));
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -172,7 +181,6 @@ namespace Lice.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
             }
         }

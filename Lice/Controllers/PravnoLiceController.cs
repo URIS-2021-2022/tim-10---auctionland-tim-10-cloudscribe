@@ -18,12 +18,14 @@ namespace Lice.Controllers
     public class PravnoLiceController : ControllerBase
     {
         private readonly IPravnoLiceRepository pravnoLiceRepository;
+        private readonly IPrioritetRepository prioritetRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.pravnoLiceRepository = pravnoLiceRepository;
+            this.prioritetRepository = prioritetRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
         }
@@ -69,20 +71,21 @@ namespace Lice.Controllers
         /// Dodaje novo pravno lice
         /// </summary>
         /// <param name="pravnoLice">Model pravnog lica</param>
-        /// /// /// <remarks>
-        /// Primer zahteva za kreiranje novog lica\
+        /// /// <remarks>
+        /// Primer zahteva za kreiranje novog pravnog lica\
         /// POST /api/pravnaLica \
         /// {   \
         ///     "brojTelefona1": "064855446",
         ///     "brojTelefona2": "066985684",
         ///     "email": "email6",
         ///     "brojRacuna": "brRac6",
+        ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "naziv": "PravnoLice3",
         ///     "faks": 125687
         /// }
-    ///</remarks>
-    /// <returns></returns>
-    [ProducesResponseType(StatusCodes.Status201Created)]
+        ///</remarks>
+        /// <returns></returns>
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPost]
@@ -91,6 +94,7 @@ namespace Lice.Controllers
             try
             {
                 PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
+                pravnoLiceEntity.Prioritet = prioritetRepository.GetPrioritetById(pravnoLice.prioritetId);
                 PravnoLiceConfirmationEntity confirmation = pravnoLiceRepository.CreatePravnoLice(pravnoLiceEntity);
                 pravnoLiceRepository.SaveChanges();
                 
@@ -99,7 +103,6 @@ namespace Lice.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -108,6 +111,20 @@ namespace Lice.Controllers
         /// Ažurira postojeće pravno lice
         /// </summary>
         /// <param name="pravnoLice">Model pravnog lica</param>
+        /// /// <remarks>
+        /// Primer zahteva za ažuriranje postojećeg pravnog lica\
+        /// PUT /api/pravnaLica \
+        /// {   \
+        ///     "liceId": "",
+        ///     "brojTelefona1": "064855446",
+        ///     "brojTelefona2": "066985684",
+        ///     "email": "email6",
+        ///     "brojRacuna": "brRac6",
+        ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
+        ///     "naziv": "PravnoLice3",
+        ///     "faks": 125687
+        /// }
+        ///</remarks>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -126,16 +143,14 @@ namespace Lice.Controllers
                 }
 
                 PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
-
+                pravnoLiceEntity.Prioritet = prioritetRepository.GetPrioritetById(pravnoLice.prioritetId);
                 mapper.Map(pravnoLiceEntity, oldPravnoLice);
-
                 pravnoLiceRepository.SaveChanges();
 
                 return Ok(mapper.Map<PravnoLiceDto>(oldPravnoLice));
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -166,7 +181,6 @@ namespace Lice.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
             }
         }

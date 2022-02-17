@@ -18,6 +18,16 @@ namespace Lice.Data
             this.context = context;
             this.mapper = mapper;
         }
+
+        public List<PravnoLiceEntity> GetPravnaLica()
+        {
+            return context.PravnaLica.Include(p => p.Prioritet).ToList();
+        }
+
+        public PravnoLiceEntity GetPravnoLiceById(Guid liceId)
+        {
+            return context.PravnaLica.Include(p => p.Prioritet).FirstOrDefault(a => a.liceId == liceId);
+        }
         public PravnoLiceConfirmationEntity CreatePravnoLice(PravnoLiceEntity pravnoLice)
         {
             var createdEntity = context.Add(pravnoLice);
@@ -28,16 +38,6 @@ namespace Lice.Data
         {
             var pravnoLice = GetPravnoLiceById(liceId);
             context.Remove(pravnoLice);
-        }
-
-        public List<PravnoLiceEntity> GetPravnaLica()
-        {
-            return context.PravnaLica.Include(p => p.Prioritet).ToList();
-        }
-
-        public PravnoLiceEntity GetPravnoLiceById(Guid liceId)
-        {
-            return context.PravnaLica.FirstOrDefault(a => a.liceId == liceId);
         }
 
         public bool SaveChanges()

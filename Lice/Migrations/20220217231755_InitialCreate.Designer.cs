@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lice.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20220216214830_InitialCreate")]
+    [Migration("20220217231755_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,21 @@ namespace Lice.Migrations
                         {
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
                             opisPrioriteta = "Vlasnik sistema za navodnjavanje"
+                        },
+                        new
+                        {
+                            prioritetId = new Guid("00cdf29d-e0d0-4207-87b2-16486eda55ab"),
+                            opisPrioriteta = ". Vlasnik zemljišta koje se graniči sa zemljištem koje se daje u zakup"
+                        },
+                        new
+                        {
+                            prioritetId = new Guid("08062c01-9bfd-4c85-8501-f5ab8c026f2a"),
+                            opisPrioriteta = "Poljoprivrednik koji je upisan u Registar"
+                        },
+                        new
+                        {
+                            prioritetId = new Guid("7c9752fc-86a9-41e6-b4b8-c22b1c9a6ab9"),
+                            opisPrioriteta = "Vlasnik zemljišta koje je najbliže zemljištu koje se daje u zakup"
                         });
                 });
 

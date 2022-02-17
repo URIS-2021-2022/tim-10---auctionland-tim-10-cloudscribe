@@ -12,12 +12,18 @@ namespace Lice.Profiles
     {
         public FizickoLiceConfirmationProfile()
         {
-            CreateMap<FizickoLiceEntity, FizickoLiceConfirmationEntity>();
+            CreateMap<FizickoLiceEntity, FizickoLiceConfirmationEntity>()
+                .ForMember(
+                    dest => dest.opisPrioriteta, 
+                    opt => opt.MapFrom(src => src.Prioritet.opisPrioriteta));
 
             CreateMap<FizickoLiceConfirmationEntity, FizickoLiceConfirmationDto>()
                 .ForMember(
                     dest => dest.ImePrezime,
-                    opt => opt.MapFrom(src => src.ime + " " + src.prezime));
+                    opt => opt.MapFrom(src => src.ime + " " + src.prezime))
+                .ForMember(
+                    dest => dest.opisPrioriteta, 
+                    opt => opt.MapFrom(src => src.opisPrioriteta));
 
             CreateMap<FizickoLiceEntity, FizickoLiceConfirmationDto>()
                 .ForMember(

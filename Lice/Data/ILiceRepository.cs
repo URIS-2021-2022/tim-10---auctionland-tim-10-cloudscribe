@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lice.Data
 {
-    interface ILiceRepository
+    public interface ILiceRepository
     {
         List<LiceEntity> GetLica();
 
