@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Korisnik</name>
+    </assembly>
+    <members>
+        <member name="M:Korisnik.Controllers.AuthenticationController.Authenticate(Korisnik.Models.Principal)">
+            <summary>
+            Sluzi za autentifikaciju korisnika
+            </summary>
+            <param name="principal">Model sa podacima na osnovu kojih se vrši autentifikacija</param>
+            <returns></returns>
+        </member>
+        <member name="M:Korisnik.Controllers.KomisijaController.GetKomisije">
+            <summary>
+            Vraća sve komisije
+            </summary>
+            <returns>Lista komisija</returns>
+            <response code="200">Vraća listu komisija</response>
+            <response code="404">Nije pronan ni jedan tip</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KomisijaController.GetKomisijaId(System.Guid)">
+            <summary>
+            Vraća komisiju na osnovu prosledjenog ID-ja
+            </summary>
+            <param name="komisijaId">ID komisije</param>
+            <returns></returns>
+            <response code="200">Vraća traženu komisiju </response>
+        </member>
+        <member name="M:Korisnik.Controllers.KomisijaController.DeleteKomisija(System.Guid)">
+            <summary>
+            Vrši brisanje komisije na osnovu prosledjenog ID-ja
+            </summary>
+            <param name="komisijaId">ID komisije</param>
+            <returns>Status 204 (NoContent)</returns>
+            <response code="204">komisija je uspesno obrisana</response>
+            <response code="404">komisija nije pronadjena</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja komisije</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KomisijaController.CreateKomisija(Korisnik.Models.KomisijaDto)">
+             <summary>
+             Kreira novu komisiju
+             </summary>
+             <param name="komisijaa">Model komisije</param>
+             <returns>Potvrdu o kreiranoj komisiji </returns>
+             <remarks>
+             Primer zahteva za kreiranje komisije \
+             POST /api/ExamRegistration \
+             {     \
+                 "KomisijaId": "2841defc-761e-40d8-b8a3-d3e58516dca7", \
+            }
+             </remarks>
+             <response code="200">Vraća kreiranu komisiju</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja komisije</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KomisijaController.UpdateKomisija(Korisnik.Models.KomisijaDto)">
+            <summary>
+            Ažurira jednog korisnika
+            </summary>
+            <param name="komisija">Model komisije koja se ažurira</param>
+            <returns>Potvrdu o modifikovanoj komisiji.</returns>
+            <response code="200">Vraća ažuriranu komisiju</response>
+            <response code="400">komisija nije pronadjena</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja komisije</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.GetKorisnici">
+            <summary>
+            Vraća sve korisnike
+            </summary>
+            <returns>Lista korisnika</returns>
+            <response code="200">Vraća listu korisnika</response>
+            <response code="404">Nije pronan ni jedan korisnik</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.GetKorisnik(System.Guid)">
+            <summary>
+            Vraća jednog korisnika na osnovu njegovog ID-ja
+            </summary>
+            <param name="korisnikId">ID korisnika</param>
+            <returns></returns>
+            <response code="200">Vraća traženog korisnika</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.GetKorisnikByKomisija(System.Guid)">
+            <summary>
+            Vraća listu korisnika na osnovu ID-ja komisije
+            </summary>
+            <param name="komisijaId">ID komisije</param>
+            <returns></returns>
+            <response code="200">Vraća traženog korisnika</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.DeleteKorisnik(System.Guid)">
+            <summary>
+            Vrši brisanje korisnika na osnovu prosledjenog ID-ja
+            </summary>
+            <param name="korisnikId">ID korisnika</param>
+            <returns>Status 204 (NoContent)</returns>
+            <response code="204">Korisnik je uspesno obrisan</response>
+            <response code="404">Korisnik nije pronadjen</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja korisnika</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.CreateKorisnik(Korisnik.Models.KorisnikCreationDto)">
+             <summary>
+             Kreira novog korisnika
+             </summary>
+             <param name="korisnikk">Model korisnika</param>
+             <returns>Potvrdu o kreiranom korisniku </returns>
+             <remarks>
+             Primer zahteva za kreiranje novog korisnika \
+             POST /api/ExamRegistration \
+             {     \
+                 "KorisnikId": "2841defc-761e-40d8-b8a3-d3e58516dca7", \
+                 "KorisnikIme": "Teodora", \
+                 "KorisnikPrezime": "Jovanovic", \
+                 "TipId" : "4563cf92-b8d0-4574-9b40-a725f884da36", \ 
+                 "KomisijaId" : "null", \ 
+            }
+             </remarks>
+             <response code="200">Vraća kreiranog korisnika</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja korisnika</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.UpdateKorisnik(Korisnik.Models.KorisnikUpdateDto)">
+            <summary>
+            Ažurira jednog korisnika
+            </summary>
+            <param name="korisnik">Model korisnika koji se ažurira</param>
+            <returns>Potvrdu o modifikovanom korisniku.</returns>
+            <response code="200">Vraća ažuriranog korisnika</response>
+            <response code="400">korisnik nije pronadjen</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja korisnika</response>
+        </member>
+        <member name="M:Korisnik.Controllers.KorisnikController.GetkorisnikOptions">
+            <summary>
+            Vraća opcije za rad sa korisnicima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Korisnik.Controllers.TipController.GetTipovi">
+            <summary>
+            Vraća sve tipove
+            </summary>
+            <returns>Lista tipova</returns>
+            <response code="200">Vraća listu tipova</response>
+            <response code="404">Nije pronan ni jedan tip</response>
+        </member>
+        <member name="M:Korisnik.Controllers.TipController.GetTip(System.Guid)">
+            <summary>
+            Vraća jednog tipa na osnovu njegovog ID-ja
+            </summary>
+            <param name="tipId">ID tipa</param>
+            <returns></returns>
+            <response code="200">Vraća traženi tip</response>
+        </member>
+        <member name="M:Korisnik.Controllers.TipController.CreateTip(Korisnik.Models.TipDto)">
+             <summary>
+             Kreira novog korisnika
+             </summary>
+             <param name="tipp">Model tipa</param>
+             <returns>Potvrdu o kreiranom tipu korisnika </returns>
+             <remarks>
+             Primer zahteva za kreiranje novog tipa korisnika \
+             POST /api/ExamRegistration \
+             {     \
+                 "TipId": "2841defc-761e-40d8-b8a3-d3e58516dca7", \
+                 "TipKorisnika": "Administrator", \
+            }
+             </remarks>
+             <response code="200">Vraća kreirani tip</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja tipa</response>
+        </member>
+        <member name="M:Korisnik.Data.UserMockRepository.UserWithCredentialsExists(System.String,System.String)">
+            <summary>
+            Proverava da li postoji korisnik sa prosleđenim kredencijalima
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Korisnik.Data.UserMockRepository.HashPassword(System.String)">
+            <summary>
+            Vrši hash-ovanje korisničke lozinke
+            </summary>
+            <param name="password">Korisnička lozinka</param>
+            <returns>Generisan hash i salt</returns>
+        </member>
+        <member name="M:Korisnik.Data.UserMockRepository.VerifyPassword(System.String,System.String,System.String)">
+            <summary>
+            Proverava validnost prosleđene lozinke sa prosleđenim hash-om
+            </summary>
+            <param name="password">Korisnička lozinka</param>
+            <param name="savedHash">Sačuvan hash</param>
+            <param name="savedSalt">Sačuvan salt</param>
+            <returns></returns>
+        </member>
+        <member name="M:Korisnik.Entities.KorisnikContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu sa nekim inicijalnim podacima
+            </summary>
+        </member>
+    </members>
+</doc>
