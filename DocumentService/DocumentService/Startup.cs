@@ -1,7 +1,11 @@
+﻿using DocumentService.Data;
+using DocumentService.Data.TipDokumenta;
+using DocumentService.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,12 +31,39 @@ namespace DocumentService
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(setup =>
+            setup.ReturnHttpNotAcceptable = true
+            ).AddXmlDataContractSerializerFormatters();
+            //ako to nije zahtev koji ocekujemo,d a vrati 404
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IDokumentRepository, DokumentRepository>();
+            services.AddScoped<ITipDokumentaRepository, TipDokumentaRepository>();
+
+            services.AddDbContextPool<DokumentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DokumentDB")));
+
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DocumentService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "DocumentService", 
+                    Version = "v1",
+                    Description= "Pomoću ovog API-ja može da se vrši dodavanje, brisanje, modifikacija i pregled dokumenta.",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact {
+                        Name ="Mina Lazić",
+                        Email = "m.lazic@uns.ac.rs"
+                    },
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+                    {
+                        Name = "FTN licence",
+                        Url = new Uri("http://www.ftn.ac.rs/")
+                    }
+                });
             });
         }
+        //singleton je za jednu instancu, uvek radimo samo sa njom
+        //scoped je za bazu
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
