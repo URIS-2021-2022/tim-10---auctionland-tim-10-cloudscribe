@@ -2,6 +2,7 @@
 using Lice.Data;
 using Lice.Entities;
 using Lice.Models.PravnoLice;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -191,6 +192,7 @@ namespace Lice.Controllers
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpOptions]
+        [AllowAnonymous]
         public IActionResult GetPravnoLiceOptions()
         {
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");

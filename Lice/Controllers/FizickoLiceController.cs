@@ -191,6 +191,7 @@ namespace Lice.Controllers
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpOptions]
+        [AllowAnonymous]
         public IActionResult GetFizickoLiceOptions()
         {
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");

@@ -1,5 +1,6 @@
 ﻿using Lice.Data;
 using Lice.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,12 +11,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Lice
@@ -38,6 +41,20 @@ namespace Lice
             }).AddXmlDataContractSerializerFormatters();//podrzavanje xml-a
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
 
             services.AddSwaggerGen(setupAction =>
             {
@@ -63,6 +80,9 @@ namespace Lice
             services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
             services.AddScoped<IPrioritetRepository, PrioritetRepository>();
 
+            services.AddScoped<IUserRepository, UserMockRepository>();
+            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+
             services.AddDbContextPool<LiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiceDB")));
         }
 
@@ -84,6 +104,8 @@ namespace Lice
 
                 });
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 
