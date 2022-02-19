@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace UplataService.Controllers
     /// <summary>
     /// Controller class for Uplata
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UplataController : ControllerBase

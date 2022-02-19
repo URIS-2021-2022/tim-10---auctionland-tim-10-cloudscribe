@@ -66,8 +66,6 @@ namespace UplataService.Data
         /// <param name="brojNadmetanja"></param>
         public void RecordUplatas(int brojNadmetanja)
         {
-
-            context.Add(uplata);
         }
     }
 }

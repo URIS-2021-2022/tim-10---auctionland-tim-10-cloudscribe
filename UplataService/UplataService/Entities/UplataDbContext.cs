@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -11,6 +12,8 @@ namespace UplataService.Entities
     /// </summary>
     public partial class UplataDbContext : DbContext
     {
+        public IConfiguration Configuration { get; }
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -22,9 +25,11 @@ namespace UplataService.Entities
         /// Constructor which takes DbContextOptions.
         /// </summary>
         /// <param name="options">DbContextOptions object</param>
-        public UplataDbContext(DbContextOptions<UplataDbContext> options)
+        /// <param name="configuration">configuration</param>
+        public UplataDbContext(DbContextOptions<UplataDbContext> options, IConfiguration configuration)
             : base(options)
         {
+            Configuration = configuration;
         }
 
         /// <summary>
@@ -55,7 +60,8 @@ namespace UplataService.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=147.91.175.176;Database=it45g2018; User ID=it45g2018; Password=ftnftn2018; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;");
+                string connectionString = Configuration.GetConnectionString("uplataDb");
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
