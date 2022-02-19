@@ -63,17 +63,9 @@ namespace UplataService.Data
         /// <summary>
         /// Method that saves new entity to the database
         /// </summary>
-        /// <param name="uplataDto"></param>
-        public void CreateUplata(UplataDto uplataDto)
+        /// <param name="brojNadmetanja"></param>
+        public void RecordUplatas(int brojNadmetanja)
         {
-            Uplata uplata = new Uplata
-            {
-                BrojRacuna = uplataDto.BrojRacuna,
-                PozivNaBroj = uplataDto.PozivNaBroj,
-                Iznos = uplataDto.Iznos,
-                SvrhaUplate = uplataDto.SvrhaUplate,
-                Datum = DateTime.Now
-            };
 
             context.Add(uplata);
         }

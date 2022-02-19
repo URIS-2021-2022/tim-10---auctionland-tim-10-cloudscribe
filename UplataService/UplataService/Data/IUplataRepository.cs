@@ -36,9 +36,9 @@ namespace UplataService.Data
         public Uplata GetUplataById(int id);
 
         /// <summary>
-        /// Definition for CreateUplata
+        /// Definition for RecordUplatas
         /// </summary>
-        /// <param name="uplataDto"></param>
-        public void CreateUplata(UplataDto uplataDto);
+        /// <param name="brojNadmetanja"></param>
+        public void RecordUplatas(int brojNadmetanja);
     }
 }

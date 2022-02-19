@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using UplataService.Data;
 using UplataService.Entities;
-using UplataService.Models;
 
 namespace UplataService.Controllers
 {
@@ -15,14 +15,18 @@ namespace UplataService.Controllers
     public class UplataController : ControllerBase
     {
         private readonly IUplataRepository uplataRepository;
+        private readonly IBankaUplataRepository bankaUplataRepository;
 
         /// <summary>
         /// Constructor which takes uplataRepository instance as parameter through Dependency Injection
         /// </summary>
         /// <param name="uplataRepository">uplataRepository instance</param>
-        public UplataController(IUplataRepository uplataRepository)
+        /// <param name="bankaUplataRepository">bankaUplataRepository instance</param>
+        public UplataController(IUplataRepository uplataRepository, IBankaUplataRepository bankaUplataRepository)
         {
             this.uplataRepository = uplataRepository;
+            this.bankaUplataRepository = bankaUplataRepository;
+
         }
 
         /// <summary>
@@ -58,23 +62,23 @@ namespace UplataService.Controllers
         /// <summary>
         /// Endpoint for creating a Uplata
         /// </summary>
-        /// <param name="uplataDto">DTO object containing required properties for Uplata entity</param>
+        /// <param name="brojNadmetanja">brojNadmetanja</param>
         /// <returns code="200">Uplata entity</returns>
-        /// <returns code="400">Uplata already exists</returns>
         /// <returns code="500">server error</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateUplata(UplataDto uplataDto)
+        public IActionResult RecordUplatas(int brojNadmetanja)
         {
-            uplataRepository.CreateUplata(uplataDto);
+            List<BankaUplata> uplatas = bankaUplataRepository.GetAllUplatasByBrojNadmetanja(brojNadmetanja);
+
+            // TODO: waiting for fizicka and pravna lica from other microservices so it can be mapped and saved
 
             try
             {
                 if (!uplataRepository.SaveChanges())
                 {
-                    throw new Exception("Uplata hasn't been created successfully.");
+                    throw new Exception("Uplatas haven't been recorded successfully.");
                 }
             }
             catch (Exception)
@@ -84,7 +88,7 @@ namespace UplataService.Controllers
             }
 
             // not returning Created because that would require a redundant endpoint
-            return Ok("Uplata has been created.");
+            return Ok("Uplatas have been recorded.");
 
         }
     }

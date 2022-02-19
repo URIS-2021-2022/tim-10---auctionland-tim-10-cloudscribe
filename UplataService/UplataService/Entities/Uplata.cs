@@ -15,5 +15,6 @@ namespace UplataService.Entities
         public decimal? Iznos { get; set; }
         public string SvrhaUplate { get; set; }
         public DateTime? Datum { get; set; }
+        public bool? VisecaUplata { get; set; }
     }
 }
