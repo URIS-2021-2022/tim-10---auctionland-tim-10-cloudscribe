@@ -11,6 +11,7 @@ namespace ZalbaService.Controllers
     /// <summary>
     /// Controller class for Zalba
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ZalbaController : ControllerBase

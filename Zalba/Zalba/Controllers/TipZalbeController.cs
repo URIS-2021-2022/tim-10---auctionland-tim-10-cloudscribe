@@ -9,6 +9,7 @@ namespace ZalbaService.Controllers
     /// <summary>
     /// Controller class for TipZalbe
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TipZalbeController : ControllerBase

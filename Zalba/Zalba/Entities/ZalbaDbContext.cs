@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -11,6 +12,9 @@ namespace ZalbaService.Entities
     /// </summary>
     public partial class ZalbaDbContext : DbContext
     {
+        public IConfiguration Configuration { get; }
+
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -22,9 +26,12 @@ namespace ZalbaService.Entities
         /// Constructor which takes DbContextOptions.
         /// </summary>
         /// <param name="options">DbContextOptions object</param>
-        public ZalbaDbContext(DbContextOptions<ZalbaDbContext> options)
+        /// <param name="configuration">configuration</param>
+
+        public ZalbaDbContext(DbContextOptions<ZalbaDbContext> options, IConfiguration configuration)
             : base(options)
         {
+            Configuration = configuration;
         }
 
         /// <summary>

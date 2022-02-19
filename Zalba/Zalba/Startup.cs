@@ -1,11 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using ZalbaService.Data;
 using ZalbaService.Entities;
 
@@ -48,6 +51,20 @@ namespace ZalbaService
             services.AddScoped<ITipZalbeRepository, TipZalbeRepository>();
             services.AddScoped<IZalbaRepository, ZalbaRepository>();
             services.AddScoped<IStatusZalbeRepository, StatusZalbeRepository>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
 
             // Defining the generation of swagger
             services.AddSwaggerGen(options =>
@@ -98,6 +115,8 @@ namespace ZalbaService
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

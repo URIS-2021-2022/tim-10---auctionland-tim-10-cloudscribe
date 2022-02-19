@@ -9,6 +9,7 @@ namespace ZalbaService.Controllers
     /// <summary>
     /// Controller class for StatusZalbe
     /// </summary>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class StatusZalbeController : ControllerBase
