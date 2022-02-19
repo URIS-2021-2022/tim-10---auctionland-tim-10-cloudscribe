@@ -42,7 +42,9 @@ namespace LiciterService
             services.AddScoped<IKupacRepository, KupacRepository>();
             services.AddScoped<IZastupnikRepository, ZastupnikRepository>();
 
-            services.AddDbContextPool<LiciterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiciterDB")));
+            services.AddDbContextPool<LiciterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiciterDB")).UseLazyLoadingProxies());
+
+            //services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(c =>
             {
@@ -53,7 +55,7 @@ namespace LiciterService
                 Contact=new Microsoft.OpenApi.Models.OpenApiContact
                 {
                     Name = "Irina Kuzmanović",
-                        Email = "irinakuzmanovic@uns.ac.rs"
+                    Email ="irinakuzmanovic@uns.ac.rs"
                 }
                 });
             });
@@ -69,8 +71,7 @@ namespace LiciterService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LiciterService v1"));
                 
             }
-
-
+            //app.UseSession
             app.UseHttpsRedirection();
 
             app.UseRouting();

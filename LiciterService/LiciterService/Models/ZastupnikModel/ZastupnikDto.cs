@@ -8,15 +8,33 @@ namespace LiciterService.Models
 {
     public class ZastupnikDto
     {
+        /// <summary>
+        /// Zastupnik id
+        /// </summary>
         public Guid ZastupnikId { get; set; }
-        public string ImeZastupnika { get; set; }
-        public string PrezimeZastupnika { get; set; }
-        public int Jmbg { get; set; }
-        public string Adresa { get; set; }
+
+        /// <summary>
+        /// Jmbg zastupnika
+        /// </summary>
+        public string Jmbg { get; set; }
+
+        /// <summary>
+        /// Broj pasosa
+        /// </summary>
+        public string BrojPasosa { get; set; }
+
+        /// <summary>
+        /// Naziv drzave
+        /// </summary>
         public string NazivDrzave { get; set; }
+
+        /// <summary>
+        /// Broj table za licitaciju
+        /// </summary>
         public int BrojTable { get; set; }
 
-        public Guid KupacId { get; set; }
+
+        public virtual Kupac Kupac { get; set; }
 
     }
 }

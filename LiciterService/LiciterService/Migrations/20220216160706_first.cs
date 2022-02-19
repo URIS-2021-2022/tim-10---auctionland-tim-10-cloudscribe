@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LiciterService.Migrations
 {
-    public partial class FirstLiciter : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,6 @@ namespace LiciterService.Migrations
                 columns: table => new
                 {
                     KupacId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ImeKupca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrezimeKupca = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DatumPocetkaZabrane = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DatumPrestankaZabrane = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DuzinaTrajanjaZabrane = table.Column<int>(type: "int", nullable: false),
@@ -29,7 +27,9 @@ namespace LiciterService.Migrations
                 name: "Liciteri",
                 columns: table => new
                 {
-                    LiciterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LiciterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImeLicitera = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrezimeLicitera = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,9 +41,8 @@ namespace LiciterService.Migrations
                 columns: table => new
                 {
                     ZastupnikId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ImeZastupnika = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrezimeZastupnika = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Jmbg = table.Column<int>(type: "int", nullable: false),
+                    Jmbg = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BrojPasosa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Adresa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NazivDrzave = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BrojTable = table.Column<int>(type: "int", nullable: false),
@@ -62,31 +61,31 @@ namespace LiciterService.Migrations
 
             migrationBuilder.InsertData(
                 table: "Kupci",
-                columns: new[] { "KupacId", "DatumPocetkaZabrane", "DatumPrestankaZabrane", "DuzinaTrajanjaZabrane", "ImaZabranu", "ImeKupca", "OstvarenaPovrsina", "PrezimeKupca" },
+                columns: new[] { "KupacId", "DatumPocetkaZabrane", "DatumPrestankaZabrane", "DuzinaTrajanjaZabrane", "ImaZabranu", "OstvarenaPovrsina" },
                 values: new object[,]
                 {
-                    { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), new DateTime(2020, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, "Maksim", 1500000, "Gorki" },
-                    { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), new DateTime(2021, 12, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, "Dzejn", 15500, "Ostin" }
+                    { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), new DateTime(2020, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, 1500000 },
+                    { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), new DateTime(2021, 12, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, 15500 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Liciteri",
-                column: "LiciterId",
-                values: new object[]
+                columns: new[] { "LiciterId", "ImeLicitera", "PrezimeLicitera" },
+                values: new object[,]
                 {
-                    new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                    new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b")
+                    { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "Nikola", "Tesla" },
+                    { new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"), "Mihajlo", "Pupin" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Zastupnici",
-                columns: new[] { "ZastupnikId", "Adresa", "BrojTable", "ImeZastupnika", "Jmbg", "KupacId", "NazivDrzave", "PrezimeZastupnika" },
-                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"), "Narodnog Fronta 13", 365, "Petar", 58966345, new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), "Srbija", "Petrovic" });
+                columns: new[] { "ZastupnikId", "Adresa", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
+                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"), null, "123456789", 365, "5896634547231", new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), "Srbija" });
 
             migrationBuilder.InsertData(
                 table: "Zastupnici",
-                columns: new[] { "ZastupnikId", "Adresa", "BrojTable", "ImeZastupnika", "Jmbg", "KupacId", "NazivDrzave", "PrezimeZastupnika" },
-                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"), "Beogradska 25", 255, "Novak", 163588962, new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "Srbija", "Djokovic" });
+                columns: new[] { "ZastupnikId", "Adresa", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
+                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"), null, "987654321", 255, "1635889629999", new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "Srbija" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Zastupnici_KupacId",

@@ -8,7 +8,10 @@ namespace LiciterService.Models
     public class KupacConfirmationDto
     {
         public Guid KupacId { get; set; }
-        public string ImeKupca { get; set; }
-        public string PrezimeKupca { get; set; }
+
+        public DateTime? DatumPocetkaZabrane { get; set; }
+
+        public DateTime? DatumPrestankaZabrane { get; set; }
+
     }
 }

@@ -13,6 +13,11 @@ namespace LiciterService.Profiles
         public LiciterProfile()
         {
             CreateMap<Liciter, LiciterDto>();
+            CreateMap<Liciter, LiciterCreationDto>();
+            CreateMap<LiciterCreationDto, Liciter>();
+            CreateMap<Liciter, LiciterUpdateDto>();
+            CreateMap<LiciterUpdateDto, Liciter>();
+            CreateMap<Liciter, LiciterConfirmation>();
         }
     }
 }

@@ -16,13 +16,13 @@ namespace LiciterService.Controllers
     [ApiController]
     [Route("api/zastupnik")]
     //[Authorize]
-    public class ZastupnikContoller: ControllerBase
+    public class ZastupnikController: ControllerBase
     {
         private readonly IZastupnikRepository zastupnikRepository;
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
 
-        public ZastupnikContoller(IZastupnikRepository zastupnikRepository,IMapper mapper,LinkGenerator linkGenerator)
+        public ZastupnikController(IZastupnikRepository zastupnikRepository,IMapper mapper,LinkGenerator linkGenerator)
         {
             this.zastupnikRepository = zastupnikRepository;
             this.mapper = mapper;

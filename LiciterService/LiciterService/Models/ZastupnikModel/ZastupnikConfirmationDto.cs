@@ -8,7 +8,8 @@ namespace LiciterService.Models
     public class ZastupnikConfirmationDto
     {
         public Guid ZastupnikId { get; set; }
-        public string ImeZastupnika { get; set; }
-        public string PrezimeZastupnika { get; set; }
+        public string Jmbg { get; set; }
+        public string BrojPasosa { get; set; }
+        public string NazivDrzave { get; set; }
     }
 }

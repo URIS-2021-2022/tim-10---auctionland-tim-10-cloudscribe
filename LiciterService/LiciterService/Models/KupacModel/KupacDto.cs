@@ -8,19 +8,37 @@ namespace LiciterService.Models
 {
     public class KupacDto 
     {
+        /// <summary>
+        /// KupacId
+        /// </summary>
         public Guid KupacId { get; set; }
-        public string ImeKupca { get; set; }
-        public string PrezimeKupca { get; set; }
-        public DateTime? DatumPocetkaZabrane { get; set; }
-        public DateTime? DatumPrestankaZabrane { get; set; }
-        public int DuzinaTrajanjaZabrane { get; set; }
-        public bool ImaZabranu { get; set; }
-        public int OstvarenaPovrsina { get; set; }
-        //public int Uplate { get; set; }
-        //public string Lice { get; set; }
-        //public int JavnaNadmetanja { get; set; }
 
-        //public virtual ICollection<Zastupnik> Zastupnici { get; set; }
+        /// <summary>
+        /// Datum pocetka zabrane
+        /// </summary>
+        public DateTime? DatumPocetkaZabrane { get; set; }
+
+        /// <summary>
+        /// Datum prestanka zabrane
+        /// </summary>
+        public DateTime? DatumPrestankaZabrane { get; set; }
+
+        /// <summary>
+        /// Duzina trajanja zabrane
+        /// </summary>
+        public int DuzinaTrajanjaZabrane { get; set; }
+
+        /// <summary>
+        /// Ima zabranu 
+        /// </summary>
+        public bool ImaZabranu { get; set; }
+
+        /// <summary>
+        /// Ostvarena povrsina
+        /// </summary>
+        public int OstvarenaPovrsina { get; set; }   
+
+
 
 
     }

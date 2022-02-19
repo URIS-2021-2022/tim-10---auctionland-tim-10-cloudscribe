@@ -17,14 +17,37 @@ namespace LiciterService.Data.LiciterData
             this.context = context;
             this.mapper = mapper;
         }
+
+        public LiciterConfirmation CreateLiciter(Liciter liciter)
+        {
+            var createdEntity = context.Add(liciter);
+            return mapper.Map<LiciterConfirmation>(createdEntity.Entity);
+        }
+
+        public void DeleteLiciter(Guid liciterId)
+        {
+            var liciter = GetLiciterById(liciterId);
+            context.Remove(liciter);
+        }
+
         public Liciter GetLiciterById(Guid liciterId)
         {
             return context.Liciteri.FirstOrDefault(e => e.LiciterId == liciterId);
         }
 
+        public List<Liciter> GetLiciteri()
+        {
+            return context.Liciteri.ToList();
+        }
+
         public bool SaveChanges()
         {
             return context.SaveChanges() > 0;
+        }
+
+        public void UpdateLiciter(Liciter liciter)
+        {
+            throw new NotImplementedException();
         }
     }
 }

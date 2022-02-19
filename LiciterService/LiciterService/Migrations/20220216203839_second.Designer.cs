@@ -4,14 +4,16 @@ using LiciterService.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LiciterService.Migrations
 {
     [DbContext(typeof(LiciterContext))]
-    partial class LiciterContextModelSnapshot : ModelSnapshot
+    [Migration("20220216203839_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace LiciterService.Migrations
                     b.Property<string>("Jmbg")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("KupacId")
+                    b.Property<Guid?>("KupacId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NazivDrzave")
@@ -148,9 +150,7 @@ namespace LiciterService.Migrations
                 {
                     b.HasOne("LiciterService.Entities.Kupac", "Kupac")
                         .WithMany("Zastupnici")
-                        .HasForeignKey("KupacId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("KupacId");
 
                     b.Navigation("Kupac");
                 });
