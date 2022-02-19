@@ -13,7 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace DocumentService.Controllers
-{
+{   
+    [Authorize]
     [ApiController]
     [Route("api/dokument")]
     [Produces("application/json", "application/xml")]
