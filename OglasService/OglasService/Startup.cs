@@ -12,7 +12,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OglasService.Data;
 using OglasService.Entities;
-using OglasService.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,8 +52,7 @@ namespace OglasService
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IOglasRepository, OglasRepository>();
             services.AddScoped<ISluzbeniListRepository, SluzbeniListRepository>();
-            services.AddScoped<IKorisnikRepository, KorisnikMockRepository>();
-            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+
 
             services.AddDbContextPool<OglasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OglasDB")));
 
