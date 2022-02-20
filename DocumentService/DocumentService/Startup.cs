@@ -36,6 +36,7 @@ namespace DocumentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
 
             services.AddControllers(setup =>
             setup.ReturnHttpNotAcceptable = true
@@ -51,24 +52,23 @@ namespace DocumentService
             services.AddDbContextPool<DokumentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DokumentDB")));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-           {
-               options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-               {
-                   ValidateIssuer = true,
-                   ValidateAudience = true,
-                   ValidateLifetime = true,
-                   ValidateIssuerSigningKey = true,
-                   ValidIssuer = Configuration["Jwt:Issuer"],
-                   ValidAudience = Configuration["Jwt:Issuer"],
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-               };
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
 
-           });
-        
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo() { 
+                c.SwaggerDoc("DocumentOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo() { 
                     Title = "DocumentService", 
                     Version = "v1",
                     Description= "Pomoću ovog API-ja može da se vrši dodavanje, brisanje, modifikacija i pregled dokumenta.",
@@ -76,7 +76,7 @@ namespace DocumentService
                         Name ="Mina Lazić",
                         Email = "m.lazic@uns.ac.rs"
                     },
-                    License = new OpenApiLicense
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense
                     {
                         Name = "FTN licence",
                         Url = new Uri("http://www.ftn.ac.rs/")
@@ -84,9 +84,9 @@ namespace DocumentService
                 });
 
                 //set the comments path for the Swagger JSON and UI
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+               // var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                //c.IncludeXmlComments(xmlCommentsPath);
             });
         }
         //singleton je za jednu instancu, uvek radimo samo sa njom
@@ -113,6 +113,7 @@ namespace DocumentService
             app.UseRouting();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
           
 

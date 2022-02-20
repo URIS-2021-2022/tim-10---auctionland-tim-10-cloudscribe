@@ -13,11 +13,12 @@ using System.Threading.Tasks;
 
 namespace DocumentService.Controllers
 {
-        [Authorize]
+        
         [ApiController]
         [Route("api/tip_dokument")]
         [Produces("application/json", "application/xml")]
-        public class TipDokumentaController : ControllerBase
+        [Authorize]
+    public class TipDokumentaController : ControllerBase
         {
             private readonly ITipDokumentaRepository tipdokumentaRepository;
             private readonly IMapper mapper;

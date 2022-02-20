@@ -14,10 +14,11 @@ using System.Threading.Tasks;
 
 namespace DocumentService.Controllers
 {   
-    [Authorize]
+    
     [ApiController]
     [Route("api/dokument")]
     [Produces("application/json", "application/xml")]
+    [Authorize]
     public class DokumentController : ControllerBase
     {
         private readonly IDokumentRepository dokumentRepository;
@@ -166,7 +167,7 @@ namespace DocumentService.Controllers
         [AllowAnonymous]
         public IActionResult GetDokumentOptions()
         {
-            Response.Headers.Add("Allow", "GET, POST PUT,DELETE");
+            Response.Headers.Add("Allow", "GET, POST, PUT,DELETE");
             return Ok();
         }
     }
