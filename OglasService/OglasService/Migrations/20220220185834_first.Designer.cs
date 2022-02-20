@@ -10,8 +10,8 @@ using OglasService.Entities;
 namespace OglasService.Migrations
 {
     [DbContext(typeof(OglasContext))]
-    [Migration("20220220135842_firstagain")]
-    partial class firstagain
+    [Migration("20220220185834_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,8 +35,7 @@ namespace OglasService.Migrations
 
                     b.HasKey("OglasId");
 
-                    b.HasIndex("SluzbeniListId")
-                        .IsUnique();
+                    b.HasIndex("SluzbeniListId");
 
                     b.ToTable("Oglasi");
 
@@ -44,7 +43,7 @@ namespace OglasService.Migrations
                         new
                         {
                             OglasId = new Guid("6a411c13-a195-48f7-8dbd-67596c397444"),
-                            SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397412"),
+                            SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397475"),
                             TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini"
                         },
                         new
@@ -77,7 +76,7 @@ namespace OglasService.Migrations
                     b.HasData(
                         new
                         {
-                            SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397412"),
+                            SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397475"),
                             BrojSluzbenogLista = 12,
                             DatumIzdavanja = new DateTime(2020, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             Opstina = "Novi Beograd"
@@ -94,17 +93,12 @@ namespace OglasService.Migrations
             modelBuilder.Entity("OglasService.Entities.Oglas", b =>
                 {
                     b.HasOne("OglasService.Entities.SluzbeniList", "SluzbeniList")
-                        .WithOne("Oglas")
-                        .HasForeignKey("OglasService.Entities.Oglas", "SluzbeniListId")
+                        .WithMany()
+                        .HasForeignKey("SluzbeniListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("SluzbeniList");
-                });
-
-            modelBuilder.Entity("OglasService.Entities.SluzbeniList", b =>
-                {
-                    b.Navigation("Oglas");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,7 +17,7 @@ namespace OglasService.Entities
 
         //[System.Text.Json.Serialization.JsonIgnore]
         //public virtual List<Oglas> Oglas { get; set; }
-        public virtual Oglas Oglas { get; set; }
+        //public virtual Oglas Oglasi { get; set; }
     }
 
 }

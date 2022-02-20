@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OglasService.Migrations
 {
-    public partial class firstagain : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,7 @@ namespace OglasService.Migrations
             migrationBuilder.InsertData(
                 table: "SluzbeniList",
                 columns: new[] { "SluzbeniListId", "BrojSluzbenogLista", "DatumIzdavanja", "Opstina" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397412"), 12, new DateTime(2020, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), "Novi Beograd" });
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397475"), 12, new DateTime(2020, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), "Novi Beograd" });
 
             migrationBuilder.InsertData(
                 table: "SluzbeniList",
@@ -53,7 +53,7 @@ namespace OglasService.Migrations
             migrationBuilder.InsertData(
                 table: "Oglasi",
                 columns: new[] { "OglasId", "SluzbeniListId", "TekstOglasa" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397444"), new Guid("6a411c13-a195-48f7-8dbd-67596c397412"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini" });
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397444"), new Guid("6a411c13-a195-48f7-8dbd-67596c397475"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini" });
 
             migrationBuilder.InsertData(
                 table: "Oglasi",
@@ -63,8 +63,7 @@ namespace OglasService.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Oglasi_SluzbeniListId",
                 table: "Oglasi",
-                column: "SluzbeniListId",
-                unique: true);
+                column: "SluzbeniListId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

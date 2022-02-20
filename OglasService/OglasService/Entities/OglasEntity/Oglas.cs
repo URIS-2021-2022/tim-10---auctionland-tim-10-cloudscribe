@@ -11,12 +11,15 @@ namespace OglasService.Entities
     {
         [Key]
         public Guid OglasId { get; set; }
-
         public string TekstOglasa { get; set; }
 
-       // [ForeignKey("SluzbeniList")]
+
+        [ForeignKey("SluzbeniList")]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid SluzbeniListId { get; set; }
-       // public virtual SluzbeniList SluzbeniList { get; set; }
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual SluzbeniList SluzbeniList { get; set; }
 
     }
 }

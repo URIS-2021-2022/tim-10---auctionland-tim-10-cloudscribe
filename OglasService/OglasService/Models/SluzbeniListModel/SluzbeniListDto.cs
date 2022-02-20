@@ -13,6 +13,6 @@ namespace OglasService.Models
         public int BrojSluzbenogLista { get; set; }
         public DateTime? DatumIzdavanja { get; set; }
 
-        //public Oglas Oglas { get; set; }
+       // public Oglas Oglasi { get; set; }
     }
 }
