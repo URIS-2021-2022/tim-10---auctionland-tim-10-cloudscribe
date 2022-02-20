@@ -155,6 +155,7 @@ namespace LiciterService.Controllers
                 }
 
                 kupacRepository.DeleteKupac(kupacId);
+                kupacRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)

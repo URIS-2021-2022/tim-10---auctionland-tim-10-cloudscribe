@@ -151,6 +151,7 @@ namespace LiciterService.Controllers
                 }
 
                 liciterRepository.DeleteLiciter(liciterId);
+                liciterRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)

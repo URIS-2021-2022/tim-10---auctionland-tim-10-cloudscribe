@@ -148,6 +148,7 @@ namespace LiciterService.Controllers
                 }
 
                 zastupnikRepository.DeleteZastupnik(zastupnikId);
+                zastupnikRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)
