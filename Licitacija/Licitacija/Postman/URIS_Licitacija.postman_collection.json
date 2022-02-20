@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "dd37b441-7459-421a-b6a7-83d7666bd9e6",
+		"name": "URIS_Licitacija",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllLicitacije",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"licitacije"
+					],
+					"query": [
+						{
+							"key": "brojLicitacije",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLicitacijaById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/licitacije/1c7ea607-8ddb-493a-87fa-4bf5893e965b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"licitacije",
+						"1c7ea607-8ddb-493a-87fa-4bf5893e965b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostLicitacija",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"brojLicitacije\" : 3,\r\n\"godinaLicitacije\" : 2021,\r\n\"datumRaspisivanja\" : \"2021-06-01T09:00:00\",\r\n\"ogranicenje\" : 0,\r\n\"dokumentId\" : 3,\r\n\"krugLicitacije\" : 1,\r\n\"rokZaPrijave\" : \"2021-07-01T23:59:00\",\r\n\"javnoNadmetanjeId\" : 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"licitacije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateLicitacija",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"licitacijaId\" : \"4da4a199-efd3-470c-8efb-c7b655021338\",\r\n\"brojLicitacije\" : 3,\r\n\"godinaLicitacije\" : 2021,\r\n\"datumRaspisivanja\" : \"2021-06-01T09:00:00\",\r\n\"ogranicenje\" : 1,\r\n\"dokumentId\" : 3,\r\n\"krugLicitacije\" : 2,\r\n\"rokZaPrijave\" : \"2021-07-01T23:59:00\",\r\n\"javnoNadmetanjeId\" : 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/licitacije",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"licitacije"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteLicitacija",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/licitacije/4da4a199-efd3-470c-8efb-c7b655021338",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"licitacije",
+						"4da4a199-efd3-470c-8efb-c7b655021338"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
