@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DocumentService.Controllers
 {
-        [Authorize]
+        //[Authorize]
         [ApiController]
         [Route("api/tip_dokument")]
         [Produces("application/json", "application/xml")]
@@ -131,8 +131,8 @@ namespace DocumentService.Controllers
             /// </summary>
             /// <param name="tipID"></param>
             /// <returns></returns>
-            /// <response code="404">Nije pronađen zastupnik za brisanje</response>
-            /// <response code="500">Došlo je do greške na serveru prilikom brisanja zastupnika</response>
+            /// <response code="404">Nije pronađen dokument za brisanje</response>
+            /// <response code="500">Došlo je do greške na serveru prilikom brisanja dokumenta</response>
             [ProducesResponseType(StatusCodes.Status204NoContent)]
             [ProducesResponseType(StatusCodes.Status404NotFound)]
             [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -149,6 +149,7 @@ namespace DocumentService.Controllers
                     }
 
                     tipdokumentaRepository.DeleteTipDokumenta(tipID);
+                    tipdokumentaRepository.SaveChanges();
                     return NoContent();
                 }
                 catch (Exception)

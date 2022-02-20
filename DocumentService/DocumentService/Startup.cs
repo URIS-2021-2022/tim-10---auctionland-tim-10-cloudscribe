@@ -1,6 +1,7 @@
 ﻿using DocumentService.Data;
 using DocumentService.Data.TipDokumenta;
 using DocumentService.Entities;
+using DocumentService.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,8 @@ namespace DocumentService
 
             services.AddScoped<IDokumentRepository, DokumentRepository>();
             services.AddScoped<ITipDokumentaRepository, TipDokumentaRepository>();
+            services.AddScoped<IUserRepository, UserMockRepository>(); 
+            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
 
             services.AddDbContextPool<DokumentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DokumentDB")));
 
@@ -96,7 +99,9 @@ namespace DocumentService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+          
 
             app.UseEndpoints(endpoints =>
             {
