@@ -52,25 +52,49 @@ namespace Lice.Entities
                 .HasData(new
                 {
                     liceId = Guid.Parse("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
-                    brojTelefona1 = "123456",
-                    brojTelefona2 = "789456",
-                    email = "email1",
-                    brojRacuna = "brRac1",
+                    brojTelefona1 = "062586654",
+                    brojTelefona2 = "061582236",
+                    email = "mmarkovic@gmail.com",
+                    brojRacuna = "80045875687",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
-                    ime = "Ime1",
-                    prezime = "Prezime1"
+                    ime = "Marko",
+                    prezime = "Marković"
+                });
+            builder.Entity<FizickoLiceEntity>()
+                .HasData(new
+                {
+                    liceId = Guid.Parse("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
+                    brojTelefona1 = "0665826695",
+                    brojTelefona2 = "0656258965",
+                    email = "nnikolic@gmail.com",
+                    brojRacuna = "8008465687",
+                    prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
+                    ime = "Nikola",
+                    prezime = "Nikolić"
                 });
             builder.Entity<PravnoLiceEntity>()
                 .HasData(new
                 {
                     liceId = Guid.Parse("25499084-4d50-412b-9640-1ab07af33d4d"),
-                    brojTelefona1 = "456123",
-                    brojTelefona2 = "45214",
-                    email = "email2",
-                    brojRacuna = "brRac2",
+                    brojTelefona1 = "0695784105",
+                    brojTelefona2 = "0625486214",
+                    email = "masterplast@gmail.com",
+                    brojRacuna = "800458757",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
-                    naziv = "PravnoLice1",
-                    faks = 125
+                    naziv = "Masterplast",
+                    faks = 024601785
+                });
+            builder.Entity<PravnoLiceEntity>()
+                .HasData(new
+                {
+                    liceId = Guid.Parse("25499084-4d50-412b-9640-1ab07af33d4d"),
+                    brojTelefona1 = "0645289956",
+                    brojTelefona2 = "0625482685",
+                    email = "pannonglobal@gmail.com",
+                    brojRacuna = "8004574587",
+                    prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
+                    naziv = "Pannonglobal",
+                    faks = 024601785
                 });
 
         }

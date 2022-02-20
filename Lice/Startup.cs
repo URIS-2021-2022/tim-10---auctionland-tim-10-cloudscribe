@@ -79,10 +79,6 @@ namespace Lice
             services.AddScoped<IFizickoLiceRepository, FizickoLiceRepository>();
             services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
             services.AddScoped<IPrioritetRepository, PrioritetRepository>();
-
-            services.AddScoped<IUserRepository, UserMockRepository>();
-            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
-
             services.AddDbContextPool<LiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiceDB")));
         }
 
@@ -110,6 +106,8 @@ namespace Lice
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 namespace Lice.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/pravnaLica")]
     [Produces("application/json", "applciation/xml")]
     public class PravnoLiceController : ControllerBase

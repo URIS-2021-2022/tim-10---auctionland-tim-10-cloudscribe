@@ -2,6 +2,7 @@
 using Lice.Data;
 using Lice.Entities;
 using Lice.Models.FizickoLice;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace Lice.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/fizickaLica")]
     [Produces("application/json", "applciation/xml")]
     public class FizickoLiceController : ControllerBase
@@ -77,11 +79,11 @@ namespace Lice.Controllers
         /// {   \
         ///     "brojTelefona1": "062535856",
         ///     "brojTelefona2": "061258457",
-        ///     "email": "fizicko2@gmail.com",
-        ///     "brojRacuna": "brRac3",
+        ///     "email": "mmarkovic@gmail.com",
+        ///     "brojRacuna": "80045875687",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-        ///     "ime": "Ime3",
-        ///     "prezime": "Prezime3"
+        ///     "ime": "Marko",
+        ///     "prezime": "Marković"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -118,11 +120,11 @@ namespace Lice.Controllers
         ///     "liceId": "",
         ///     "brojTelefona1": "062535856",
         ///     "brojTelefona2": "061258457",
-        ///     "email": "fizicko2@gmail.com",
-        ///     "brojRacuna": "brRac3",
+        ///     "email": "nnikolic2@gmail.com",
+        ///     "brojRacuna": "8008465687",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-        ///     "ime": "Ime3",
-        ///     "prezime": "Prezime3"
+        ///     "ime": "Nikola",
+        ///     "prezime": "Nikolić"
         /// }
         ///</remarks>
         /// <returns></returns>
