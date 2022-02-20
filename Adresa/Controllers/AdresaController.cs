@@ -15,7 +15,7 @@ namespace Adresa.Controllers
 {
     [ApiController]
     [Route("api/adrese")]
-    //[Authorize]
+    [Authorize]
     [Produces("application/json", "applciation/xml")]
     public class AdresaController : ControllerBase
     {
@@ -197,6 +197,7 @@ namespace Adresa.Controllers
         /// </summary>
         /// <returns></returns>
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [AllowAnonymous]
         [HttpOptions]
         public IActionResult GetAdresaOptions()
         {
