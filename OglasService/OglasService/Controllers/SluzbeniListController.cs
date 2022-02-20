@@ -135,7 +135,7 @@ namespace OglasService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpDelete("{oglasId}")]
+        [HttpDelete("{sluzbeniListId}")]
         public IActionResult DeleteSluzbeniList(Guid sluzbeniListId)
         {
             try
@@ -148,6 +148,7 @@ namespace OglasService.Controllers
                 }
 
                 sluzbeniListRepository.DeleteSluzbeniList(sluzbeniListId);
+                sluzbeniListRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)

@@ -7,7 +7,7 @@ namespace OglasService.Models
 {
     public class OglasCreationDto
     {
-        //public List<String> GarantPlacanja { get; set; }
+
         public string TekstOglasa { get; set; }
     }
 }

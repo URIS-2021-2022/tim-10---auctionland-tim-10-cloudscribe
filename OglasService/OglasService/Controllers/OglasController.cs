@@ -149,6 +149,7 @@ namespace OglasService.Controllers
                 }
 
                 oglasRepository.DeleteOglas(oglasId);
+                oglasRepository.SaveChanges();
                 return NoContent();
             }
             catch (Exception)
