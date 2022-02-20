@@ -16,7 +16,7 @@ namespace Licitacija.Controllers
     [ApiController]
     [Route("api/licitacije")]
     [Produces("application/json", "applciation/xml")]
-  //  [Authorize]
+    [Authorize]
     public class LicitacijaController : ControllerBase
     {
         private readonly ILicitacijaRepository licitacijaRepository;
