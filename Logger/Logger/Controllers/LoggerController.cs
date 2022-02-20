@@ -26,7 +26,28 @@ namespace Logger.Controllers
         public ActionResult<LogMessage> CreateMessage([FromBody] LogMessage message)
         {
             message.DateTime = DateTime.Now;
-            loggerManager.Info(message.Level + " "+ message.DateTime + " "+ message.ServiceName + " " + message.HttpMethod + " " + message.About);
+            try  
+            {
+                switch(message.Level)
+                {
+                    case "Info":
+                        loggerManager.Info(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.About);
+                    break;
+                    case "Warn":
+                        loggerManager.Warn(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.About);
+                    break;
+                    case "Error":
+                        loggerManager.Error(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.About);
+                     break;
+                
+                }
+
+               
+            }
+            catch (Exception e)
+            {
+
+            }
             return Created("", message);
 
         }
