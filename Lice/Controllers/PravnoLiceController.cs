@@ -79,11 +79,11 @@ namespace Lice.Controllers
         /// {   \
         ///     "brojTelefona1": "064855446",
         ///     "brojTelefona2": "066985684",
-        ///     "email": "email6",
-        ///     "brojRacuna": "brRac6",
+        ///     "email": "masterplast@gmail.com",
+        ///     "brojRacuna": "800458757",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-        ///     "naziv": "PravnoLice3",
-        ///     "faks": 125687
+        ///     "naziv": "Masterplast",
+        ///     "faks": 024601785
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -120,11 +120,11 @@ namespace Lice.Controllers
         ///     "liceId": "",
         ///     "brojTelefona1": "064855446",
         ///     "brojTelefona2": "066985684",
-        ///     "email": "email6",
-        ///     "brojRacuna": "brRac6",
+        ///     "email": "masterplast@gmail.com",
+        ///     "brojRacuna": "800458757",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-        ///     "naziv": "PravnoLice3",
-        ///     "faks": 125687
+        ///     "naziv": "Masterplast",
+        ///     "faks": 024601785
         /// }
         ///</remarks>
         /// <returns></returns>
