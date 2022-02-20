@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Models
 {
-    public class ZastupnikUpdateDto: IValidatableObject
+    public class ZastupnikUpdateDto
     {
         public Guid ZastupnikId { get; set; }
 
@@ -24,7 +24,7 @@ namespace LiciterService.Models
         public Guid KupacId { get; set; }
 
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        /*public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (NazivDrzave != "Srbija" && Jmbg.Length >= 1)
             {
@@ -52,6 +52,7 @@ namespace LiciterService.Models
                    "Upisite validan jmbg.",
                    new[] { "ZastupnikCreationDto" });
             }
-        }
+        }*/
     }
 }
+

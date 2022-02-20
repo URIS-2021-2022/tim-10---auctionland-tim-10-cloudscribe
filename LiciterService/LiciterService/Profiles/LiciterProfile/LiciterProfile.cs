@@ -18,6 +18,7 @@ namespace LiciterService.Profiles
             CreateMap<Liciter, LiciterUpdateDto>();
             CreateMap<LiciterUpdateDto, Liciter>();
             CreateMap<Liciter, LiciterConfirmation>();
+            CreateMap<Liciter, Liciter>();
         }
     }
 }

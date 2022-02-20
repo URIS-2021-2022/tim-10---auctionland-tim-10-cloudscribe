@@ -18,6 +18,7 @@ namespace LiciterService.Profiles
             CreateMap<Zastupnik, ZastupnikUpdateDto>();
             CreateMap<ZastupnikUpdateDto, Zastupnik>();
             CreateMap<Zastupnik, ZastupnikConfirmation>();
+            CreateMap<Zastupnik, Zastupnik>();
         }
     }
 }

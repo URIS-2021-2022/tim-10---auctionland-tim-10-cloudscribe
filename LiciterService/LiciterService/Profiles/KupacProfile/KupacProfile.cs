@@ -18,6 +18,7 @@ namespace LiciterService.Profiles
             CreateMap<Kupac, KupacUpdateDto>();
             CreateMap<KupacUpdateDto, Kupac>();
             CreateMap<Kupac, KupacConfirmation>();
+            CreateMap<Kupac, Kupac>();
         }
     }
 }

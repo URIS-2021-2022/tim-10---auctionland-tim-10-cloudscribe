@@ -13,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/liciter")]
-    //[Authorize]
+
     public class LiciterController: ControllerBase
     {
         private readonly ILiciterRepository liciterRepository;
@@ -118,7 +119,7 @@ namespace LiciterService.Controllers
                 Liciter liciterEntity = mapper.Map<Liciter>(liciter);
                 mapper.Map(liciterEntity, oldLiciter);
                 liciterRepository.SaveChanges();
-                return Ok(mapper.Map<LiciterConfirmationDto>(oldLiciter));
+                return Ok(mapper.Map<LiciterDto>(oldLiciter));
             }
             catch (Exception)
             {

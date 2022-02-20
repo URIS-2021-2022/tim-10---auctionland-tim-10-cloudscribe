@@ -13,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/zastupnik")]
-    //[Authorize]
+
     public class ZastupnikController: ControllerBase
     {
         private readonly IZastupnikRepository zastupnikRepository;
@@ -118,7 +119,7 @@ namespace LiciterService.Controllers
                 Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
                 mapper.Map(zastupnikEntity, oldZastupnik);
                 zastupnikRepository.SaveChanges();
-                return Ok(mapper.Map<ZastupnikConfirmationDto>(oldZastupnik));
+                return Ok(mapper.Map<ZastupnikDto>(oldZastupnik));
             }
             catch (Exception)
             {
