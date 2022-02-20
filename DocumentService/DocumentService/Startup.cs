@@ -1,7 +1,7 @@
 ﻿using DocumentService.Data;
 using DocumentService.Data.TipDokumenta;
 using DocumentService.Entities;
-using DocumentService.Helpers;
+//using DocumentService.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,7 +16,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,8 +46,7 @@ namespace DocumentService
 
             services.AddScoped<IDokumentRepository, DokumentRepository>();
             services.AddScoped<ITipDokumentaRepository, TipDokumentaRepository>();
-            services.AddScoped<IUserRepository, UserMockRepository>(); 
-            services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+
 
             services.AddDbContextPool<DokumentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DokumentDB")));
 
@@ -63,10 +64,11 @@ namespace DocumentService
                };
 
            });
+        
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { 
+                c.SwaggerDoc("v1", new OpenApiInfo() { 
                     Title = "DocumentService", 
                     Version = "v1",
                     Description= "Pomoću ovog API-ja može da se vrši dodavanje, brisanje, modifikacija i pregled dokumenta.",
@@ -74,12 +76,17 @@ namespace DocumentService
                         Name ="Mina Lazić",
                         Email = "m.lazic@uns.ac.rs"
                     },
-                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+                    License = new OpenApiLicense
                     {
                         Name = "FTN licence",
                         Url = new Uri("http://www.ftn.ac.rs/")
                     }
                 });
+
+                //set the comments path for the Swagger JSON and UI
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
         //singleton je za jednu instancu, uvek radimo samo sa njom
@@ -92,7 +99,13 @@ namespace DocumentService
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DocumentService v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint
+                    ("/swagger/v1/swagger.json",
+                    "DocumentService v1");
+                    c.RoutePrefix = string.Empty;
+                });
             }
 
             app.UseHttpsRedirection();
