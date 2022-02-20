@@ -14,6 +14,8 @@ namespace OglasService.Profiles.SluzbeniListProfile
         {
             CreateMap<SluzbeniListConfirmation, SluzbeniListConfirmationDto>();
             CreateMap<SluzbeniListConfirmationDto, SluzbeniListConfirmation>();
+            CreateMap<SluzbeniList, SluzbeniListConfirmation>();
         }
+
     }
 }

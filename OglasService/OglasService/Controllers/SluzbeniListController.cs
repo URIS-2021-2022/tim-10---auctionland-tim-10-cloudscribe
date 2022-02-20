@@ -116,7 +116,7 @@ namespace OglasService.Controllers
                 SluzbeniList sluzbeniListEntity = mapper.Map<SluzbeniList>(sluzbeniList);
                 mapper.Map(sluzbeniListEntity, oldSluzbeniList);
                 sluzbeniListRepository.SaveChanges();
-                return Ok(mapper.Map<SluzbeniListConfirmationDto>(oldSluzbeniList));
+                return Ok(mapper.Map<SluzbeniListDto>(oldSluzbeniList));
             }
             catch (Exception)
             {

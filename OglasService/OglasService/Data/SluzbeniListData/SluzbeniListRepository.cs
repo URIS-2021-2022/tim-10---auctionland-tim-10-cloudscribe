@@ -31,12 +31,12 @@ namespace OglasService.Data
 
         public SluzbeniList GetSluzbeniListById(Guid sluzbeniListId)
         {
-            return context.SluzbeniListovi.FirstOrDefault(e => e.SluzbeniListId == sluzbeniListId);
+            return context.SluzbeniList.FirstOrDefault(e => e.SluzbeniListId == sluzbeniListId);
         }
 
         public List<SluzbeniList> GetSluzbeniListovi()
         {
-            return context.SluzbeniListovi.ToList();
+            return context.SluzbeniList.ToList();
         }
 
         public bool SaveChanges()

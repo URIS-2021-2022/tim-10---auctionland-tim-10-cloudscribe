@@ -54,7 +54,7 @@ namespace OglasService
             services.AddScoped<ISluzbeniListRepository, SluzbeniListRepository>();
 
 
-            services.AddDbContextPool<OglasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OglasDB")));
+            services.AddDbContextPool<OglasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OglasDB")).UseLazyLoadingProxies());
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {

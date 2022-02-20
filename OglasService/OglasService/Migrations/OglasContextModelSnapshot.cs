@@ -33,6 +33,9 @@ namespace OglasService.Migrations
 
                     b.HasKey("OglasId");
 
+                    b.HasIndex("SluzbeniListId")
+                        .IsUnique();
+
                     b.ToTable("Oglasi");
 
                     b.HasData(
@@ -67,7 +70,7 @@ namespace OglasService.Migrations
 
                     b.HasKey("SluzbeniListId");
 
-                    b.ToTable("SluzbeniListovi");
+                    b.ToTable("SluzbeniList");
 
                     b.HasData(
                         new
@@ -84,6 +87,22 @@ namespace OglasService.Migrations
                             DatumIzdavanja = new DateTime(2021, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             Opstina = "Novi Sad"
                         });
+                });
+
+            modelBuilder.Entity("OglasService.Entities.Oglas", b =>
+                {
+                    b.HasOne("OglasService.Entities.SluzbeniList", "SluzbeniList")
+                        .WithOne("Oglas")
+                        .HasForeignKey("OglasService.Entities.Oglas", "SluzbeniListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SluzbeniList");
+                });
+
+            modelBuilder.Entity("OglasService.Entities.SluzbeniList", b =>
+                {
+                    b.Navigation("Oglas");
                 });
 #pragma warning restore 612, 618
         }

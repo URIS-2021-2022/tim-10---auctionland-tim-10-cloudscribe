@@ -10,8 +10,8 @@ using OglasService.Entities;
 namespace OglasService.Migrations
 {
     [DbContext(typeof(OglasContext))]
-    [Migration("20220215205208_Second")]
-    partial class Second
+    [Migration("20220220135842_firstagain")]
+    partial class firstagain
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace OglasService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OglasId");
+
+                    b.HasIndex("SluzbeniListId")
+                        .IsUnique();
 
                     b.ToTable("Oglasi");
 
@@ -69,7 +72,7 @@ namespace OglasService.Migrations
 
                     b.HasKey("SluzbeniListId");
 
-                    b.ToTable("SluzbeniListovi");
+                    b.ToTable("SluzbeniList");
 
                     b.HasData(
                         new
@@ -86,6 +89,22 @@ namespace OglasService.Migrations
                             DatumIzdavanja = new DateTime(2021, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             Opstina = "Novi Sad"
                         });
+                });
+
+            modelBuilder.Entity("OglasService.Entities.Oglas", b =>
+                {
+                    b.HasOne("OglasService.Entities.SluzbeniList", "SluzbeniList")
+                        .WithOne("Oglas")
+                        .HasForeignKey("OglasService.Entities.Oglas", "SluzbeniListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SluzbeniList");
+                });
+
+            modelBuilder.Entity("OglasService.Entities.SluzbeniList", b =>
+                {
+                    b.Navigation("Oglas");
                 });
 #pragma warning restore 612, 618
         }

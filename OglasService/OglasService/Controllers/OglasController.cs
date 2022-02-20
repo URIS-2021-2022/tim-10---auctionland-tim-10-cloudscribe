@@ -116,7 +116,7 @@ namespace OglasService.Controllers
                 Oglas oglasEntity = mapper.Map<Oglas>(oglas);
                 mapper.Map(oglasEntity, oldOglas);
                 oglasRepository.SaveChanges();
-                return Ok(mapper.Map<OglasConfirmationDto>(oldOglas));
+                return Ok(mapper.Map<OglasDto>(oldOglas));
             }
             catch (Exception)
             {

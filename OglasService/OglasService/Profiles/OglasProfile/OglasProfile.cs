@@ -18,6 +18,7 @@ namespace OglasService.Profiles
             CreateMap<Oglas, OglasUpdateDto>();
             CreateMap<OglasUpdateDto,Oglas>();
             CreateMap<Oglas, OglasConfirmation>();
+            CreateMap<Oglas, Oglas>();
         }
     }
 }

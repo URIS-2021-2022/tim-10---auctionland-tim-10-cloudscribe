@@ -16,7 +16,7 @@ namespace OglasService.Entities
         }
 
         public DbSet<Oglas> Oglasi { get; set; }
-        public DbSet<SluzbeniList> SluzbeniListovi { get; set; }
+        public DbSet<SluzbeniList> SluzbeniList { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Oglas>().HasData(new

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OglasService.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,5 +12,7 @@ namespace OglasService.Models
         public string Opstina { get; set; }
         public int BrojSluzbenogLista { get; set; }
         public DateTime? DatumIzdavanja { get; set; }
+
+        //public Oglas Oglas { get; set; }
     }
 }

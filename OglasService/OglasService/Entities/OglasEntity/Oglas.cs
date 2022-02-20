@@ -14,9 +14,9 @@ namespace OglasService.Entities
 
         public string TekstOglasa { get; set; }
 
-        [ForeignKey("sluzbeniListId")]
+       // [ForeignKey("SluzbeniList")]
         public Guid SluzbeniListId { get; set; }
-        public SluzbeniList SluzbeniList { get; set; }
+       // public virtual SluzbeniList SluzbeniList { get; set; }
 
     }
 }
