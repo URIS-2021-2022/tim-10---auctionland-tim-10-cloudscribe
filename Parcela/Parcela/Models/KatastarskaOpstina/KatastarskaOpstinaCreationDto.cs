@@ -8,7 +8,9 @@ namespace Parcela.Models.KatastarskaOpstina
 {
     public class KatastarskaOpstinaCreationDto
     {
-
+        /// <summary>
+        /// Ime Katastarske Opštine
+        /// </summary>
         public string ImeKatastarskeOpstine { get; set; }
 
         

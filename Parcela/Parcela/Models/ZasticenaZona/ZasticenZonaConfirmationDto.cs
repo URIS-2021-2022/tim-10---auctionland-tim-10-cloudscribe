@@ -9,9 +9,13 @@ namespace Parcela.Models
     {
 
 
-
+        /// <summary>
+        /// ID Zaštićene zone
+        /// </summary>
         public Guid ZasticenZonaId { get; set; }
-
+        /// <summary>
+        /// Broj zone
+        /// </summary>
         public int BrojZone { get; set; }
     }
 }

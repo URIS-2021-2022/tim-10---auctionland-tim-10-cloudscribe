@@ -7,9 +7,13 @@ namespace Parcela.Models
 {
     public class ZasticenZonaDto
     {
-
+        /// <summary>
+        /// ID Zaštićene zone
+        /// </summary>
         public Guid ZasticenZonaId { get; set; }
-
+        /// <summary>
+        /// Broj zone
+        /// </summary>
         public int BrojZone { get; set; }
     }
 }

@@ -19,6 +19,11 @@ using System.Threading.Tasks;
 using Parcela.Data.DeoParcele;
 using Parcela.Data.KatastarskaOpstina;
 using Parcela.Data.ZasticenaZona;
+using System.Reflection;
+using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Parcela
 {
@@ -44,13 +49,88 @@ namespace Parcela
             services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
             services.AddScoped<IKatastarskaOpstinaRepository, KatastarskaOpstinaRepository>();
             services.AddScoped<IZasticenaZonaRepository, ZasticenaZonaRepository>();
-            services.AddSwaggerGen(c =>
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            /*
+            services.AddSwaggerGen(setupAction =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Parcela", Version = "v1" });
+                setupAction.SwaggerDoc("ParcelaOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Parcela API",
+                    Version = "v1",
+                    Description = "Pomoæu ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled parcele.",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Kristian Kleèina",
+                        Email = "klecina.it43.2015@uns.ac.rs"
+                    }
+                });
+
+                //var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                //var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                //setupAction.IncludeXmlComments(xmlCommentsPath);
             });
 
-            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB"))); //OVO RADI NE DIRAM NIŠTA
+            */
+
+
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("ParcelaOpenApiSpecification", new OpenApiInfo { 
+                    Title = "Parcela", 
+                    Version = "v1",
+                    Description = "Pomoæu ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled parcele.",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Kristian Kleèina",
+                        Email = "klecina.it43.2015@uns.ac.rs"
+                    }
+
+                    
+                });
+                var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                c.IncludeXmlComments(xmlCommentsPath);
+
+            });
             
+            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB"))); //OVO RADI NE DIRAM NIŠTA
+
+
+            
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+            
+            /*
+              services.AddAuthentication(options =>
+              {
+                  options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                  options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+              })
+              .AddJwtBearer(options =>
+              {
+                  options.SaveToken = true;
+                  options.TokenValidationParameters = new TokenValidationParameters
+                  {
+                      ValidateIssuerSigningKey = true,
+                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
+                      ValidateAudience = false,
+                      ValidateIssuer = false,
+                  };
+              });
+            */
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,8 +139,8 @@ namespace Parcela
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Parcela v1"));
+
+                
             }
             else
             {
@@ -74,11 +154,17 @@ namespace Parcela
                 });
             }
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/ParcelaOpenApiSpecification/swagger.json", "Parcela v1"));
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+            
+
 
             app.UseEndpoints(endpoints =>
             {

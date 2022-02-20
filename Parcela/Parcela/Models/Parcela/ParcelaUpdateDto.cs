@@ -9,38 +9,64 @@ namespace Parcela.Models.Parcela
     public class ParcelaUpdateDto : IValidatableObject
     {
         #region Parcela
+        /// <summary>
+        /// ID Parcele
+        /// </summary>
         [Required]
         public Guid ParcelaId { get; set; }
+        /// <summary>
+        /// Površina parcele
+        /// </summary>
         [Required]
         public int Povrsina { get; set; }
-
+        /// <summary>
+        /// ID korisnika
+        /// </summary>
         [Required]
         public Guid KorisnikId { get; set; }
 
-       
+        /// <summary>
+        /// Broj parcele
+        /// </summary>
         public string BrojParcele { get; set; }
 
-
+        /// <summary>
+        /// ID katastarske opštine
+        /// </summary>
         public Guid KatastarskaOpstinaId { get; set; }
 
-
+        /// <summary>
+        /// Broj lista nepokretnosti
+        /// </summary>
         public string BrojListaNepokretnosti { get; set; }
 
-       
+        /// <summary>
+        /// Kultura parcele
+        /// </summary>
         public string Kultura { get; set; }
 
-       
+        /// <summary>
+        /// Klasa parcele
+        /// </summary>
         public int Klasa { get; set; }
 
-        
+        /// <summary>
+        /// Obradivost parcele
+        /// </summary>
         public string Obradivost { get; set; }
 
-
+        /// <summary>
+        /// ID Zaštićene zone
+        /// </summary>
         public Guid ZasticenaZonaId { get; set; }
 
-
+        /// <summary>
+        /// Oblik svojine parcele
+        /// </summary>
         public string OblikSvojine { get; set; }
-
+        /// <summary>
+        /// Odvodnjavanje parcele
+        /// </summary>
         public string Odvodnjavanje { get; set; }
 
 

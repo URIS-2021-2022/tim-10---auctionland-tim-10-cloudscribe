@@ -8,9 +8,14 @@ namespace Parcela.Entities.ZasticenaZona
 {
     public class ZasticenaZonaEntity
     {
+        /// <summary>
+        /// ID zaštićene zone
+        /// </summary>
         [Key]
         public Guid ZasticenZonaId { get; set; }
-
+        /// <summary>
+        /// Broj zaštićene zone
+        /// </summary>
         public int BrojZone { get; set; }
     }
 }

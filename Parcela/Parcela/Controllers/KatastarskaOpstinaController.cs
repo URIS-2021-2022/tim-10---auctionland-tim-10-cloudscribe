@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -16,6 +17,7 @@ namespace Parcela.Controllers
     [ApiController]
     [Route("api/opstina")]
     [Produces("application/json", "application/xml")]
+    [Authorize]
     public class KatastarskaOpstinaController :ControllerBase
     {
         private readonly IKatastarskaOpstinaRepository opstinaRepository;

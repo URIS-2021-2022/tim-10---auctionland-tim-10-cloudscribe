@@ -8,7 +8,9 @@ namespace Parcela.Models.ZasticenaZona
     public class ZasticenaZonaCreationDto
     {
         
-
+        /// <summary>
+        /// Broj zone
+        /// </summary>
         public int BrojZone { get; set; }
     }
 }

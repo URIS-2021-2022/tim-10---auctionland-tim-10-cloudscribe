@@ -7,8 +7,13 @@ namespace Parcela.Entities.KatastarskaOpstina
 {
     public class KatastarskaOpstinaConfirmation
     {
+        /// <summary>
+        /// ID katastarske opštine
+        /// </summary>
         public Guid KatastarskaOpstinaId { get; set; }
-
+        /// <summary>
+        /// Ime katastarske opštine
+        /// </summary>
         public string ImeKatastarskeOpstine { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace Parcela.Controllers
     [ApiController]
     [Route("api/deoparcele")]
     [Produces("application/json", "application/xml")]
+    [Authorize]
     public class DeoParceleController : ControllerBase
     {
         private readonly IDeoParceleRepository deoParceleRepository;

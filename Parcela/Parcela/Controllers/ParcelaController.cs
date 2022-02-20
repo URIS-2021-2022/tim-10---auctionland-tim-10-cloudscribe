@@ -11,6 +11,7 @@ using Parcela.Models.Parcela;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Parcela.Controllers
@@ -18,19 +19,30 @@ namespace Parcela.Controllers
     [ApiController]
     [Route("api/parcela")]
     [Produces("application/json", "application/xml")]
+    [Authorize]
     public class ParcelaController : ControllerBase
     {
         private readonly IParcelaRepository parcelaRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        //private readonly IHttpContextAccessor httpContextAccessor;
+
 
         public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.parcelaRepository = parcelaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            //this.httpContextAccessor = httpContextAccessor;
+
         }
 
+        /// <summary>
+        /// Vraća sve parcele.
+        /// </summary>
+        /// <returns>Lista prijava ispita</returns>
+        /// <response code="200">Vraća listu parcela</response>
+        /// <response code="404">Nije pronađena ni jedna parcela</response>
 
         [HttpGet]
         [HttpHead]   
@@ -39,7 +51,7 @@ namespace Parcela.Controllers
         public ActionResult<List<ParcelaDto>> GetParcele()
         {
 
-
+            //var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             var parcele = parcelaRepository.GetParcela();
             if(parcele == null || parcele.Count == 0)
             {
