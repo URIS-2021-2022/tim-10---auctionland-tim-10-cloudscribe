@@ -17,8 +17,10 @@ namespace DocumentService.Controllers
     
     [ApiController]
     [Route("api/dokument")]
-    [Produces("application/json", "application/xml")]
+    //[Produces("application/json", "application/xml")]
+  //  [Produces("text/plain")]
     [Authorize]
+    
     public class DokumentController : ControllerBase
     {
         private readonly IDokumentRepository dokumentRepository;
@@ -41,13 +43,16 @@ namespace DocumentService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<DokumentDto>> GetAllDokuments()
+       // public String GetAllDokuments()
         {
             var dokumenti = dokumentRepository.GetAllDokuments();
             if (dokumenti == null || dokumenti.Count == 0)
             {
-                return NotFound();
+                return NoContent();
+                //return "lll";
             }
             return Ok(mapper.Map<List<DokumentDto>>(dokumenti));
+           // return "ok";
         }
         /// <summary>
         /// Vracanje dokumenata po id-ju
@@ -118,7 +123,7 @@ namespace DocumentService.Controllers
                 Dokument dokumentEntity = mapper.Map<Dokument>(dokument);
                 mapper.Map(dokumentEntity, oldDokument);
                 dokumentRepository.SaveChanges();
-                return Ok(mapper.Map<DokumentConfirmationDto>(oldDokument));
+                return Ok(mapper.Map<DokumentDto>(oldDokument));
             }
             catch (Exception)
             {

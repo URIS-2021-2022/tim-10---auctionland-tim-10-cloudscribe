@@ -119,7 +119,7 @@ namespace DocumentService.Controllers
                     TipDokumentaE tipDokumentaEntity = mapper.Map<TipDokumentaE>(tip);
                     mapper.Map(tipDokumentaEntity, oldTip);
                     tipdokumentaRepository.SaveChanges();
-                    return Ok(mapper.Map<TipDokumentaConfirmationDto>(oldTip));
+                    return Ok(mapper.Map<TipDokumentaDto>(oldTip));
                 }
                 catch (Exception)
                 {
@@ -167,7 +167,7 @@ namespace DocumentService.Controllers
             [AllowAnonymous]
             public IActionResult GetTipDokumentaOptions()
             {
-                Response.Headers.Add("Allow", "GET, PUT,DELETE");
+                Response.Headers.Add("Allow", "GET, POST, PUT,DELETE");
                 return Ok();
             }
         }
