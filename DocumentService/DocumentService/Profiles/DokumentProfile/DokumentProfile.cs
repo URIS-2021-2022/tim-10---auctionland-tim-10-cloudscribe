@@ -19,6 +19,7 @@ namespace DocumentService.Profiles
             CreateMap<Dokument, DokumentUpdateDto>();
             CreateMap<DokumentUpdateDto, Dokument>();
             CreateMap<Dokument, DokumentConfirmation>();
+            CreateMap<Dokument, Dokument>();
 
 
         }
