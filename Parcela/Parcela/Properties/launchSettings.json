@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:47736",
-      "sslPort": 44371
+      "applicationUrl": "http://localhost:43017",
+      "sslPort": 0
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -15,9 +15,9 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:44500"
+      "applicationUrl": "http://localhost:44299"
     },
-    "OglasService": {
+    "Parcela": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

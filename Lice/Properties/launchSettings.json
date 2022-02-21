@@ -3,21 +3,21 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:47736",
-      "sslPort": 44371
+      "applicationUrl": "http://localhost:44201",
+      "sslPort": 44314
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "Project",
-      "launchUrl": "swagger",
+      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:44500"
+      "applicationUrl": "http://localhost:44224"
     },
-    "OglasService": {
+    "Lice": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

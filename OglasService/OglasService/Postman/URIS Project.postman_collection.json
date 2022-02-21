@@ -262,19 +262,29 @@
 						{
 							"name": "ZastupnikGetById",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:44200/api/zastupnik/044f3de0-a9dd-4c2e-b745-89976a1b2a66",
+									"raw": "http://localhost:44300/api/zastupnik/a8503194-620c-4131-e409-08d9f573f22e",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "44200",
+									"port": "44300",
 									"path": [
 										"api",
 										"zastupnik",
-										"044f3de0-a9dd-4c2e-b745-89976a1b2a66"
+										"a8503194-620c-4131-e409-08d9f573f22e"
 									]
 								}
 							},
@@ -283,15 +293,25 @@
 						{
 							"name": "ZastupniciGetAllZastupnici",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:44200/api/zastupnik",
+									"raw": "http://localhost:44300/api/zastupnik",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "44200",
+									"port": "44300",
 									"path": [
 										"api",
 										"zastupnik"
@@ -303,11 +323,21 @@
 						{
 							"name": "CreateZastupnik",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\r\n    \"jmbg\": \"1234567891234\",\r\n    \"brojPasosa\": \"5478965\",\r\n    \"nazivDrzave\": \"Srbija\",\r\n    \"brojTable\": 255,\r\n     \"kupacId\": \"32cd906d-8bab-457c-ade2-fbc4ba523029\"\r\n    }",
+									"raw": "{\r\n    \"jmbg\": \"\",\r\n    \"brojPasosa\": \"123456789\",\r\n    \"nazivDrzave\": \"Australija\",\r\n    \"brojTable\": 365,\r\n    \"kupacId\": \"044f3de0-a9dd-4c2e-b745-89976a1b2a36\"\r\n\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -315,12 +345,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:44200/api/zastupnik",
+									"raw": "http://localhost:44300/api/zastupnik",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "44200",
+									"port": "44300",
 									"path": [
 										"api",
 										"zastupnik"
@@ -332,11 +362,21 @@
 						{
 							"name": "UpdateZastupnik",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"zastupnikId\": \"044f3de0-a9dd-4c2e-b745-89976a1b2a66\",\r\n    \"imeZastupnika\": \"NovakTest222\",\r\n    \"prezimeZastupnika\": \"DjokovicTest222\",\r\n    \"jmbg\": 163588962,\r\n    \"adresa\": \"Beogradska 25\",\r\n    \"nazivDrzave\": \"Srbija\",\r\n    \"brojTable\": 255\r\n}",
+									"raw": "{\r\n    \"zastupnikId\": \"044f3de0-a9dd-4c2e-b745-89976a1b2a52\",\r\n    \"jmbg\": \"5896634547231\",\r\n    \"brojPasosa\": \"123456789\",\r\n    \"nazivDrzave\": \"Austrija\",\r\n    \"brojTable\": 365,\r\n    \"kupacId\": \"32cd906d-8bab-457c-ade2-fbc4ba523029\"  \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -344,12 +384,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:44200/api/zastupnik",
+									"raw": "http://localhost:44300/api/zastupnik",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "44200",
+									"port": "44300",
 									"path": [
 										"api",
 										"zastupnik"
@@ -361,10 +401,20 @@
 						{
 							"name": "DeleteZastupnik",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:44200/api/zastupnik/044f3de0-a9dd-4c2e-b745-89976a1b2a66",
+									"raw": "http://localhost:44200/api/zastupnik/044f3de0-a9dd-4c2e-b745-89976a1b2a52",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -373,7 +423,7 @@
 									"path": [
 										"api",
 										"zastupnik",
-										"044f3de0-a9dd-4c2e-b745-89976a1b2a66"
+										"044f3de0-a9dd-4c2e-b745-89976a1b2a52"
 									]
 								}
 							},

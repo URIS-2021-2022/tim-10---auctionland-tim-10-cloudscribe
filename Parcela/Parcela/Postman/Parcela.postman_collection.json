@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "6d665545-368d-4be6-81a6-2fa0ea99ae96",
+		"name": "Parcela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1MzQxMDc2LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.hCuneT85VCPAdJ6-2yeoH0OkIFj6nrxLvK3LTauX90g",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44299/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"povrsina\": 2000,\r\n    \"korisnikId\": \"6a411c13-a295-48f7-8dbd-67596c3974c0\",\r\n    \"brojParcele\": \"1\",\r\n    \"katastarskaOpstinaId\": \"779341c2-3b97-4598-9329-09bc0c7dd3a4\",\r\n    \"brojListaNepokretnosti\": \"5\",\r\n    \"Kultura\": \"Pasnjaci\",\r\n    \"klasa\": 1,\r\n    \"obradivost\": \"Obradivo\",\r\n    \"zasticenaZonaId\": \"b5ca4235-c02c-4020-a6a6-cb7146ca5fb8\",\r\n    \"oblikSvojine\": \"Drzavna\",\r\n    \"odvodnjavanje\": \"Podvnodno\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44299/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"parcelaId\": \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n        \"povrsina\": 500,\r\n        \"korisnikId\": \"6a411c13-a295-48f7-8dbd-67596c3974c0\",\r\n        \"brojParcele\": \"1\",\r\n        \"katastarskaOpstinaId\": \"1807a208-3bca-49de-a159-293e14393909\",\r\n        \"brojListaNepokretnosti\": \"5\",\r\n        \"kultura\": \"Pasnjaci\",\r\n        \"klasa\": 1,\r\n        \"obradivost\": \"Obradivo\",\r\n        \"zasticenaZonaId\": \"af2d6f85-d341-4433-8f21-3f28f816a79e\",\r\n        \"oblikSvojine\": \"Drzavna\",\r\n        \"odvodnjavanje\": \"Podvnodno\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44299/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44299/api/parcela/3d30ac20-8a94-4b84-b766-08d9f22b0bcf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"parcela",
+						"3d30ac20-8a94-4b84-b766-08d9f22b0bcf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44299/api/parcela/6a411c13-a195-48f7-8dbd-67596c3974c0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"parcela",
+						"6a411c13-a195-48f7-8dbd-67596c3974c0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
