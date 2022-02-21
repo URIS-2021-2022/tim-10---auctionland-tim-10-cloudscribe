@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Adresa</name>
+    </assembly>
+    <members>
+        <member name="M:Adresa.Controllers.AdresaController.GetAdrese">
+            <summary>
+            Vraća sve adrese
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Adresa.Controllers.AdresaController.GetAdresa(System.Guid)">
+            <summary>
+            Vraća adresu na osnovu ID-ja prijave
+            </summary>
+            <param name="adresaId">ID adrese</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adresa.Controllers.AdresaController.CreateAdresa(Adresa.Models.AdresaCreationDto)">
+             <summary>
+             Kreira novu adresu
+             </summary>
+             <param name="adresa">Model adrese</param>
+             <remarks>
+             Primer zahteva za kreiranje nove adrese\
+             POST /api/adresa \
+             {   \
+                 "ulica": "Ulica3",
+                 "broj": "3",
+                 "mesto": "Mesto3",
+                 "postanskiBroj": 12345,
+                 "drzavaId": "2109d328-5014-40c1-9e1e-1a08b3f67192"
+            }
+            </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:Adresa.Controllers.AdresaController.UpdateAdresa(Adresa.Models.AdresaUpdateDto)">
+             <summary>
+             Ažurira postojeću adresu
+             </summary>
+             <param name="adresa">Model adrese</param>
+             <remarks>
+             Primer zahteva za ažuriranje postojeće adrese\
+             POST /api/adresa \
+             {   \
+                 "adresaId" : "6a411c13-a195-48f7-8dbd-67596c3974c0",
+                 "ulica": "Ulica1",
+                 "broj": "10",
+                 "mesto": "Mesto10",
+                 "postanskiBroj": 123,
+                 "drzavaId": "170960f3-f8e0-4614-aff2-653aadf5c720"
+            }
+            </remarks>
+             <returns></returns>
+        </member>
+        <member name="M:Adresa.Controllers.AdresaController.DeleteAdresa(System.Guid)">
+            <summary>
+            Vrši brisanje jedne adrese na osnovu ID-ja
+            </summary>
+            <param name="adresaId">ID adrese</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adresa.Controllers.AdresaController.GetAdresaOptions">
+            <summary>
+            Vreće opcije za rad sa adresama
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Adresa.Entities.AdresaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Popunjava bazu inicijalnim podacima
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.AdresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.Ulica">
+            <summary>
+            Ulica adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.Broj">
+            <summary>
+            Broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.Mesto">
+            <summary>
+            Mesto adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.DrzavaId">
+            <summary>
+            ID države
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.AdresaEntity.Drzava">
+            <summary>
+            Drzava
+            </summary>
+        </member>
+        <member name="T:Adresa.Entities.DrzavaEntity">
+            <summary>
+            Model drzave
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.DrzavaEntity.DrzavaId">
+            <summary>
+            ID drzave
+            </summary>
+        </member>
+        <member name="P:Adresa.Entities.DrzavaEntity.NazivDrzave">
+            <summary>
+            Naziv drzave
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaConfirmationDto.AdresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaConfirmationDto.UlicaBroj">
+            <summary>
+            Ulica i broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaConfirmationDto.Mesto">
+            <summary>
+            Mesto adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaConfirmationDto.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaConfirmationDto.NazivDrzave">
+            <summary>
+            Naziv države adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaCreationDto.Ulica">
+            <summary>
+            Naziv ulice
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaCreationDto.Broj">
+            <summary>
+            Broj adrese u ulici
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaCreationDto.Mesto">
+            <summary>
+            Mesto adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaCreationDto.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaCreationDto.DrzavaId">
+            <summary>
+            ID države
+            </summary>
+        </member>
+        <member name="T:Adresa.Models.AdresaDto">
+            <summary>
+            Model adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaDto.UlicaBroj">
+            <summary>
+            Ulica i broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaDto.Mesto">
+            <summary>
+            Mesto adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaDto.PostanskiBroj">
+            <summary>
+            Poštanski broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaDto.NazivDrzave">
+            <summary>
+            Naziv države adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.AdresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.Ulica">
+            <summary>
+            Ulica adresde
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.Broj">
+            <summary>
+            Broj u ulici
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.Mesto">
+            <summary>
+            Mesto adreee
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.PostanskiBroj">
+            <summary>
+            Postanški broj adrese
+            </summary>
+        </member>
+        <member name="P:Adresa.Models.AdresaUpdateDto.DrzavaId">
+            <summary>
+            ID drzave
+            </summary>
+        </member>
+    </members>
+</doc>

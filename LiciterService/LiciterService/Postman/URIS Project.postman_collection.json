@@ -1,0 +1,792 @@
+{
+	"info": {
+		"_postman_id": "04a9af29-650f-4f5f-9268-f85102246602",
+		"name": "URIS Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LiciterService",
+			"item": [
+				{
+					"name": "Liciter",
+					"item": [
+						{
+							"name": "GetLiciterById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:44200/api/liciter/ccf9a80a-3410-4a69-101a-08d9f24dd944",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"liciter",
+										"ccf9a80a-3410-4a69-101a-08d9f24dd944"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllLiciter",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/liciter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"liciter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateLiciter",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n\r\n        \"imeLicitera\": \"\",\r\n        \"prezimeLicitera\": \"\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44200/api/liciter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"liciter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateLiciter",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/liciter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"liciter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteLiciter",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/liciter/ccf9a80a-3410-4a69-101a-08d9f24dd944",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"liciter",
+										"ccf9a80a-3410-4a69-101a-08d9f24dd944"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Kupac",
+					"item": [
+						{
+							"name": "KupacGetById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/kupac/044f3de0-a9dd-4c2e-b745-89976a1b2a36",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"kupac",
+										"044f3de0-a9dd-4c2e-b745-89976a1b2a36"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateKupac",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"imeKupca\": \"Tanja\",\r\n    \"prezimeKupca\": \"Mandic\",\r\n    \"datumPocetkaZabrane\": \"2022-11-15T09:00:00\",\r\n    \"datumPrestankaZabrane\": \"2021-11-15T09:00:00\",\r\n    \"duzinaTrajanjaZabrane\": 365,\r\n    \"imaZabranu\": true,\r\n    \"ostvarenaPovrsina\": 1500000\r\n\r\n}\r\n    ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44200/api/kupac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"kupac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllKupci",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/kupac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"kupac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateKupac",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "   {\r\n        \"kupacId\": \"32cd906d-8bab-457c-ade2-fbc4ba523029\",\r\n        \"imeKupca\": \"DzejnUpdate22\",\r\n        \"prezimeKupca\": \"OstinUpdate22\",\r\n        \"datumPocetkaZabrane\": \"2021-12-15T09:00:00\",\r\n        \"datumPrestankaZabrane\": \"2022-05-15T09:00:00\",\r\n        \"duzinaTrajanjaZabrane\": 365,\r\n        \"imaZabranu\": true,\r\n        \"ostvarenaPovrsina\": 15500\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44200/api/kupac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"kupac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteKupac",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/kupac/044f3de0-a9dd-4c2e-b745-89976a1b2a36",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"kupac",
+										"044f3de0-a9dd-4c2e-b745-89976a1b2a36"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Zastupnik",
+					"item": [
+						{
+							"name": "ZastupnikGetById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44300/api/zastupnik/a8503194-620c-4131-e409-08d9f573f22e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44300",
+									"path": [
+										"api",
+										"zastupnik",
+										"a8503194-620c-4131-e409-08d9f573f22e"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ZastupniciGetAllZastupnici",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44300/api/zastupnik",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44300",
+									"path": [
+										"api",
+										"zastupnik"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateZastupnik",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"jmbg\": \"\",\r\n    \"brojPasosa\": \"123456789\",\r\n    \"nazivDrzave\": \"Australija\",\r\n    \"brojTable\": 365,\r\n    \"kupacId\": \"044f3de0-a9dd-4c2e-b745-89976a1b2a36\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44300/api/zastupnik",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44300",
+									"path": [
+										"api",
+										"zastupnik"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateZastupnik",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"zastupnikId\": \"044f3de0-a9dd-4c2e-b745-89976a1b2a52\",\r\n    \"jmbg\": \"5896634547231\",\r\n    \"brojPasosa\": \"123456789\",\r\n    \"nazivDrzave\": \"Austrija\",\r\n    \"brojTable\": 365,\r\n    \"kupacId\": \"32cd906d-8bab-457c-ade2-fbc4ba523029\"  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44300/api/zastupnik",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44300",
+									"path": [
+										"api",
+										"zastupnik"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteZastupnik",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/zastupnik/044f3de0-a9dd-4c2e-b745-89976a1b2a52",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"zastupnik",
+										"044f3de0-a9dd-4c2e-b745-89976a1b2a52"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OglasService",
+			"item": [
+				{
+					"name": "Oglas",
+					"item": [
+						{
+							"name": "OglasGetAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44500/api/oglas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"oglas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetByIdOglas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44500/api/oglas/15816081-a068-4ef1-896c-08d9f553aebe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"oglas",
+										"15816081-a068-4ef1-896c-08d9f553aebe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateOglas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tekstOglasa\": \"Javno nadmetanje je u nedelju\",\r\n     \"sluzbeniListId\": \"6a411c13-a195-48f7-8dbd-67596c397475\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44500/api/oglas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"oglas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateOglas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"oglasId\": \"15816081-a068-4ef1-896c-08d9f553aebe\",\r\n    \"tekstOglasa\": \"Javno nadmetanje se odrzava u Segedinu\",\r\n    \"sluzbeniListId\": \"6a411c13-a195-48f7-8dbd-67596c397475\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44500/api/oglas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"oglas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteOglas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/oglas/6a411c13-a195-48f7-8dbd-67596c397444",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"oglas",
+										"6a411c13-a195-48f7-8dbd-67596c397444"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sluzbeni list",
+					"item": [
+						{
+							"name": "SluzbeniListGetAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44500/api/sluzbeniList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"sluzbeniList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetByIdSluzbeniList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44500/api/sluzbeniList/b5a32a14-b173-47ba-455b-08d9f553d0b2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"sluzbeniList",
+										"b5a32a14-b173-47ba-455b-08d9f553d0b2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateSluzbeniList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n    \"opstina\": \"Budjanovci\",\r\n    \"brojSluzbenogLista\": 15,\r\n    \"datumIzdavanja\": \"2021-05-15T09:00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44500/api/sluzbeniList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"sluzbeniList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateSluzbeniList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sluzbeniListId\": \"b5a32a14-b173-47ba-455b-08d9f553d0b2\",\r\n    \"opstina\": \"Subotica\",\r\n    \"brojSluzbenogLista\": 10,\r\n    \"datumIzdavanja\": \"2021-05-15T09:00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:44500/api/sluzbeniList",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44500",
+									"path": [
+										"api",
+										"sluzbeniList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteSluzbeniList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:44200/api/sluzbeniList/6a411c13-a195-48f7-8dbd-67596c397411",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "44200",
+									"path": [
+										"api",
+										"sluzbeniList",
+										"6a411c13-a195-48f7-8dbd-67596c397411"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

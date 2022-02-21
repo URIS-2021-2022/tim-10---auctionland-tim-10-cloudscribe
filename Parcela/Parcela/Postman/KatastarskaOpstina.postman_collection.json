@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "4258cb91-e4b3-4378-8cf4-4aad92b63f89",
+		"name": "KatastarskaOpstina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Opstina",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44299/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44299/api/opstina/b438a02a-d1b7-479a-85ce-65fd6d9601aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"opstina",
+						"b438a02a-d1b7-479a-85ce-65fd6d9601aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Opstina",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imeKatastarskeOpstine\": \"Donji Grgutovac\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44299/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"katastarskaOpstinaId\": \"5b588cd9-b263-427c-85b7-08d9f4718486\",\r\n    \"imeKatastarskeOpstine\": \"Indjija\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44299/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44299/api/opstina/5b588cd9-b263-427c-85b7-08d9f4718486",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44299",
+					"path": [
+						"api",
+						"opstina",
+						"5b588cd9-b263-427c-85b7-08d9f4718486"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

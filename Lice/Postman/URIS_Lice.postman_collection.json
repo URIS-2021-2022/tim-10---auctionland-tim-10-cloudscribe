@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "a073e1a7-1755-48aa-9cbc-e32bf2a1d6d6",
+		"name": "URIS_Lice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FizickoLice",
+			"item": [
+				{
+					"name": "GetFizickaLica",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"adresaId\" : \"6afa332a-8fcf-4651-b78b-08d9ebcb4ec3\",\r\n        \"ulica\": \"Ulica1\",\r\n        \"broj\": \"10\",\r\n        \"mesto\": \"Mesto10\",\r\n        \"postanskiBroj\": 123,\r\n        \"drzavaId\": \"170960f3-f8e0-4614-aff2-653aadf5c720\"\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44224/api/fizickaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"fizickaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetFizickoLiceById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44224/api/fizickaLica/65f1a8da-433f-42d1-82f6-6b771ddde854",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"fizickaLica",
+								"65f1a8da-433f-42d1-82f6-6b771ddde854"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFizickoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brojTelefona1\": \"06445856\",\r\n    \"brojTelefona2\": \"06448457\",\r\n    \"email\": \"fizicko4@gmail.com\",\r\n    \"brojRacuna\": \"brRac4\",\r\n    \"prioritetId\": \"26797103-3a18-4750-9f27-33416e6e30d4\",\r\n    \"ime\": \"Ime4\",\r\n    \"prezime\": \"Prezime4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44224/api/fizickaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"fizickaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateFizickoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"liceId\": \"0325c75b-dff1-4765-35b9-08d9f57f045c\",\r\n    \"brojTelefona1\": \"0665511155\",\r\n    \"brojTelefona2\": \"061211157\",\r\n    \"email\": \"fizickoLice1@gmail.com\",\r\n    \"brojRacuna\": \"brRac31\",\r\n    \"prioritetId\": \"26797103-3a18-4750-9f27-33416e6e30d4\",\r\n    \"ime\": \"Ime31\",\r\n    \"prezime\" : \"Prezime31\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44224/api/fizickaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"fizickaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteFizickoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44224/api/fizickaLica/d8cf4b3d-2f89-4806-35ba-08d9f57f045c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"fizickaLica",
+								"d8cf4b3d-2f89-4806-35ba-08d9f57f045c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PravnoLice",
+			"item": [
+				{
+					"name": "GetPravnaLica",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44224/api/pravnaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"pravnaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPravnoLiceById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44224/api/pravnaLica/25499084-4d50-412b-9640-1ab07af33d4d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"pravnaLica",
+								"25499084-4d50-412b-9640-1ab07af33d4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreatePravnoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brojTelefona1\": \"064855446\",\r\n    \"brojTelefona2\": \"066985684\",\r\n    \"email\": \"email6\",\r\n    \"brojRacuna\": \"brRac6\",\r\n    \"prioritetId\": \"26797103-3a18-4750-9f27-33416e6e30d4\",\r\n    \"naziv\": \"PravnoLice3\",\r\n    \"faks\": 125687\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44224/api/pravnaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"pravnaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePravnoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"liceId\": \"988bf200-b5f7-47f0-6aae-08d9f26e8e49\",\r\n    \"brojTelefona1\": \"065333477\",\r\n    \"brojTelefona2\": \"063333484\",\r\n    \"email\": \"pravnoLice43@gmail.com\",\r\n    \"brojRacuna\": \"brRac43\",\r\n    \"prioritetId\": \"26797103-3a18-4750-9f27-33416e6e30d4\",\r\n    \"naziv\": \"PravnoLice43\",\r\n    \"faks\": 1256\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44224/api/pravnaLica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"pravnaLica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePravnoLice",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44224/api/pravnaLica/6b1eed5b-d3d1-4c4d-fe11-08d9ee716bb4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44224",
+							"path": [
+								"api",
+								"pravnaLica",
+								"6b1eed5b-d3d1-4c4d-fe11-08d9ee716bb4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

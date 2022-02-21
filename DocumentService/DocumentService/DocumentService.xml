@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DocumentService</name>
+    </assembly>
+    <members>
+        <member name="M:DocumentService.Controllers.DokumentController.GetAllDokuments">
+            <response code="200">Vraća dokumente</response>
+            <response code="500">Došlo je do greške na serveru</response>
+            
+        </member>
+        <member name="M:DocumentService.Controllers.DokumentController.GetDokumentEntityById(System.Guid)">
+            <summary>
+            Vracanje dokumenata po id-ju
+            </summary>
+            <param name="dokumentId"></param>
+            <returns></returns>
+            <response code="200">Vraća dokument po id-ju</response>
+        </member>
+        <member name="M:DocumentService.Controllers.DokumentController.CreateDokument(DocumentService.Models.DokumentModel.DokumentCreationDto)">
+             <summary>
+             Kreiranje dokumenta
+             </summary>
+             <param name="dokument">Model dokumenta</param>
+             <returns></returns>
+            <response code="200">Vraća kreirani dokument</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja dokumenta</response>
+        </member>
+        <member name="M:DocumentService.Controllers.DokumentController.UpdateDokument(DocumentService.Models.DokumentModel.DokumentUpdateDto)">
+            <summary>
+            Azuriranje dokumenta
+            </summary>
+            <param name="dokument"></param>
+            <returns></returns>
+            <response code="400">Dokument koji se ažurira nije pronađen</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja dokumenta</response>
+        </member>
+        <member name="M:DocumentService.Controllers.DokumentController.DeleteDokument(System.Guid)">
+            <summary>
+            Brisanje dokumenta
+            </summary>
+            <param name="dokumentId"></param>
+            <returns></returns>
+            <response code="404">Nije pronađen dokument za brisanje</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja dokumenta</response>
+        </member>
+        <member name="M:DocumentService.Controllers.DokumentController.GetDokumentOptions">
+            <summary>
+            Vraca opcije za rad sa dokumentima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.GetAllTip">
+            <response code="200">Vraća dokumente</response>
+            <response code="500">Došlo je do greške na serveru</response>
+            
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.GetTipByID(System.Guid)">
+            <summary>
+            Vracanje tipova po id-ju
+            </summary>
+            <param name="tipID"></param>
+            <returns></returns>
+            <response code="200">Vraća dokument po id-ju</response>
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.CreateTipDokumenta(DocumentService.Models.TipDokumentaModel.TipDokumentaCreationDto)">
+             <summary>
+             Kreiranje tipa
+             </summary>
+             <param name="tip">Model tipa</param>
+             <returns></returns>
+            <response code="200">Vraća kreirani tip</response>
+             <response code="500">Došlo je do greške na serveru prilikom kreiranja tipa</response>
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.UpdateTipDokumenta(DocumentService.Models.TipDokumentaModel.TipDokumentaUpdateDto)">
+            <summary>
+            Azuriranje tipa
+            </summary>
+            <param name="tip"></param>
+            <returns></returns>
+            <response code="400">Dokument koji se ažurira nije pronađen</response>
+            <response code="500">Došlo je do greške na serveru prilikom ažuriranja dokumenta</response>
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.DeleteTipDokumenta(System.Guid)">
+            <summary>
+            Brisanje tipa
+            </summary>
+            <param name="tipID"></param>
+            <returns></returns>
+            <response code="404">Nije pronađen dokument za brisanje</response>
+            <response code="500">Došlo je do greške na serveru prilikom brisanja dokumenta</response>
+        </member>
+        <member name="M:DocumentService.Controllers.TipDokumentaController.GetTipDokumentaOptions">
+            <summary>
+            Vraca opcije za rad sa tipovima
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.ZavodniBroj">
+            <summary>
+            Zavodni broj dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke za dokument
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.Dokument.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.ZavodniBroj">
+            <summary>
+            Zavodni broj
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.Datum">
+            <summary>
+            Datum
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.DokumentConfirmation.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.TipDokumentaEntity.TipDokumentaConfirmation.TipDokumentaID">
+            <summary>
+            Id tipa dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.TipDokumentaEntity.TipDokumentaConfirmation.TipDokumenta">
+            <summary>
+            Tip dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.TipDokumentaEntity.TipDokumentaConfirmation.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.TipDokumentaEntity.TipDokumentaE.TipDokumenta">
+            <summary>
+            Tip dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Entities.TipDokumentaEntity.TipDokumentaE.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.ZavodniBroj">
+            <summary>
+            Zavodni broj dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke za dokument
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentConfirmationDto.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.ZavodniBroj">
+            <summary>
+            Zavodni broj dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke za dokument
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentCreationDto.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.ZavodniBroj">
+            <summary>
+            Zavodni broj dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke za dokument
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentModel.DokumentUpdateDto.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.ZavodniBroj">
+            <summary>
+            Zavodni broj dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.DatumDonosenjaOdluke">
+            <summary>
+            Datum donosenja odluke za dokument
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.DokumentDto.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaConfirmationDto.TipDokumentaID">
+            <summary>
+            Id tipa dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaConfirmationDto.TipDokumenta">
+            <summary>
+            Tip dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaConfirmationDto.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaCreationDto.TipDokumentaID">
+            <summary>
+            Id tipa dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaCreationDto.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaDto.TipDokumentaID">
+            <summary>
+            Id tipa dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaDto.TipDokumenta">
+            <summary>
+            Tip dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaDto.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaUpdateDto.TipDokumentaID">
+            <summary>
+            Id tipa dokumenta
+            </summary>
+        </member>
+        <member name="P:DocumentService.Models.TipDokumentaModel.TipDokumentaUpdateDto.StatusDokumenta">
+            <summary>
+            Status dokumenta
+            </summary>
+        </member>
+    </members>
+</doc>
