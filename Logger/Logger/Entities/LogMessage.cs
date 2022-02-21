@@ -8,7 +8,6 @@ namespace Logger.Entities
     public class LogMessage
     {
         public DateTime DateTime { get; set; }
-        public string About { get; set; }
         public string HttpMethod { get; set; }
 
         public string ServiceName { get; set; }
