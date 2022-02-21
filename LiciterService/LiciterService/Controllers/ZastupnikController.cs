@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/zastupnik")]
 
@@ -116,8 +116,9 @@ namespace LiciterService.Controllers
                 {
                     return NotFound();
                 }
-                Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
-                mapper.Map(zastupnikEntity, oldZastupnik);
+                //Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
+                //mapper.Map(zastupnikEntity, oldZastupnik);
+                mapper.Map(zastupnik,oldZastupnik);
                 zastupnikRepository.SaveChanges();
                 return Ok(mapper.Map<ZastupnikDto>(oldZastupnik));
             }

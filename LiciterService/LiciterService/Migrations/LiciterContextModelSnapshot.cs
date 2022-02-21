@@ -71,13 +71,17 @@ namespace LiciterService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ImeLicitera")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("KupacId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PrezimeLicitera")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid?>("ZastupnikId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("LiciterId");
+
+                    b.HasIndex("KupacId");
+
+                    b.HasIndex("ZastupnikId");
 
                     b.ToTable("Liciteri");
 
@@ -85,14 +89,14 @@ namespace LiciterService.Migrations
                         new
                         {
                             LiciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                            ImeLicitera = "Nikola",
-                            PrezimeLicitera = "Tesla"
+                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66")
                         },
                         new
                         {
                             LiciterId = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
-                            ImeLicitera = "Mihajlo",
-                            PrezimeLicitera = "Pupin"
+                            KupacId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
                         });
                 });
 
@@ -144,12 +148,27 @@ namespace LiciterService.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LiciterService.Entities.Liciter", b =>
+                {
+                    b.HasOne("LiciterService.Entities.Kupac", "Kupac")
+                        .WithMany()
+                        .HasForeignKey("KupacId");
+
+                    b.HasOne("LiciterService.Entities.Zastupnik", "Zastupnik")
+                        .WithMany()
+                        .HasForeignKey("ZastupnikId");
+
+                    b.Navigation("Kupac");
+
+                    b.Navigation("Zastupnik");
+                });
+
             modelBuilder.Entity("LiciterService.Entities.Zastupnik", b =>
                 {
                     b.HasOne("LiciterService.Entities.Kupac", "Kupac")
                         .WithMany("Zastupnici")
                         .HasForeignKey("KupacId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Kupac");

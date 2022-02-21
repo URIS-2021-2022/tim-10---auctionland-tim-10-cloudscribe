@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace LiciterService.Entities
 {
     public class Zastupnik
+
     {
-        [Key] 
+        [Key]
         public Guid ZastupnikId { get; set; }
         public string Jmbg { get; set; }
         public string BrojPasosa { get; set; }

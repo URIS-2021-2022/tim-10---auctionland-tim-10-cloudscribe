@@ -22,17 +22,29 @@ namespace LiciterService.Entities
 
        protected override void OnModelCreating(ModelBuilder builder)
         {
+            
+            builder.Entity<Zastupnik>()
+           .HasOne<Kupac>(i => i.Kupac)
+           .WithMany(c => c.Zastupnici)
+           .IsRequired()
+           .OnDelete(DeleteBehavior.NoAction);
+
+
             builder.Entity<Liciter>().HasData(new
             {
                 LiciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                ImeLicitera="Nikola",
-                PrezimeLicitera="Tesla"
+                KupacId= Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a66")
+                //ImeLicitera="Nikola",
+                //PrezimeLicitera="Tesla"
             });
             builder.Entity<Liciter>().HasData(new
             {
                 LiciterId = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
-                ImeLicitera = "Mihajlo",
-                PrezimeLicitera = "Pupin"
+                KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
+                //ImeLicitera = "Mihajlo",
+                //PrezimeLicitera = "Pupin"
             });
 
             builder.Entity<Kupac>().HasData(new

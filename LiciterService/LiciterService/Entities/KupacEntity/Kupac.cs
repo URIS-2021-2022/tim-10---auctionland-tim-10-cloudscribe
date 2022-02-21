@@ -42,6 +42,7 @@ namespace LiciterService.Entities
         /// <summary>
         /// Jedan kupac moze da ima vise zastupnika
         /// </summary>
+ 
 
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual List<Zastupnik> Zastupnici { get; set; }

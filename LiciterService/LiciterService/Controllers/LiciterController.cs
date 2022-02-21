@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/liciter")]
 
@@ -116,8 +116,8 @@ namespace LiciterService.Controllers
                 {
                     return NotFound();
                 }
-                Liciter liciterEntity = mapper.Map<Liciter>(liciter);
-                mapper.Map(liciterEntity, oldLiciter);
+                //Liciter liciterEntity = mapper.Map<Liciter>(liciter);
+                mapper.Map(liciter, oldLiciter);
                 liciterRepository.SaveChanges();
                 return Ok(mapper.Map<LiciterDto>(oldLiciter));
             }

@@ -45,10 +45,10 @@ namespace LiciterService.Data
             return context.SaveChanges() > 0;
         }
 
-        public void UpdateZastupnik(Zastupnik zastupnik)
+        /*public void UpdateZastupnik(Zastupnik zastupnik)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
     }
 }

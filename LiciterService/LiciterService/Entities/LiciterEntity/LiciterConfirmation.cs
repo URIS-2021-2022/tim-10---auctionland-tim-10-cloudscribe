@@ -10,5 +10,8 @@ namespace LiciterService.Entities
         public Guid LiciterId { get; set; }
         public string ImeLicitera { get; set; }
         public string PrezimeLicitera { get; set; }
+
+        public Kupac Kupac { get; set; }
+        public Zastupnik Zastupnik { get; set; }
     }
 }

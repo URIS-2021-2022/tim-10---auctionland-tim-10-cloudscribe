@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/kupac")]
 
@@ -121,8 +121,8 @@ namespace LiciterService.Controllers
                 {
                     return NotFound();
                 }
-                Kupac kupacEntity = mapper.Map<Kupac>(kupac);
-                mapper.Map(kupacEntity, oldKupac);
+                //Kupac kupacEntity = mapper.Map<Kupac>(kupac);
+                mapper.Map(kupac, oldKupac);
                 kupacRepository.SaveChanges();
                 return Ok(mapper.Map<KupacDto>(oldKupac));
             }

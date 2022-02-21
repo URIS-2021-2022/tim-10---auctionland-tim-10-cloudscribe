@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiciterService.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Models
 {
-    public class LiciterCreationDto: IValidatableObject
+    public class LiciterCreationDto
     {
-        [Required(ErrorMessage = "Obavezno je uneti ime")]
+        public Guid KupacId { get; set; }
+        public Guid ZastupnikId { get; set; }
+        /*[Required(ErrorMessage = "Obavezno je uneti ime")]
         public string ImeLicitera { get; set; }
 
         [Required(ErrorMessage = "Obavezno je uneti prezime")]
@@ -22,6 +25,6 @@ namespace LiciterService.Models
                     "Liciter ne može da ima isto ime i prezime",
                     new[] { "LiciterCreationDto" });
             }
-        }
+        }*/
     }
 }
