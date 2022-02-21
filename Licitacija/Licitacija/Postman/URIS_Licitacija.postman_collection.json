@@ -13,7 +13,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
 							"type": "string"
 						}
 					]
@@ -21,12 +21,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/licitacije",
+					"raw": "http://localhost:44267/api/licitacije",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44267",
 					"path": [
 						"api",
 						"licitacije"
@@ -59,6 +59,16 @@
 		{
 			"name": "PostLicitacija",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -71,12 +81,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:44200/api/licitacije",
+					"raw": "http://localhost:44267/api/licitacije",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44267",
 					"path": [
 						"api",
 						"licitacije"
@@ -88,6 +98,16 @@
 		{
 			"name": "UpdateLicitacija",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
@@ -100,12 +120,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:44200/api/licitacije",
+					"raw": "http://localhost:44267/api/licitacije",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44267",
 					"path": [
 						"api",
 						"licitacije"
@@ -117,15 +137,25 @@
 		{
 			"name": "DeleteLicitacija",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/licitacije/74b9bf0f-39bc-48c6-10ed-08d9f45d6e4d",
+					"raw": "http://localhost:44267/api/licitacije/74b9bf0f-39bc-48c6-10ed-08d9f45d6e4d",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44267",
 					"path": [
 						"api",
 						"licitacije",
