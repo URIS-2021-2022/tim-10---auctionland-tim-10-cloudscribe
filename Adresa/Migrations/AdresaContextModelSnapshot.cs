@@ -52,18 +52,18 @@ namespace Adresa.Migrations
                             AdresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             Broj = "1",
                             DrzavaId = new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"),
-                            Mesto = "Mesto1",
-                            PostanskiBroj = 123,
-                            Ulica = "Ulica1"
+                            Mesto = "Subotica",
+                            PostanskiBroj = 24000,
+                            Ulica = "Ane Frank"
                         },
                         new
                         {
                             AdresaId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
-                            Broj = "2",
-                            DrzavaId = new Guid("c8a9ffbc-db56-46ff-a54a-948c91550189"),
-                            Mesto = "Mesto2",
-                            PostanskiBroj = 123456,
-                            Ulica = "Ulica2"
+                            Broj = "23",
+                            DrzavaId = new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"),
+                            Mesto = "Subotica",
+                            PostanskiBroj = 24000,
+                            Ulica = "Apatinska"
                         });
                 });
 
@@ -84,12 +84,12 @@ namespace Adresa.Migrations
                         new
                         {
                             DrzavaId = new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"),
-                            NazivDrzave = "Drzava1"
+                            NazivDrzave = "Srbija"
                         },
                         new
                         {
                             DrzavaId = new Guid("c8a9ffbc-db56-46ff-a54a-948c91550189"),
-                            NazivDrzave = "Drzava2"
+                            NazivDrzave = "Mađarska"
                         });
                 });
 

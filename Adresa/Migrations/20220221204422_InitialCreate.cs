@@ -44,22 +44,22 @@ namespace Adresa.Migrations
             migrationBuilder.InsertData(
                 table: "Drzave",
                 columns: new[] { "DrzavaId", "NazivDrzave" },
-                values: new object[] { new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"), "Drzava1" });
+                values: new object[] { new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"), "Srbija" });
 
             migrationBuilder.InsertData(
                 table: "Drzave",
                 columns: new[] { "DrzavaId", "NazivDrzave" },
-                values: new object[] { new Guid("c8a9ffbc-db56-46ff-a54a-948c91550189"), "Drzava2" });
+                values: new object[] { new Guid("c8a9ffbc-db56-46ff-a54a-948c91550189"), "Mađarska" });
 
             migrationBuilder.InsertData(
                 table: "Adrese",
                 columns: new[] { "AdresaId", "Broj", "DrzavaId", "Mesto", "PostanskiBroj", "Ulica" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "1", new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"), "Mesto1", 123, "Ulica1" });
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "1", new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"), "Subotica", 24000, "Ane Frank" });
 
             migrationBuilder.InsertData(
                 table: "Adrese",
                 columns: new[] { "AdresaId", "Broj", "DrzavaId", "Mesto", "PostanskiBroj", "Ulica" },
-                values: new object[] { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "2", new Guid("c8a9ffbc-db56-46ff-a54a-948c91550189"), "Mesto2", 123456, "Ulica2" });
+                values: new object[] { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "23", new Guid("170960f3-f8e0-4614-aff2-653aadf5c720"), "Subotica", 24000, "Apatinska" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Adrese_DrzavaId",
