@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace JavnoNadmetanje.Controllers
 {
     [ApiController]
-   //[Authorize]
+    [Authorize]
     [Route("api/jzop")]
     [Produces("application/json", "applciation/xml")]
     public class JZOPController : ControllerBase

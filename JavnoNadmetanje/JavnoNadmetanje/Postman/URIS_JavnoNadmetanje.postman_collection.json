@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "c23e08d0-289b-47d6-810d-b7b5a2c3ff2c",
+		"name": "URIS_JavnoNadmetanje",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JavnaLicitacija",
+			"item": [
+				{
+					"name": "GetAllJavneLicitacije",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/javneLicitacije",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"javneLicitacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetJavnaLicitacijaById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/javneLicitacije/6a411c13-a195-48f7-8dbd-67596c3973c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"javneLicitacije",
+								"6a411c13-a195-48f7-8dbd-67596c3973c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostJavnaLicitacija",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Prvi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44268/api/javneLicitacije",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"javneLicitacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateJavnaLicitacija",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"javnoNadmetanjeID\": \"dda4ee0e-74c3-45e3-4201-08d9f56b3076\",\r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Drugi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44268/api/javneLicitacije",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"javneLicitacije"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteJavnaLicitacija",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/javneLicitacije/dda4ee0e-74c3-45e3-4201-08d9f56b3076",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"javneLicitacije",
+								"dda4ee0e-74c3-45e3-4201-08d9f56b3076"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JZOP",
+			"item": [
+				{
+					"name": "GetAllJZOP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/jzop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"jzop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetJZOPByID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/jzop/6a411c13-a195-48f7-8dbd-67596c3573c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"jzop",
+								"6a411c13-a195-48f7-8dbd-67596c3573c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostJZOP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"brojJZOP\" : 1,\r\n\"opisJZOP\" : \"\", \r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44268/api/jzop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"jzop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateJZOP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"javnoNadmetanjeID\" : \"6A411C13-A195-48F7-8DBD-67596C4973C0\",\r\n    \"datum\": \"2021-05-01T09:00:00\",\r\n    \"vremePocetka\": \"2021-05-01T09:00:00\",\r\n    \"vremeKraja\": \"2021-05-01T13:59:00\",\r\n    \"pocetnaCena\": 120000,\r\n    \"izuzeto\": false,\r\n    \"tip\": 1,\r\n    \"izlicitiranaCena\": 280000,\r\n    \"katastarskaOpstina\": \"Novi Grad\",\r\n    \"periodZakupa\": 15,\r\n    \"brojUcesnika\": 25,\r\n    \"dopunaDepozita\": 5000,\r\n    \"krug\": 1,\r\n    \"status\": \"Drugi krug\",\r\n    \"etapaID\": \"1c7ea607-8ddb-493a-87fa-4bf5893e968b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:44268/api/jzop",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"jzop"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteJZOP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:44268/api/jzop/6A411C13-A195-48F7-8DBD-67596C4973C0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "44268",
+							"path": [
+								"api",
+								"jzop",
+								"6A411C13-A195-48F7-8DBD-67596C4973C0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
