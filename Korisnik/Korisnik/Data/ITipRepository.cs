@@ -10,7 +10,7 @@ namespace Korisnik.Data
     {
         List<Tip> GetTip();
         Tip GetTipById(Guid tipId);
-        Tip CreateTip(Tip tipModel);
+        
         
 
 

@@ -2,6 +2,7 @@
 using Korisnik.Data;
 using Korisnik.Entities;
 using Korisnik.Models;
+using Korisnik.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,13 +22,18 @@ namespace Korisnik.Controllers
     {
         private readonly ITipRepository tipRepository;
         private readonly LinkGenerator linkGenerator;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public TipController(ITipRepository tipRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public TipController(ITipRepository tipRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService, LoggerDto loggerDto)
         {
             this.tipRepository = tipRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "KORISNIK";
         }
 
         /// <summary>
@@ -43,12 +49,17 @@ namespace Korisnik.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<TipDto>> GetTipovi()
         {
+            loggerDto.HttpMethod = "GET";
             List<Tip> tipovi = tipRepository.GetTip();
             if (tipovi == null || tipovi.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<TipDto>>(tipovi));
         }
 
@@ -64,49 +75,20 @@ namespace Korisnik.Controllers
         [HttpGet("{tipId}")]
         public ActionResult<TipDto> GetTip(Guid tipId)
         {
+            loggerDto.HttpMethod = "GET";
             Tip tipModel = tipRepository.GetTipById(tipId);
             if (tipModel == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<TipDto>(tipModel));
         }
 
-        /// <summary>
-        /// Kreira novog korisnika
-        /// </summary>
-        /// <param name="tipp">Model tipa</param>
-        /// <returns>Potvrdu o kreiranom tipu korisnika </returns>
-        /// <remarks>
-        /// Primer zahteva za kreiranje novog tipa korisnika \
-        /// POST /api/ExamRegistration \
-        /// {     \
-        ///     "TipId": "2841defc-761e-40d8-b8a3-d3e58516dca7", \
-        ///     "TipKorisnika": "Administrator", \
-        ///}
-        /// </remarks>
-        /// <response code="200">Vraća kreirani tip</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja tipa</response>
-        [HttpPost]
-        [Consumes("application/json")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<TipDto> CreateTip([FromBody] TipDto tipp)
-        {
-            try
-            {
-                Tip tip = mapper.Map<Tip>(tipp);
-                Tip conf = tipRepository.CreateTip(tip);
-                string location = linkGenerator.GetPathByAction("GetTip", "Tip", new { tipId = conf.TipId });
-                return Created(location, mapper.Map<Tip>(conf));
-            }
-            catch
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
-
-            }
-
-        }
+       
     }
 
 

@@ -4,6 +4,7 @@ using Korisnik.Data;
 using Korisnik.Entities;
 using Korisnik.Helpers;
 using Korisnik.Models;
+using Korisnik.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,15 +27,20 @@ namespace Korisnik.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IAuthenticationHelper authenticationHelper;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public KorisnikController(IKorisnikRepository korisnikRepository, IHttpContextAccessor httpContextAccessor,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper)
+        public KorisnikController(IKorisnikRepository korisnikRepository, IHttpContextAccessor httpContextAccessor,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper, ILoggerService loggerService, LoggerDto loggerDto)
         {
             this.korisnikRepository = korisnikRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.authenticationHelper = authenticationHelper;
             this.httpContextAccessor = httpContextAccessor;
+            this.loggerService = loggerService;
+            loggerDto =  new LoggerDto();
+            loggerDto.ServiceName = "KORISNIK";
         }
         /// <summary>
         /// Vraća sve korisnike
@@ -51,13 +57,18 @@ namespace Korisnik.Controllers
        // [Authorize]
         public ActionResult<List<KorisnikDto>> GetKorisnici()
         {
+            loggerDto.HttpMethod = "GET";
             var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnik();
             if (korisnici == null || korisnici.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
         }
 
@@ -73,11 +84,16 @@ namespace Korisnik.Controllers
         [HttpGet("{korisnikId}")]
         public ActionResult<KorisnikDto> GetKorisnik(Guid korisnikId)
         {
+            loggerDto.HttpMethod = "GET";
             Korisnikk korisnikModel = korisnikRepository.GetKorisnikById(korisnikId);
             if (korisnikModel == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<KorisnikDto>(korisnikModel));
         }
         /// <summary>
@@ -93,12 +109,17 @@ namespace Korisnik.Controllers
         
         public ActionResult<KorisnikDto> GetKorisnikByKomisija(Guid komisijaId)
         {
+            loggerDto.HttpMethod = "GET";
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnikByIdKomisija(komisijaId);
             if (korisnici == null || korisnici.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
 
         }
@@ -108,11 +129,16 @@ namespace Korisnik.Controllers
         [HttpGet("/tip/{tipkorisnika}")]
         public ActionResult<KorisnikDto> GetKorisnikByTip(string tipKorisnika)
         {
+            loggerDto.HttpMethod = "GET";
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnikByImeTipa(tipKorisnika);
             if(korisnici == null || korisnici.Count==0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
         }
         /// <summary>
@@ -132,17 +158,24 @@ namespace Korisnik.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 Korisnikk korisnikModel = korisnikRepository.GetKorisnikById(korisnikId);
                 if(korisnikModel== null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 korisnikRepository.DeleteKorisnik(korisnikId);
                 korisnikRepository.SaveChanges();
-                return Ok("Uspesno obrisano!");
+                loggerDto.Response = "204 NO CONTENT";
+                loggerService.CreateLog(loggerDto);
+                return NoContent();
             }
             catch
             {
+                loggerDto.Response = "500 SERVER ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
 
             }
@@ -161,7 +194,7 @@ namespace Korisnik.Controllers
         ///     "KorisnikIme": "Teodora", \
         ///     "KorisnikPrezime": "Jovanovic", \
         ///     "TipId" : "4563cf92-b8d0-4574-9b40-a725f884da36", \ 
-        ///     "KomisijaId" : "null", \ 
+        ///     "KomisijaId" : "00000000-0000-0000-0000-000000000000", \ 
         ///}
         /// </remarks>
         /// <response code="200">Vraća kreiranog korisnika</response>
@@ -175,14 +208,19 @@ namespace Korisnik.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
                 Korisnikk korisnik = mapper.Map<Korisnikk>(korisnikk);
                 authenticationHelper.CreateHash(korisnik);
                 KorisnikConfirmation confirmation = korisnikRepository.CreateKorisnik(korisnik);
                 string location = linkGenerator.GetPathByAction("GetKorisnik", "Korisnik", new { korisnikId = confirmation.KorisnikId });
+                loggerDto.Response = "201 CREATED";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<KorisnikConfirmationDto>(confirmation));
             }
             catch(Exception e)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
 
             }
@@ -211,19 +249,26 @@ namespace Korisnik.Controllers
 
             try
             {
+                loggerDto.HttpMethod = "PUT";
                 var oldKorisnik = korisnikRepository.GetKorisnikById(korisnik.KorisnikId);
                 if (oldKorisnik == null)
                 {
+                    loggerDto.Response = "401 NOT FOUND";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
               //  var korisnikEntity = mapper.Map<KorisnikUpdateDto>(oldKorisnik);
                 mapper.Map(korisnik, oldKorisnik);
                 korisnikRepository.SaveChanges();
+                loggerDto.Response = "200 OK";
+                loggerService.CreateLog(loggerDto);
                 return Ok(mapper.Map<KorisnikConfirmationDto>(oldKorisnik));
 
             }
             catch(Exception e)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
 
 

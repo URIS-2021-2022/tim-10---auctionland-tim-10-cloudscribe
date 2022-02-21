@@ -23,6 +23,7 @@ using System.Reflection;
 using System.IO;
 using Korisnik.Entities;
 using Microsoft.EntityFrameworkCore;
+using Korisnik.ServiceCalls;
 
 namespace Korisnik
 {
@@ -96,22 +97,7 @@ namespace Korisnik
 
             
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());//konfiguracija po kojoj cemo mapirati 
-            /*  services.AddAuthentication(options =>
-              {
-                  options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                  options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-              })
-              .AddJwtBearer(options =>
-              {
-                  options.SaveToken = true;
-                  options.TokenValidationParameters = new TokenValidationParameters
-                  {
-                      ValidateIssuerSigningKey = true,
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
-                      ValidateAudience = false,
-                      ValidateIssuer = false,
-                  };
-              });*/
+            
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -137,6 +123,7 @@ namespace Korisnik
             services.AddScoped<IKomisijaRepository, KomisijaRepository>();
             services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ILoggerService, LoggerService>();
             services.AddSwaggerGen(setupAction =>
             {
 
@@ -149,8 +136,8 @@ namespace Korisnik
                         Description = "Pomoću ovog API-ja može da se vrši prijava ispita, modifikacija prijava ispita kao i pregled kreiranih prijava ispita.",
                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
                        {
-                           Name = "Marko Marković",
-                           Email = "marko@mail.com",
+                           Name = "Teodora Jovanovic",
+                           Email = "teajovanovic92@yahoo.com",
                            Url = new Uri("http://www.ftn.uns.ac.rs/")
                        },
                        License = new Microsoft.OpenApi.Models.OpenApiLicense

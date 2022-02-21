@@ -53,7 +53,7 @@ namespace Korisnik.Helpers
             var token = new JwtSecurityToken(configuration["Jwt:Issuer"],
                                              configuration["Jwt:Issuer"],
                                               new List<Claim>() { new Claim(ClaimTypes.Role, tip) },
-                                             expires: DateTime.Now.AddMinutes(120),
+                                             expires: DateTime.Now.AddMinutes(600),
                                              signingCredentials: credentials) ;
 
             return new JwtSecurityTokenHandler().WriteToken(token);

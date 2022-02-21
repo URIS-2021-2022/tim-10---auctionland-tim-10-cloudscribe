@@ -111,7 +111,7 @@
                  "KorisnikIme": "Teodora", \
                  "KorisnikPrezime": "Jovanovic", \
                  "TipId" : "4563cf92-b8d0-4574-9b40-a725f884da36", \ 
-                 "KomisijaId" : "null", \ 
+                 "KomisijaId" : "00000000-0000-0000-0000-000000000000", \ 
             }
              </remarks>
              <response code="200">Vraća kreiranog korisnika</response>
@@ -148,23 +148,6 @@
             <param name="tipId">ID tipa</param>
             <returns></returns>
             <response code="200">Vraća traženi tip</response>
-        </member>
-        <member name="M:Korisnik.Controllers.TipController.CreateTip(Korisnik.Models.TipDto)">
-             <summary>
-             Kreira novog korisnika
-             </summary>
-             <param name="tipp">Model tipa</param>
-             <returns>Potvrdu o kreiranom tipu korisnika </returns>
-             <remarks>
-             Primer zahteva za kreiranje novog tipa korisnika \
-             POST /api/ExamRegistration \
-             {     \
-                 "TipId": "2841defc-761e-40d8-b8a3-d3e58516dca7", \
-                 "TipKorisnika": "Administrator", \
-            }
-             </remarks>
-             <response code="200">Vraća kreirani tip</response>
-             <response code="500">Došlo je do greške na serveru prilikom kreiranja tipa</response>
         </member>
         <member name="M:Korisnik.Data.UserMockRepository.UserWithCredentialsExists(System.String,System.String)">
             <summary>
