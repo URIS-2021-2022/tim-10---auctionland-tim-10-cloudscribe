@@ -1,7 +1,10 @@
+﻿using JavnoNadmetanje.Data;
+using JavnoNadmetanje.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,7 +12,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace JavnoNadmetanje
@@ -28,10 +33,52 @@ namespace JavnoNadmetanje
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            //{
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,
+            //        ValidateIssuerSigningKey = true,
+            //        ValidIssuer = Configuration["Jwt:Issuer"],
+            //        ValidAudience = Configuration["Jwt:Issuer"],
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+            //    };
+            //});
+
+            services.AddSwaggerGen(setupAction =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JavnoNadmetanje", Version = "v1" });
+                setupAction.SwaggerDoc("JavnoNadmetanjeOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "Javno nadmetanje API",
+                    Version = "v1",
+                    Description = "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled javnih nadmetanja.",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Jelena Stevanovic",
+                        Email = "stevanovic.jelena@uns.ac.rs"
+                    }
+                });
+
+                var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                setupAction.IncludeXmlComments(xmlCommentsPath);
             });
+
+            services.AddControllers(setup => {
+                setup.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters();//podrzavanje xml-a
+
+            services.AddScoped<IJavnoNadmetanjeRepository, JavnoNadmetanjeRepository>();
+            services.AddScoped<IJavnaLicitacijaRepository, JavnaLicitacijaRepository>();
+            services.AddScoped<IJZOPRepository, JZOPRepository>();
+            services.AddScoped<IEtapaRepository, EtapaRepository>();
+            services.AddScoped<IKorakCeneRepository, KorakCeneRepository>();
+            services.AddDbContextPool<JavnoNadmetanjeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("JavnoNadmetanjeDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +88,7 @@ namespace JavnoNadmetanje
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JavnoNadmetanje v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/JavnoNadmetanjeOpenApiSpecification/swagger.json", "JavnoNadmetanje v1"));
             }
 
             app.UseHttpsRedirection();
@@ -49,6 +96,8 @@ namespace JavnoNadmetanje
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
