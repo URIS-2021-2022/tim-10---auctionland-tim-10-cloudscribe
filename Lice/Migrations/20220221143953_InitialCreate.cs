@@ -60,12 +60,20 @@ namespace Lice.Migrations
             migrationBuilder.InsertData(
                 table: "Lica",
                 columns: new[] { "liceId", "Discriminator", "brojRacuna", "brojTelefona1", "brojTelefona2", "email", "ime", "prezime", "prioritetId" },
-                values: new object[] { new Guid("71b99b68-8e8f-4cc3-b8d2-d6badc704221"), "FizickoLiceEntity", "brRac1", "123456", "789456", "email1", "Ime1", "Prezime1", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") });
+                values: new object[,]
+                {
+                    { new Guid("65f1a8da-433f-42d1-82f6-6b771ddde854"), "FizickoLiceEntity", "80045875687", "062586654", "061582236", "mmarkovic@gmail.com", "Marko", "Marković", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") },
+                    { new Guid("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab"), "FizickoLiceEntity", "8008465687", "0665826695", "0656258965", "nnikolic@gmail.com", "Nikola", "Nikolić", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") }
+                });
 
             migrationBuilder.InsertData(
                 table: "Lica",
                 columns: new[] { "liceId", "Discriminator", "brojRacuna", "brojTelefona1", "brojTelefona2", "email", "faks", "naziv", "prioritetId" },
-                values: new object[] { new Guid("25499084-4d50-412b-9640-1ab07af33d4d"), "PravnoLiceEntity", "brRac2", "456123", "45214", "email2", 125, "PravnoLice1", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") });
+                values: new object[,]
+                {
+                    { new Guid("529351b3-2c8c-41c6-abba-aa5feb564d06"), "PravnoLiceEntity", "800458757", "0695784105", "0625486214", "masterplast@gmail.com", 24601785, "Masterplast", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") },
+                    { new Guid("d05f182d-7ef0-484b-9045-3f0451605cdb"), "PravnoLiceEntity", "8004574587", "0645289956", "0625482685", "pannonglobal@gmail.com", 24601785, "Pannonglobal", new Guid("26797103-3a18-4750-9f27-33416e6e30d4") }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lica_prioritetId",

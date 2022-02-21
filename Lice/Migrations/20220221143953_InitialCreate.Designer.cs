@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lice.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20220217231755_InitialCreate")]
+    [Migration("20220221143953_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,14 +106,25 @@ namespace Lice.Migrations
                     b.HasData(
                         new
                         {
-                            liceId = new Guid("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
-                            brojRacuna = "brRac1",
-                            brojTelefona1 = "123456",
-                            brojTelefona2 = "789456",
-                            email = "email1",
+                            liceId = new Guid("65f1a8da-433f-42d1-82f6-6b771ddde854"),
+                            brojRacuna = "80045875687",
+                            brojTelefona1 = "062586654",
+                            brojTelefona2 = "061582236",
+                            email = "mmarkovic@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
-                            ime = "Ime1",
-                            prezime = "Prezime1"
+                            ime = "Marko",
+                            prezime = "Marković"
+                        },
+                        new
+                        {
+                            liceId = new Guid("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab"),
+                            brojRacuna = "8008465687",
+                            brojTelefona1 = "0665826695",
+                            brojTelefona2 = "0656258965",
+                            email = "nnikolic@gmail.com",
+                            prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
+                            ime = "Nikola",
+                            prezime = "Nikolić"
                         });
                 });
 
@@ -132,14 +143,25 @@ namespace Lice.Migrations
                     b.HasData(
                         new
                         {
-                            liceId = new Guid("25499084-4d50-412b-9640-1ab07af33d4d"),
-                            brojRacuna = "brRac2",
-                            brojTelefona1 = "456123",
-                            brojTelefona2 = "45214",
-                            email = "email2",
+                            liceId = new Guid("529351b3-2c8c-41c6-abba-aa5feb564d06"),
+                            brojRacuna = "800458757",
+                            brojTelefona1 = "0695784105",
+                            brojTelefona2 = "0625486214",
+                            email = "masterplast@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
-                            faks = 125,
-                            naziv = "PravnoLice1"
+                            faks = 24601785,
+                            naziv = "Masterplast"
+                        },
+                        new
+                        {
+                            liceId = new Guid("d05f182d-7ef0-484b-9045-3f0451605cdb"),
+                            brojRacuna = "8004574587",
+                            brojTelefona1 = "0645289956",
+                            brojTelefona2 = "0625482685",
+                            email = "pannonglobal@gmail.com",
+                            prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
+                            faks = 24601785,
+                            naziv = "Pannonglobal"
                         });
                 });
 

@@ -101,7 +101,6 @@ namespace Lice
                 });
             }
 
-            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 

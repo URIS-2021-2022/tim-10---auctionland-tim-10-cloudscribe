@@ -28,11 +28,11 @@
              {   \
                  "brojTelefona1": "062535856",
                  "brojTelefona2": "061258457",
-                 "email": "fizicko2@gmail.com",
-                 "brojRacuna": "brRac3",
+                 "email": "mmarkovic@gmail.com",
+                 "brojRacuna": "80045875687",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-                 "ime": "Ime3",
-                 "prezime": "Prezime3"
+                 "ime": "Marko",
+                 "prezime": "Marković"
              }
             </remarks>
              <returns></returns>
@@ -49,11 +49,11 @@
                  "liceId": "",
                  "brojTelefona1": "062535856",
                  "brojTelefona2": "061258457",
-                 "email": "fizicko2@gmail.com",
-                 "brojRacuna": "brRac3",
+                 "email": "nnikolic2@gmail.com",
+                 "brojRacuna": "8008465687",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-                 "ime": "Ime3",
-                 "prezime": "Prezime3"
+                 "ime": "Nikola",
+                 "prezime": "Nikolić"
              }
             </remarks>
              <returns></returns>
@@ -95,11 +95,11 @@
              {   \
                  "brojTelefona1": "064855446",
                  "brojTelefona2": "066985684",
-                 "email": "email6",
-                 "brojRacuna": "brRac6",
+                 "email": "masterplast@gmail.com",
+                 "brojRacuna": "800458757",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-                 "naziv": "PravnoLice3",
-                 "faks": 125687
+                 "naziv": "Masterplast",
+                 "faks": 024601785
              }
             </remarks>
              <returns></returns>
@@ -116,11 +116,11 @@
                  "liceId": "",
                  "brojTelefona1": "064855446",
                  "brojTelefona2": "066985684",
-                 "email": "email6",
-                 "brojRacuna": "brRac6",
+                 "email": "masterplast@gmail.com",
+                 "brojRacuna": "800458757",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
-                 "naziv": "PravnoLice3",
-                 "faks": 125687
+                 "naziv": "Masterplast",
+                 "faks": 024601785
              }
             </remarks>
              <returns></returns>

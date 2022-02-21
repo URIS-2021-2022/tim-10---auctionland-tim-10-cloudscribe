@@ -51,7 +51,7 @@ namespace Lice.Entities
             builder.Entity<FizickoLiceEntity>()
                 .HasData(new
                 {
-                    liceId = Guid.Parse("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
+                    liceId = Guid.Parse("65f1a8da-433f-42d1-82f6-6b771ddde854"),
                     brojTelefona1 = "062586654",
                     brojTelefona2 = "061582236",
                     email = "mmarkovic@gmail.com",
@@ -63,7 +63,7 @@ namespace Lice.Entities
             builder.Entity<FizickoLiceEntity>()
                 .HasData(new
                 {
-                    liceId = Guid.Parse("71b99b68-8e8f-4cc3-b8d2-d6badc704221"),
+                    liceId = Guid.Parse("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab"),
                     brojTelefona1 = "0665826695",
                     brojTelefona2 = "0656258965",
                     email = "nnikolic@gmail.com",
@@ -75,7 +75,7 @@ namespace Lice.Entities
             builder.Entity<PravnoLiceEntity>()
                 .HasData(new
                 {
-                    liceId = Guid.Parse("25499084-4d50-412b-9640-1ab07af33d4d"),
+                    liceId = Guid.Parse("529351b3-2c8c-41c6-abba-aa5feb564d06"),
                     brojTelefona1 = "0695784105",
                     brojTelefona2 = "0625486214",
                     email = "masterplast@gmail.com",
@@ -87,7 +87,7 @@ namespace Lice.Entities
             builder.Entity<PravnoLiceEntity>()
                 .HasData(new
                 {
-                    liceId = Guid.Parse("25499084-4d50-412b-9640-1ab07af33d4d"),
+                    liceId = Guid.Parse("d05f182d-7ef0-484b-9045-3f0451605cdb"),
                     brojTelefona1 = "0645289956",
                     brojTelefona2 = "0625482685",
                     email = "pannonglobal@gmail.com",
