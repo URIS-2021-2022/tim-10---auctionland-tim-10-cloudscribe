@@ -8,15 +8,25 @@
 		{
 			"name": "Get",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/zasticenazona",
+					"raw": "http://localhost:44299/api/zasticenazona",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44299",
 					"path": [
 						"api",
 						"zasticenazona"
@@ -28,19 +38,29 @@
 		{
 			"name": "Get by ID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/zasticenazona/6a411c13-a195-48f7-8dbd-67596c3974c0",
+					"raw": "http://localhost:44299/api/zasticenazona/af2d6f85-d341-4433-8f21-3f28f816a79e",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44299",
 					"path": [
 						"api",
 						"zasticenazona",
-						"6a411c13-a195-48f7-8dbd-67596c3974c0"
+						"af2d6f85-d341-4433-8f21-3f28f816a79e"
 					]
 				}
 			},
@@ -49,11 +69,21 @@
 		{
 			"name": "Post",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n    \"brojZone\": 3\r\n}",
+					"raw": "{\r\n\r\n    \"brojZone\": 5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -61,12 +91,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:44200/api/zasticenazona",
+					"raw": "http://localhost:44299/api/zasticenazona",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44299",
 					"path": [
 						"api",
 						"zasticenazona"
@@ -78,15 +108,34 @@
 		{
 			"name": "Put",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"zasticenZonaId\": \"eef1c547-3195-4e1d-b3a9-08d9f470a3f1\",\r\n        \"brojZone\": 6\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:44200/api/zasticenazona",
+					"raw": "http://localhost:44299/api/zasticenazona",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44299",
 					"path": [
 						"api",
 						"zasticenazona"
@@ -98,19 +147,29 @@
 		{
 			"name": "Delete",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/zasticenazona/6a411c13-a195-48f7-8dbd-67596c3974c0",
+					"raw": "http://localhost:44299/api/zasticenazona/eef1c547-3195-4e1d-b3a9-08d9f470a3f1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44200",
+					"port": "44299",
 					"path": [
 						"api",
 						"zasticenazona",
-						"6a411c13-a195-48f7-8dbd-67596c3974c0"
+						"eef1c547-3195-4e1d-b3a9-08d9f470a3f1"
 					]
 				}
 			},
