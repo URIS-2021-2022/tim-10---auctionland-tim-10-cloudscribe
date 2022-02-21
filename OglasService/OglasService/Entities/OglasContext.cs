@@ -19,6 +19,11 @@ namespace OglasService.Entities
         public DbSet<SluzbeniList> SluzbeniList { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+           /*builder.Entity<Oglas>()
+          .HasOne(i => i.SluzbeniList)
+          .WithOne(c => c.Oglas)
+          .IsRequired()
+          .OnDelete(DeleteBehavior.NoAction);*/
 
             builder.Entity<SluzbeniList>().HasData(new
             {

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace OglasService.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/oglas")]
     public class OglasController:ControllerBase
@@ -113,8 +114,8 @@ namespace OglasService.Controllers
                 {
                     return NotFound();
                 }
-                Oglas oglasEntity = mapper.Map<Oglas>(oglas);
-                mapper.Map(oglasEntity, oldOglas);
+                //Oglas oglasEntity = mapper.Map<Oglas>(oglas);
+                mapper.Map(oglas, oldOglas);
                 oglasRepository.SaveChanges();
                 return Ok(mapper.Map<OglasDto>(oldOglas));
             }

@@ -10,7 +10,7 @@ using OglasService.Entities;
 namespace OglasService.Migrations
 {
     [DbContext(typeof(OglasContext))]
-    [Migration("20220220185834_first")]
+    [Migration("20220221160210_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

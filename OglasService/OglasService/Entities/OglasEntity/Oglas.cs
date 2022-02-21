@@ -15,7 +15,6 @@ namespace OglasService.Entities
 
 
         [ForeignKey("SluzbeniList")]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid SluzbeniListId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]

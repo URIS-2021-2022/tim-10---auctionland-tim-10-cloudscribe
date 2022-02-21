@@ -7,7 +7,7 @@ namespace OglasService.Models
 {
     public class OglasCreationDto
     {
-
         public string TekstOglasa { get; set; }
+        public Guid SluzbeniListId { get; set; }
     }
 }
