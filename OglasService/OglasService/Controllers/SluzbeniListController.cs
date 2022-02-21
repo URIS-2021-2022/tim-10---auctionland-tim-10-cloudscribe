@@ -72,6 +72,13 @@ namespace OglasService.Controllers
         /// </summary>
         /// <param name="sluzbeniList"></param>
         /// <returns></returns>
+        /// Primer zahteva za kreiranje sluzbenog lista
+        ///  POST /api/sluzbaniList \
+        ///  {
+        ///      "opstina": "Temerin",
+        ///      "brojSluzbenogLista": 15,
+        ///      "datumIzdavanja": "2021-05-15T09:00:00"
+        ///    }
         /// <response code="200">Vraća kreiran sluzbeni list</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja sluzbenog lista</response>
         [HttpPost]
@@ -98,9 +105,17 @@ namespace OglasService.Controllers
         /// </summary>
         /// <param name="sluzbeniList"></param>
         /// <returns></returns>
-        /// <response code="200">Vraća ažurirani sluzbeni list</response>
-        /// <response code="400">Sluzbeni list koji se ažurira nije pronađen</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja sluzbenog lista</response>
+        /// Primer zahteva za azuriranje novog sluzbnog lista
+        ///  PUT /api/sluzbaniList \
+        ///  {
+       ///     "sluzbeniListId": "b5a32a14-b173-47ba-455b-08d9f553d0b2",
+       ///     "opstina": "Subotica",
+       ///     "brojSluzbenogLista": 5,
+       ///     "datumIzdavanja": "2021-05-15T09:00:00"
+       ///     }
+       /// <response code="200">Vraća ažurirani sluzbeni list</response>
+       /// <response code="400">Sluzbeni list koji se ažurira nije pronađen</response>
+       /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja sluzbenog lista</response>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]

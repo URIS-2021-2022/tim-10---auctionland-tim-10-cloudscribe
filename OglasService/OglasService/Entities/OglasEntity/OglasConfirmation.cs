@@ -7,7 +7,14 @@ namespace OglasService.Entities
 {
     public class OglasConfirmation
     {
+        /// <summary>
+        /// ID oglas
+        /// </summary>
         public Guid OglasId { get; set; }
+
+        /// <summary>
+        /// Tekst oglasa
+        /// </summary>
         public string TekstOglasa { get; set; }
     }
 }

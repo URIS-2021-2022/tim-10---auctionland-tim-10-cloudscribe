@@ -9,11 +9,15 @@ namespace OglasService.Models
 {
     public class OglasDto
     {
+        /// <summary>
+        /// ID oglasa
+        /// </summary>
         public Guid OglasId { get; set; }
-        public string TekstOglasa { get; set; }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        //public Guid SluzbeniListId { get; set; }
+        /// <summary>
+        /// Tekst oglasa
+        /// </summary>
+        public string TekstOglasa { get; set; }
         public virtual SluzbeniList SluzbeniList { get; set; }
         
     }

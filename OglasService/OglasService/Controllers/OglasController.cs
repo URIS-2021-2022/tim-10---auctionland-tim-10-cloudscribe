@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OglasService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/oglas")]
     public class OglasController:ControllerBase
@@ -72,8 +72,14 @@ namespace OglasService.Controllers
         /// </summary>
         /// <param name="oglas"></param>
         /// <returns></returns>
-        /// <response code="200">Vraća kreirani oglas</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja oglasa</response>
+        /// Primer zahteva za kreiranje novog oglasa
+        ///  POST /api/oglas \
+        ///  {
+        ///    "tekstOglasa": "Javno nadmetanje je u nedelju",
+        ///    "sluzbeniListId": "6a411c13-a195-48f7-8dbd-67596c397475"
+       ///    }
+       /// <response code="200">Vraća kreirani oglas</response>
+       /// <response code="500">Došlo je do greške na serveru prilikom kreiranja oglasa</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -98,6 +104,13 @@ namespace OglasService.Controllers
         /// </summary>
         /// <param name="oglas"></param>
         /// <returns></returns>
+        /// Primer zahteva za azuriranje novog oglasa
+        ///  PUT /api/oglas \
+        ///  {
+        ///"oglasId": "15816081-a068-4ef1-896c-08d9f553aebe",
+        ///"tekstOglasa": "radi",
+        ///"sluzbeniListId": "6a411c13-a195-48f7-8dbd-67596c397475"
+        ///} 
         /// <response code="200">Vraća ažurirani oglas</response>
         /// <response code="400">Oglas koji se ažurira nije pronađen</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja oglasa</response>

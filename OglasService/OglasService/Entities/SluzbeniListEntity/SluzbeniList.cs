@@ -9,15 +9,27 @@ namespace OglasService.Entities
 {
     public class SluzbeniList
     {
+        /// <summary>
+        /// ID sluzbeni list 
+        /// </summary>
         [Key]
         public Guid SluzbeniListId { get; set; }
+
+        /// <summary>
+        /// Naziv opstine
+        /// </summary>
         public string Opstina { get; set; }
+
+        /// <summary>
+        /// Broj sluzbenog lista
+        /// </summary>
         public int BrojSluzbenogLista { get; set; }
+
+        /// <summary>
+        /// Datum izdavanja sluzbenog lista
+        /// </summary>
         public DateTime? DatumIzdavanja { get; set; }
 
-        //[System.Text.Json.Serialization.JsonIgnore]
-        //public virtual List<Oglas> Oglas { get; set; }
-        //public virtual Oglas Oglasi { get; set; }
     }
 
 }

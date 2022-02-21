@@ -8,11 +8,26 @@ namespace OglasService.Models
 {
     public class SluzbeniListDto
     {
+        /// <summary>
+        /// ID sluzbenog lista
+        /// </summary>
         public Guid SluzbeniListId { get; set; }
+
+        /// <summary>
+        /// Naziv opstine
+        /// </summary>
         public string Opstina { get; set; }
+
+        /// <summary>
+        /// Broj sluzbenog lista
+        /// </summary>
         public int BrojSluzbenogLista { get; set; }
+
+        /// <summary>
+        /// Datum izdavanja
+        /// </summary>
         public DateTime? DatumIzdavanja { get; set; }
 
-       // public Oglas Oglasi { get; set; }
+
     }
 }
