@@ -27,7 +27,9 @@ namespace Parcela.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+
+            modelBuilder.Entity<ParcelaEntity>().HasMany<DeoParceleEntity>(i => i.DeoParcele).WithOne(c => c.Parcela).OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<ParcelaEntity>()
             .HasData(new
             {
@@ -42,7 +44,8 @@ namespace Parcela.Entities
                 Obradivost = "Obradivo",
                 ZasticenaZonaId = Guid.Parse("AF2D6F85-D341-4433-8F21-3F28F816A79E"),
                 OblikSvojine = "Drzavno",
-                Odvodnjavanje = "Podvnodno"
+                Odvodnjavanje = "Podvnodno",
+                DeoParceleId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0")
 
             });
 

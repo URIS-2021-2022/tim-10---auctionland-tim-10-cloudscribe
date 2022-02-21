@@ -31,11 +31,12 @@ namespace Parcela.Entities.DeoParcele
         /// <summary>
         /// ID stranog ključa parcele
         /// </summary>
-        [ForeignKey("Parcela")]
+        [ForeignKey("ParcelaEntity")]
         public Guid ParcelaId { get; set; }
         /// <summary>
-        /// Entitet Parcele
+        /// Lista Entiteta Parcele
         /// </summary>
+        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ParcelaEntity Parcela { get; set; }
         #endregion 
     }

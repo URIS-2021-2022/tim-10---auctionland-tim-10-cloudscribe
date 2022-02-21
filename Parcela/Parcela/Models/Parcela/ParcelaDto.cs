@@ -1,4 +1,5 @@
-﻿using Parcela.Entities.KatastarskaOpstina;
+﻿using Parcela.Entities.DeoParcele;
+using Parcela.Entities.KatastarskaOpstina;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,6 +79,10 @@ namespace Parcela.Models.Parcela
         /// </summary>
         public string Odvodnjavanje { get; set; }
 
+        /// <summary>
+        /// Delovi parcele
+        /// </summary>
+        public virtual List<DeoParceleEntity> DeoParcele { get; set; }
 
         #endregion
     }

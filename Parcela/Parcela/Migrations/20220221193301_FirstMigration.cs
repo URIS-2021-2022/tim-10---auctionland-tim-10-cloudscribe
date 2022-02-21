@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Parcela.Migrations
 {
-    public partial class First : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,10 +44,10 @@ namespace Parcela.Migrations
                     Klasa = table.Column<int>(type: "int", nullable: false),
                     Obradivost = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ZasticenaZonaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ZasticenaZonaEntityZasticenZonaId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     OblikSvojine = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Odvodnjavanje = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    KatastarskaOpstinaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    KatastarskaOpstinaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DeoParceleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,11 +59,11 @@ namespace Parcela.Migrations
                         principalColumn: "KatastarskaOpstinaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Parcela_ZasticenaZona_ZasticenaZonaEntityZasticenZonaId",
-                        column: x => x.ZasticenaZonaEntityZasticenZonaId,
+                        name: "FK_Parcela_ZasticenaZona_ZasticenaZonaId",
+                        column: x => x.ZasticenaZonaId,
                         principalTable: "ZasticenaZona",
                         principalColumn: "ZasticenZonaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,8 +83,7 @@ namespace Parcela.Migrations
                         name: "FK_DeoParceleEntity_Parcela_ParcelaId",
                         column: x => x.ParcelaId,
                         principalTable: "Parcela",
-                        principalColumn: "ParcelaId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ParcelaId");
                 });
 
             migrationBuilder.InsertData(
@@ -118,8 +117,8 @@ namespace Parcela.Migrations
 
             migrationBuilder.InsertData(
                 table: "Parcela",
-                columns: new[] { "ParcelaId", "BrojListaNepokretnosti", "BrojParcele", "KatastarskaOpstinaId", "Klasa", "KorisnikId", "Kultura", "OblikSvojine", "Obradivost", "Odvodnjavanje", "Povrsina", "ZasticenaZonaEntityZasticenZonaId", "ZasticenaZonaId" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "5", "1", new Guid("1807a208-3bca-49de-a159-293e14393909"), 1, new Guid("6a411c13-a295-48f7-8dbd-67596c3974c0"), "Njive", "Drzavno", "Obradivo", "Podvnodno", 100, null, new Guid("af2d6f85-d341-4433-8f21-3f28f816a79e") });
+                columns: new[] { "ParcelaId", "BrojListaNepokretnosti", "BrojParcele", "DeoParceleId", "KatastarskaOpstinaId", "Klasa", "KorisnikId", "Kultura", "OblikSvojine", "Obradivost", "Odvodnjavanje", "Povrsina", "ZasticenaZonaId" },
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "5", "1", new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), new Guid("1807a208-3bca-49de-a159-293e14393909"), 1, new Guid("6a411c13-a295-48f7-8dbd-67596c3974c0"), "Njive", "Drzavno", "Obradivo", "Podvnodno", 100, new Guid("af2d6f85-d341-4433-8f21-3f28f816a79e") });
 
             migrationBuilder.InsertData(
                 table: "DeoParceleEntity",
@@ -137,9 +136,9 @@ namespace Parcela.Migrations
                 column: "KatastarskaOpstinaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Parcela_ZasticenaZonaEntityZasticenZonaId",
+                name: "IX_Parcela_ZasticenaZonaId",
                 table: "Parcela",
-                column: "ZasticenaZonaEntityZasticenZonaId");
+                column: "ZasticenaZonaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -40,7 +40,7 @@ namespace Parcela.Controllers
         /// <summary>
         /// Vraća sve parcele.
         /// </summary>
-        /// <returns>Lista prijava ispita</returns>
+        /// <returns>Lista parcela</returns>
         /// <response code="200">Vraća listu parcela</response>
         /// <response code="404">Nije pronađena ni jedna parcela</response>
 
@@ -61,6 +61,14 @@ namespace Parcela.Controllers
             return Ok(mapper.Map<List<ParcelaDto>>(parcele));
         }
 
+
+        /// <summary>
+        /// Vraća jednu parcelu na osnovu ID-ja.
+        /// </summary>
+        /// <param name="parcelaId">ID parcele</param>
+        /// <returns></returns>
+        /// <response code="200">Vraća traženu parcelu</response>
+
         [HttpGet("{parcelaId}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -75,6 +83,32 @@ namespace Parcela.Controllers
 
             return Ok(mapper.Map<ParcelaDto>(parcela));
         }
+
+        /// <summary>
+        /// Kreira novu parcelu.
+        /// </summary>
+        /// <param name="parcela">Model parcelee</param>
+        /// <returns>Potvrdu o kreiranoj parceli.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje nove parcele \
+        /// POST /api/parcela \
+        /// {     \
+        ///        Povrsina = 100, \
+        ///        KorisnikId = Guid.Parse("6a411c13-a295-48f7-8dbd-67596c3974c0"), \
+        ///        BrojParcele = "1", \
+        ///        KatastarskaOpstinaId = Guid.Parse("1807A208-3BCA-49DE-A159-293E14393909"), \
+        ///        BrojListaNepokretnosti = "5", \
+        ///        Kultura = "Njive", \
+        ///        Klasa = 1, \
+        ///        Obradivost = "Obradivo", \
+        ///        ZasticenaZonaId = Guid.Parse("AF2D6F85-D341-4433-8F21-3F28F816A79E"), \
+        ///        OblikSvojine = "Drzavno", \
+        ///        Odvodnjavanje = "Podvnodno" \
+        ///}
+        /// </remarks>
+        /// <response code="200">Vraća kreiranu parcelu</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja parcele</response>
+
 
         [HttpPost]
         [Consumes("application/json")]
@@ -100,6 +134,15 @@ namespace Parcela.Controllers
         }
 
 
+        /// <summary>
+        /// Ažurira jednu parcelu.
+        /// </summary>
+        /// <param name="parcela">Model kreiranja parcele koji se ažurira</param>
+        /// <returns>Potvrdu o modifikovanoj parceli.</returns>
+        /// <response code="200">Vraća ažuriranu parcelu</response>
+        /// <response code="400">Parcela koja se ažurira nije pronađena</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja parcele</response>
+
         [HttpPut]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -114,9 +157,9 @@ namespace Parcela.Controllers
                 {
                     return NotFound();
                 }
-                ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
+                //ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
 
-                mapper.Map(parcelaEntity, oldParcela);
+                mapper.Map(parcela, oldParcela);
 
                 parcelaRepository.SaveChanges();
                 return Ok(mapper.Map<ParcelaDto>(oldParcela));
@@ -129,6 +172,14 @@ namespace Parcela.Controllers
         }
 
 
+        /// <summary>
+        /// Vrši brisanje jedne parcele na osnovu ID-ja.
+        /// </summary>
+        /// <param name="parcelaId">ID parcele</param>
+        /// <returns>Status 204 (NoContent)</returns>
+        /// <response code="204">Parcela uspešno obrisana</response>
+        /// <response code="404">Nije pronađena parcela za brisanje</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom brisanja parcele</response>
 
 
         [HttpDelete("{parcelaId}")]
@@ -155,6 +206,13 @@ namespace Parcela.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }
+
+
+        /// <summary>
+        /// Vraća opcije za rad sa parcelama
+        /// </summary>
+        /// <returns></returns>
+
 
         [HttpOptions]
         [AllowAnonymous] //Dozvoljavamo pristup anonimnim korisnicima

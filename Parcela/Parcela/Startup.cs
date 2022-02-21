@@ -94,7 +94,7 @@ namespace Parcela
 
             });
             
-            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB"))); //OVO RADI NE DIRAM NIŠTA
+            services.AddDbContextPool<ParcelaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ParcelaDB")).UseLazyLoadingProxies()); //OVO RADI NE DIRAM NIŠTA
 
 
             

@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "6d665545-368d-4be6-81a6-2fa0ea99ae96",
+		"name": "Parcela",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1MzQxMDc2LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.hCuneT85VCPAdJ6-2yeoH0OkIFj6nrxLvK3LTauX90g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1MzQxMDc2LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.hCuneT85VCPAdJ6-2yeoH0OkIFj6nrxLvK3LTauX90g",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Povrsina\" : 1000,\r\n    \"KorisnikId\" : \"6a411c13-a295-48f7-8dbd-67596c3974c0\",\r\n    \"BrojParcele\" : \"1\",\r\n    \"BrojListaNepokretnosti\" : \"HEJHO\",\r\n    \"Kultura\" : \"Vocnaci\",\r\n    \"Klasa\" :\"Klasa\",\r\n    \"Glupost\" : \"fjsjgiosdg\",\r\n    \"Obradivost\" : \"O\",\r\n    \"ZasticenaZona\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n    \"OblikSvojine\" :\"OS\",\r\n    \"Odvodnjavanje\": \"O\",\r\n    \"KulturaStvarnoStanje\":\"KSS\",\r\n    \"KlasaStvarnoStanje\":\"KSS\",\r\n    \"OBradivostStvarnoStanje\" : \"OSS\",\r\n    \"ZasticenZonaStvarnoStanje\":\"ZZSS\",\r\n    \"OdvodnjavanjeStvarnoStanje\" :\"OSS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44200/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/parcela",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"parcela"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

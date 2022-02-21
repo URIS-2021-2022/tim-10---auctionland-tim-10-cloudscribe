@@ -69,6 +69,10 @@ namespace Parcela.Models.Parcela
         /// </summary>
         public string Odvodnjavanje { get; set; }
 
+        /// <summary>
+        /// ID dela parcele
+        /// </summary>
+        public Guid DeoParceleId { get; set; }
 
 
 

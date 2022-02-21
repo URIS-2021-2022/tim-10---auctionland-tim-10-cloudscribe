@@ -73,10 +73,21 @@ namespace Parcela.Entities.Parcela
         /// Entitet katastarske opštine
         /// </summary>
         public virtual KatastarskaOpstinaEntity KatastarskaOpstinaEntity { get; set; }
+        
         /// <summary>
-        /// Lista delova parcele
+        /// ID Dela parcele
         /// </summary>
-        public virtual List<DeoParceleEntity> DeloviParcele { get; set; }
+        
+
+        [ForeignKey("DeoParceleEntity")]
+        public Guid DeoParceleId { get; set; }
+
+        /// <summary>
+        /// Entitet dela parcele
+        /// </summary>
+
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual List<DeoParceleEntity> DeoParcele { get; set; }
 
         #endregion
     }

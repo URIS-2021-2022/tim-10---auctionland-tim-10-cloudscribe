@@ -31,6 +31,13 @@ namespace Parcela.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Vraća sve katastarske opštine.
+        /// </summary>
+        /// <returns>Lista katastarskih opština</returns>
+        /// <response code="200">Vraća listu katastarskih opština</response>
+        /// <response code="404">Nije pronađena ni jedna katastarska opština</response>
+
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -46,6 +53,13 @@ namespace Parcela.Controllers
             return Ok(mapper.Map<List<KatastarskaOpstinaDto>>(opstina));
         }
 
+        /// <summary>
+        /// Vraća jednu katastarsku opštinu na osnovu ID-ja.
+        /// </summary>
+        /// <param name="katastarskaOpstinaId">ID katastarske opštine</param>
+        /// <returns></returns>
+        /// <response code="200">Vraća traženu katastarsku opštinu</response>
+
         [HttpGet("{katastarskaOpstinaId}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -59,6 +73,23 @@ namespace Parcela.Controllers
 
             return Ok(mapper.Map<KatastarskaOpstinaDto>(opstina));
         }
+
+
+        /// <summary>
+        /// Kreira novu katastarsku opštinu.
+        /// </summary>
+        /// <param name="katastarskaOpstina">Model katastarske opštine</param>
+        /// <returns>Potvrdu o kreiranoj katastarskoj opštini.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje nove katastarske opštine \
+        /// POST /api/parcela \
+        /// {     \
+        ///        KatastarskaOpstinaId = Guid.Parse("1807A208-3BCA-49DE-A159-293E14393909"), \
+        ///        ImeKatastarskeOpstine = Cantavir, \
+        ///}
+        /// </remarks>
+        /// <response code="200">Vraća kreiranu katastarsku opštinu</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja katastarske opštine</response>
 
         [HttpPost]
         [Consumes("application/json")]
@@ -84,6 +115,16 @@ namespace Parcela.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
+
+
+        /// <summary>
+        /// Ažurira jednu katastarsku opštinu.
+        /// </summary>
+        /// <param name="katastarskaOpstina">Model kreiranja katastarske opštine koji se ažurira</param>
+        /// <returns>Potvrdu o modifikovanoj katastarskoj opštini.</returns>
+        /// <response code="200">Vraća ažuriranu katastarsku opštinu</response>
+        /// <response code="400">Katastarska opština koja se ažurira nije pronađena</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja katastarske opštine</response>
 
         [HttpPut]
         [Consumes("application/json")]
@@ -112,6 +153,16 @@ namespace Parcela.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Vrši brisanje jedne katastarske opštine na osnovu ID-ja.
+        /// </summary>
+        /// <param name="katastarskaOpstinaId">ID katastarske opštine</param>
+        /// <returns>Status 204 (NoContent)</returns>
+        /// <response code="204">Katastarska opština uspešno obrisana</response>
+        /// <response code="404">Nije pronađena katastarska opština za brisanje</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom brisanja katastarske opštine</response>
+
         [HttpDelete("{katastarskaOpstinaId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -134,6 +185,21 @@ namespace Parcela.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
+        }
+
+
+        /// <summary>
+        /// Vraća opcije za rad sa katastarskim opštinama
+        /// </summary>
+        /// <returns></returns>
+
+
+        [HttpOptions]
+        [AllowAnonymous] //Dozvoljavamo pristup anonimnim korisnicima
+        public IActionResult GetParcelaOptions()
+        {
+            Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            return Ok();
         }
     }
 }

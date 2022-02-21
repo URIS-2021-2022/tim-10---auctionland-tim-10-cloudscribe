@@ -68,6 +68,11 @@ namespace Parcela.Models.Parcela
         /// </summary>
         public string Odvodnjavanje { get; set; }
 
+        /// <summary>
+        /// ID dela parcele
+        /// </summary>
+        public Guid DeoParceleId { get; set; }
+
 
         
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

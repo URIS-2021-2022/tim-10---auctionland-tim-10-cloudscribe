@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "4258cb91-e4b3-4378-8cf4-4aad92b63f89",
+		"name": "KatastarskaOpstina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Opstina",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Opstina",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:44200/api/opstina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44200",
+					"path": [
+						"api",
+						"opstina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

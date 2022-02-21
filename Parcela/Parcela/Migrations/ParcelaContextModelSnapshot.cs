@@ -138,6 +138,9 @@ namespace Parcela.Migrations
                     b.Property<string>("BrojParcele")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("DeoParceleId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("KatastarskaOpstinaId")
                         .HasColumnType("uniqueidentifier");
 
@@ -162,9 +165,6 @@ namespace Parcela.Migrations
                     b.Property<int>("Povrsina")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ZasticenaZonaEntityZasticenZonaId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("ZasticenaZonaId")
                         .HasColumnType("uniqueidentifier");
 
@@ -172,7 +172,7 @@ namespace Parcela.Migrations
 
                     b.HasIndex("KatastarskaOpstinaId");
 
-                    b.HasIndex("ZasticenaZonaEntityZasticenZonaId");
+                    b.HasIndex("ZasticenaZonaId");
 
                     b.ToTable("Parcela");
 
@@ -182,6 +182,7 @@ namespace Parcela.Migrations
                             ParcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             BrojListaNepokretnosti = "5",
                             BrojParcele = "1",
+                            DeoParceleId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             KatastarskaOpstinaId = new Guid("1807a208-3bca-49de-a159-293e14393909"),
                             Klasa = 1,
                             KorisnikId = new Guid("6a411c13-a295-48f7-8dbd-67596c3974c0"),
@@ -233,9 +234,9 @@ namespace Parcela.Migrations
             modelBuilder.Entity("Parcela.Entities.DeoParcele.DeoParceleEntity", b =>
                 {
                     b.HasOne("Parcela.Entities.Parcela.ParcelaEntity", "Parcela")
-                        .WithMany("DeloviParcele")
+                        .WithMany("DeoParcele")
                         .HasForeignKey("ParcelaId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Parcela");
@@ -251,7 +252,9 @@ namespace Parcela.Migrations
 
                     b.HasOne("Parcela.Entities.ZasticenaZona.ZasticenaZonaEntity", "ZasticenaZonaEntity")
                         .WithMany()
-                        .HasForeignKey("ZasticenaZonaEntityZasticenZonaId");
+                        .HasForeignKey("ZasticenaZonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("KatastarskaOpstinaEntity");
 
@@ -265,7 +268,7 @@ namespace Parcela.Migrations
 
             modelBuilder.Entity("Parcela.Entities.Parcela.ParcelaEntity", b =>
                 {
-                    b.Navigation("DeloviParcele");
+                    b.Navigation("DeoParcele");
                 });
 #pragma warning restore 612, 618
         }

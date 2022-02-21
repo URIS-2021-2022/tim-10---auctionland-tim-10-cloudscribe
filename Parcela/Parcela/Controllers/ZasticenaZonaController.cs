@@ -31,6 +31,14 @@ namespace Parcela.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Vraća sve zaštićene zone.
+        /// </summary>
+        /// <returns>Lista zaštićenih zona</returns>
+        /// <response code="200">Vraća listu zaštićenih zona</response>
+        /// <response code="404">Nije pronađena ni jedna zaštićena zona</response>
+
+
         [HttpGet]
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -45,6 +53,14 @@ namespace Parcela.Controllers
             return Ok(mapper.Map<List<ZasticenZonaDto>>(zasticenaZona));
         }
 
+        /// <summary>
+        /// Vraća jednu zaštićenu zonu na osnovu ID-ja.
+        /// </summary>
+        /// <param name="ZasticenZonaId">ID zaštićene zone</param>
+        /// <returns></returns>
+        /// <response code="200">Vraća traženu zaštićenu zonu</response>
+
+
         [HttpGet("{ZasticenZonaId}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -58,6 +74,22 @@ namespace Parcela.Controllers
 
             return Ok(mapper.Map<ZasticenZonaDto>(zasticenZona));
         }
+
+        /// <summary>
+        /// Kreira novu zaštićenu zonu.
+        /// </summary>
+        /// <param name="zasticenaZona">Model zaštićene zone</param>
+        /// <returns>Potvrdu o kreiranoj zaštićenoj zoni.</returns>
+        /// <remarks>
+        /// Primer zahteva za kreiranje nove zaštićene zone \
+        /// POST /api/zasticenazona \
+        /// {     \
+        ///        zasticenaZona = 6, \
+        ///}
+        /// </remarks>
+        /// <response code="200">Vraća kreiranu zaštićenu zonu</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom kreiranja zaštićene zone</response>
+
 
         [HttpPost]
         [Consumes("application/json")]
@@ -80,6 +112,17 @@ namespace Parcela.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
+
+
+
+        /// <summary>
+        /// Ažurira jednu zaštićenu zonu.
+        /// </summary>
+        /// <param name="zasticenaZona">Model zaštićene zone koji se ažurira</param>
+        /// <returns>Potvrdu o modifikovanoj zaštićenoj zoni.</returns>
+        /// <response code="200">Vraća ažuriranu zaštićenu zonu</response>
+        /// <response code="400">Zaštićena zona koja se ažurira nije pronađena</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja zaštićene zone</response>
 
 
         [HttpPut]
@@ -110,6 +153,15 @@ namespace Parcela.Controllers
             }
         }
 
+        /// <summary>
+        /// Vrši brisanje jedne zaštićene zone na osnovu ID-ja.
+        /// </summary>
+        /// <param name="ZasticenZonaId">ID parcele</param>
+        /// <returns>Status 204 (NoContent)</returns>
+        /// <response code="204">Zaštićena zona uspešno obrisana</response>
+        /// <response code="404">Nije pronađena zaštićena zona</response>
+        /// <response code="500">Došlo je do greške na serveru prilikom brisanja zaštićene zone</response>
+
         [HttpDelete("{ZasticenZonaId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -134,6 +186,10 @@ namespace Parcela.Controllers
             }
         }
 
+        /// <summary>
+        /// Vraća opcije za rad sa zaštićenim zonama
+        /// </summary>
+        /// <returns></returns>
 
 
         [HttpOptions]
