@@ -70,9 +70,9 @@ namespace DocumentService
                 });
 
                 //set the comments path for the Swagger JSON and UI
-                // var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
-                //c.IncludeXmlComments(xmlCommentsPath);
+                 var xmlComments = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                c.IncludeXmlComments(xmlCommentsPath);
             });
 
             services.AddDbContextPool<DokumentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DokumentDB")));
