@@ -22,4 +22,8 @@
     <PackageReference Include="System.AppContext" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Postman\" />
+  </ItemGroup>
+
 </Project>

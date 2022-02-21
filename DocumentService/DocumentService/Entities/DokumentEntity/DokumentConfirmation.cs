@@ -7,11 +7,29 @@ namespace DocumentService.Entities
 {
     public class DokumentConfirmation
     {
+        /// <summary>
+        /// Id dokumenta
+        /// </summary>
         public Guid DokumentID { get; set; }
+        /// <summary>
+        /// Zavodni broj
+        /// </summary>
         public string ZavodniBroj { get; set; }
+        /// <summary>
+        /// Naziv dokumenta
+        /// </summary>
         public string NazivDokumenta { get; set; }
+        /// <summary>
+        /// Datum
+        /// </summary>
         public DateTime Datum { get; set; }
+        /// <summary>
+        /// Datum donosenja odluke 
+        /// </summary>
         public DateTime DatumDonosenjaOdluke { get; set; }
+        /// <summary>
+        /// Sablon dokumenta
+        /// </summary>
         public bool Sablon { get; set; }
     }
 }
