@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/kupac")]
 
@@ -30,7 +30,6 @@ namespace LiciterService.Controllers
             this.kupacRepository = kupacRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
-        
 
         }
 
@@ -77,6 +76,16 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="kupac">Model kupca</param>
         /// <returns></returns>
+        /// Primer zahteva za kreiranje kupca
+        /// POST /api/kupac\
+        ///  {
+        ///        "datumPocetkaZabrane": "2020-11-15T09:00:00",
+        ///        "datumPrestankaZabrane": "2021-11-15T09:00:00",
+        ///        "duzinaTrajanjaZabrane": 365,
+        ///         "imaZabranu": true,
+        ///        "ostvarenaPovrsina": 1500000,
+        ///        "zastupnikId": "044f3de0-a9dd-4c2e-b745-89976a1b2a52"
+        ///}
         ///<response code="200">Vraća kreiranog kupca</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja kupca</response>
         [HttpPost]
@@ -96,7 +105,7 @@ namespace LiciterService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
-            
+
         }
 
         /// <summary>
@@ -104,6 +113,17 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="kupac">Model kupca</param>
         /// <returns></returns>
+        /// Primer zahteva za azuriranje kupca
+        /// PUT /api/kupac\
+        ///   {
+        ///       "kupacId": "044f3de0-a9dd-4c2e-b745-89976a1b2a36",
+        ///       "datumPocetkaZabrane": "2020-11-15T09:00:00",
+        ///       "datumPrestankaZabrane": "2021-11-15T09:00:00",
+        ///       "duzinaTrajanjaZabrane": 11156999,
+        ///       "imaZabranu": true,
+        ///       "ostvarenaPovrsina": 1500000,
+        ///       "zastupnikId": "044f3de0-a9dd-4c2e-b745-89976a1b2a52"
+        ///    }
         ///<response code="200">Vraća ažuriranog kupca</response>
         /// <response code="400">Kupac koja se ažurira nije pronađen</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja kupca</response>

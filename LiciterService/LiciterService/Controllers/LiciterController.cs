@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/liciter")]
 
@@ -74,6 +74,12 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="liciter"></param>
         /// <returns></returns>
+        ///  Primer zahteva za kreiranje licitera
+        /// POST /api/liciter\
+        ///  {
+        ///       "kupacId": "32cd906d-8bab-457c-ade2-fbc4ba523029",
+        ///       "zastupnikId": "044f3de0-a9dd-4c2e-b745-89976a1b2a52"      
+        ///   }
         /// <response code="200">Vraća kreiranog licitera</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja licitera</response>
         [HttpPost]
@@ -100,9 +106,16 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="liciter">Model licitera</param>
         /// <returns></returns>
+        ///Primer zahteva za azuriranje licitera
+        /// PUT /api/liciter\
+        /// {
+        ///      "liciterId": "6a411c13-a195-48f7-8dbd-67596c3974c0",
+        ///      "kupacId": "32cd906d-8bab-457c-ade2-fbc4ba523029",
+        ///       "zastupnikId": "044f3de0-a9dd-4c2e-b745-89976a1b2a52"      
+        ///  }
         /// <response code="200">Vraća ažuriranog licitera</response>
         /// <response code="400">Liciter koji se ažurira nije pronađen</response>
-        /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja licitera</response>
+       /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja licitera</response>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]

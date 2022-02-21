@@ -38,7 +38,11 @@ namespace LiciterService.Models
         /// </summary>
         public int OstvarenaPovrsina { get; set; }   
 
-
+        /// <summary>
+        /// ID zastupnika
+        /// </summary>
+        public Guid ZastupnikId { get; set; }
+        
 
 
     }

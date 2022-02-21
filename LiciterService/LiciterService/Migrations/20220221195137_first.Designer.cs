@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiciterService.Migrations
 {
     [DbContext(typeof(LiciterContext))]
-    [Migration("20220221145442_first")]
+    [Migration("20220221195137_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,12 @@ namespace LiciterService.Migrations
                     b.Property<int>("OstvarenaPovrsina")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("ZastupnikId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("KupacId");
+
+                    b.HasIndex("ZastupnikId");
 
                     b.ToTable("Kupci");
 
@@ -54,7 +59,8 @@ namespace LiciterService.Migrations
                             DatumPrestankaZabrane = new DateTime(2021, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             DuzinaTrajanjaZabrane = 365,
                             ImaZabranu = true,
-                            OstvarenaPovrsina = 1500000
+                            OstvarenaPovrsina = 1500000,
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
                         },
                         new
                         {
@@ -63,7 +69,8 @@ namespace LiciterService.Migrations
                             DatumPrestankaZabrane = new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             DuzinaTrajanjaZabrane = 365,
                             ImaZabranu = true,
-                            OstvarenaPovrsina = 15500
+                            OstvarenaPovrsina = 15500,
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
                         });
                 });
 
@@ -125,8 +132,6 @@ namespace LiciterService.Migrations
 
                     b.HasKey("ZastupnikId");
 
-                    b.HasIndex("KupacId");
-
                     b.ToTable("Zastupnici");
 
                     b.HasData(
@@ -150,6 +155,17 @@ namespace LiciterService.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LiciterService.Entities.Kupac", b =>
+                {
+                    b.HasOne("LiciterService.Entities.Zastupnik", "Zastupnik")
+                        .WithMany("Kupci")
+                        .HasForeignKey("ZastupnikId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Zastupnik");
+                });
+
             modelBuilder.Entity("LiciterService.Entities.Liciter", b =>
                 {
                     b.HasOne("LiciterService.Entities.Kupac", "Kupac")
@@ -167,18 +183,7 @@ namespace LiciterService.Migrations
 
             modelBuilder.Entity("LiciterService.Entities.Zastupnik", b =>
                 {
-                    b.HasOne("LiciterService.Entities.Kupac", "Kupac")
-                        .WithMany("Zastupnici")
-                        .HasForeignKey("KupacId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Kupac");
-                });
-
-            modelBuilder.Entity("LiciterService.Entities.Kupac", b =>
-                {
-                    b.Navigation("Zastupnici");
+                    b.Navigation("Kupci");
                 });
 #pragma warning restore 612, 618
         }

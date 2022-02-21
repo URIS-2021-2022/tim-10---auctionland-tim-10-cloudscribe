@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/zastupnik")]
 
@@ -73,7 +73,16 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="zastupnik"></param>
         /// <returns></returns>
-        ///<response code="200">Vraća kreiranog zastupnika</response>
+        /// Primer zahteva za kreiranje zastupnika
+        /// POST /api/zastupnik\
+        /// {
+        ///    "jmbg": "",
+        ///    "brojPasosa": "123456789",
+        ///    "nazivDrzave": "Rusija",
+        ///    "brojTable": 365,
+        ///    "kupacId": "044f3de0-a9dd-4c2e-b745-89976a1b2a36"
+        ///  }
+        /// <response code="200">Vraća kreiranog zastupnika</response>
         /// <response code="500">Došlo je do greške na serveru prilikom kreiranja zastupnika</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -101,6 +110,16 @@ namespace LiciterService.Controllers
         /// </summary>
         /// <param name="zastupnik"></param>
         /// <returns></returns>
+        /// Primer zahteva za azuriranje zastupnika
+        /// PUT /api/zastupnik\
+        /// {
+        ///    "zastupnikId": "044f3de0-a9dd-4c2e-b745-89976a1b2a52",
+        ///    "jmbg": "5896634547231",
+        ///    "brojPasosa": "123456789",
+        ///    "nazivDrzave": "Slovenija",
+        ///    "brojTable": 365,
+        ///    "kupacId": "32cd906d-8bab-457c-ade2-fbc4ba523029"  
+        ///  }
         /// <response code="400">Zastupnik koji se ažurira nije pronađen</response>
         /// <response code="500">Došlo je do greške na serveru prilikom ažuriranja zastupnika</response>
         [HttpPut]

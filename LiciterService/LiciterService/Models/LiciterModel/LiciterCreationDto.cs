@@ -9,22 +9,15 @@ namespace LiciterService.Models
 {
     public class LiciterCreationDto
     {
+        /// <summary>
+        /// ID kupca
+        /// </summary>
         public Guid KupacId { get; set; }
+
+        /// <summary>
+        /// ID zastupnika
+        /// </summary>
         public Guid ZastupnikId { get; set; }
-        /*[Required(ErrorMessage = "Obavezno je uneti ime")]
-        public string ImeLicitera { get; set; }
 
-        [Required(ErrorMessage = "Obavezno je uneti prezime")]
-        public string PrezimeLicitera { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if(ImeLicitera == PrezimeLicitera)
-            {
-                yield return new ValidationResult(
-                    "Liciter ne može da ima isto ime i prezime",
-                    new[] { "LiciterCreationDto" });
-            }
-        }*/
     }
 }

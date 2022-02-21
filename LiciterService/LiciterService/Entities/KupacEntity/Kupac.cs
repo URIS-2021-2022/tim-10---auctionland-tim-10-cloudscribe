@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -43,9 +44,11 @@ namespace LiciterService.Entities
         /// Jedan kupac moze da ima vise zastupnika
         /// </summary>
  
+        [ForeignKey("Zastupnik")]
+        public Guid ZastupnikId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
-        public virtual List<Zastupnik> Zastupnici { get; set; }
+        public virtual Zastupnik Zastupnik { get; set; }
 
     }
 }

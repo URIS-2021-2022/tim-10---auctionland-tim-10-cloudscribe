@@ -24,9 +24,8 @@ namespace LiciterService.Entities
         {
             
             builder.Entity<Zastupnik>()
-           .HasOne<Kupac>(i => i.Kupac)
-           .WithMany(c => c.Zastupnici)
-           .IsRequired()
+           .HasMany<Kupac>(i => i.Kupci)
+           .WithOne(c => c.Zastupnik)
            .OnDelete(DeleteBehavior.NoAction);
 
 
@@ -35,16 +34,12 @@ namespace LiciterService.Entities
                 LiciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                 KupacId= Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
                 ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a66")
-                //ImeLicitera="Nikola",
-                //PrezimeLicitera="Tesla"
             });
             builder.Entity<Liciter>().HasData(new
             {
                 LiciterId = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
                 KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
                 ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
-                //ImeLicitera = "Mihajlo",
-                //PrezimeLicitera = "Pupin"
             });
 
             builder.Entity<Kupac>().HasData(new
@@ -54,7 +49,8 @@ namespace LiciterService.Entities
                 DatumPrestankaZabrane = DateTime.Parse("2021-11-15T09:00:00"),
                 DuzinaTrajanjaZabrane = 365,
                 ImaZabranu = true,
-                OstvarenaPovrsina = 1500000
+                OstvarenaPovrsina = 1500000,
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
             });
 
             builder.Entity<Kupac>().HasData(new
@@ -64,7 +60,8 @@ namespace LiciterService.Entities
                 DatumPrestankaZabrane = DateTime.Parse("2022-5-15T09:00:00"),
                 DuzinaTrajanjaZabrane = 365,
                 ImaZabranu = true,
-                OstvarenaPovrsina = 15500
+                OstvarenaPovrsina = 15500,
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
             });
             builder.Entity<Zastupnik>().HasData(new
             {

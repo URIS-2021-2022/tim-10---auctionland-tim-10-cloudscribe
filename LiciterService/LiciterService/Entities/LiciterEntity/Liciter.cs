@@ -9,21 +9,25 @@ namespace LiciterService.Entities
 {
     public class Liciter
     {
+        /// <summary>
+        /// ID licitera
+        /// </summary>
         [Key]
         public Guid LiciterId { get; set; }
-        //public string ImeLicitera { get; set; }
-        //public string PrezimeLicitera { get; set; }
-        // public Kupac Kupac { get; set; }
-        //public Zastupnik Zastupnik { get; set; }
 
-       
+        /// <summary>
+        /// ID zastupnika 
+        /// </summary>
+
         [ForeignKey("Zastupnik")]
         public Guid? ZastupnikId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Zastupnik Zastupnik { get; set; }
 
-
+        /// <summary>
+        /// ID kupca
+        /// </summary>
         [ForeignKey("Kupac")]
         public Guid? KupacId { get; set; }
 

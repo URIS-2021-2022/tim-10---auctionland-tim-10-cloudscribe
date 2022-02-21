@@ -8,51 +8,40 @@ namespace LiciterService.Models
 {
     public class ZastupnikUpdateDto
     {
+        /// <summary>
+        /// ID zastupnika
+        /// </summary>
         public Guid ZastupnikId { get; set; }
 
+        /// <summary>
+        /// JMBG
+        /// </summary>
         [StringLength(13, MinimumLength = 13, ErrorMessage = "Jmbg ne moze imati vise,a ni manje od 13 karaktera.")]
         public string Jmbg { get; set; }
 
+        /// <summary>
+        /// Broj pasosa
+        /// </summary>
         [StringLength(9, MinimumLength = 9, ErrorMessage = "Broj pasosa ne moze imati vise, a ni manje od 9 karaktera.")]
         public string BrojPasosa { get; set; }
 
+        /// <summary>
+        /// Naziv drzave
+        /// </summary>
         [Required(ErrorMessage = "Obavezno uneti naziv drzave")]
         public string NazivDrzave { get; set; }
 
+        /// <summary>
+        /// Broj table za licitiranje
+        /// </summary>
         [Required(ErrorMessage = "Obavezno uneti broj table za licitaciju")]
         public int BrojTable { get; set; }
+
+        /// <summary>
+        /// ID kupca
+        /// </summary>
         public Guid KupacId { get; set; }
 
-
-        /*public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (NazivDrzave != "Srbija" && Jmbg.Length >= 1)
-            {
-                yield return new ValidationResult(
-                    "Upisite validan broj pasosa.",
-                    new[] { "ZastupnikCreationDto" });
-
-            };
-            if (NazivDrzave != "Srbija" && BrojPasosa.Length != 9)
-            {
-                yield return new ValidationResult(
-                   "Upisite validan broj pasosa.",
-                   new[] { "ZastupnikCreationDto" });
-            }
-            if (NazivDrzave == "Srbija" && BrojPasosa.Length >= 1)
-            {
-                yield return new ValidationResult(
-                    "Upisite validan jmbg.",
-                    new[] { "ZastupnikCreationDto" });
-
-            };
-            if (NazivDrzave == "Srbija" && Jmbg.Length != 13)
-            {
-                yield return new ValidationResult(
-                   "Upisite validan jmbg.",
-                   new[] { "ZastupnikCreationDto" });
-            }
-        }*/
     }
 }
 

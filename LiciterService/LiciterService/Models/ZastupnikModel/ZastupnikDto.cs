@@ -33,8 +33,11 @@ namespace LiciterService.Models
         /// </summary>
         public int BrojTable { get; set; }
 
+        /// <summary>
+        /// Zastupnik moze da ima vise kupaca
+        /// </summary>
+        public virtual List<Kupac> Kupci { get; set; }
 
-        public virtual Kupac Kupac { get; set; }
 
     }
 }

@@ -8,10 +8,13 @@ namespace LiciterService.Models
 {
     public class LiciterConfirmationDto
     {
+        /// <summary>
+        /// ID licitera
+        /// </summary>
         public Guid LiciterId { get; set; }
+
         public Kupac Kupac { get; set; }
         public Zastupnik Zastupnik { get; set; }
-        //public string ImeLicitera { get; set; }
-        // public string PrezimeLicitera { get; set; }
+
     }
 }
