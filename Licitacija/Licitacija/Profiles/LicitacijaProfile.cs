@@ -13,9 +13,6 @@ namespace Licitacija.Profiles
         public LicitacijaProfile()
         {
             CreateMap<LicitacijaModel, LicitacijaModelDto>();
-                //.ForMember(
-                //dest => dest.oznaka,
-                //opt => opt.MapFrom(src => src.brojLicitacije + "/" + src.godinaLicitacije));
 
             CreateMap<LicitacijaCreateDto, LicitacijaModel>();
             CreateMap<LicitacijaUpdateDto, LicitacijaModel>();

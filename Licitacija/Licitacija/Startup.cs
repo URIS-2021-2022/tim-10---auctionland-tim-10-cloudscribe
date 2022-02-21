@@ -57,24 +57,7 @@ namespace Licitacija
                 };
             });
 
-            services.AddSwaggerGen(setupAction =>
-            {
-                setupAction.SwaggerDoc("LiceOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
-                {
-                    Title = "Licitacija API",
-                    Version = "v1",
-                    Description = "Pomoću ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled licitacije.",
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
-                    {
-                        Name = "Jelena Stevanovic",
-                        Email = "stevanovic.jelena@uns.ac.rs"
-                    }
-                });
-
-            //    var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
-           //     var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
-            //    setupAction.IncludeXmlComments(xmlCommentsPath);
-            });
+         
 
             services.AddScoped<ILicitacijaRepository, LicitacijaRepository>();
             services.AddDbContextPool<LicitacijaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LicitacijaDB")));
@@ -93,9 +76,9 @@ namespace Licitacija
                     }
                 });
 
-                //var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
-                //var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
-                //setupAction.IncludeXmlComments(xmlCommentsPath);
+                var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
+                var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
+                setupAction.IncludeXmlComments(xmlCommentsPath);
             });
         }
 
@@ -106,7 +89,7 @@ namespace Licitacija
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Licitacija v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/LicicitacijaOpenApiSpecification/swagger.json", "Licitacija v1"));
             }
 
             app.UseHttpsRedirection();

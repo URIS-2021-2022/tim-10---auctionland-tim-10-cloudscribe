@@ -30,7 +30,7 @@ namespace Licitacija.Models
         /// <summary>
         /// Dokument
         /// </summary>
-        public int dokumentId { get; set; }
+
         //  public string[] dokumentacijaFizickaLica { get; set; } // niz vrednosti 
         // public string[] dokumentacijaPravnaLica { get; set; }
         /// <summary>
@@ -44,7 +44,7 @@ namespace Licitacija.Models
         /// <summary>
         /// Javno nadmetanje
         /// </summary>
-        public int javnoNadmetanjeId { get; set; }
+
         //  public string[] javnoNadmetanje { get; set; } //niz vrednosti 
     }
 }

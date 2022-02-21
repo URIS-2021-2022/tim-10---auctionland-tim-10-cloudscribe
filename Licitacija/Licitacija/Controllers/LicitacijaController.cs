@@ -78,10 +78,8 @@ namespace Licitacija.Controllers
         /// "godinaLicitacije" : 2021,
         /// "datumRaspisivanja" : "2021-06-01T09:00:00",
         /// "ogranicenje" : 0,
-        /// "dokumentId" : 3,
         /// "krugLicitacije" : 1,
-        /// "rokZaPrijave" : "2021-07-01T23:59:00",
-        /// "javnoNadmetanjeId" : 3
+        /// "rokZaPrijave" : "2021-07-01T23:59:00"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -148,10 +146,8 @@ namespace Licitacija.Controllers
         /// "godinaLicitacije" : 2021,
         /// "datumRaspisivanja" : "2021-06-01T09:00:00",
         /// "ogranicenje" : 1,
-        /// "dokumentId" : 3,
         /// "krugLicitacije" : 2,
-        /// "rokZaPrijave" : "2021-07-01T23:59:00",
-        /// "javnoNadmetanjeId" : 3
+        /// "rokZaPrijave" : "2021-07-01T23:59:00"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -164,17 +160,17 @@ namespace Licitacija.Controllers
         {
             try
             {
-                //Proveriti da li uopšte postoji prijava koju pokušavamo da ažuriramo.
+
                 var oldLicitacija = licitacijaRepository.GetLicitacijaById(licitacija.licitacijaId);
 
                 if (oldLicitacija == null)
                 {
-                    return NotFound(); //Ukoliko ne postoji vratiti status 404 (NotFound).
+                    return NotFound(); 
                 }
                 LicitacijaModel licitacijaModelEntity = mapper.Map<LicitacijaModel>(licitacija);
-                mapper.Map(licitacijaModelEntity, oldLicitacija); //Update objekta koji treba da sačuvamo u bazi                
+                mapper.Map(licitacijaModelEntity, oldLicitacija);                
 
-                licitacijaRepository.SaveChanges(); //Perzistiramo promene
+                licitacijaRepository.SaveChanges(); 
                 return Ok(mapper.Map<LicitacijaModelDto>(oldLicitacija));
             }
             catch (Exception)

@@ -27,10 +27,7 @@ namespace Licitacija.Models
         /// Ogranicenje licitacije
         /// </summary>
         public int ogranicenje { get; set; }
-        /// <summary>
-        /// Dokument
-        /// </summary>
-        public int dokumentId { get; set; }
+
         /// <summary>
         /// Krug licitacije
         /// </summary>
@@ -39,9 +36,7 @@ namespace Licitacija.Models
         /// Rok za prijavu za licitaciju
         /// </summary>
         public DateTime rokZaPrijave { get; set; }
-        /// <summary>
-        /// Javno nadmetanje
-        /// </summary>
-        public int javnoNadmetanjeId { get; set; }
+
+
     }
 }

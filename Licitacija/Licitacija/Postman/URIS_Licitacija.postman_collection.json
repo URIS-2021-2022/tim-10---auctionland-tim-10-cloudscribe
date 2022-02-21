@@ -8,6 +8,16 @@
 		{
 			"name": "GetAllLicitacije",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -20,13 +30,6 @@
 					"path": [
 						"api",
 						"licitacije"
-					],
-					"query": [
-						{
-							"key": "brojLicitacije",
-							"value": "1",
-							"disabled": true
-						}
 					]
 				}
 			},
@@ -89,7 +92,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"licitacijaId\" : \"4da4a199-efd3-470c-8efb-c7b655021338\",\r\n\"brojLicitacije\" : 3,\r\n\"godinaLicitacije\" : 2021,\r\n\"datumRaspisivanja\" : \"2021-06-01T09:00:00\",\r\n\"ogranicenje\" : 1,\r\n\"dokumentId\" : 3,\r\n\"krugLicitacije\" : 2,\r\n\"rokZaPrijave\" : \"2021-07-01T23:59:00\",\r\n\"javnoNadmetanjeId\" : 3\r\n}",
+					"raw": "{\"licitacijaId\" : \"74b9bf0f-39bc-48c6-10ed-08d9f45d6e4d\",\r\n\"brojLicitacije\" : 4,\r\n\"godinaLicitacije\" : 2021,\r\n\"datumRaspisivanja\" : \"2021-06-01T09:00:00\",\r\n\"ogranicenje\" : 1,\r\n\"dokumentId\" : 3,\r\n\"krugLicitacije\" : 2,\r\n\"rokZaPrijave\" : \"2021-07-01T23:59:00\",\r\n\"javnoNadmetanjeId\" : 3\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -117,7 +120,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44200/api/licitacije/4da4a199-efd3-470c-8efb-c7b655021338",
+					"raw": "http://localhost:44200/api/licitacije/74b9bf0f-39bc-48c6-10ed-08d9f45d6e4d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -126,7 +129,7 @@
 					"path": [
 						"api",
 						"licitacije",
-						"4da4a199-efd3-470c-8efb-c7b655021338"
+						"74b9bf0f-39bc-48c6-10ed-08d9f45d6e4d"
 					]
 				}
 			},

@@ -11,7 +11,7 @@ namespace Licitacija.Data
     {
         LicitacijaModel GetLicitacijaById(Guid licitacijaId);
         List<LicitacijaModel> GetAllLicitacije();
-        //   List<LicitacijaModel> GetLicitacije(int brojLicitacije = -1, int godinaLicitacije = -1);
+    
 
         LicitacijaConfirmation CreateLicitacija(LicitacijaModel licitacijaModel);
         void UpdateLicitacija(LicitacijaModel licitacijaModel);

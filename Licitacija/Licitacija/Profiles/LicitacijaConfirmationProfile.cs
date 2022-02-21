@@ -15,7 +15,7 @@ namespace Licitacija.Profiles
             CreateMap<LicitacijaConfirmation, LicitacijaConfirmationDto>();
 
             CreateMap<LicitacijaModel, LicitacijaConfirmation>();
-         //   CreateMap<LicitacijaConfirmationDto, LicitacijaConfirmation>();
+
         }
     }
 }
