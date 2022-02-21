@@ -66,6 +66,17 @@ namespace UplataService.Data
         /// <param name="brojNadmetanja"></param>
         public void RecordUplatas(int brojNadmetanja)
         {
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// Method that returns all uplatas which are visece
+        /// </summary>
+        /// <param name="brojNadmetanja"></param>
+        public List<UplataDto> GetAllViseceUplate(int brojNadmetanja)
+        {
+            return context.Uplata.Where(x => x.VisecaUplata).Select(x => new UplataDto(x)).ToList();
         }
     }
 }

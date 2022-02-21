@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -12,8 +11,6 @@ namespace UplataService.Entities
     /// </summary>
     public partial class UplataDbContext : DbContext
     {
-        public IConfiguration Configuration { get; }
-
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -25,11 +22,10 @@ namespace UplataService.Entities
         /// Constructor which takes DbContextOptions.
         /// </summary>
         /// <param name="options">DbContextOptions object</param>
-        /// <param name="configuration">configuration</param>
-        public UplataDbContext(DbContextOptions<UplataDbContext> options, IConfiguration configuration)
+        public UplataDbContext(DbContextOptions<UplataDbContext> options)
             : base(options)
         {
-            Configuration = configuration;
+
         }
 
         /// <summary>
@@ -52,7 +48,7 @@ namespace UplataService.Entities
         /// </summary>
         public virtual DbSet<Uplata> Uplata { get; set; }
 
-        /// <summary>
+        // <summary>
         /// Overriden method which defines the configuration options used for database connectivity
         /// </summary>
         /// <param name="optionsBuilder">DbContextOptionsBuilder object</param>
@@ -60,8 +56,7 @@ namespace UplataService.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionString = Configuration.GetConnectionString("uplataDb");
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer("Server=147.91.175.176;Database=it45g2018; User ID=it45g2018; Password=ftnftn2018; MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;");
             }
         }
 
@@ -74,7 +69,7 @@ namespace UplataService.Entities
             modelBuilder.Entity<BankaIzvod>(entity =>
             {
                 entity.HasKey(e => e.IzvodId)
-                    .HasName("PK__BankaIzv__B08730A09279F99B");
+                    .HasName("PK__BankaIzv__B08730A0B710B046");
 
                 entity.ToTable("BankaIzvod", "UplataScheme");
 
@@ -160,6 +155,8 @@ namespace UplataService.Entities
                     .HasColumnName("iznos")
                     .HasColumnType("decimal(10, 2)");
 
+                entity.Property(e => e.JavnoNadmetanjeId).HasColumnName("javnoNadmetanjeId");
+
                 entity.Property(e => e.PozivNaBroj)
                     .HasColumnName("pozivNaBroj")
                     .HasMaxLength(50);
@@ -167,6 +164,8 @@ namespace UplataService.Entities
                 entity.Property(e => e.SvrhaUplate)
                     .HasColumnName("svrhaUplate")
                     .HasMaxLength(50);
+
+                entity.Property(e => e.UplatilacId).HasColumnName("uplatilacId");
 
                 entity.Property(e => e.VisecaUplata).HasColumnName("visecaUplata");
             });

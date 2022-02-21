@@ -40,5 +40,11 @@ namespace UplataService.Data
         /// </summary>
         /// <param name="brojNadmetanja"></param>
         public void RecordUplatas(int brojNadmetanja);
+
+        /// <summary>
+        /// Definition for GetAllViseceUplate
+        /// </summary>
+        /// <param name="brojNadmetanja"></param>
+        public List<UplataDto> GetAllViseceUplate(int brojNadmetanja);
     }
 }

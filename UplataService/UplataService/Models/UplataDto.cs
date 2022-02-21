@@ -1,4 +1,5 @@
 ﻿using System;
+using UplataService.Entities;
 
 namespace UplataService.Models
 {
@@ -7,6 +8,24 @@ namespace UplataService.Models
     /// </summary>
     public class UplataDto
     {
+        /// <summary>
+        /// Constructor which takes Uplata entity and maps it to UplataDto  
+        /// </summary>
+        public UplataDto(Uplata x)
+        {
+            UplataId = x.UplataId;
+            BrojRacuna = x.BrojRacuna;
+            PozivNaBroj = x.PozivNaBroj;
+            Iznos = x.Iznos;
+            SvrhaUplate = x.SvrhaUplate;
+            Datum = x.Datum;
+        }
+
+        /// <summary>
+        /// Id of uplata    
+        /// </summary>
+        public int UplataId { get; set; }
+
         /// <summary>
         /// Account number
         /// </summary>
