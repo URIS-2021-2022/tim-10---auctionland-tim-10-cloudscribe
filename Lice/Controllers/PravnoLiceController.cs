@@ -2,6 +2,8 @@
 using Lice.Data;
 using Lice.Entities;
 using Lice.Models.PravnoLice;
+using Lice.Models.Services;
+using Lice.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,13 +25,18 @@ namespace Lice.Controllers
         private readonly IPrioritetRepository prioritetRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
-        public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public PravnoLiceController(IPravnoLiceRepository pravnoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.pravnoLiceRepository = pravnoLiceRepository;
             this.prioritetRepository = prioritetRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "PRAVNO LICE";
         }
 
         /// <summary>
@@ -42,11 +49,19 @@ namespace Lice.Controllers
         [HttpHead]
         public ActionResult<List<PravnoLiceDto>> GetPravnaLica()
         {
+            loggerDto.HttpMethod = "GET";
             var pravnaLica = pravnoLiceRepository.GetPravnaLica();
             if (pravnaLica == null || pravnaLica.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<PravnoLiceDto>>(pravnaLica));
         }
 
@@ -60,12 +75,20 @@ namespace Lice.Controllers
         [HttpGet("{liceId}")]
         public ActionResult<PravnoLiceDto> GetPravnoLice(Guid liceId)
         {
+            loggerDto.HttpMethod = "GET";
             var pravnoLice = pravnoLiceRepository.GetPravnoLiceById(liceId);
 
             if (pravnoLice == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<PravnoLiceDto>(pravnoLice));
         }
 
@@ -93,6 +116,8 @@ namespace Lice.Controllers
         [HttpPost]
         public ActionResult<PravnoLiceConfirmationDto> CreatePravnoLice([FromBody] PravnoLiceCreationDto pravnoLice)
         {
+            loggerDto.HttpMethod = "POST";
+
             try
             {
                 PravnoLiceEntity pravnoLiceEntity = mapper.Map<PravnoLiceEntity>(pravnoLice);
@@ -101,10 +126,17 @@ namespace Lice.Controllers
                 pravnoLiceRepository.SaveChanges();
                 
                 string location = linkGenerator.GetPathByAction("GetPravnoLice", "PravnoLice", new { liceId = confirmation.liceId });
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<PravnoLiceConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -135,12 +167,17 @@ namespace Lice.Controllers
         [HttpPut]
         public ActionResult<PravnoLiceDto> UpdatePravnoLice([FromBody] PravnoLiceUpdateDto pravnoLice)
         {
+            loggerDto.HttpMethod = "PUT";
+
             try
             {
                 var oldPravnoLice = pravnoLiceRepository.GetPravnoLiceById(pravnoLice.liceId);
 
                 if (oldPravnoLice == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
@@ -149,10 +186,16 @@ namespace Lice.Controllers
                 mapper.Map(pravnoLiceEntity, oldPravnoLice);
                 pravnoLiceRepository.SaveChanges();
 
+                loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Ok(mapper.Map<PravnoLiceDto>(oldPravnoLice));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -168,21 +211,33 @@ namespace Lice.Controllers
         [HttpDelete("{liceId}")]
         public IActionResult DeletePravnoLice(Guid liceId)
         {
+            loggerDto.HttpMethod = "DELETE";
+
             try
             {
                 var pravnoLice = pravnoLiceRepository.GetPravnoLiceById(liceId);
 
                 if (pravnoLice == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 pravnoLiceRepository.DeletePravnoLice(liceId);
                 pravnoLiceRepository.SaveChanges();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
             }
         }
@@ -196,7 +251,13 @@ namespace Lice.Controllers
         [AllowAnonymous]
         public IActionResult GetPravnoLiceOptions()
         {
+            loggerDto.HttpMethod = "OPTIONS";
+
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok();
         }
     }
