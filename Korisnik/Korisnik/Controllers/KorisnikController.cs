@@ -58,7 +58,6 @@ namespace Korisnik.Controllers
         public ActionResult<List<KorisnikDto>> GetKorisnici()
         {
             loggerDto.HttpMethod = "GET";
-            var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnik();
             if (korisnici == null || korisnici.Count == 0)
             {
@@ -117,10 +116,10 @@ namespace Korisnik.Controllers
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnikByIdKomisija(komisijaId);
             if (korisnici == null || korisnici.Count == 0)
             {
-                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Response = "404 NOT FOUND";
                 loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
-                return NoContent();
+                return NotFound();
 
             }
             loggerDto.Response = "200 OK";
@@ -139,10 +138,10 @@ namespace Korisnik.Controllers
             List<Korisnikk> korisnici = korisnikRepository.GetKorisnikByImeTipa(tipKorisnika);
             if(korisnici == null || korisnici.Count==0)
             {
-                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Response = "404 NOT FOUND";
                 loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
-                return NoContent();
+                return NotFound();
             }
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
@@ -271,7 +270,6 @@ namespace Korisnik.Controllers
                     loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
-              //  var korisnikEntity = mapper.Map<KorisnikUpdateDto>(oldKorisnik);
                 mapper.Map(korisnik, oldKorisnik);
                 korisnikRepository.SaveChanges();
                 loggerDto.Response = "200 OK";
@@ -280,7 +278,7 @@ namespace Korisnik.Controllers
                 return Ok(mapper.Map<KorisnikConfirmationDto>(oldKorisnik));
 
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
                 loggerDto.Level = "ERROR";

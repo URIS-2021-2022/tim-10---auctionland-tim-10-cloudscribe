@@ -21,15 +21,14 @@ namespace Korisnik.Controllers
     public class TipController : ControllerBase
     {
         private readonly ITipRepository tipRepository;
-        private readonly LinkGenerator linkGenerator;
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public TipController(ITipRepository tipRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
+        public TipController(ITipRepository tipRepository, IMapper mapper, ILoggerService loggerService)
         {
             this.tipRepository = tipRepository;
-            this.linkGenerator = linkGenerator;
+            
             this.mapper = mapper;
             this.loggerService = loggerService;
             loggerDto = new LoggerDto();

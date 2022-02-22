@@ -206,13 +206,12 @@ namespace Korisnik.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //  var korisnikEntity = mapper.Map<KorisnikUpdateDto>(oldKorisnik);
                 mapper.Map(komisija, oldKomisija);
                 komisijaRepository.SaveChanges();
                 return Ok(mapper.Map<KomisijaDto>(oldKomisija));
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
                 loggerDto.Level = "ERROR";
