@@ -63,11 +63,13 @@ namespace Korisnik.Controllers
             if (korisnici == null || korisnici.Count == 0)
             {
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
         }
@@ -89,10 +91,12 @@ namespace Korisnik.Controllers
             if (korisnikModel == null)
             {
                 loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<KorisnikDto>(korisnikModel));
         }
@@ -114,11 +118,13 @@ namespace Korisnik.Controllers
             if (korisnici == null || korisnici.Count == 0)
             {
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
 
@@ -134,10 +140,12 @@ namespace Korisnik.Controllers
             if(korisnici == null || korisnici.Count==0)
             {
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KorisnikDto>>(korisnici));
         }
@@ -163,18 +171,21 @@ namespace Korisnik.Controllers
                 if(korisnikModel== null)
                 {
                     loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "WARN";
                     loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 korisnikRepository.DeleteKorisnik(korisnikId);
                 korisnikRepository.SaveChanges();
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch
             {
                 loggerDto.Response = "500 SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
 
@@ -213,6 +224,7 @@ namespace Korisnik.Controllers
                 authenticationHelper.CreateHash(korisnik);
                 KorisnikConfirmation confirmation = korisnikRepository.CreateKorisnik(korisnik);
                 string location = linkGenerator.GetPathByAction("GetKorisnik", "Korisnik", new { korisnikId = confirmation.KorisnikId });
+                loggerDto.Level = "INFO";
                 loggerDto.Response = "201 CREATED";
                 loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<KorisnikConfirmationDto>(confirmation));
@@ -220,6 +232,7 @@ namespace Korisnik.Controllers
             catch(Exception e)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
 
@@ -254,6 +267,7 @@ namespace Korisnik.Controllers
                 if (oldKorisnik == null)
                 {
                     loggerDto.Response = "401 NOT FOUND";
+                    loggerDto.Level = "WARN";
                     loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
@@ -261,6 +275,7 @@ namespace Korisnik.Controllers
                 mapper.Map(korisnik, oldKorisnik);
                 korisnikRepository.SaveChanges();
                 loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return Ok(mapper.Map<KorisnikConfirmationDto>(oldKorisnik));
 
@@ -268,6 +283,7 @@ namespace Korisnik.Controllers
             catch(Exception e)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
 

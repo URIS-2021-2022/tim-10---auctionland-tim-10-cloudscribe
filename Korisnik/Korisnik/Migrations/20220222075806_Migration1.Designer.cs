@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Korisnik.Migrations
 {
     [DbContext(typeof(KorisnikContext))]
-    [Migration("20220217024746_Mig")]
-    partial class Mig
+    [Migration("20220222075806_Migration1")]
+    partial class Migration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,11 +101,6 @@ namespace Korisnik.Migrations
                     b.ToTable("Tipovi");
 
                     b.HasData(
-                        new
-                        {
-                            TipId = new Guid("5b3dbaa4-60d0-4081-b848-752d8a2ab74e"),
-                            TipKorisnika = "Operater"
-                        },
                         new
                         {
                             TipId = new Guid("719cbcae-ba05-4bdf-b0f8-636d79b70180"),

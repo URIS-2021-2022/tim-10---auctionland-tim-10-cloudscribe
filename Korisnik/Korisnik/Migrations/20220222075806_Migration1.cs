@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Korisnik.Migrations
 {
-    public partial class Mig : Migration
+    public partial class Migration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,7 +65,6 @@ namespace Korisnik.Migrations
                 columns: new[] { "TipId", "TipKorisnika" },
                 values: new object[,]
                 {
-                    { new Guid("5b3dbaa4-60d0-4081-b848-752d8a2ab74e"), "Operater" },
                     { new Guid("719cbcae-ba05-4bdf-b0f8-636d79b70180"), "Tehnicki sekretar" },
                     { new Guid("4915ab80-5233-45a7-a7d2-b8c636fa934d"), "Superuser" },
                     { new Guid("f4ae8300-84cd-488f-90c7-d5b1d871bd9e"), "Operator nadmetanja" },

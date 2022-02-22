@@ -101,11 +101,6 @@ namespace Korisnik.Migrations
                     b.HasData(
                         new
                         {
-                            TipId = new Guid("5b3dbaa4-60d0-4081-b848-752d8a2ab74e"),
-                            TipKorisnika = "Operater"
-                        },
-                        new
-                        {
                             TipId = new Guid("719cbcae-ba05-4bdf-b0f8-636d79b70180"),
                             TipKorisnika = "Tehnicki sekretar"
                         },

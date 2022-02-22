@@ -54,11 +54,13 @@ namespace Korisnik.Controllers
             if (tipovi == null || tipovi.Count == 0)
             {
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "WARN";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<TipDto>>(tipovi));
         }
@@ -80,10 +82,12 @@ namespace Korisnik.Controllers
             if (tipModel == null)
             {
                 loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<TipDto>(tipModel));
         }

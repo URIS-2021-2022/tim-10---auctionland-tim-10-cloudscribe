@@ -50,15 +50,18 @@ namespace Korisnik.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<KomisijaDto>> GetKomisije()
         {
+            
             loggerDto.HttpMethod = "GET";
             List<Komisija> komisija = komisijaRepository.GetKomisija();
             if (komisija == null || komisija.Count == 0)
             {
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
 
             }
+            loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KomisijaDto>>(komisija));
@@ -80,10 +83,12 @@ namespace Korisnik.Controllers
             if (komisijaModel == null)
             {
                 loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
             loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<KomisijaDto>(komisijaModel));
         }
@@ -110,18 +115,21 @@ namespace Korisnik.Controllers
                 if (komisijaModel == null)
                 {
                     loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
                     loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 komisijaRepository.DeleteKomisija(komisijaId);
                 komisijaRepository.SaveChanges();
                 loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
 
@@ -156,12 +164,14 @@ namespace Korisnik.Controllers
                 Komisija confirmation = komisijaRepository.CreateKomisija(komisija);
                 string location = linkGenerator.GetPathByAction("GetKomisije", "Komisija", new { komisijaId = confirmation.KomisijaId });
                 loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<Komisija>(confirmation));
             }
             catch(Exception e)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
 
@@ -193,6 +203,7 @@ namespace Korisnik.Controllers
                 var oldKomisija = komisijaRepository.GetKomisijaById(komisija.KomisijaId);
                 if (oldKomisija == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //  var korisnikEntity = mapper.Map<KorisnikUpdateDto>(oldKorisnik);
@@ -204,6 +215,7 @@ namespace Korisnik.Controllers
             catch (Exception e)
             {
                 loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
                 loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
 
