@@ -27,7 +27,7 @@ namespace Korisnik.Controllers
         private readonly IMapper mapper;
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
-        public KomisijaController(IKomisijaRepository komisijaRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService, LoggerDto loggerDto)
+        public KomisijaController(IKomisijaRepository komisijaRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.komisijaRepository = komisijaRepository;
             this.linkGenerator = linkGenerator;

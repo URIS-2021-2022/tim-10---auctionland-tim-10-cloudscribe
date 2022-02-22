@@ -123,7 +123,7 @@ namespace Korisnik
             services.AddScoped<IKomisijaRepository, KomisijaRepository>();
             services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ILoggerService, LoggerService>();
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddSwaggerGen(setupAction =>
             {
 

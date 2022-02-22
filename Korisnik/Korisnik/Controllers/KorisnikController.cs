@@ -31,7 +31,7 @@ namespace Korisnik.Controllers
         private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public KorisnikController(IKorisnikRepository korisnikRepository, IHttpContextAccessor httpContextAccessor,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper, ILoggerService loggerService, LoggerDto loggerDto)
+        public KorisnikController(IKorisnikRepository korisnikRepository, IHttpContextAccessor httpContextAccessor,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper, ILoggerService loggerService)
         {
             this.korisnikRepository = korisnikRepository;
             this.linkGenerator = linkGenerator;

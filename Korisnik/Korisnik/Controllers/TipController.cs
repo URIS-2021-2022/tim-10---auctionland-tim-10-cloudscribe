@@ -26,7 +26,7 @@ namespace Korisnik.Controllers
         private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public TipController(ITipRepository tipRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService, LoggerDto loggerDto)
+        public TipController(ITipRepository tipRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.tipRepository = tipRepository;
             this.linkGenerator = linkGenerator;

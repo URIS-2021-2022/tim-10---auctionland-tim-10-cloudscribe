@@ -21,7 +21,7 @@ namespace Korisnik.ServiceCalls
         {
             using (HttpClient client = new HttpClient())
             {
-                var conf = configuration["Services:LoggerService"];
+              
                 Uri url = new Uri($"{ configuration["Services:LoggerService"] }api/logger");
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(loggerDto));
                 content.Headers.ContentType.MediaType = "application/json";
