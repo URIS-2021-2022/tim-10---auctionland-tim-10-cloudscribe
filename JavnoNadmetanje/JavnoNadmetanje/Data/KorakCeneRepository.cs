@@ -14,9 +14,9 @@ namespace JavnoNadmetanje.Data
         {
             this.context = context;
         }
-        public KorakCeneEntity GetKorakCeneById(Guid korakCeneId)
+        public KorakCeneEntity GetKorakCeneById(Guid javnoNadmetanjeId)
         {
-            return context.KorakCene.FirstOrDefault(p => p.korakCeneID == korakCeneId);
+            return context.KorakCene.FirstOrDefault(p => p.korakCeneID == javnoNadmetanjeId);
         }
 
         public List<KorakCeneEntity> GetKorakCene()

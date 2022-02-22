@@ -22,17 +22,12 @@ namespace Licitacija.Models
         /// <summary>
         /// Datum kada je licitacija raspisana
         /// </summary>
-        public DateTime datumRaspisivanja { get; set; } //datum licitacije
+        public DateTime datumRaspisivanja { get; set; } 
         /// <summary>
         /// Ogranicenje licitacije
         /// </summary>
         public int ogranicenje { get; set; }
-        /// <summary>
-        /// Dokument
-        /// </summary>
 
-        //  public string[] dokumentacijaFizickaLica { get; set; } // niz vrednosti 
-        // public string[] dokumentacijaPravnaLica { get; set; }
         /// <summary>
         /// Krug licitacije
         /// </summary>
@@ -41,10 +36,6 @@ namespace Licitacija.Models
         /// Rok za prijavu za licitaciju
         /// </summary>
         public DateTime rokZaPrijave { get; set; }
-        /// <summary>
-        /// Javno nadmetanje
-        /// </summary>
 
-        //  public string[] javnoNadmetanje { get; set; } //niz vrednosti 
     }
 }

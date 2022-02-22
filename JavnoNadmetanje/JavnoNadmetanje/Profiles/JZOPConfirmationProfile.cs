@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Profiles
 {
-    public class JZOPConfirmationProfile : Profile
+    public class JzopConfirmationProfile : Profile
     {
-        public JZOPConfirmationProfile()
+        public JzopConfirmationProfile()
         {
-            CreateMap<JZOPEntity, JZOPConfirmation>();
+            CreateMap<JzopEntity, JzopConfirmation>();
 
-            CreateMap<JZOPConfirmation, JZOPConfirmationDto>();
+            CreateMap<JzopConfirmation, JzopConfirmationDto>();
 
-            CreateMap<JZOPConfirmationDto, JZOPConfirmation>();
+            CreateMap<JzopConfirmationDto, JzopConfirmation>();
 
-            CreateMap<JZOPEntity, JZOPConfirmationDto>();
+            CreateMap<JzopEntity, JzopConfirmationDto>();
         }
     }
 }

@@ -9,58 +9,52 @@ namespace JavnoNadmetanje.Entities
 {
     public class JavnoNadmetanjeContext :DbContext
     {
-        private readonly IConfiguration configuration;
 
         public JavnoNadmetanjeContext(DbContextOptions<JavnoNadmetanjeContext> options) : base(options)
         {
 
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(configuration.GetConnectionString("JavnoNadmetanjeDB"));
-        //}
-
         public DbSet<JavnoNadmetanjeEntity> JavnoNadmetanje { get; set; }
         public DbSet<JavnaLicitacijaEntity> JavnaLicitacija { get; set; }
-        public DbSet<JZOPEntity> JZOP{ get; set; }
+        public DbSet<JzopEntity> JZOP{ get; set; }
         public DbSet<EtapaEntity> Etapa { get; set; }
         public DbSet<KorakCeneEntity> KorakCene { get; set; }
 
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<KorakCeneEntity>()
+            modelBuilder.Entity<KorakCeneEntity>()
                .HasData(new
                {
                    korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e961b"),
                    brojKoraka = 1
 
                });
-            builder.Entity<KorakCeneEntity>()
+            modelBuilder.Entity<KorakCeneEntity>()
                .HasData(new
                {
                    korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e938b"),
                    brojKoraka = 2
 
                });
-            builder.Entity<EtapaEntity>()
+            modelBuilder.Entity<EtapaEntity>()
                .HasData(new
                {
                    etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e968b"),
                    brojEtape = 1
 
                });
-            builder.Entity<EtapaEntity>()
+            modelBuilder.Entity<EtapaEntity>()
                .HasData(new
                {
                    etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5873e968b"),
                    brojEtape = 2
 
                });
-            builder.Entity<JZOPEntity>()
+            modelBuilder.Entity<JzopEntity>()
                .HasData(new
                {
                    javnoNadmetanjeID = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3573c0"),
@@ -82,7 +76,7 @@ namespace JavnoNadmetanje.Entities
                    opisJZOP = "Drugi tip javnog nadmetanja"
 
                });
-            builder.Entity<JZOPEntity>()
+            modelBuilder.Entity<JzopEntity>()
                .HasData(new
                {
                    javnoNadmetanjeID = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c4973c0"),
@@ -104,7 +98,7 @@ namespace JavnoNadmetanje.Entities
                    opisJZOP = "Drugi tip javnog nadmetanja"
 
                });
-            builder.Entity<JavnaLicitacijaEntity>()
+            modelBuilder.Entity<JavnaLicitacijaEntity>()
                .HasData(new
                {
                    javnoNadmetanjeID = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3973c0"),
@@ -127,7 +121,7 @@ namespace JavnoNadmetanje.Entities
                    korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e961b")
 
                });
-            builder.Entity<JavnaLicitacijaEntity>()
+            modelBuilder.Entity<JavnaLicitacijaEntity>()
                 .HasData(new
                 {
                     javnoNadmetanjeID = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),

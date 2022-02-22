@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Models
 {
-    public class JZOPConfirmationDto
+    public class JzopConfirmationDto
     {
 
         /// <summary>
-        /// ID javne licitacije
+        /// ID javnog nadmetanja
         /// </summary>
         public Guid javnoNadmetanjeID { get; set; }
         /// <summary>

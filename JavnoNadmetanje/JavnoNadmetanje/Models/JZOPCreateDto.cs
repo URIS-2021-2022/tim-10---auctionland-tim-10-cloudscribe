@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Models
 {
-    public class JZOPCreateDto
+    public class JzopCreateDto
+
     {
+        /// <summary>
+        /// Datum pocetna javnog zatvaranja otvorenih ponuda
+        /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti datum.")]
         public DateTime datum { get; set; }
         /// <summary>

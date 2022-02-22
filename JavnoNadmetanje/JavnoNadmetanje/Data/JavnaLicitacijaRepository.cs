@@ -24,9 +24,9 @@ namespace JavnoNadmetanje.Data
             return context.JavnaLicitacija.Include(p => p.Etapa).Include(e => e.KorakCene).ToList();
         }
 
-        public JavnaLicitacijaEntity GetJavnaLicitacijaById(Guid javnoNadmetanjeId)
+        public JavnaLicitacijaEntity GetJavnaLicitacijaById(Guid javnaLicitacijaId)
         {
-            return context.JavnaLicitacija.Include(p => p.Etapa).Include(e => e.KorakCene).FirstOrDefault(a => a.javnoNadmetanjeID == javnoNadmetanjeId);
+            return context.JavnaLicitacija.Include(p => p.Etapa).Include(e => e.KorakCene).FirstOrDefault(a => a.javnoNadmetanjeID == javnaLicitacijaId);
         }
 
         public JavnaLicitacijaConfirmation CreateJavnaLicitacija(JavnaLicitacijaEntity javnaLicitacija)
@@ -35,9 +35,9 @@ namespace JavnoNadmetanje.Data
             return mapper.Map<JavnaLicitacijaConfirmation>(createdEntity.Entity);
         }
 
-        public void DeleteJavnaLicitacija(Guid javnoNadmetanjeId)
+        public void DeleteJavnaLicitacija(Guid javnaLicitacijaId)
         {
-            var javnaLicitacija = GetJavnaLicitacijaById(javnoNadmetanjeId);
+            var javnaLicitacija = GetJavnaLicitacijaById(javnaLicitacijaId);
             context.Remove(javnaLicitacija);
         }
         public bool SaveChanges()
@@ -47,7 +47,7 @@ namespace JavnoNadmetanje.Data
 
         public void UpdateJavnaLicitacija(JavnaLicitacijaEntity javnaLicitacija)
         {
-
+            throw new NotSupportedException();
         }
     }
 }

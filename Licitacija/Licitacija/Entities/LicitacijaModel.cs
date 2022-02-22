@@ -29,12 +29,7 @@ namespace Licitacija.Entities
         /// Ogranicenje licitacije
         /// </summary>
         public int ogranicenje { get; set; }
-        /// <summary>
-        /// Dokument
-        /// </summary>
-     
-        //  public string[] dokumentacijaFizickaLica { get; set; } // niz vrednosti 
-        // public string[] dokumentacijaPravnaLica { get; set; }
+        
         /// <summary>
         /// Krug licitacije
         /// </summary>
@@ -43,10 +38,6 @@ namespace Licitacija.Entities
         /// Rok za prijavu za licitaciju
         /// </summary>
         public DateTime rokZaPrijave { get; set; }
-        /// <summary>
-        /// Javno nadmetanje
-        /// </summary>
 
-        //  public string[] javnoNadmetanje { get; set; } //niz vrednosti 
     }
 }
