@@ -29,7 +29,7 @@ namespace Parcela.Controllers
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
 
-        //private readonly IHttpContextAccessor httpContextAccessor;
+        
 
 
         public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
@@ -37,7 +37,7 @@ namespace Parcela.Controllers
             this.parcelaRepository = parcelaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
-            //this.httpContextAccessor = httpContextAccessor;
+            
             this.loggerService = loggerService;
             loggerDto = new LoggerDto();
             loggerDto.ServiceName = "PARCELA";
@@ -57,7 +57,7 @@ namespace Parcela.Controllers
         public ActionResult<List<ParcelaDto>> GetParcele()
         {
             loggerDto.HttpMethod = "GET";
-            //var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
+            
             var parcele = parcelaRepository.GetParcela();
             if(parcele == null || parcele.Count == 0)
             {
@@ -182,7 +182,7 @@ namespace Parcela.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
+                
 
                 mapper.Map(parcela, oldParcela);
 
