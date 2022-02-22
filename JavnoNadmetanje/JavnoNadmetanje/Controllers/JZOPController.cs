@@ -2,6 +2,7 @@
 using JavnoNadmetanje.Data;
 using JavnoNadmetanje.Entities;
 using JavnoNadmetanje.Models;
+using JavnoNadmetanje.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,19 +18,24 @@ namespace JavnoNadmetanje.Controllers
     [Authorize]
     [Route("api/jzop")]
     [Produces("application/json", "applciation/xml")]
-    public class JZOPController : ControllerBase
+    public class JzopController : ControllerBase
     {
-        private readonly IJZOPRepository jzopRepository;
+        private readonly IJzopRepository jzopRepository;
         private readonly IEtapaRepository etapaRepository;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public JZOPController(IJZOPRepository jzopLiceRepository, IEtapaRepository etapaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public JzopController(IJzopRepository jzopLiceRepository, IEtapaRepository etapaRepository, ILoggerService loggerService, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.jzopRepository = jzopLiceRepository;
             this.etapaRepository = etapaRepository;
+            this.loggerService = loggerService;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "JavnoNadmetanje";
         }
 
         /// <summary>
@@ -40,14 +46,21 @@ namespace JavnoNadmetanje.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
         [HttpHead]
-        public ActionResult<List<JZOPDto>> GetJZOP()
+        public ActionResult<List<JzopDto>> GetJZOP()
         {
+            loggerDto.HttpMethod = "GET";
             var jzop = jzopRepository.GetJZOP();
             if (jzop == null || jzop.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
-            return Ok(mapper.Map<List<JZOPDto>>(jzop));
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
+            return Ok(mapper.Map<List<JzopDto>>(jzop));
         }
 
         /// <summary>
@@ -58,15 +71,24 @@ namespace JavnoNadmetanje.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpGet("{javnoNadmetanjeId}")]
-        public ActionResult<JZOPDto> GetJZOP(Guid javnoNadmetanjeId)
+        public ActionResult<JzopDto> GetJZOP(Guid javnoNadmetanjeId)
         {
+            loggerDto.HttpMethod = "GET";
             var jzop = jzopRepository.GetJZOPById(javnoNadmetanjeId);
 
             if (jzop == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return NotFound();
             }
-            return Ok(mapper.Map<JZOPDto>(jzop));
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
+
+            return Ok(mapper.Map<JzopDto>(jzop));
         }
 
         /// <summary>
@@ -100,22 +122,32 @@ namespace JavnoNadmetanje.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPost]
-        public ActionResult<JZOPConfirmationDto> CreateJZOP([FromBody] JZOPCreateDto jzop)
+        public ActionResult<JzopConfirmationDto> CreateJZOP([FromBody] JzopCreateDto jzop)
         {
             try
             {
-                JZOPEntity jzopEntity = mapper.Map<JZOPEntity>(jzop);
+                loggerDto.HttpMethod = "POST";
+                JzopEntity jzopEntity = mapper.Map<JzopEntity>(jzop);
                 jzopEntity.Etapa = etapaRepository.GetEtapaById(jzop.etapaID);
-                JZOPConfirmation confirmation = jzopRepository.CreateJZOP(jzopEntity);
+                JzopConfirmation confirmation = jzopRepository.CreateJZOP(jzopEntity);
                 jzopRepository.SaveChanges();
 
                 Console.WriteLine(confirmation.brojJZOP);
 
                 string location = linkGenerator.GetPathByAction("GetJZOP", "JZOP", new { javnoNadmetanjeId = confirmation.javnoNadmetanjeID });
-                return Created(location, mapper.Map<JZOPConfirmationDto>(confirmation));
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
+                return Created(location, mapper.Map<JzopConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -153,7 +185,7 @@ namespace JavnoNadmetanje.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Consumes("application/json")]
         [HttpPut]
-        public ActionResult<JZOPDto> UpdateJZOP([FromBody] JZOPUpdateDto jzop)
+        public ActionResult<JzopDto> UpdateJZOP([FromBody] JzopUpdateDto jzop)
         {
             try
             {
@@ -161,18 +193,23 @@ namespace JavnoNadmetanje.Controllers
 
                 if (oldJZOP == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
 
-                JZOPEntity jzopEntity = mapper.Map<JZOPEntity>(jzop);
+                JzopEntity jzopEntity = mapper.Map<JzopEntity>(jzop);
                 jzopEntity.Etapa = etapaRepository.GetEtapaById(jzop.etapaID);
                 mapper.Map(jzopEntity, oldJZOP);
                 jzopRepository.SaveChanges();
 
-                return Ok(mapper.Map<JZOPDto>(oldJZOP));
+                return Ok(mapper.Map<JzopDto>(oldJZOP));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -190,16 +227,25 @@ namespace JavnoNadmetanje.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var jzop = jzopRepository.GetJZOPById(javnoNadmetanjeId);
 
                 if (jzop == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
+
                     return NotFound();
                 }
 
                 jzopRepository.DeleteJZOP(javnoNadmetanjeId);
                 jzopRepository.SaveChanges();
-                return NoContent();
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
+                return Ok();
             }
             catch (Exception)
             {

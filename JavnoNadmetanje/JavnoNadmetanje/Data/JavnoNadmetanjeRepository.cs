@@ -30,12 +30,12 @@ namespace JavnoNadmetanje.Data
             throw new NotImplementedException();
         }
 
-        public JavnoNadmetanjeConfirmation CreateJavnoNadmetanje(JavnoNadmetanjeEntity javnoNadmetanje)
+        public JavnoNadmetanjeConfirmation CreateJavnoNadmetanje(JavnoNadmetanjeEntity javnoNadmetanjeEntity)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateJavnoNadmetanje(JavnoNadmetanjeEntity javnoNadmetanje)
+        public void UpdateJavnoNadmetanje(JavnoNadmetanjeEntity javnoNadmetanjeEntity)
         {
             throw new NotImplementedException();
 

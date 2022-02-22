@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Profiles
 {
-    public class JZOPProfile : Profile
+    public class JzopProfile : Profile
     {
-        public JZOPProfile()
+        public JzopProfile()
         {
-            CreateMap<JZOPEntity, JZOPDto>();
-            CreateMap<JZOPCreateDto, JZOPEntity>();
-            CreateMap<JZOPUpdateDto, JZOPEntity>();
-            CreateMap<JZOPEntity, JZOPEntity>();
+            CreateMap<JzopEntity, JzopDto>();
+            CreateMap<JzopCreateDto, JzopEntity>();
+            CreateMap<JzopUpdateDto, JzopEntity>();
+            CreateMap<JzopEntity, JzopEntity>();
         }
             
     }

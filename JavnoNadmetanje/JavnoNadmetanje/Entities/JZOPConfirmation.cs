@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Entities
 {
-    public class JZOPConfirmation
+    public class JzopConfirmation
     {
         /// <summary>
         /// ID javnog zatvaranja otvorenih ponuda

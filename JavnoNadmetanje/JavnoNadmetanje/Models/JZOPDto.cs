@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Models
 {
-    public class JZOPDto
+    public class JzopDto
     {
         /// <summary>
         /// ID javnog nadmetanja
         /// </summary>
         public Guid javnoNadmetanjeID { get; set; }
+        /// <summary>
+        /// Datum pocetna javnog zatvaranja otvorenih ponuda
+        /// </summary>
         public DateTime datum { get; set; }
         /// <summary>
         /// Vreme pocetka javnog nadmetanja

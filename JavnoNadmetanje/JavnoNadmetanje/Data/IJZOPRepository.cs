@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Data
 {
-    public interface IJZOPRepository
+    public interface IJzopRepository
     {
-        List<JZOPEntity> GetJZOP();
+        List<JzopEntity> GetJZOP();
 
-        JZOPEntity GetJZOPById(Guid javnoNadmetanjeId);
+        JzopEntity GetJZOPById(Guid javnoNadmetanjeId);
 
-        JZOPConfirmation CreateJZOP(JZOPEntity JZOP);
+        JzopConfirmation CreateJZOP(JzopEntity JZOP);
 
-        void UpdateJZOP(JZOPEntity JZOP);
+        void UpdateJZOP(JzopEntity JZOP);
 
         void DeleteJZOP(Guid javnoNadmetanjeId);
 

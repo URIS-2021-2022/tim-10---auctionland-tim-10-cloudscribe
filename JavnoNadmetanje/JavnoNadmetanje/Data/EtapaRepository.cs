@@ -14,9 +14,9 @@ namespace JavnoNadmetanje.Data
         {
             this.context = context;
         }
-        public EtapaEntity GetEtapaById(Guid etapaId)
+        public EtapaEntity GetEtapaById(Guid javnoNadmetanjeId)
         {
-            return context.Etapa.FirstOrDefault(p => p.etapaID == etapaId);
+            return context.Etapa.FirstOrDefault(p => p.etapaID == javnoNadmetanjeId);
         }
 
         public List<EtapaEntity> GetEtape()

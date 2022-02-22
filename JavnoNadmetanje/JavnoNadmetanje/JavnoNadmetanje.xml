@@ -91,20 +91,20 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.GetJZOP">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.GetJZOP">
             <summary>
             Vraća sva javna otvaranja zatvorenih ponuda
             </summary>
             <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.GetJZOP(System.Guid)">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.GetJZOP(System.Guid)">
             <summary>
             Vraća javna otvaranja zatvorenih ponuda na osnovu ID-ja javnih nadmetanja
             </summary>
             <param name="javnoNadmetanjeId">ID javnog nadmetanja</param>
             <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.CreateJZOP(JavnoNadmetanje.Models.JZOPCreateDto)">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.CreateJZOP(JavnoNadmetanje.Models.JzopCreateDto)">
              <summary>
              Dodaje novo javno zatvaranje otvorenih ponuda
              </summary>
@@ -133,7 +133,7 @@
             </remarks>
              <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.UpdateJZOP(JavnoNadmetanje.Models.JZOPUpdateDto)">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.UpdateJZOP(JavnoNadmetanje.Models.JzopUpdateDto)">
              <summary>
              Ažurira postojeće JZOP
              </summary>
@@ -163,14 +163,14 @@
             </remarks>
              <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.DeleteJZOP(System.Guid)">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.DeleteJZOP(System.Guid)">
             <summary>
             Vrši brisanje jednog JZOP na osnovu ID-ja
             </summary>
             <param name="javnoNadmetanjeId">ID javnog nadmetanja</param>
             <returns></returns>
         </member>
-        <member name="M:JavnoNadmetanje.Controllers.JZOPController.GetJZOPOptions">
+        <member name="M:JavnoNadmetanje.Controllers.JzopController.GetJZOPOptions">
             <summary>
             Sve opcije za rad sa JZOP
             </summary>
@@ -402,92 +402,92 @@
             Etapa
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.javnoNadmetanjeID">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.javnoNadmetanjeID">
             <summary>
             ID javnog zatvaranja otvorenih ponuda
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.datum">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.datum">
             <summary>
             Datum javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.vremePocetka">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.vremePocetka">
             <summary>
             Vreme pocetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.vremeKraja">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.vremeKraja">
             <summary>
             Vreme zavrsetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.pocetnaCena">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.pocetnaCena">
             <summary>
             Pocetna cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.izuzeto">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.izuzeto">
             <summary>
             Izuzeto iz javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.tip">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.tip">
             <summary>
             Tip javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.izlicitiranaCena">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.izlicitiranaCena">
             <summary>
             Izlicitirana cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.katastarskaOpstina">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.katastarskaOpstina">
             <summary>
             Katastarska opstina vezana za javno nadmetanje
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.periodZakupa">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.periodZakupa">
             <summary>
             Period zakupa u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.brojUcesnika">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.brojUcesnika">
             <summary>
             Broj ucesnika u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.dopunaDepozita">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.dopunaDepozita">
             <summary>
             Definisana dopuna depozita u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.krug">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.krug">
             <summary>
             Krug javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.status">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.status">
             <summary>
             Status javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.etapaID">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.etapaID">
             <summary>
             Etapa ID
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPConfirmation.brojJZOP">
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.brojJZOP">
             <summary>
             Oznaka javnog zatvaranja otvorenih ponuda
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Entities.JZOPEntity.brojJZOP">
+        <member name="P:JavnoNadmetanje.Entities.JzopEntity.brojJZOP">
             <summary>
             Oznaka javnog zatvaranja otvorenih ponuda
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Entities.JZOPEntity.opisJZOP" -->
+        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Entities.JzopEntity.opisJZOP" -->
         <member name="P:JavnoNadmetanje.Entities.KorakCeneConfirmation.korakCeneID">
             <summary>
             ID koraka cene
@@ -805,295 +805,310 @@
             Etapa ID
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.javnoNadmetanjeID">
-            <summary>
-            ID javne licitacije
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.datum">
-            <summary>
-            Datum javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.vremePocetka">
-            <summary>
-            Vreme pocetka javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.vremeKraja">
-            <summary>
-            Vreme zavrsetka javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.pocetnaCena">
-            <summary>
-            Pocetna cena na javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.izuzeto">
-            <summary>
-            Izuzeto iz javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.tip">
-            <summary>
-            Tip javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.izlicitiranaCena">
-            <summary>
-            Izlicitirana cena na javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.katastarskaOpstina">
-            <summary>
-            Katastarska opstina vezana za javno nadmetanje
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.periodZakupa">
-            <summary>
-            Period zakupa u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.brojUcesnika">
-            <summary>
-            Broj ucesnika u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.dopunaDepozita">
-            <summary>
-            Definisana dopuna depozita u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.krug">
-            <summary>
-            Krug javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.status">
-            <summary>
-            Status javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPConfirmationDto.etapaID">
-            <summary>
-            Etapa ID
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.vremePocetka">
-            <summary>
-            Vreme pocetka javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.vremeKraja">
-            <summary>
-            Vreme zavrsetka javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.pocetnaCena">
-            <summary>
-            Pocetna cena na javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.izuzeto">
-            <summary>
-            Izuzeto iz javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.tip">
-            <summary>
-            Tip javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.izlicitiranaCena">
-            <summary>
-            Izlicitirana cena na javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.katastarskaOpstina">
-            <summary>
-            Katastarska opstina vezana za javno nadmetanje
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.periodZakupa">
-            <summary>
-            Period zakupa u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.brojUcesnika">
-            <summary>
-            Broj ucesnika u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.dopunaDepozita">
-            <summary>
-            Definisana dopuna depozita u javnom nadmetanju
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.krug">
-            <summary>
-            Krug javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.status">
-            <summary>
-            Status javnog nadmetanja
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.brojJZOP">
-            <summary>
-            Oznaka javne licitacije
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JZOPCreateDto.opisJZOP" -->
-        <member name="P:JavnoNadmetanje.Models.JZOPCreateDto.etapaID">
-            <summary>
-            Etapa ID
-            </summary>
-        </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.javnoNadmetanjeID">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.javnoNadmetanjeID">
             <summary>
             ID javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.vremePocetka">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.datum">
+            <summary>
+            Datum javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.vremePocetka">
             <summary>
             Vreme pocetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.vremeKraja">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.vremeKraja">
             <summary>
             Vreme zavrsetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.pocetnaCena">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.pocetnaCena">
             <summary>
             Pocetna cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.izuzeto">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.izuzeto">
             <summary>
             Izuzeto iz javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.tip">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.tip">
             <summary>
             Tip javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.izlicitiranaCena">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.izlicitiranaCena">
             <summary>
             Izlicitirana cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.katastarskaOpstina">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.katastarskaOpstina">
             <summary>
             Katastarska opstina vezana za javno nadmetanje
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.periodZakupa">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.periodZakupa">
             <summary>
             Period zakupa u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.brojUcesnika">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.brojUcesnika">
             <summary>
             Broj ucesnika u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.dopunaDepozita">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.dopunaDepozita">
             <summary>
             Definisana dopuna depozita u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.krug">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.krug">
             <summary>
             Krug javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.status">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.status">
             <summary>
             Status javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPDto.brojJZOP">
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.etapaID">
+            <summary>
+            Etapa ID
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.datum">
+            <summary>
+            Datum pocetna javnog zatvaranja otvorenih ponuda
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.vremePocetka">
+            <summary>
+            Vreme pocetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.vremeKraja">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.pocetnaCena">
+            <summary>
+            Pocetna cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.izuzeto">
+            <summary>
+            Izuzeto iz javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.tip">
+            <summary>
+            Tip javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.izlicitiranaCena">
+            <summary>
+            Izlicitirana cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.katastarskaOpstina">
+            <summary>
+            Katastarska opstina vezana za javno nadmetanje
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.periodZakupa">
+            <summary>
+            Period zakupa u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.brojUcesnika">
+            <summary>
+            Broj ucesnika u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.dopunaDepozita">
+            <summary>
+            Definisana dopuna depozita u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.krug">
+            <summary>
+            Krug javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.status">
+            <summary>
+            Status javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.brojJZOP">
             <summary>
             Oznaka javne licitacije
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JZOPDto.opisJZOP" -->
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.javnoNadmetanjeID">
+        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JzopCreateDto.opisJZOP" -->
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.etapaID">
+            <summary>
+            Etapa ID
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.javnoNadmetanjeID">
+            <summary>
+            ID javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.datum">
+            <summary>
+            Datum pocetna javnog zatvaranja otvorenih ponuda
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.vremePocetka">
+            <summary>
+            Vreme pocetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.vremeKraja">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.pocetnaCena">
+            <summary>
+            Pocetna cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.izuzeto">
+            <summary>
+            Izuzeto iz javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.tip">
+            <summary>
+            Tip javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.izlicitiranaCena">
+            <summary>
+            Izlicitirana cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.katastarskaOpstina">
+            <summary>
+            Katastarska opstina vezana za javno nadmetanje
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.periodZakupa">
+            <summary>
+            Period zakupa u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.brojUcesnika">
+            <summary>
+            Broj ucesnika u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.dopunaDepozita">
+            <summary>
+            Definisana dopuna depozita u javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.krug">
+            <summary>
+            Krug javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.status">
+            <summary>
+            Status javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.brojJZOP">
+            <summary>
+            Oznaka javne licitacije
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JzopDto.opisJZOP" -->
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.javnoNadmetanjeID">
             <summary>
             ID JZOP
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.vremePocetka">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.datum">
+            <summary>
+            Datum pocetna javnog zatvaranja otvorenih ponuda
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.vremePocetka">
             <summary>
             Vreme pocetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.vremeKraja">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.vremeKraja">
             <summary>
             Vreme zavrsetka javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.pocetnaCena">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.pocetnaCena">
             <summary>
             Pocetna cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.izuzeto">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.izuzeto">
             <summary>
             Izuzeto iz javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.tip">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.tip">
             <summary>
             Tip javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.izlicitiranaCena">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.izlicitiranaCena">
             <summary>
             Izlicitirana cena na javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.katastarskaOpstina">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.katastarskaOpstina">
             <summary>
             Katastarska opstina vezana za javno nadmetanje
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.periodZakupa">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.periodZakupa">
             <summary>
             Period zakupa u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.brojUcesnika">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.brojUcesnika">
             <summary>
             Broj ucesnika u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.dopunaDepozita">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.dopunaDepozita">
             <summary>
             Definisana dopuna depozita u javnom nadmetanju
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.krug">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.krug">
             <summary>
             Krug javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.status">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.status">
             <summary>
             Status javnog nadmetanja
             </summary>
         </member>
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.brojJZOP">
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.brojJZOP">
             <summary>
             Oznaka javne licitacije
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JZOPUpdateDto.opisJZOP" -->
-        <member name="P:JavnoNadmetanje.Models.JZOPUpdateDto.etapaID">
+        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JzopUpdateDto.opisJZOP" -->
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.etapaID">
             <summary>
             Etapa ID
             </summary>

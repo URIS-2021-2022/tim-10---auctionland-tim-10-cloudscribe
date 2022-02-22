@@ -1,5 +1,6 @@
 ﻿using JavnoNadmetanje.Data;
 using JavnoNadmetanje.Entities;
+using JavnoNadmetanje.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -78,9 +79,10 @@ namespace JavnoNadmetanje
 
             services.AddScoped<IJavnoNadmetanjeRepository, JavnoNadmetanjeRepository>();
             services.AddScoped<IJavnaLicitacijaRepository, JavnaLicitacijaRepository>();
-            services.AddScoped<IJZOPRepository, JZOPRepository>();
+            services.AddScoped<IJzopRepository, JzopRepository>();
             services.AddScoped<IEtapaRepository, EtapaRepository>();
             services.AddScoped<IKorakCeneRepository, KorakCeneRepository>();
+            services.AddSingleton<ILoggerService, LoggerService>();
             services.AddDbContextPool<JavnoNadmetanjeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("JavnoNadmetanjeDB")));
         }
 

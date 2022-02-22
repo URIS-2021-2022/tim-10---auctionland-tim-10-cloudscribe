@@ -2,6 +2,7 @@
 using JavnoNadmetanje.Data;
 using JavnoNadmetanje.Entities;
 using JavnoNadmetanje.Models;
+using JavnoNadmetanje.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,16 +23,21 @@ namespace JavnoNadmetanje.Controllers
         private readonly IJavnaLicitacijaRepository javnaLicitacijaRepository;
         private readonly IEtapaRepository etapaRepository;
         private readonly IKorakCeneRepository korakCeneRepository;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public JavnaLicitacijaController(IJavnaLicitacijaRepository javnaLicitacijaRepository, IEtapaRepository etapaRepository, IKorakCeneRepository korakCeneRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public JavnaLicitacijaController(IJavnaLicitacijaRepository javnaLicitacijaRepository, IEtapaRepository etapaRepository, IKorakCeneRepository korakCeneRepository, ILoggerService loggerService, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.javnaLicitacijaRepository = javnaLicitacijaRepository;
             this.etapaRepository = etapaRepository;
             this.korakCeneRepository = korakCeneRepository;
+            this.loggerService = loggerService;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "JavnoNadmetanje";
         }
 
         /// <summary>
@@ -44,11 +50,18 @@ namespace JavnoNadmetanje.Controllers
         [HttpHead]
         public ActionResult<List<JavnaLicitacijaDto>> GetJavneLicitacije()
         {
+            loggerDto.HttpMethod = "GET";
             var javneLicitacije = javnaLicitacijaRepository.GetJavneLicitacije();
             if (javneLicitacije == null || javneLicitacije.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<JavnaLicitacijaDto>>(javneLicitacije));
         }
 
@@ -62,12 +75,19 @@ namespace JavnoNadmetanje.Controllers
         [HttpGet("{javnoNadmetanjeId}")]
         public ActionResult<JavnaLicitacijaDto> GetJavnaLicitacija(Guid javnoNadmetanjeId)
         {
+            loggerDto.HttpMethod = "GET";
             var javnaLicitacija = javnaLicitacijaRepository.GetJavnaLicitacijaById(javnoNadmetanjeId);
 
             if (javnaLicitacija == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<JavnaLicitacijaDto>(javnaLicitacija));
         }
 
@@ -107,6 +127,8 @@ namespace JavnoNadmetanje.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 JavnaLicitacijaEntity javnaLicitacijaEntity = mapper.Map<JavnaLicitacijaEntity>(javnaLicitacija);
                 javnaLicitacijaEntity.Etapa = etapaRepository.GetEtapaById(javnaLicitacija.etapaID);
                 javnaLicitacijaEntity.KorakCene = korakCeneRepository.GetKorakCeneById(javnaLicitacija.korakCeneID);
@@ -114,10 +136,19 @@ namespace JavnoNadmetanje.Controllers
                 javnaLicitacijaRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetJavnaLicitacija", "JavnaLicitacija", new { javnoNadmetanjeId = confirmation.javnoNadmetanjeID });
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Created(location, mapper.Map<JavnaLicitacijaConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -164,6 +195,7 @@ namespace JavnoNadmetanje.Controllers
 
                 if (oldJavnaLicitacija == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
 
@@ -177,6 +209,10 @@ namespace JavnoNadmetanje.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -194,15 +230,25 @@ namespace JavnoNadmetanje.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var javnaLicitacija = javnaLicitacijaRepository.GetJavnaLicitacijaById(javnoNadmetanjeId);
 
                 if (javnaLicitacija == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
+
                     return NotFound();
                 }
 
                 javnaLicitacijaRepository.DeleteJavnaLicitacija(javnoNadmetanjeId);
                 javnaLicitacijaRepository.SaveChanges();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Ok();
             }
             catch (Exception)

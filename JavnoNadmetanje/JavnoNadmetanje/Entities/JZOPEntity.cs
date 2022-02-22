@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JavnoNadmetanje.Entities
 {
-    public class JZOPEntity : JavnoNadmetanjeEntity
+    public class JzopEntity : JavnoNadmetanjeEntity
     {
 
         /// <summary>
