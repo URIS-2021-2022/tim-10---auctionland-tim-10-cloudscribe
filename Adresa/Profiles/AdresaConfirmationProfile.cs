@@ -18,7 +18,7 @@ namespace Adresa.Profiles
                     opt => opt.MapFrom(src => src.Ulica + " " + src.Broj))
                 .ForMember(
                     dest => dest.NazivDrzave,
-                    opt => opt.MapFrom(src => src.NazivDrzave)); ;
+                    opt => opt.MapFrom(src => src.NazivDrzave));
 
             CreateMap<AdresaEntity, AdresaConfirmationDto>()
                 .ForMember(

@@ -22,16 +22,16 @@ namespace Adresa.Entities
         /// <summary>
         /// Popunjava bazu inicijalnim podacima
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<DrzavaEntity>()
+            modelBuilder.Entity<DrzavaEntity>()
                 .HasData(new
                 {
                     DrzavaId = Guid.Parse("170960f3-f8e0-4614-aff2-653aadf5c720"),
                     NazivDrzave = "Srbija"
                 });
 
-            builder.Entity<DrzavaEntity>()
+            modelBuilder.Entity<DrzavaEntity>()
                 .HasData(new
                 {
                     DrzavaId = Guid.Parse("c8a9ffbc-db56-46ff-a54a-948c91550189"),
@@ -39,7 +39,7 @@ namespace Adresa.Entities
                 });
 
 
-            builder.Entity<AdresaEntity>().HasData(
+            modelBuilder.Entity<AdresaEntity>().HasData(
                 new
                 {
                     AdresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
@@ -49,7 +49,7 @@ namespace Adresa.Entities
                     PostanskiBroj = 24000,
                     DrzavaId = Guid.Parse("170960f3-f8e0-4614-aff2-653aadf5c720")
                 });
-            builder.Entity<AdresaEntity>().HasData(
+            modelBuilder.Entity<AdresaEntity>().HasData(
                 new AdresaEntity
                 {
                     AdresaId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
