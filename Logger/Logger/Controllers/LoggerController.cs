@@ -30,13 +30,13 @@ namespace Logger.Controllers
             {
                 switch(message.Level)
                 {
-                    case "Info":
+                    case "INFO":
                         loggerManager.Info(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response );
                     break;
-                    case "Warn":
+                    case "WARN":
                         loggerManager.Warn(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response);
                     break;
-                    case "Error":
+                    case "ERROR":
                         loggerManager.Error(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response);
                      break;
                 
