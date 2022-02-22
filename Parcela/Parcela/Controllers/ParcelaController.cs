@@ -25,7 +25,7 @@ namespace Parcela.Controllers
         private readonly IParcelaRepository parcelaRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
-        //private readonly IHttpContextAccessor httpContextAccessor;
+        
 
 
         public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper)
@@ -33,7 +33,7 @@ namespace Parcela.Controllers
             this.parcelaRepository = parcelaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
-            //this.httpContextAccessor = httpContextAccessor;
+            
 
         }
 
@@ -51,7 +51,7 @@ namespace Parcela.Controllers
         public ActionResult<List<ParcelaDto>> GetParcele()
         {
 
-            //var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
+            
             var parcele = parcelaRepository.GetParcela();
             if(parcele == null || parcele.Count == 0)
             {
@@ -157,7 +157,7 @@ namespace Parcela.Controllers
                 {
                     return NotFound();
                 }
-                //ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
+                
 
                 mapper.Map(parcela, oldParcela);
 

@@ -45,7 +45,6 @@ namespace Parcela.Models.Parcela
         /// </summary>
         public string KatastarskaOpstina { get; set; }
 
-        //public virtual KatastarskaOpstinaEntity KatastarskaOpstina { get; set; }
         /// <summary>
         /// Broj lista nepokretnosti
         /// </summary>

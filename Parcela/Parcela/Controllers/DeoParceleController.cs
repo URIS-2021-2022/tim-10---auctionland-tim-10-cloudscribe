@@ -141,7 +141,7 @@ namespace Parcela.Controllers
                 {
                     return NotFound();
                 }
-                //DeoParceleEntity deoParceleEntity = mapper.Map<DeoParceleEntity>(deoParcele);
+                
 
                 mapper.Map(deoParcele, oldDeoParcele);
 

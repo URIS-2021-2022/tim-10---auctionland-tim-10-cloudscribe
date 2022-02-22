@@ -49,28 +49,8 @@ namespace Parcela
             services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
             services.AddScoped<IKatastarskaOpstinaRepository, KatastarskaOpstinaRepository>();
             services.AddScoped<IZasticenaZonaRepository, ZasticenaZonaRepository>();
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            /*
-            services.AddSwaggerGen(setupAction =>
-            {
-                setupAction.SwaggerDoc("ParcelaOpenApiSpecification", new Microsoft.OpenApi.Models.OpenApiInfo()
-                {
-                    Title = "Parcela API",
-                    Version = "v1",
-                    Description = "Pomoæu ovog API-ja može da se vrši dodavanje, modifikacija, brisanje i pregled parcele.",
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
-                    {
-                        Name = "Kristian Kleèina",
-                        Email = "klecina.it43.2015@uns.ac.rs"
-                    }
-                });
-
-                //var xmlComments = $"{ Assembly.GetExecutingAssembly().GetName().Name }.xml";
-                //var xmlCommentsPath = Path.Combine(AppContext.BaseDirectory, xmlComments);
-                //setupAction.IncludeXmlComments(xmlCommentsPath);
-            });
-
-            */
+            
+            
 
 
 
@@ -112,24 +92,7 @@ namespace Parcela
                 };
             });
             
-            /*
-              services.AddAuthentication(options =>
-              {
-                  options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                  options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-              })
-              .AddJwtBearer(options =>
-              {
-                  options.SaveToken = true;
-                  options.TokenValidationParameters = new TokenValidationParameters
-                  {
-                      ValidateIssuerSigningKey = true,
-                      IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Key"])),
-                      ValidateAudience = false,
-                      ValidateIssuer = false,
-                  };
-              });
-            */
+            
 
         }
 
