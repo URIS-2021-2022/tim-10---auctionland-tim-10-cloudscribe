@@ -47,7 +47,7 @@ namespace Lice.Data
 
         public void UpdatePravnoLice(PravnoLiceEntity pravnoLice)
         {
-            
+            //nije potrebna implementacija
         }
     }
 }

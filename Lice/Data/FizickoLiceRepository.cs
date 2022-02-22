@@ -47,7 +47,7 @@ namespace Lice.Data
 
         public void UpdateFizickoLice(FizickoLiceEntity fizickoLice)
         {
-            
+            //nije potrebna implementacija
         }
     }
 }

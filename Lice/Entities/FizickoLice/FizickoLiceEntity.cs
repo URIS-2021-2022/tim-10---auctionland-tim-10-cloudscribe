@@ -9,8 +9,6 @@ namespace Lice.Entities
     //[Table("FizickoLice")]
     public class FizickoLiceEntity : LiceEntity
     {
-        //public Guid fizickoLiceId { get; set; }
-
         /// <summary>
         /// Ime fizickog lica
         /// </summary>
