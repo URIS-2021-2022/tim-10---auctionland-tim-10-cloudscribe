@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Parcela.Data.DeoParcele;
 using Parcela.Entities.DeoParcele;
+using Parcela.Models;
 using Parcela.Models.DeoParcele;
+using Parcela.ServiceCalls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +25,17 @@ namespace Parcela.Controllers
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public DeoParceleController(IDeoParceleRepository deoRepository, LinkGenerator linkGenerator, IMapper mapper)
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+
+        public DeoParceleController(IDeoParceleRepository deoRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.deoParceleRepository = deoRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "DEO PARCELE";
         }
 
 
@@ -44,12 +52,18 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<DeoParceleDto>> GetDeoParcele()
         {
+            loggerDto.HttpMethod = "GET";
             var deoParcele = deoParceleRepository.GetDeoParcele();
             if(deoParcele == null || deoParcele.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
-
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<DeoParceleDto>>(deoParcele));
         }
 
@@ -65,12 +79,18 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<DeoParceleDto> GetDeoParceleById(Guid deoParceleId)
         {
+            loggerDto.HttpMethod = "GET";
             var deoParcele = deoParceleRepository.GetDeoParceleById(deoParceleId);
             if (deoParcele == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
-
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<DeoParceleDto>(deoParcele));
         }
 
@@ -102,17 +122,23 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
                 DeoParceleEntity deoParceleEntity = mapper.Map<DeoParceleEntity>(deoParcele);
                 DeoParceleConfirmation confirmation = deoParceleRepository.CreateDeoParcele(deoParceleEntity);
                 deoParceleRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetDeoParcele", "DeoParcele", new { deoParceleId = confirmation.DeoParceleId });
-
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<DeoParceleConfirmationDto>(confirmation));
 
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -139,6 +165,7 @@ namespace Parcela.Controllers
                 var oldDeoParcele = deoParceleRepository.GetDeoParceleById(deoParcele.DeoParceleId);
                 if(oldDeoParcele == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //DeoParceleEntity deoParceleEntity = mapper.Map<DeoParceleEntity>(deoParcele);
@@ -150,6 +177,9 @@ namespace Parcela.Controllers
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -172,10 +202,14 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var registration = deoParceleRepository.GetDeoParceleById(DeoParceleId);
 
                 if(registration == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 deoParceleRepository.DeleteDeoParcele(DeoParceleId);
@@ -185,6 +219,9 @@ namespace Parcela.Controllers
             }
             catch(Exception)
             {
+                loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }

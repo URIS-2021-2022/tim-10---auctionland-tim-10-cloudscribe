@@ -7,6 +7,9 @@ namespace Parcela.Models
 {
     public class AdresaDto
     {
+
+
+        public Guid AdresaId { get; set; }
         /// <summary>
         /// Ulica i broj adrese
         /// </summary>

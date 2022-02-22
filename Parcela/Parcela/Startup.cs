@@ -24,6 +24,7 @@ using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Parcela.ServiceCalls;
 
 namespace Parcela
 {
@@ -49,6 +50,7 @@ namespace Parcela
             services.AddScoped<IDeoParceleRepository, DeoParceleRepository>();
             services.AddScoped<IKatastarskaOpstinaRepository, KatastarskaOpstinaRepository>();
             services.AddScoped<IZasticenaZonaRepository, ZasticenaZonaRepository>();
+            services.AddSingleton<ILoggerService, LoggerService>();
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             /*
             services.AddSwaggerGen(setupAction =>

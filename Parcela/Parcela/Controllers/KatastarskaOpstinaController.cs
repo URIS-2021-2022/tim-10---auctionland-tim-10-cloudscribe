@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Parcela.Data.KatastarskaOpstina;
 using Parcela.Entities.KatastarskaOpstina;
+using Parcela.Models;
 using Parcela.Models.KatastarskaOpstina;
 using Parcela.Modelsc.KatastarskaOpstina;
+using Parcela.ServiceCalls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +25,17 @@ namespace Parcela.Controllers
         private readonly IKatastarskaOpstinaRepository opstinaRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
-        public KatastarskaOpstinaController(IKatastarskaOpstinaRepository opstinaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public KatastarskaOpstinaController(IKatastarskaOpstinaRepository opstinaRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.opstinaRepository = opstinaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "KATARSKA OPŠTINA";
         }
 
         /// <summary>
@@ -44,12 +51,18 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<KatastarskaOpstinaDto>> GetKatastarskaOpstina()
         {
+            loggerDto.HttpMethod = "GET";
             var opstina = opstinaRepository.GetKatastarskaOpstina();
             if(opstina == null ||opstina.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
-
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KatastarskaOpstinaDto>>(opstina));
         }
 
@@ -65,12 +78,18 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<KatastarskaOpstinaDto> GetKatastarskaOpstinaById(Guid katastarskaOpstinaId)
         {
+            loggerDto.HttpMethod = "GET";
             var opstina = opstinaRepository.GetKatastarskaOpstinaById(katastarskaOpstinaId);
             if(opstina == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
-
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<KatastarskaOpstinaDto>(opstina));
         }
 
@@ -100,6 +119,7 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
                 KatastarskaOpstinaEntity opstina = mapper.Map<KatastarskaOpstinaEntity>(katastarskaOpstina);
                 KatastarskaOpstinaConfirmation confirmation = opstinaRepository.CreateKatastarskaOpstina(opstina);
                 opstinaRepository.SaveChanges();
@@ -107,11 +127,16 @@ namespace Parcela.Controllers
                 
 
                 string location = linkGenerator.GetPathByAction("GetKatastarskaOpstina", "KatastarskaOpstina", new { katastarskaOpstinaId = confirmation.KatastarskaOpstinaId });
-
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<KatastarskaOpstinaConfirmationDto>(confirmation));
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -138,6 +163,7 @@ namespace Parcela.Controllers
                 var oldOpstina = opstinaRepository.GetKatastarskaOpstinaById(katastarskaOpstina.KatastarskaOpstinaId);
                 if(oldOpstina == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
 
@@ -149,6 +175,9 @@ namespace Parcela.Controllers
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -171,14 +200,20 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var registration = opstinaRepository.GetKatastarskaOpstinaById(katastarskaOpstinaId);
                 if(registration == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 opstinaRepository.DeleteKatastarskaOpstina(katastarskaOpstinaId);
                 opstinaRepository.SaveChanges();
-
+                loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Ok();
             }
             catch (Exception)

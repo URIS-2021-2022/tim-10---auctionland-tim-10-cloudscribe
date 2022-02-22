@@ -1,28 +1,36 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Parcela.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
+
 namespace Parcela.ServiceCalls
 {
-    public class AdresaService : IAdresaService
+    public class LoggerService : ILoggerService
     {
+
+
         private readonly IConfiguration configuration;
 
-        public AdresaService(IConfiguration configuration)
+        public LoggerService(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
-        public bool AdresaInParcela(AdresaDto adresaDto)
+
+        public bool CreateLog(LoggerDto loggerDto)
         {
+
+
+
             using (HttpClient client = new HttpClient())
             {
-                var x = configuration["Services:AdresaService"];
-                Uri url = new Uri($"{ configuration["Services:AdresaService"] }api/adrese");
 
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(adresaDto));
+                Uri url = new Uri($"{ configuration["Services:LoggerService"] }api/logger");
+                HttpContent content = new StringContent(JsonConvert.SerializeObject(loggerDto));
                 content.Headers.ContentType.MediaType = "application/json";
 
                 HttpResponseMessage response = client.PostAsync(url, content).Result;
