@@ -8,6 +8,7 @@ using Parcela.Entities;
 using Parcela.Entities.Parcela;
 using Parcela.Models;
 using Parcela.Models.Parcela;
+using Parcela.ServiceCalls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,22 +20,27 @@ namespace Parcela.Controllers
     [ApiController]
     [Route("api/parcela")]
     [Produces("application/json", "application/xml")]
-    [Authorize]
+    //[Authorize]
     public class ParcelaController : ControllerBase
     {
         private readonly IParcelaRepository parcelaRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+
         //private readonly IHttpContextAccessor httpContextAccessor;
 
 
-        public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public ParcelaController(IParcelaRepository parcelaRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.parcelaRepository = parcelaRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             //this.httpContextAccessor = httpContextAccessor;
-
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "PARCELA";
         }
 
         /// <summary>
@@ -50,13 +56,19 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<ParcelaDto>> GetParcele()
         {
-
+            loggerDto.HttpMethod = "GET";
             //var identityClaims = (ClaimsIdentity)httpContextAccessor.HttpContext.User.Identity;
             var parcele = parcelaRepository.GetParcela();
             if(parcele == null || parcele.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
 
             return Ok(mapper.Map<List<ParcelaDto>>(parcele));
         }
@@ -74,13 +86,19 @@ namespace Parcela.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<ParcelaDto> GetParcela(Guid parcelaId)
         {
+            loggerDto.HttpMethod = "GET";
             var parcela = parcelaRepository.GetParcelaById(parcelaId);
 
             if(parcela == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
-
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<ParcelaDto>(parcela));
         }
 
@@ -118,17 +136,23 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
                 ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
                 ParcelaConfirmation confirmation = parcelaRepository.CreateParcela(parcelaEntity);
                 parcelaRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetParcela", "Parcela", new { parcelaId = confirmation.ParcelaId });
-
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<ParcelaConfirmationDto>(confirmation));
 
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -155,6 +179,7 @@ namespace Parcela.Controllers
                 var oldParcela = parcelaRepository.GetParcelaById(parcela.ParcelaId);
                 if(oldParcela == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //ParcelaEntity parcelaEntity = mapper.Map<ParcelaEntity>(parcela);
@@ -167,6 +192,9 @@ namespace Parcela.Controllers
 
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -190,15 +218,22 @@ namespace Parcela.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var registration = parcelaRepository.GetParcelaById(parcelaId);
 
                 if(registration == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 parcelaRepository.DeleteParcela(parcelaId);
                 parcelaRepository.SaveChanges();
+                loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Ok();
             }
             catch (Exception)
