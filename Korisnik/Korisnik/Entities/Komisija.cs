@@ -9,8 +9,14 @@ namespace Korisnik.Entities
 {
     public class Komisija
     {
+        /// <summary>
+        /// ID komisije
+        /// </summary>
         [Key]
         public Guid KomisijaId { get; set; }
+        /// <summary>
+        /// Opis
+        /// </summary>
         public string Opis { get; set; }
         
         

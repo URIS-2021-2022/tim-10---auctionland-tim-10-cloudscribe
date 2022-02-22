@@ -173,9 +173,64 @@
             <param name="savedSalt">Sačuvan salt</param>
             <returns></returns>
         </member>
+        <member name="P:Korisnik.Entities.Komisija.KomisijaId">
+            <summary>
+            ID komisije
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Komisija.Opis">
+            <summary>
+            Opis
+            </summary>
+        </member>
         <member name="M:Korisnik.Entities.KorisnikContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KorisnikId">
+            <summary>
+            ID korisnika
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KorisnikIme">
+            <summary>
+            ime korisnika
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KorisnikPrezime">
+            <summary>
+            prezime korisnika
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KorisnikKorisnickoIme">
+            <summary>
+            korisnicko ime
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KorisnikLozinka">
+            <summary>
+            lozinka korisnika
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.TipId">
+            <summary>
+            ID tipa korisnika
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Korisnikk.KomisijaId">
+            <summary>
+            ID komisije 
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Tip.TipId">
+            <summary>
+            ID Tipa
+            </summary>
+        </member>
+        <member name="P:Korisnik.Entities.Tip.TipKorisnika">
+            <summary>
+            Ime tipa
             </summary>
         </member>
     </members>
