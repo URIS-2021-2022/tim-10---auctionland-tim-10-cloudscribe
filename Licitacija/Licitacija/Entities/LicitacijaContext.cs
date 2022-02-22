@@ -9,7 +9,7 @@ namespace Licitacija.Entities
 {
     public class LicitacijaContext : DbContext
     {
-        private readonly IConfiguration configuration;
+
 
         public LicitacijaContext(DbContextOptions<LicitacijaContext> options) : base(options)
         {
@@ -22,9 +22,9 @@ namespace Licitacija.Entities
         /// <summary>
         /// Popunjava bazu sa nekim inicijalnim podacima
         /// </summary>
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<LicitacijaModel>()
+            modelBuilder.Entity<LicitacijaModel>()
                 .HasData(new
                 {
                     licitacijaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
@@ -36,7 +36,7 @@ namespace Licitacija.Entities
                     rokZaPrijave = DateTime.Parse("2021-07-01T23:59:00")
                 });
 
-            builder.Entity<LicitacijaModel>()
+            modelBuilder.Entity<LicitacijaModel>()
                 .HasData(new
                 {
                     licitacijaId = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),

@@ -34,18 +34,17 @@ namespace Licitacija.Data
             return context.Licitacija.FirstOrDefault(e => e.licitacijaId == licitacijaId);
         }
 
-        public LicitacijaConfirmation CreateLicitacija(LicitacijaModel licitacija)
+        public LicitacijaConfirmation CreateLicitacija(LicitacijaModel licitacijaModel)
         {
-            var createdEntity = context.Add(licitacija);
+            var createdEntity = context.Add(licitacijaModel);
             return mapper.Map<LicitacijaConfirmation>(createdEntity.Entity);
         }
 
-        public void UpdateLicitacija(LicitacijaModel licitacija)
+        public void UpdateLicitacija(LicitacijaModel licitacijaModel)
         {
             //Nije potrebna implementacija jer EF core prati entitet koji smo izvukli iz baze
             //i kada promenimo taj objekat i odradimo SaveChanges sve izmene će biti perzistirane
 
-            
         }
 
         public void DeleteLicitacija(Guid licitacijaId)

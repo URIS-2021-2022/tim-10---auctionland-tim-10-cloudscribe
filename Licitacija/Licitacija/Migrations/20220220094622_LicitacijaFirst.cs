@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace Licitacija.Migrations
 {
@@ -6,12 +7,12 @@ namespace Licitacija.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            throw new NotImplementedException();
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

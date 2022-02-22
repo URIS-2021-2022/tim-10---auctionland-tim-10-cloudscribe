@@ -1,5 +1,6 @@
 ﻿using Licitacija.Data;
 using Licitacija.Entities;
+using Licitacija.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -61,6 +62,7 @@ namespace Licitacija
 
             services.AddScoped<ILicitacijaRepository, LicitacijaRepository>();
             services.AddDbContextPool<LicitacijaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LicitacijaDB")));
+            services.AddSingleton<ILoggerService, LoggerService>();
 
             services.AddSwaggerGen(setupAction =>
             {

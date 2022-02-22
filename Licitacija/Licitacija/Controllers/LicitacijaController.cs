@@ -2,6 +2,7 @@
 using Licitacija.Data;
 using Licitacija.Entities;
 using Licitacija.Models;
+using Licitacija.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,19 @@ namespace Licitacija.Controllers
     public class LicitacijaController : ControllerBase
     {
         private readonly ILicitacijaRepository licitacijaRepository;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
-        public LicitacijaController(ILicitacijaRepository licitacijaRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public LicitacijaController(ILicitacijaRepository licitacijaRepository, ILoggerService loggerService, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.licitacijaRepository = licitacijaRepository;
+            this.loggerService = loggerService;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "LICITACIJA";
         }
 
         /// <summary>
@@ -40,11 +46,18 @@ namespace Licitacija.Controllers
         [HttpHead]
         public ActionResult<List<LicitacijaModelDto>> GetAllLicitacije()
         {
+            loggerDto.HttpMethod = "GET";
             var licitacije = licitacijaRepository.GetAllLicitacije();
             if (licitacije == null || licitacije.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<LicitacijaModelDto>>(licitacije));
         }
 
@@ -58,11 +71,18 @@ namespace Licitacija.Controllers
         [HttpGet("{licitacijaId}")]
         public ActionResult<LicitacijaModelDto> GetLicitacija(Guid licitacijaId)
         {
+            loggerDto.HttpMethod = "GET";
             var licitacijaModel = licitacijaRepository.GetLicitacijaById(licitacijaId);
             if (licitacijaModel == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<LicitacijaModelDto>(licitacijaModel));
         }
 
@@ -91,6 +111,7 @@ namespace Licitacija.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
                 LicitacijaModel licitacijaModel = mapper.Map<LicitacijaModel>(licitacija);
 
                 LicitacijaConfirmation confirmation = licitacijaRepository.CreateLicitacija(licitacijaModel);
@@ -98,11 +119,17 @@ namespace Licitacija.Controllers
                 licitacijaRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetLicitacija", "Licitacija", new { licitacijaId = confirmation.licitacijaId });
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<LicitacijaConfirmationDto>(confirmation));
 
             }
             catch
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -117,14 +144,20 @@ namespace Licitacija.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var licitacijaModel = licitacijaRepository.GetLicitacijaById(licitacijaId);
                 if (licitacijaModel == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
                 licitacijaRepository.DeleteLicitacija(licitacijaId);
                 licitacijaRepository.SaveChanges();
-
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Ok();
             }
             catch
@@ -165,6 +198,7 @@ namespace Licitacija.Controllers
 
                 if (oldLicitacija == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound(); 
                 }
                 LicitacijaModel licitacijaModelEntity = mapper.Map<LicitacijaModel>(licitacija);
@@ -175,6 +209,9 @@ namespace Licitacija.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
