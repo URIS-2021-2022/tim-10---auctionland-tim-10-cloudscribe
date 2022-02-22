@@ -8,90 +8,325 @@
 		{
 			"name": "GetAllDokuments",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjQyMjIwLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.dGU2q2uQDDf1ETRHEwNy-FOruOxRFeppgmXVw_l6sMs",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": [],
-				"url": null
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDA2NzExLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.5Cwn6n2Rpp88tV56yRdy8V4PVUF8m0hn9GU0NWaBIQ4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:44600/api/dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "GetDokumentsID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDM3ODkxLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.7oYFm4aEo1VBM1QNPn64676IEV48AB3yY71WUio3tFo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/dokument/6a411c13-a195-48f7-8dbd-67596c3972b8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"dokument",
+						"6a411c13-a195-48f7-8dbd-67596c3972b8"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "CreateDokument",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjQyMjIwLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.dGU2q2uQDDf1ETRHEwNy-FOruOxRFeppgmXVw_l6sMs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"zavodniBroj\": \"10\",\r\n        \"nazivDokumenta\": \"Dokument8\",\r\n        \"datum\": \"2019-06-05T10:00:00\",\r\n        \"datumDonosenjaOdluke\": \"2021-05-30T12:00:00\",\r\n        \"sablon\": false,\r\n        \"tipId\": \"9ddfc708-5a68-40ba-b76c-95b27e63ba9a\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44600/api/dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UpdateDokument",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjQyMjIwLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.dGU2q2uQDDf1ETRHEwNy-FOruOxRFeppgmXVw_l6sMs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dokumentID\": \"a9483d38-901d-4c9a-7742-08d9f6571c34\",\r\n    \"zavodniBroj\": \"999\",\r\n    \"nazivDokumenta\": \"Dokument66\",\r\n    \"datum\": \"2019-06-05T10:00:00\",\r\n    \"datumDonosenjaOdluke\": \"2021-05-30T12:00:00\",\r\n    \"sablon\": true,\r\n    \"tipId\": \"9ddfc708-5a68-40ba-b76c-95b27e63ba9a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44600/api/dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "DeleteDokument",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjQyMjIwLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.dGU2q2uQDDf1ETRHEwNy-FOruOxRFeppgmXVw_l6sMs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "GetAllTip",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDM3ODkxLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.7oYFm4aEo1VBM1QNPn64676IEV48AB3yY71WUio3tFo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/tip_dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"tip_dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "GetTipByID",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDM3ODkxLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.7oYFm4aEo1VBM1QNPn64676IEV48AB3yY71WUio3tFo",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/tip_dokument/6a411c13-a195-48f7-8dbd-67596c3974a2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"tip_dokument",
+						"6a411c13-a195-48f7-8dbd-67596c3974a2"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "CreateTip",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
-				"url": null
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipDokumentaID\": \"6a411c13-a195-48f7-8dbd-67596c3974b7\",\r\n    \"tipDokumenta\": \"Sablon\",\r\n    \"statusDokumenta\": \"Odbijen\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:44600/api/tip_dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"tip_dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "DeleteTip",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDM3ODkxLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.7oYFm4aEo1VBM1QNPn64676IEV48AB3yY71WUio3tFo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/tip_dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"tip_dokument"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UpdateTip",
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NDM3ODkxLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.7oYFm4aEo1VBM1QNPn64676IEV48AB3yY71WUio3tFo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://localhost:44600/api/tip_dokument",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "44600",
+					"path": [
+						"api",
+						"tip_dokument"
+					]
+				}
 			},
 			"response": []
 		}

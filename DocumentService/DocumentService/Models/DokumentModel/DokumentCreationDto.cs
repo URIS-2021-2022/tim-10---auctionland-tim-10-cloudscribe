@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,10 +9,7 @@ namespace DocumentService.Models.DokumentModel
 {
     public class DokumentCreationDto
     {
-        /// <summary>
-        /// Id dokumenta
-        /// </summary>
-        public Guid DokumentID { get; set; }
+       
         /// <summary>
         /// Zavodni broj dokumenta
         /// </summary>
@@ -35,6 +33,8 @@ namespace DocumentService.Models.DokumentModel
         /// </summary>
         public bool Sablon { get; set; }
 
-       
+        public Guid TipId { get; set; }
+
+
     }
 }

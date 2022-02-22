@@ -3,6 +3,7 @@ using DocumentService.Data;
 using DocumentService.Entities;
 using DocumentService.Models;
 using DocumentService.Models.DokumentModel;
+using DocumentService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace DocumentService.Controllers
     [ApiController]
     [Route("api/dokument")]
     //[Produces("application/json", "application/xml")]
-  //  [Produces("text/plain")]
+  // [Produces("text/plain")]
     [Authorize]
     
     public class DokumentController : ControllerBase
@@ -26,12 +27,19 @@ namespace DocumentService.Controllers
         private readonly IDokumentRepository dokumentRepository;
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+        private readonly IKorisnikService korisnikService;
 
-        public DokumentController(IDokumentRepository dokumentRepository, IMapper mapper, LinkGenerator linkGenerator)
+        public DokumentController(IDokumentRepository dokumentRepository, IMapper mapper, LinkGenerator linkGenerator, ILoggerService loggerService, IKorisnikService korisnikService)
         {
             this.dokumentRepository = dokumentRepository;
             this.mapper = mapper;
             this.linkGenerator = linkGenerator;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "Dokument";
+            this.korisnikService = korisnikService;
         }
 
         //Vraca sve dokumente
@@ -42,17 +50,25 @@ namespace DocumentService.Controllers
         [HttpHead]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+
         public ActionResult<List<DokumentDto>> GetAllDokuments()
-       // public String GetAllDokuments()
+        // public String GetAllDokuments()
         {
+            loggerDto.HttpMethod = "GET";
             var dokumenti = dokumentRepository.GetAllDokuments();
             if (dokumenti == null || dokumenti.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
-                //return "lll";
+                
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<DokumentDto>>(dokumenti));
-           // return "ok";
+           
         }
         /// <summary>
         /// Vracanje dokumenata po id-ju
@@ -65,11 +81,18 @@ namespace DocumentService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<DokumentDto> GetDokumentEntityById(Guid dokumentId)
         {
+            loggerDto.HttpMethod = "GET";
             var dokument = dokumentRepository.GetDokumentEntityById(dokumentId);
             if (dokument==null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<DokumentDto>(dokument));
         }
 
@@ -87,14 +110,34 @@ namespace DocumentService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 Dokument dokumentEntity = mapper.Map<Dokument>(dokument);
                 DokumentConfirmation confirmation = dokumentRepository.CreateDokument(dokumentEntity);
                 dokumentRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetAllDokuments", "Dokument", new { dokumentId = confirmation.DokumentID });
+
+                var korisnikInfo = mapper.Map<KorisnikDokumentDto>(dokument);
+
+                korisnikInfo.TipId = confirmation.TipId;
+                bool korisnik = korisnikService.KorisnikDokument(korisnikInfo.TipId);
+
+                if (!korisnik)
+                {
+                    dokumentRepository.DeleteDokument(confirmation.DokumentID);
+                    throw new KorisnikException("Neuspesni unos dokumenta.  Molimo kontaktirajte administratora.");
+                }
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<DokumentConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
 
@@ -118,6 +161,7 @@ namespace DocumentService.Controllers
                 var oldDokument = dokumentRepository.GetDokumentEntityById(dokument.DokumentID);
                 if (oldDokument == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 Dokument dokumentEntity = mapper.Map<Dokument>(dokument);
@@ -127,6 +171,9 @@ namespace DocumentService.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
@@ -146,20 +193,30 @@ namespace DocumentService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var dokument = dokumentRepository.GetDokumentEntityById(dokumentId);
 
                 if (dokument == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 dokumentRepository.DeleteDokument(dokumentId);
                 dokumentRepository.SaveChanges();
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
                 
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }
