@@ -31,13 +31,13 @@ namespace Logger.Controllers
                 switch(message.Level)
                 {
                     case "Info":
-                        loggerManager.Info(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod );
+                        loggerManager.Info(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response );
                     break;
                     case "Warn":
-                        loggerManager.Warn(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod );
+                        loggerManager.Warn(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response);
                     break;
                     case "Error":
-                        loggerManager.Error(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod );
+                        loggerManager.Error(message.Level + " " + message.DateTime + " " + message.ServiceName + " " + message.HttpMethod + " " + message.Response);
                      break;
                 
                 }

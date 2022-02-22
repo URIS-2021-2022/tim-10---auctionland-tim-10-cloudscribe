@@ -34,6 +34,7 @@ namespace Logger
             Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
+                
                 webBuilder.UseStartup<Startup>();
             })
             .ConfigureLogging(logging =>
