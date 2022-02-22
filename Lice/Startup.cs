@@ -1,5 +1,6 @@
 ﻿using Lice.Data;
 using Lice.Entities;
+using Lice.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -80,6 +81,7 @@ namespace Lice
             services.AddScoped<IPravnoLiceRepository, PravnoLiceRepository>();
             services.AddScoped<IPrioritetRepository, PrioritetRepository>();
             services.AddDbContextPool<LiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiceDB")));
+            services.AddSingleton<ILoggerService, LoggerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

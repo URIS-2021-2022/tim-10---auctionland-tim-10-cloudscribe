@@ -2,6 +2,8 @@
 using Lice.Data;
 using Lice.Entities;
 using Lice.Models.FizickoLice;
+using Lice.Models.Services;
+using Lice.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,13 +25,18 @@ namespace Lice.Controllers
         private readonly IPrioritetRepository prioritetRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
-        public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper)
+        public FizickoLiceController(IFizickoLiceRepository fizickoLiceRepository, IPrioritetRepository prioritetRepository, LinkGenerator linkGenerator, IMapper mapper, ILoggerService loggerService)
         {
             this.fizickoLiceRepository = fizickoLiceRepository;
             this.prioritetRepository = prioritetRepository;
-            this.linkGenerator = linkGenerator;
+            this.linkGenerator = linkGenerator;7
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "FIZICKO LICE";
         }
 
         /// <summary>
@@ -42,11 +49,19 @@ namespace Lice.Controllers
         [HttpHead]
         public ActionResult<List<FizickoLiceDto>> GetFizickaLica()
         {
+            loggerDto.HttpMethod = "GET";
             var fizickaLica = fizickoLiceRepository.GetFizickaLica();
             if (fizickaLica == null || fizickaLica.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<FizickoLiceDto>>(fizickaLica));
         }
 
@@ -60,12 +75,20 @@ namespace Lice.Controllers
         [HttpGet("{liceId}")]
         public ActionResult<FizickoLiceDto> GetFizickoLice(Guid liceId)
         {
+            loggerDto.HttpMethod = "GET";
             var fizickoLice = fizickoLiceRepository.GetFizickoLiceById(liceId);
 
             if (fizickoLice == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<FizickoLiceDto>(fizickoLice));
         }
 
@@ -93,6 +116,8 @@ namespace Lice.Controllers
         [HttpPost]
         public ActionResult<FizickoLiceConfirmationDto> CreateFizickoLice([FromBody] FizickoLiceCreationDto fizickoLice)
         {
+            loggerDto.HttpMethod = "POST";
+
             try
             {
                 FizickoLiceEntity fizickoLiceEntity = mapper.Map<FizickoLiceEntity>(fizickoLice);
@@ -101,10 +126,17 @@ namespace Lice.Controllers
                 fizickoLiceRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetFizickoLice", "FizickoLice", new { liceId = confirmation.liceId });
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<FizickoLiceConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create Error");
             }
         }
@@ -135,12 +167,17 @@ namespace Lice.Controllers
         [HttpPut]
         public ActionResult<FizickoLiceDto> UpdateFizickoLice([FromBody] FizickoLiceUpdateDto fizickoLice)
         {
+            loggerDto.HttpMethod = "PUT";
+
             try
             {
                 var oldFizickoLice = fizickoLiceRepository.GetFizickoLiceById(fizickoLice.liceId);
                 
                 if (oldFizickoLice == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
@@ -149,10 +186,16 @@ namespace Lice.Controllers
                 mapper.Map(fizickoLiceEntity, oldFizickoLice);
                 fizickoLiceRepository.SaveChanges();
 
+                loggerDto.Response = "200 OK";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Ok(mapper.Map<FizickoLiceDto>(oldFizickoLice));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update Error");
             }
         }
@@ -168,21 +211,33 @@ namespace Lice.Controllers
         [HttpDelete("{liceId}")]
         public IActionResult DeleteFizickoLice(Guid liceId)
         {
+            loggerDto.HttpMethod = "DELETE";
+
             try
             {
                 var fizickoLice = fizickoLiceRepository.GetFizickoLiceById(liceId);
 
                 if(fizickoLice == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 fizickoLiceRepository.DeleteFizickoLice(liceId);
                 fizickoLiceRepository.SaveChanges();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete Error");
             }
         }
@@ -196,7 +251,13 @@ namespace Lice.Controllers
         [AllowAnonymous]
         public IActionResult GetFizickoLiceOptions()
         {
+            loggerDto.HttpMethod = "OPTIONS";
+
             Response.Headers.Add("Allow", "GET, POST, PUT, DELETE");
+            
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok();
         }
 
