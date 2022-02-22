@@ -83,7 +83,7 @@ namespace Korisnik
                         {
                             ContentTypes = { "application/problem+json" }
                         };
-                    };
+                    }
 
                     //ukoliko postoji nešto što nije moglo da se parsira hoćemo da vraćamo status 400 kao i do sada
                     problemDetails.Status = StatusCodes.Status400BadRequest;
@@ -138,14 +138,20 @@ namespace Korisnik
                        {
                            Name = "Teodora Jovanovic",
                            Email = "teajovanovic92@yahoo.com",
-                           Url = new Uri("http://www.ftn.uns.ac.rs/")
+                            # pragma warning disable S1075
+                           Url = new Uri($"http://www.ftn.uns.ac.rs/")
+                            #pragma warning restore S1075
                        },
                        License = new Microsoft.OpenApi.Models.OpenApiLicense
                        {
                            Name = "FTN licence",
+                            #pragma warning disable S1075
                            Url = new Uri("http://www.ftn.uns.ac.rs/")
+                            #pragma warning restore S1075
                        },
+                            #pragma warning disable S1075
                        TermsOfService = new Uri("http://www.ftn.uns.ac.rs/examRegistrationTermsOfService")
+                            #pragma warning restore S1075
                    });
 
                 //Pomocu refleksije dobijamo ime XML fajla sa komentarima (ovako smo ga nazvali u Project -> Properties)
@@ -162,7 +168,7 @@ namespace Korisnik
 
             string connectionString = Configuration.GetConnectionString("KorisnikDB");
             services.AddDbContextPool<KorisnikContext>(options => options.UseSqlServer(connectionString));
-            //services.AddDbContext<KorisnikContext>();
+            
 
         }
 

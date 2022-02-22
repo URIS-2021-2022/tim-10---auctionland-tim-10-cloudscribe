@@ -11,13 +11,12 @@ namespace Korisnik.Data
     {
 
         private readonly KorisnikContext context;
-        private readonly IMapper mapper;
+      
         
-        public TipRepository( KorisnikContext context, IMapper mapper)
+        public TipRepository( KorisnikContext context)
         {
             this.context = context;
-            this.mapper = mapper;
-            //FillData();
+          
         }
        
        public bool SaveChanges()

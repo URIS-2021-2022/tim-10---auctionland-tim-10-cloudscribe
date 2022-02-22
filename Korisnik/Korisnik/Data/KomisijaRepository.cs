@@ -23,29 +23,13 @@ namespace Korisnik.Data
         {
             return context.SaveChanges() > 0;
         }
-        /*private void FillData()
-        {
-            Komisije.AddRange( new List<Komisija>
-                {
-                new Komisija
-                {
-                    KomisijaId= Guid.Parse("9824bbd6-b964-46ce-9512-41eef2e73270")
-
-                }
-
-            });
-        }*/
+        
         public Komisija CreateKomisija(Komisija komisijaModel)
         {
             var createEntity = context.Komisije.Add(komisijaModel);
             SaveChanges();
             return mapper.Map<Komisija>(createEntity.Entity);
 
-          /*  return new Komisija
-            {
-                
-                KomisijaId = komisija.KomisijaId
-            };*/
         }
 
         public void DeleteKomisija(Guid komisijaId)
