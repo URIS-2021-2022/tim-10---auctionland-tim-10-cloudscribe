@@ -1,5 +1,6 @@
 ﻿using Adresa.Data;
 using Adresa.Entities;
+using Adresa.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -76,9 +77,8 @@ namespace Adresa
 
             services.AddScoped<IAdresaRepository, AdresaRepository>();
             services.AddScoped<IDrzavaRepository, DrzavaRepository>();
-
             services.AddDbContextPool<AdresaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AdresaDB")));
-
+            services.AddSingleton<ILoggerService, LoggerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

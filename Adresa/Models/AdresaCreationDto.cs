@@ -36,9 +36,6 @@ namespace Adresa.Models
         /// ID države
         /// </summary>
         public Guid DrzavaId { get; set; }
-        
-        //public string NazivDrzave { get; set; }
 
-      
     }
 }

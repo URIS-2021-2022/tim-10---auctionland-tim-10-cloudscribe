@@ -42,6 +42,5 @@ namespace Adresa.Models
         /// </summary>
         public Guid DrzavaId { get; set; }
 
-        //public string NazivDrzave { get; set; }
     }
 }
