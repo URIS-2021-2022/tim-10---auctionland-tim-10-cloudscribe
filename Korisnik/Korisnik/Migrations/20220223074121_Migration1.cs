@@ -65,6 +65,7 @@ namespace Korisnik.Migrations
                 columns: new[] { "TipId", "TipKorisnika" },
                 values: new object[,]
                 {
+                    { new Guid("bda80420-444e-40d4-a97f-2d8be0df7c0c"), "Operater" },
                     { new Guid("719cbcae-ba05-4bdf-b0f8-636d79b70180"), "Tehnicki sekretar" },
                     { new Guid("4915ab80-5233-45a7-a7d2-b8c636fa934d"), "Superuser" },
                     { new Guid("f4ae8300-84cd-488f-90c7-d5b1d871bd9e"), "Operator nadmetanja" },
