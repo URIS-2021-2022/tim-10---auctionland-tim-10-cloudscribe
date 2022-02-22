@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "ca423e9b-de66-47f9-a433-dbb15cb85cd5",
+		"name": "ZalbaCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TipZalbe",
+			"item": [
+				{
+					"name": "GetIdNameDropdownItemsForTipZalbe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe/dropdown",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe",
+								"dropdown"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTipZalbe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateTipZalbe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipZalbe\": \"tip zalbe 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTipZalbe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTipZalbe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe/1",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTipZalbeById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/tipZalbe/1",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"tipZalbe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StatusZalbe",
+			"item": [
+				{
+					"name": "GetIdNameDropdownItemsForStatusZalbe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/statusZalbe/dropdown",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"statusZalbe",
+								"dropdown"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllStatusZalbe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/statusZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"statusZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateStatusZalbe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusZalbe\": \"status 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zalbaBaseUri}}/statusZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"statusZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateStatusZalbe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusZalbeId\": 4,\r\n    \"statusZalbe\": \"status 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zalbaBaseUri}}/statusZalbe",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"statusZalbe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteStatusZalbe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/statusZalbe/1",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"statusZalbe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Zalba",
+			"item": [
+				{
+					"name": "getAllZalbas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/zalba",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"zalba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateZalba",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brojResenja\" : \"123\",\r\n    \"razlogZalbe\" : \"razlog za zalbu\",\r\n    \"obrazlozenje\" : \"obrazlozenje zalbe\",\r\n    \"tipZalbeId\" : 1,\r\n    \"datumResenja\" : \"2017-09-08T19:01:55.714942+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zalbaBaseUri}}/zalba",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"zalba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResolveZalba",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zalbaId\" : 4,\r\n    \"statusZalbeId\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{zalbaBaseUri}}/Zalba",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"Zalba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateZalba",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/Zalba",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"Zalba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteZalba",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/Zalba/1",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"Zalba",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetZalbaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{zalbaBaseUri}}/Zalba/1",
+							"host": [
+								"{{zalbaBaseUri}}"
+							],
+							"path": [
+								"Zalba",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "zalbaBaseUri",
+			"value": "https://localhost:44383/api"
+		}
+	]
+}

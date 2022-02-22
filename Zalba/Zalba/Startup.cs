@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Text;
 using ZalbaService.Data;
 using ZalbaService.Entities;
+using ZalbaService.Middlewares;
+using ZalbaService.ServiceCalls;
 
 namespace ZalbaService
 {
@@ -51,6 +53,7 @@ namespace ZalbaService
             services.AddScoped<ITipZalbeRepository, TipZalbeRepository>();
             services.AddScoped<IZalbaRepository, ZalbaRepository>();
             services.AddScoped<IStatusZalbeRepository, StatusZalbeRepository>();
+            services.AddScoped<ILoggerService, LoggerService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -111,6 +114,9 @@ namespace ZalbaService
                     options.RoutePrefix = string.Empty;
                 });
             }
+
+            // Added custom middleware that handles HTTP requests and responses
+            app.UseMiddleware<HttpMiddleware>();
 
             app.UseHttpsRedirection();
 
