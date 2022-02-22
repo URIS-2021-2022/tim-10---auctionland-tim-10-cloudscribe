@@ -32,7 +32,7 @@ namespace Lice.Controllers
         {
             this.fizickoLiceRepository = fizickoLiceRepository;
             this.prioritetRepository = prioritetRepository;
-            this.linkGenerator = linkGenerator;7
+            this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.loggerService = loggerService;
             loggerDto = new LoggerDto();

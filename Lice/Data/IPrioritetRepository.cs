@@ -10,7 +10,7 @@ namespace Lice.Data
     {
         List<PrioritetEntity> GetPrioriteti();
 
-        PrioritetEntity GetPrioritetById(Guid liceId);
+        PrioritetEntity GetPrioritetById(Guid prioritetId);
 
         bool SaveChanges();
     }

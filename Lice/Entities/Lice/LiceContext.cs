@@ -22,33 +22,33 @@ namespace Lice.Entities
 
         public DbSet<PrioritetEntity> Prioriteti { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.Entity<PrioritetEntity>()
+            modelBuilder.Entity<PrioritetEntity>()
                 .HasData(new
                 {
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     opisPrioriteta = "Vlasnik sistema za navodnjavanje"
                 });
-            builder.Entity<PrioritetEntity>()
+            modelBuilder.Entity<PrioritetEntity>()
                 .HasData(new
                 {
                     prioritetId = Guid.Parse("00cdf29d-e0d0-4207-87b2-16486eda55ab"),
                     opisPrioriteta = ". Vlasnik zemljišta koje se graniči sa zemljištem koje se daje u zakup"
                 });
-            builder.Entity<PrioritetEntity>()
+            modelBuilder.Entity<PrioritetEntity>()
                 .HasData(new
                 {
                     prioritetId = Guid.Parse("08062c01-9bfd-4c85-8501-f5ab8c026f2a"),
                     opisPrioriteta = "Poljoprivrednik koji je upisan u Registar"
                 });
-            builder.Entity<PrioritetEntity>()
+            modelBuilder.Entity<PrioritetEntity>()
                 .HasData(new
                 {
                     prioritetId = Guid.Parse("7c9752fc-86a9-41e6-b4b8-c22b1c9a6ab9"),
                     opisPrioriteta = "Vlasnik zemljišta koje je najbliže zemljištu koje se daje u zakup"
                 });
-            builder.Entity<FizickoLiceEntity>()
+            modelBuilder.Entity<FizickoLiceEntity>()
                 .HasData(new
                 {
                     liceId = Guid.Parse("65f1a8da-433f-42d1-82f6-6b771ddde854"),
@@ -60,7 +60,7 @@ namespace Lice.Entities
                     ime = "Marko",
                     prezime = "Marković"
                 });
-            builder.Entity<FizickoLiceEntity>()
+            modelBuilder.Entity<FizickoLiceEntity>()
                 .HasData(new
                 {
                     liceId = Guid.Parse("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab"),
@@ -72,7 +72,7 @@ namespace Lice.Entities
                     ime = "Nikola",
                     prezime = "Nikolić"
                 });
-            builder.Entity<PravnoLiceEntity>()
+            modelBuilder.Entity<PravnoLiceEntity>()
                 .HasData(new
                 {
                     liceId = Guid.Parse("529351b3-2c8c-41c6-abba-aa5feb564d06"),
@@ -84,7 +84,7 @@ namespace Lice.Entities
                     naziv = "Masterplast",
                     faks = 024601785
                 });
-            builder.Entity<PravnoLiceEntity>()
+            modelBuilder.Entity<PravnoLiceEntity>()
                 .HasData(new
                 {
                     liceId = Guid.Parse("d05f182d-7ef0-484b-9045-3f0451605cdb"),
