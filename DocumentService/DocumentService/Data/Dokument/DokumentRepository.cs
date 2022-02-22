@@ -24,10 +24,7 @@ namespace DocumentService.Data
             return mapper.Map<DokumentConfirmation>(createdDokument.Entity);
         }
 
-        //internal static object GetAllDokuments(string nazivDokumenta, DateTime datum)
-        //{
-          //  throw new NotImplementedException();
-        //}
+        
 
         public void DeleteDokument(Guid dokumentid)
         {

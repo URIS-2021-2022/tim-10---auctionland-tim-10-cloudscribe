@@ -35,13 +35,7 @@ namespace DocumentService.Data.TipDokumenta
         {
             var tipDel = GetTipByID(tipID);
             context.Remove(tipDel);
-        }
-
-       /* List<TipDokumentaE> GetAllTip()
-        {
-            return context.tipDokumenta.ToList();
-        }*/
-        //proveri sta je problem!  
+        }  
 
 
         public TipDokumentaE GetTipByID(Guid tipID)

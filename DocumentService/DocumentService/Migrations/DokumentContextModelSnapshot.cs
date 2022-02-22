@@ -37,6 +37,9 @@ namespace DocumentService.Migrations
                     b.Property<bool>("Sablon")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("TipId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ZavodniBroj")
                         .HasColumnType("nvarchar(max)");
 
@@ -52,6 +55,7 @@ namespace DocumentService.Migrations
                             DatumDonosenjaOdluke = new DateTime(2021, 10, 11, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             NazivDokumenta = "Dokument1",
                             Sablon = true,
+                            TipId = new Guid("10d3f482-9538-448f-9399-bbbade1bc504"),
                             ZavodniBroj = "1"
                         },
                         new
@@ -61,6 +65,7 @@ namespace DocumentService.Migrations
                             DatumDonosenjaOdluke = new DateTime(2021, 5, 30, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             NazivDokumenta = "Dokument2",
                             Sablon = false,
+                            TipId = new Guid("9ddfc708-5a68-40ba-b76c-95b27e63ba9a"),
                             ZavodniBroj = "2"
                         });
                 });

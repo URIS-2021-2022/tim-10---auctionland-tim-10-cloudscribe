@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using DocumentService.Data.TipDokumenta;
 using DocumentService.Entities.TipDokumentaEntity;
+using DocumentService.Models;
 using DocumentService.Models.TipDokumentaModel;
+using DocumentService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,19 +19,24 @@ namespace DocumentService.Controllers
         [ApiController]
         [Route("api/tip_dokument")]
         [Produces("application/json", "application/xml")]
-        [Authorize]
+        //[Authorize]
     public class TipDokumentaController : ControllerBase
         {
             private readonly ITipDokumentaRepository tipdokumentaRepository;
             private readonly IMapper mapper;
             private readonly LinkGenerator linkGenerator;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
 
-            public TipDokumentaController(ITipDokumentaRepository tipdokumentaRepository, IMapper mapper, LinkGenerator linkGenerator)
+        public TipDokumentaController(ITipDokumentaRepository tipdokumentaRepository, IMapper mapper, LinkGenerator linkGenerator, ILoggerService loggerService)
             {
                 this.tipdokumentaRepository = tipdokumentaRepository;
                 this.mapper = mapper;
                 this.linkGenerator = linkGenerator;
-            }
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "Dokument";
+        }
 
             //Vraca sve tipove
             /// <response code="200">Vraća dokumente</response>
@@ -41,12 +48,23 @@ namespace DocumentService.Controllers
             [ProducesResponseType(StatusCodes.Status204NoContent)]
             public ActionResult<List<TipDokumentaDto>> GetAllTip()
             {
+                loggerDto.HttpMethod = "GET";
+
                 var tipovi = tipdokumentaRepository.GetAllTip();
                 if (tipovi == null || tipovi.Count == 0)
                 {
-                    return NotFound();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
+                return NotFound();
                 }
-                return Ok(mapper.Map<List<TipDokumentaDto>>(tipovi));
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
+
+            return Ok(mapper.Map<List<TipDokumentaDto>>(tipovi));
             }
             /// <summary>
             /// Vracanje tipova po id-ju
@@ -59,12 +77,20 @@ namespace DocumentService.Controllers
             [ProducesResponseType(StatusCodes.Status200OK)]
             public ActionResult<TipDokumentaDto> GetTipByID(Guid tipID)
             {
+                loggerDto.HttpMethod = "GET";
                 var tip = tipdokumentaRepository.GetTipByID(tipID);
                 if (tip == null)
                 {
-                    return NotFound();
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+                return NotFound();
                 }
-                return Ok(mapper.Map<TipDokumentaDto>(tip));
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
+
+            return Ok(mapper.Map<TipDokumentaDto>(tip));
             }
 
 
@@ -82,14 +108,24 @@ namespace DocumentService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
+
                 TipDokumentaE tipEntity = mapper.Map<TipDokumentaE>(tip);
                 TipDokumentaConfirmation confirmation = tipdokumentaRepository.CreateTipDokumenta(tipEntity);
                 tipdokumentaRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetAllTip", "Tip", new { tipId = confirmation.TipDokumentaID });
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return Created(location, mapper.Map<TipDokumentaConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
 
@@ -114,7 +150,9 @@ namespace DocumentService.Controllers
                 var oldTip = tipdokumentaRepository.GetTipByID(tip.TipDokumentaID);
                     if (oldTip == null)
                     {
-                        return NotFound();
+
+                    loggerDto.Level = "WARN";
+                    return NotFound();
                     }
                     TipDokumentaE tipDokumentaEntity = mapper.Map<TipDokumentaE>(tip);
                     mapper.Map(tipDokumentaEntity, oldTip);
@@ -123,7 +161,10 @@ namespace DocumentService.Controllers
                 }
                 catch (Exception)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
                 }
             }
 
@@ -142,20 +183,31 @@ namespace DocumentService.Controllers
             {
                 try
                 {
+                    loggerDto.HttpMethod = "DELETE";
                     var tip = tipdokumentaRepository.GetTipByID(tipID);
 
                     if (tip == null)
                     {
-                        return NotFound();
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
+                    return NotFound();
                     }
 
                     tipdokumentaRepository.DeleteTipDokumenta(tipID);
                     tipdokumentaRepository.SaveChanges();
-                    return NoContent();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+                return NoContent();
                 }
                 catch (Exception)
                 {
-                    return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
                 }
             }
 
