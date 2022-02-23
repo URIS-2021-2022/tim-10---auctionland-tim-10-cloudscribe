@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiciterService.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,7 +37,11 @@ namespace LiciterService.Entities
         /// </summary>
         public int BrojTable { get; set; }
 
+        [ForeignKey("Adresa")]
         public Guid AdresaId { get; set; }
+
+        [NotMapped]
+        public  virtual AdresaZastupnikDto Adresa { get; set; }
 
         [ForeignKey("Kupac")]
         public Guid KupacId { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiciterService.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,7 +26,11 @@ namespace LiciterService.Entities
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Zastupnik Zastupnik { get; set; }
 
+        [ForeignKey("Lice")]
         public Guid liceId { get; set; }
+
+        [NotMapped]
+        public virtual LiceLiciterDto Lice { get; set; }
 
         /// <summary>
         /// ID kupca

@@ -10,6 +10,7 @@ namespace LiciterService.Models
         /// <summary>
         /// ID adrese
         /// </summary>
+
         public Guid AdresaId { get; set; }
         /// <summary>
         /// Ulica i broj adrese
@@ -26,14 +27,5 @@ namespace LiciterService.Models
         /// </summary>
         public int PostanskiBroj { get; set; }
 
-        /*/// <summary>
-        /// ID države
-        /// </summary>
-        public Guid DrzavaId { get; set; }*/
-
-        /// <summary>
-        /// Naziv države adrese
-        /// </summary>
-        public string NazivDrzave { get; set; }
     }
 }

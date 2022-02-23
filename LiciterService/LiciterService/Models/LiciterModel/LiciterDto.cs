@@ -1,6 +1,7 @@
 ﻿using LiciterService.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,7 +18,8 @@ namespace LiciterService.Models
 
         public Zastupnik Zastupnik { get; set; }
 
-        public Guid liceId { get; set; }
+        [NotMapped]
+        public virtual LiceLiciterDto lice { get; set; }
 
     }
 }

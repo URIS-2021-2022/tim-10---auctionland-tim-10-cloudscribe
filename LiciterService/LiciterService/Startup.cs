@@ -51,8 +51,6 @@ namespace LiciterService
 
             services.AddDbContextPool<LiciterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiciterDB")).UseLazyLoadingProxies());
 
-            //services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -92,11 +90,8 @@ namespace LiciterService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "LiciterService v1"));
                 
             }
-            //app.UseSession
             app.UseHttpsRedirection();
 
-            // app.UseRouting();
-            //app.UseMvc();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

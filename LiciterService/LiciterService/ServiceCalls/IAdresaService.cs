@@ -9,7 +9,6 @@ namespace LiciterService.ServiceCalls
 {
     public interface IAdresaService
     {
-        public bool AdresaInLiciter(Guid adresaId);
-        
+        public Task<AdresaZastupnikDto> GetAdrese(Guid adresaId);
     }
 }

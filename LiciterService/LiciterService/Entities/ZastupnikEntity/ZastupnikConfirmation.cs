@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LiciterService.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,5 +30,8 @@ namespace LiciterService.Entities
         public string NazivDrzave { get; set; }
 
         public Guid AdresaId { get; set; }
+
+        [NotMapped]
+        public virtual AdresaZastupnikDto Adresa { get; set; }
     }
 }

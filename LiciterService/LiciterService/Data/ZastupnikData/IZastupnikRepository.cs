@@ -11,7 +11,6 @@ namespace LiciterService.Data
         List<Zastupnik> GetZastupnici();
         Zastupnik GetZastupnikById(Guid zastupnikId);
         ZastupnikConfirmation CreateZastupnik(Zastupnik zastupnik);
-        //void UpdateZastupnik(Zastupnik zastupnik);
         void DeleteZastupnik(Guid zastupnikId);
         bool SaveChanges();
 

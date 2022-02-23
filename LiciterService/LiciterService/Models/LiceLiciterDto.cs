@@ -7,8 +7,8 @@ namespace LiciterService.Models
 {
     public class LiceLiciterDto
     {
-        public Guid liceId { get; set; }
-        public string ime { get; set; }
-        public string prezime { get; set; }
+        public Guid? liceId { get; set; }
+        public string ImePrezime { get; set; }
+
     }
 }

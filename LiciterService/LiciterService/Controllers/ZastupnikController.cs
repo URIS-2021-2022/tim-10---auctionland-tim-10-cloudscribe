@@ -52,13 +52,21 @@ namespace LiciterService.Controllers
         public ActionResult<List<ZastupnikDto>> GetZastupnici()
         {
             loggerDto.HttpMethod = "GET";
-            var zastupnici = zastupnikRepository.GetZastupnici();
+            //var zastupnici = zastupnikRepository.GetZastupnici();
+            List<Zastupnik> zastupnici= zastupnikRepository.GetZastupnici();
             if (zastupnici == null || zastupnici.Count==0)
             {
                 loggerDto.Response = "204 NO CONTENT";
                 loggerDto.Level = "INFO";
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
+            }
+
+            foreach (Zastupnik b in zastupnici)
+            {
+               AdresaZastupnikDto adresa = adresaService.GetAdrese(b.AdresaId).Result;
+                b.Adresa = adresa;
+              
             }
 
             loggerDto.Level = "INFO";
@@ -86,6 +94,9 @@ namespace LiciterService.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            AdresaZastupnikDto adresa = adresaService.GetAdrese(zastupnik.AdresaId).Result;
+
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
@@ -122,17 +133,6 @@ namespace LiciterService.Controllers
                 zastupnikRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetZastupnik", "Zastupnik", new { zastupnikId = confirmation.ZastupnikId });
-
-                var adresaInfo = mapper.Map<AdresaZastupnikDto>(zastupnik);
-
-                adresaInfo.AdresaId = confirmation.AdresaId;
-                bool adresa = adresaService.AdresaInLiciter(adresaInfo.AdresaId);
-
-                if (!adresa)
-                {
-                    zastupnikRepository.DeleteZastupnik(confirmation.ZastupnikId);
-                    throw new AdresaException("Neuspesna prijava zastupnika. Postoji problem sa adresom. Molimo kontaktirajte administratora.");
-                }
 
                 loggerDto.Response = "201 CREATED";
                 loggerDto.Level = "INFO";
@@ -181,8 +181,6 @@ namespace LiciterService.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
-                //mapper.Map(zastupnikEntity, oldZastupnik);
                 mapper.Map(zastupnik,oldZastupnik);
                 zastupnikRepository.SaveChanges();
                 return Ok(mapper.Map<ZastupnikDto>(oldZastupnik));

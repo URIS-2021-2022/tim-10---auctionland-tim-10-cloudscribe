@@ -51,7 +51,7 @@ namespace LiciterService.Controllers
         public ActionResult<List<LiciterDto>> GetLiciteri()
         {
             loggerDto.HttpMethod = "GET";
-            var liciteri = liciterRepository.GetLiciteri();
+            List<Liciter> liciteri = liciterRepository.GetLiciteri();
             if (liciteri == null || liciteri.Count == 0)
             {
                 loggerDto.Response = "204 NO CONTENT";
@@ -59,6 +59,13 @@ namespace LiciterService.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            foreach (Liciter b in liciteri)
+            {
+                LiceLiciterDto lice = liceService.GetLica(b.liceId).Result;
+                b.Lice = lice;
+            }
+
             loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
@@ -84,6 +91,8 @@ namespace LiciterService.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            LiceLiciterDto lice = liceService.GetLica(liciter.liceId).Result;
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
@@ -117,17 +126,6 @@ namespace LiciterService.Controllers
                 LiciterConfirmation confirmation = liciterRepository.CreateLiciter(liciterEntity);
                 liciterRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetLiciter", "Liciter", new { liciterId = confirmation.LiciterId });
-
-                var liceInfo = mapper.Map<LiceLiciterDto>(liciter);
-
-                liceInfo.liceId = confirmation.liceId;
-                bool lice =liceService.LiceInLiciter(liceInfo.liceId);
-
-                if (!lice)
-                {
-                    liciterRepository.DeleteLiciter(confirmation.LiciterId);
-                    throw new LiceException("Neuspesna prijava licitera. Postoji problem sa licem. Molimo kontaktirajte administratora.");
-                }
 
                 loggerDto.Response = "201 CREATED";
                 loggerDto.Level = "INFO";
@@ -173,7 +171,6 @@ namespace LiciterService.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //Liciter liciterEntity = mapper.Map<Liciter>(liciter);
                 mapper.Map(liciter, oldLiciter);
                 liciterRepository.SaveChanges();
                 return Ok(mapper.Map<LiciterDto>(oldLiciter));
