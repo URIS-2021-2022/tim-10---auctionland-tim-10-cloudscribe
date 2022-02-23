@@ -73,7 +73,10 @@ namespace JavnoNadmetanje.Entities
                    status = "Prvi krug",
                    etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e968b"),
                    brojJZOP = 2,
-                   opisJZOP = "Drugi tip javnog nadmetanja"
+                   opisJZOP = "Drugi tip javnog nadmetanja",
+                   adresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   liciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   parcelaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0")
 
                });
             modelBuilder.Entity<JzopEntity>()
@@ -95,7 +98,10 @@ namespace JavnoNadmetanje.Entities
                    status = "Prvi krug",
                    etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5873e968b"),
                    brojJZOP = 2,
-                   opisJZOP = "Drugi tip javnog nadmetanja"
+                   opisJZOP = "Drugi tip javnog nadmetanja",
+                   adresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   liciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   parcelaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0")
 
                });
             modelBuilder.Entity<JavnaLicitacijaEntity>()
@@ -118,7 +124,10 @@ namespace JavnoNadmetanje.Entities
                    etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5873e968b"),
                    brojJavneLicitacije = 1,
                    opisJavneLicitacije = "Prvi tip javnog nadmetanja",
-                   korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e961b")
+                   korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e961b"),
+                   adresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   liciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                   parcelaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0")
 
                });
             modelBuilder.Entity<JavnaLicitacijaEntity>()
@@ -141,7 +150,10 @@ namespace JavnoNadmetanje.Entities
                     etapaID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e968b"),
                     brojJavneLicitacije = 2,
                     opisJavneLicitacije = "Prvi tip javnog nadmetanja",
-                    korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e938b")
+                    korakCeneID = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e938b"),
+                    adresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                    liciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                    parcelaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0")
                 });
 
             

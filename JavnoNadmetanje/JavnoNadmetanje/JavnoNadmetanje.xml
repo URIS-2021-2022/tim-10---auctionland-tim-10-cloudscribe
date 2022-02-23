@@ -256,12 +256,49 @@
             Oznaka javne licitacije
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.korakCeneID">
+            <summary>
+             Korak cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+            
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaConfirmation.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaEntity.brojJavneLicitacije">
             <summary>
             Oznaka javne licitacije
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Entities.JavnaLicitacijaEntity.opisJavneLicitacije" -->
+        <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Entities.JavnaLicitacijaEntity.korakCeneID" -->
         <member name="P:JavnoNadmetanje.Entities.JavnaLicitacijaEntity.KorakCene">
             <summary>
             Korak cene
@@ -314,7 +351,38 @@
         </member>
         <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.status">
             <summary>
-            Broj ucesnika u javnom nadmetanju
+            Status javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+            
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeConfirmation.liciterDto">
+            <summary>
+            Liciter
             </summary>
         </member>
         <member name="M:JavnoNadmetanje.Entities.JavnoNadmetanjeContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
@@ -402,6 +470,36 @@
             Etapa
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JavnoNadmetanjeEntity.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.javnoNadmetanjeID">
             <summary>
             ID javnog zatvaranja otvorenih ponuda
@@ -482,6 +580,37 @@
             Oznaka javnog zatvaranja otvorenih ponuda
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+            
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Entities.JzopConfirmation.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Entities.JzopEntity.brojJZOP">
             <summary>
             Oznaka javnog zatvaranja otvorenih ponuda
@@ -506,6 +635,21 @@
         <member name="P:JavnoNadmetanje.Entities.KorakCeneEntity.brojKoraka">
             <summary>
             Oznaka koraka cene
+            </summary>
+        </member>
+        <member name="T:JavnoNadmetanje.Models.AdresaDto">
+            <summary>
+            Model adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.AdresaDto.UlicaBroj">
+            <summary>
+            Ulica i broj adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.AdresaDto.Mesto">
+            <summary>
+            Mesto adrese
             </summary>
         </member>
         <member name="P:JavnoNadmetanje.Models.EtapaDto.brojEtape">
@@ -588,6 +732,41 @@
             Etapa ID
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.korakCeneID">
+            <summary>
+            ID koraka cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaConfirmationDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.vremePocetka">
             <summary>
             Vreme pocetka javnog nadmetanja
@@ -659,9 +838,44 @@
             Etapa ID
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.korakCeneID">
+            <summary>
+            ID koraka cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaCreateDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.javnoNadmetanjeID">
             <summary>
             ID javne licitacije
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.datum">
+            <summary>
+            Datum javne licitacije
             </summary>
         </member>
         <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.vremePocetka">
@@ -730,6 +944,41 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JavnaLicitacijaDto.opisJavneLicitacije" -->
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.korakCeneID">
+            <summary>
+            ID koraka cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.javnoNadmetanjeID">
             <summary>
             ID javne licitacije
@@ -805,6 +1054,36 @@
             Etapa ID
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.korakCeneID">
+            <summary>
+            ID koraka cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JavnaLicitacijaUpdateDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.javnoNadmetanjeID">
             <summary>
             ID javnog nadmetanja
@@ -878,6 +1157,31 @@
         <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.etapaID">
             <summary>
             Etapa ID
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopConfirmationDto.liciterDto">
+            <summary>
+            Liciter
             </summary>
         </member>
         <member name="P:JavnoNadmetanje.Models.JzopCreateDto.datum">
@@ -956,6 +1260,31 @@
             Etapa ID
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopCreateDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JzopDto.javnoNadmetanjeID">
             <summary>
             ID javnog nadmetanja
@@ -1032,6 +1361,36 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "P:JavnoNadmetanje.Models.JzopDto.opisJZOP" -->
+        <member name="P:JavnoNadmetanje.Models.JzopDto.adresaId">
+            <summary>
+            ID adrese
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.javnoNadmetanjeID">
             <summary>
             ID JZOP
@@ -1113,6 +1472,31 @@
             Etapa ID
             </summary>
         </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.adresaDto">
+            <summary>
+            Adresa 
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.parcelaId">
+            <summary>
+            ID parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.parcelaDto">
+            <summary>
+            Parcela
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.liciterId">
+            <summary>
+            ID licitera
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.JzopUpdateDto.liciterDto">
+            <summary>
+            Liciter
+            </summary>
+        </member>
         <member name="P:JavnoNadmetanje.Models.KorakCeneDto.korakCeneID">
             <summary>
             ID koraka cene
@@ -1121,6 +1505,41 @@
         <member name="P:JavnoNadmetanje.Models.KorakCeneDto.brojKoraka">
             <summary>
             Oznaka koraka cene
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.LiciterDto.LiciterId">
+            <summary>
+            Liciter id
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.ParcelaId">
+            <summary>
+            ID Parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.Povrsina">
+            <summary>
+            Površina parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.KorisnikId">
+            <summary>
+            ID Korisnika
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.BrojParcele">
+            <summary>
+            Broj Parcele
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.KatastarskaOpstinaId">
+            <summary>
+            ID Katastarske Opštine
+            </summary>
+        </member>
+        <member name="P:JavnoNadmetanje.Models.ParcelaDto.KatastarskaOpstina">
+            <summary>
+            Ime Katastarske Opštine
             </summary>
         </member>
     </members>

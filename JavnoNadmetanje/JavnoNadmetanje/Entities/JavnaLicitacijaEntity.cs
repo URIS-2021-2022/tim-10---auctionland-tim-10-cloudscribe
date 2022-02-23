@@ -18,12 +18,15 @@ namespace JavnoNadmetanje.Entities
         /// Opis javne licitacije
         /// </summary>
         public string opisJavneLicitacije { get; set; }
-
+        // <summary>
+        /// ID koraka cene
+        /// </summary>
         [ForeignKey("KorakCene")]
         public Guid korakCeneID { get; set; }
         /// <summary>
         /// Korak cene
         /// </summary>
         public virtual KorakCeneEntity KorakCene { get; set; }
+
     }
 }
