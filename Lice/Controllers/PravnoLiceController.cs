@@ -106,7 +106,8 @@ namespace Lice.Controllers
         ///     "brojRacuna": "800458757",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "naziv": "Masterplast",
-        ///     "faks": 024601785
+        ///     "faks": 024601785,
+        ///     "maticniBroj" : "25485674"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -156,7 +157,8 @@ namespace Lice.Controllers
         ///     "brojRacuna": "800458757",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "naziv": "Masterplast",
-        ///     "faks": 024601785
+        ///     "faks": 024601785,
+        ///     "maticniBroj": "25485674"
         /// }
         ///</remarks>
         /// <returns></returns>

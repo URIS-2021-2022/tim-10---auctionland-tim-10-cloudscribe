@@ -54,5 +54,11 @@ namespace Lice.Models.FizickoLice
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti prezime.")]
         public string prezime { get; set; }
+
+        /// <summary>
+        /// JMBG lica
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti JMBG.")]
+        public string JMBG { get; set; }
     }
 }

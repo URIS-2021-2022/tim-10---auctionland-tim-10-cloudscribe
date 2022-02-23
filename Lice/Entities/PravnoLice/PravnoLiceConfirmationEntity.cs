@@ -43,5 +43,10 @@ namespace Lice.Entities
         /// Broj faksa
         /// </summary>
         public int faks { get; set; }
+
+        /// <summary>
+        /// Matični broj pravnog lica
+        /// </summary>
+        public string maticniBroj { get; set; }
     }
 }

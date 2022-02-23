@@ -42,5 +42,10 @@ namespace Lice.Models.FizickoLice
         /// Ime i prezime fizickog lica
         /// </summary>
         public string ImePrezime { get; set; }
+
+        /// <summary>
+        /// JMBG lica
+        /// </summary>
+        public string JMBG { get; set; }
     }
 }

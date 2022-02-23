@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lice.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20220221210139_InitialCreate")]
+    [Migration("20220223140715_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,6 +95,9 @@ namespace Lice.Migrations
                 {
                     b.HasBaseType("Lice.Entities.LiceEntity");
 
+                    b.Property<string>("JMBG")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ime")
                         .HasColumnType("nvarchar(max)");
 
@@ -112,6 +115,7 @@ namespace Lice.Migrations
                             brojTelefona2 = "061582236",
                             email = "mmarkovic@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
+                            JMBG = "2506995745621",
                             ime = "Marko",
                             prezime = "Marković"
                         },
@@ -123,6 +127,7 @@ namespace Lice.Migrations
                             brojTelefona2 = "0656258965",
                             email = "nnikolic@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
+                            JMBG = "1407994556214",
                             ime = "Nikola",
                             prezime = "Nikolić"
                         });
@@ -134,6 +139,9 @@ namespace Lice.Migrations
 
                     b.Property<int>("faks")
                         .HasColumnType("int");
+
+                    b.Property<string>("maticniBroj")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("naziv")
                         .HasColumnType("nvarchar(max)");
@@ -150,6 +158,7 @@ namespace Lice.Migrations
                             email = "masterplast@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
                             faks = 24601785,
+                            maticniBroj = "25485674",
                             naziv = "Masterplast"
                         },
                         new
@@ -161,6 +170,7 @@ namespace Lice.Migrations
                             email = "pannonglobal@gmail.com",
                             prioritetId = new Guid("26797103-3a18-4750-9f27-33416e6e30d4"),
                             faks = 24601785,
+                            maticniBroj = "75486254",
                             naziv = "Pannonglobal"
                         });
                 });

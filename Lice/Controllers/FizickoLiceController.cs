@@ -106,7 +106,8 @@ namespace Lice.Controllers
         ///     "brojRacuna": "80045875687",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "ime": "Marko",
-        ///     "prezime": "Marković"
+        ///     "prezime": "Marković",
+        ///     "JMBG" : "2506995745621"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -156,7 +157,8 @@ namespace Lice.Controllers
         ///     "brojRacuna": "8008465687",
         ///     "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
         ///     "ime": "Nikola",
-        ///     "prezime": "Nikolić"
+        ///     "prezime": "Nikolić",
+        ///     "JMBG" : "1407994556214"
         /// }
         ///</remarks>
         /// <returns></returns>

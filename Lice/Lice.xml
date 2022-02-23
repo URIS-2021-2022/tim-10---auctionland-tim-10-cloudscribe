@@ -32,7 +32,8 @@
                  "brojRacuna": "80045875687",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
                  "ime": "Marko",
-                 "prezime": "Marković"
+                 "prezime": "Marković",
+                 "JMBG" : "2506995745621"
              }
             </remarks>
              <returns></returns>
@@ -53,7 +54,8 @@
                  "brojRacuna": "8008465687",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
                  "ime": "Nikola",
-                 "prezime": "Nikolić"
+                 "prezime": "Nikolić",
+                 "JMBG" : "1407994556214"
              }
             </remarks>
              <returns></returns>
@@ -99,7 +101,8 @@
                  "brojRacuna": "800458757",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
                  "naziv": "Masterplast",
-                 "faks": 024601785
+                 "faks": 024601785,
+                 "maticniBroj" : "25485674"
              }
             </remarks>
              <returns></returns>
@@ -120,7 +123,8 @@
                  "brojRacuna": "800458757",
                  "prioritetId": "26797103-3a18-4750-9f27-33416e6e30d4",
                  "naziv": "Masterplast",
-                 "faks": 024601785
+                 "faks": 024601785,
+                 "maticniBroj": "25485674"
              }
             </remarks>
              <returns></returns>
@@ -179,6 +183,11 @@
             </summary>
             
         </member>
+        <member name="P:Lice.Entities.FizickoLiceConfirmationEntity.JMBG">
+            <summary>
+            JMBG lica
+            </summary>
+        </member>
         <member name="P:Lice.Entities.FizickoLiceEntity.ime">
             <summary>
             Ime fizickog lica
@@ -189,6 +198,11 @@
             Prezime fizickog lica
             </summary>
             
+        </member>
+        <member name="P:Lice.Entities.FizickoLiceEntity.JMBG">
+            <summary>
+            JMBG lica
+            </summary>
         </member>
         <member name="P:Lice.Entities.LiceEntity.liceId">
             <summary>
@@ -260,6 +274,11 @@
             Broj faksa
             </summary>
         </member>
+        <member name="P:Lice.Entities.PravnoLiceConfirmationEntity.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
+            </summary>
+        </member>
         <member name="P:Lice.Entities.PravnoLiceEntity.naziv">
             <summary>
             Naziv pravog lica
@@ -268,6 +287,11 @@
         <member name="P:Lice.Entities.PravnoLiceEntity.faks">
             <summary>
             Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Entities.PravnoLiceEntity.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
             </summary>
         </member>
         <member name="P:Lice.Entities.Prioritet.PrioritetEntity.prioritetId">
@@ -315,6 +339,11 @@
             Ime i prezime fizickog lica
             </summary>
         </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceConfirmationDto.JMBG">
+            <summary>
+            JMBG lica
+            </summary>
+        </member>
         <member name="P:Lice.Models.FizickoLice.FizickoLiceCreationDto.brojTelefona1">
             <summary>
             Prvi broj telefona lica
@@ -351,6 +380,11 @@
             </summary>
             
         </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceCreationDto.JMBG">
+            <summary>
+            JMBG lica
+            </summary>
+        </member>
         <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.brojTelefona1">
             <summary>
             Prvi broj telefona lica
@@ -379,6 +413,11 @@
         <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.ImePrezime">
             <summary>
             Ime i prezime fizickog lica
+            </summary>
+        </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceDto.JMBG">
+            <summary>
+            JMBG lica
             </summary>
         </member>
         <member name="P:Lice.Models.FizickoLice.FizickoLiceUpdateDto.liceId">
@@ -421,6 +460,11 @@
             Prezime fizickog lica
             </summary>
         </member>
+        <member name="P:Lice.Models.FizickoLice.FizickoLiceUpdateDto.JMBG">
+            <summary>
+            JMBG lica
+            </summary>
+        </member>
         <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.liceId">
             <summary>
             ID Lica
@@ -461,6 +505,11 @@
             Broj faksa
             </summary>
         </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceConfirmationDto.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
+            </summary>
+        </member>
         <member name="P:Lice.Models.PravnoLice.PravnoLiceCreationDto.brojTelefona1">
             <summary>
             Prvi broj telefona lica
@@ -496,6 +545,11 @@
             Broj faksa
             </summary>
         </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceCreationDto.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
+            </summary>
+        </member>
         <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.brojTelefona1">
             <summary>
             Prvi broj telefona lica
@@ -529,6 +583,11 @@
         <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.faks">
             <summary>
             Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceDto.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
             </summary>
         </member>
         <member name="P:Lice.Models.PravnoLice.PravnoLiceUpdateDto.liceId">
@@ -569,6 +628,11 @@
         <member name="P:Lice.Models.PravnoLice.PravnoLiceUpdateDto.faks">
             <summary>
             Broj faksa
+            </summary>
+        </member>
+        <member name="P:Lice.Models.PravnoLice.PravnoLiceUpdateDto.maticniBroj">
+            <summary>
+            Matični broj pravnog lica
             </summary>
         </member>
         <member name="P:Lice.Models.Lice.PrioritetDto.opisPrioriteta">
