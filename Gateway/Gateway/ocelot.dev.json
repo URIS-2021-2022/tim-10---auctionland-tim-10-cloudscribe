@@ -133,7 +133,7 @@
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
     },
     {
-      "DownstreamPathTemplate": "/api/korisnik/{authenticate}",
+      "DownstreamPathTemplate": "/api/korisnik/authenticate",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -141,7 +141,7 @@
           "Port": 44208
         }
       ],
-      "UpstreamPathTemplate": "/korisnik",
+      "UpstreamPathTemplate": "/korisnik/authenticate",
       "UpstreamHttpMethod": [ "Post" ]
     },
     {
@@ -166,6 +166,18 @@
         }
       ],
       "UpstreamPathTemplate": "/korisnik/{tipkorisnika}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/korisnik/{komisijaId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44208
+        }
+      ],
+      "UpstreamPathTemplate": "/korisnik/{komisijaId}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -505,7 +517,7 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/TipZalbe/{dropdown}",
+      "DownstreamPathTemplate": "/api/TipZalbe/dropdown",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -513,7 +525,7 @@
           "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/TipZalbe/{dropdown}",
+      "UpstreamPathTemplate": "/TipZalbe/dropdown",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -541,7 +553,7 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/StatusZalbe/{dropdown}",
+      "DownstreamPathTemplate": "/api/StatusZalbe/dropdown",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -549,7 +561,7 @@
           "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/StatusZalbe/{dropdown}",
+      "UpstreamPathTemplate": "/StatusZalbe/dropdown",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -623,7 +635,32 @@
       ],
       "UpstreamPathTemplate": "/jzop/{javnoNadmetanjeId}",
       "UpstreamHttpMethod": [ "Get", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/tip",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44208
+        }
+      ],
+      "UpstreamPathTemplate": "/tip",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jzop/{javnoNadmetanjeId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44208
+        }
+      ],
+      "UpstreamPathTemplate": "/jzop/{tipId}",
+      "UpstreamHttpMethod": [ "Get" ]
     }
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:5021"
