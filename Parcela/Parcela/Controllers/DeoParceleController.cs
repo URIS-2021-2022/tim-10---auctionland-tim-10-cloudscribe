@@ -168,7 +168,7 @@ namespace Parcela.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //DeoParceleEntity deoParceleEntity = mapper.Map<DeoParceleEntity>(deoParcele);
+                
 
                 mapper.Map(deoParcele, oldDeoParcele);
 
