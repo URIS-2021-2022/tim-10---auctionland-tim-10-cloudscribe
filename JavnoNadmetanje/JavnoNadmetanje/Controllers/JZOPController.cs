@@ -24,6 +24,9 @@ namespace JavnoNadmetanje.Controllers
         private readonly IEtapaRepository etapaRepository;
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
+        private readonly IAdresaService adresaService;
+        private readonly ILiciterService liciterService;
+        private readonly IParcelaService parcelaService;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
 
@@ -57,6 +60,21 @@ namespace JavnoNadmetanje.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            
+            foreach (JzopEntity lDto in jzop)
+            {
+                AdresaDto adresaDto = adresaService.GetAdresaById(lDto.adresaId).Result;
+                lDto.adresaDto = adresaDto;
+
+                LiciterDto liciter = liciterService.GetLiciterById(lDto.liciterId).Result;
+                lDto.liciterDto = liciter;
+
+                ParcelaDto parcela = parcelaService.GetParcelaById(lDto.parcelaId).Result;
+                lDto.parcelaDto = parcela;
+
+
+            }
+
             loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
@@ -84,6 +102,16 @@ namespace JavnoNadmetanje.Controllers
 
                 return NotFound();
             }
+
+            AdresaDto adresaDto = adresaService.GetAdresaById(jzop.adresaId).Result;
+            jzop.adresaDto = adresaDto;
+
+            LiciterDto liciter = liciterService.GetLiciterById(jzop.liciterId).Result;
+            jzop.liciterDto = liciter;
+
+            ParcelaDto parcela = parcelaService.GetParcelaById(jzop.parcelaId).Result;
+            jzop.parcelaDto = parcela;
+
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);

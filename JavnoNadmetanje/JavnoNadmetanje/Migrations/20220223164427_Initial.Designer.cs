@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JavnoNadmetanje.Migrations
 {
     [DbContext(typeof(JavnoNadmetanjeContext))]
-    [Migration("20220221184820_Intial")]
-    partial class Intial
+    [Migration("20220223164427_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,6 +57,9 @@ namespace JavnoNadmetanje.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("adresaId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("brojUcesnika")
                         .HasColumnType("int");
 
@@ -80,6 +83,12 @@ namespace JavnoNadmetanje.Migrations
 
                     b.Property<int>("krug")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("liciterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("parcelaId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("periodZakupa")
                         .HasColumnType("int");
@@ -134,61 +143,6 @@ namespace JavnoNadmetanje.Migrations
                         });
                 });
 
-            modelBuilder.Entity("JavnoNadmetanje.Entities.JZOPEntity", b =>
-                {
-                    b.HasBaseType("JavnoNadmetanje.Entities.JavnoNadmetanjeEntity");
-
-                    b.Property<int>("brojJZOP")
-                        .HasColumnType("int");
-
-                    b.Property<string>("opisJZOP")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("JZOPEntity");
-
-                    b.HasData(
-                        new
-                        {
-                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c3573c0"),
-                            brojUcesnika = 15,
-                            datum = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            dopunaDepozita = 5000,
-                            etapaID = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e968b"),
-                            izlicitiranaCena = 205000,
-                            izuzeto = false,
-                            katastarskaOpstina = "Novi Grad",
-                            krug = 1,
-                            periodZakupa = 5,
-                            pocetnaCena = 55000,
-                            status = "Prvi krug",
-                            tip = 1,
-                            vremeKraja = new DateTime(2021, 6, 11, 13, 59, 0, 0, DateTimeKind.Unspecified),
-                            vremePocetka = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            brojJZOP = 2,
-                            opisJZOP = "Drugi tip javnog nadmetanja"
-                        },
-                        new
-                        {
-                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c4973c0"),
-                            brojUcesnika = 45,
-                            datum = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            dopunaDepozita = 5000,
-                            etapaID = new Guid("1c7ea607-8ddb-493a-87fa-4bf5873e968b"),
-                            izlicitiranaCena = 205000,
-                            izuzeto = false,
-                            katastarskaOpstina = "Novi Grad",
-                            krug = 1,
-                            periodZakupa = 5,
-                            pocetnaCena = 55000,
-                            status = "Prvi krug",
-                            tip = 1,
-                            vremeKraja = new DateTime(2021, 6, 11, 13, 59, 0, 0, DateTimeKind.Unspecified),
-                            vremePocetka = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            brojJZOP = 2,
-                            opisJZOP = "Drugi tip javnog nadmetanja"
-                        });
-                });
-
             modelBuilder.Entity("JavnoNadmetanje.Entities.JavnaLicitacijaEntity", b =>
                 {
                     b.HasBaseType("JavnoNadmetanje.Entities.JavnoNadmetanjeEntity");
@@ -210,6 +164,7 @@ namespace JavnoNadmetanje.Migrations
                         new
                         {
                             javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c3973c0"),
+                            adresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             brojUcesnika = 15,
                             datum = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             dopunaDepozita = 5000,
@@ -218,6 +173,8 @@ namespace JavnoNadmetanje.Migrations
                             izuzeto = false,
                             katastarskaOpstina = "Novi Grad",
                             krug = 1,
+                            liciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            parcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             periodZakupa = 5,
                             pocetnaCena = 55000,
                             status = "Prvi krug",
@@ -231,6 +188,7 @@ namespace JavnoNadmetanje.Migrations
                         new
                         {
                             javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            adresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             brojUcesnika = 25,
                             datum = new DateTime(2021, 6, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             dopunaDepozita = 5000,
@@ -239,6 +197,8 @@ namespace JavnoNadmetanje.Migrations
                             izuzeto = false,
                             katastarskaOpstina = "Novi Grad",
                             krug = 1,
+                            liciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            parcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             periodZakupa = 5,
                             pocetnaCena = 50000,
                             status = "Prvi krug",
@@ -248,6 +208,67 @@ namespace JavnoNadmetanje.Migrations
                             brojJavneLicitacije = 2,
                             korakCeneID = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e938b"),
                             opisJavneLicitacije = "Prvi tip javnog nadmetanja"
+                        });
+                });
+
+            modelBuilder.Entity("JavnoNadmetanje.Entities.JzopEntity", b =>
+                {
+                    b.HasBaseType("JavnoNadmetanje.Entities.JavnoNadmetanjeEntity");
+
+                    b.Property<int>("brojJZOP")
+                        .HasColumnType("int");
+
+                    b.Property<string>("opisJZOP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("JzopEntity");
+
+                    b.HasData(
+                        new
+                        {
+                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c3573c0"),
+                            adresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            brojUcesnika = 15,
+                            datum = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            dopunaDepozita = 5000,
+                            etapaID = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e968b"),
+                            izlicitiranaCena = 205000,
+                            izuzeto = false,
+                            katastarskaOpstina = "Novi Grad",
+                            krug = 1,
+                            liciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            parcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            periodZakupa = 5,
+                            pocetnaCena = 55000,
+                            status = "Prvi krug",
+                            tip = 1,
+                            vremeKraja = new DateTime(2021, 6, 11, 13, 59, 0, 0, DateTimeKind.Unspecified),
+                            vremePocetka = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            brojJZOP = 2,
+                            opisJZOP = "Drugi tip javnog nadmetanja"
+                        },
+                        new
+                        {
+                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c4973c0"),
+                            adresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            brojUcesnika = 45,
+                            datum = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            dopunaDepozita = 5000,
+                            etapaID = new Guid("1c7ea607-8ddb-493a-87fa-4bf5873e968b"),
+                            izlicitiranaCena = 205000,
+                            izuzeto = false,
+                            katastarskaOpstina = "Novi Grad",
+                            krug = 1,
+                            liciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            parcelaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                            periodZakupa = 5,
+                            pocetnaCena = 55000,
+                            status = "Prvi krug",
+                            tip = 1,
+                            vremeKraja = new DateTime(2021, 6, 11, 13, 59, 0, 0, DateTimeKind.Unspecified),
+                            vremePocetka = new DateTime(2021, 6, 11, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            brojJZOP = 2,
+                            opisJZOP = "Drugi tip javnog nadmetanja"
                         });
                 });
 

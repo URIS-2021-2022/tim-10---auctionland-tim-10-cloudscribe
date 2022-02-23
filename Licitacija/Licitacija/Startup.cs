@@ -63,6 +63,8 @@ namespace Licitacija
             services.AddScoped<ILicitacijaRepository, LicitacijaRepository>();
             services.AddDbContextPool<LicitacijaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LicitacijaDB")));
             services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddSingleton<IJavnoNadmetanjeService, JavnoNadmetanjeService>();
+            services.AddSingleton<IDokumentService, DokumentService>();
 
             services.AddSwaggerGen(setupAction =>
             {

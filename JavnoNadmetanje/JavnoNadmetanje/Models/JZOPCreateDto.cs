@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,9 +42,6 @@ namespace JavnoNadmetanje.Models
         /// Izlicitirana cena na javnom nadmetanju
         /// </summary>
         public int izlicitiranaCena { get; set; }
-        //  public string najboljiPonudjac { get; set; } //kupac
-
-        //public string adresaOdrzavanjaNadmetanja // adresa
         /// <summary>
         /// Katastarska opstina vezana za javno nadmetanje
         /// </summary>
@@ -52,8 +50,6 @@ namespace JavnoNadmetanje.Models
         /// Period zakupa u javnom nadmetanju
         /// </summary>
         public int periodZakupa { get; set; }
-        //public string prijavljeniKupci { get; set; } //kupac
-        //public string licitanti { get; set; } //ovlasceno lice
         /// <summary>
         /// Broj ucesnika u javnom nadmetanju
         /// </summary>
@@ -83,5 +79,30 @@ namespace JavnoNadmetanje.Models
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti ID etape.")]
         public Guid etapaID { get; set; }
+        public Guid adresaId { get; set; }
+        /// <summary>
+        /// Adresa 
+        /// </summary>
+        [NotMapped]
+        public virtual AdresaDto adresaDto { get; set; }
+        /// <summary>
+        /// ID parcele
+        /// </summary>
+
+        public Guid parcelaId { get; set; }
+        /// <summary>
+        /// Parcela
+        /// </summary>
+        [NotMapped]
+        public virtual ParcelaDto parcelaDto { get; set; }
+        /// <summary>
+        /// ID licitera
+        /// </summary>
+        public Guid liciterId { get; set; }
+        /// <summary>
+        /// Liciter
+        /// </summary>
+        [NotMapped]
+        public virtual LiciterDto liciterDto { get; set; }
     }
 }

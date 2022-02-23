@@ -83,6 +83,10 @@ namespace JavnoNadmetanje
             services.AddScoped<IEtapaRepository, EtapaRepository>();
             services.AddScoped<IKorakCeneRepository, KorakCeneRepository>();
             services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddSingleton<IAdresaService, AdresaService>();
+            services.AddSingleton<ILiciterService, LiciterService>();
+            services.AddSingleton<IParcelaService, ParcelaService>();
+
             services.AddDbContextPool<JavnoNadmetanjeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("JavnoNadmetanjeDB")));
         }
 

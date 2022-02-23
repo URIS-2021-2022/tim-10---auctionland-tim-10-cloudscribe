@@ -24,6 +24,9 @@ namespace JavnoNadmetanje.Controllers
         private readonly IEtapaRepository etapaRepository;
         private readonly IKorakCeneRepository korakCeneRepository;
         private readonly ILoggerService loggerService;
+        private readonly IAdresaService adresaService;
+        private readonly ILiciterService liciterService;
+        private readonly IParcelaService parcelaService;
         private readonly LoggerDto loggerDto;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
@@ -59,6 +62,21 @@ namespace JavnoNadmetanje.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            foreach (JavnaLicitacijaEntity lDto in javneLicitacije) 
+            {
+                AdresaDto adresaDto = adresaService.GetAdresaById(lDto.adresaId).Result;
+                lDto.adresaDto = adresaDto;
+
+                LiciterDto liciter = liciterService.GetLiciterById(lDto.liciterId).Result;
+                lDto.liciterDto = liciter;
+
+                ParcelaDto parcela = parcelaService.GetParcelaById(lDto.parcelaId).Result;
+                lDto.parcelaDto = parcela;
+
+
+            }
+
             loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
@@ -85,6 +103,16 @@ namespace JavnoNadmetanje.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            AdresaDto adresaDto = adresaService.GetAdresaById(javnaLicitacija.adresaId).Result;
+            javnaLicitacija.adresaDto = adresaDto;
+
+            LiciterDto liciter = liciterService.GetLiciterById(javnaLicitacija.liciterId).Result;
+            javnaLicitacija.liciterDto = liciter;
+
+            ParcelaDto parcela = parcelaService.GetParcelaById(javnaLicitacija.parcelaId).Result;
+            javnaLicitacija.parcelaDto = parcela;
+
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);

@@ -46,7 +46,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjQyMjIwLCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.dGU2q2uQDDf1ETRHEwNy-FOruOxRFeppgmXVw_l6sMs",
 									"type": "string"
 								}
 							]
@@ -86,7 +86,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Prvi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\"\r\n}",
+							"raw": "{ \r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Prvi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\",\r\n\"adresaId\" :\"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"liciterId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"parcelaId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,7 +125,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n\"javnoNadmetanjeID\": \"dda4ee0e-74c3-45e3-4201-08d9f56b3076\",\r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Drugi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\"\r\n}",
+							"raw": "{ \r\n\"javnoNadmetanjeID\": \"dda4ee0e-74c3-45e3-4201-08d9f56b3076\",\r\n\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"brojJavneLicitacije\" : 1,\r\n\"opisJavneLicitacije\" : \"Drugi krug\",\r\n\"korakCeneID\" : \"1c7ea607-8ddb-493a-87fa-4bf5893e961b\",\r\n\"adresaId\" :\"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"liciterId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"parcelaId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -261,7 +261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"brojJZOP\" : 1,\r\n\"opisJZOP\" : \"\", \r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\"\r\n}",
+							"raw": "{\"datum\" : \"2021-05-01T09:00:00\",\r\n\"vremePocetka\" : \"2021-05-01T09:00:00\",\r\n\"vremeKraja\" : \"2021-05-01T13:59:00\",\r\n\"pocetnaCena\" : 120000,\r\n\"izuzeto\" : false,\r\n\"tip\" : 1,\r\n\"izlicitiranaCena\" : 280000,\r\n\"katastarskaOpstina\" : \"Novi Grad\",\r\n\"periodZakupa\" : 15,\r\n\"brojUcesnika\" : 25,\r\n\"dopunaDepozita\" : 5000,\r\n\"krug\" : 1,\r\n\"status\" : \"Prvi krug\",\r\n\"brojJZOP\" : 1,\r\n\"opisJZOP\" : \"\", \r\n\"etapaID\" : \"1C7EA607-8DDB-493A-87FA-4BF5893E968B\",\r\n\"adresaId\" :\"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"liciterId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"parcelaId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -300,7 +300,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{   \"javnoNadmetanjeID\" : \"6A411C13-A195-48F7-8DBD-67596C4973C0\",\r\n    \"datum\": \"2021-05-01T09:00:00\",\r\n    \"vremePocetka\": \"2021-05-01T09:00:00\",\r\n    \"vremeKraja\": \"2021-05-01T13:59:00\",\r\n    \"pocetnaCena\": 120000,\r\n    \"izuzeto\": false,\r\n    \"tip\": 1,\r\n    \"izlicitiranaCena\": 280000,\r\n    \"katastarskaOpstina\": \"Novi Grad\",\r\n    \"periodZakupa\": 15,\r\n    \"brojUcesnika\": 25,\r\n    \"dopunaDepozita\": 5000,\r\n    \"krug\": 1,\r\n    \"status\": \"Drugi krug\",\r\n    \"etapaID\": \"1c7ea607-8ddb-493a-87fa-4bf5893e968b\"\r\n}",
+							"raw": "{   \"javnoNadmetanjeID\" : \"6A411C13-A195-48F7-8DBD-67596C4973C0\",\r\n    \"datum\": \"2021-05-01T09:00:00\",\r\n    \"vremePocetka\": \"2021-05-01T09:00:00\",\r\n    \"vremeKraja\": \"2021-05-01T13:59:00\",\r\n    \"pocetnaCena\": 120000,\r\n    \"izuzeto\": false,\r\n    \"tip\": 1,\r\n    \"izlicitiranaCena\": 280000,\r\n    \"katastarskaOpstina\": \"Novi Grad\",\r\n    \"periodZakupa\": 15,\r\n    \"brojUcesnika\": 25,\r\n    \"dopunaDepozita\": 5000,\r\n    \"krug\": 1,\r\n    \"status\": \"Drugi krug\",\r\n    \"etapaID\": \"1c7ea607-8ddb-493a-87fa-4bf5893e968b\",\r\n    \"adresaId\" :\"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"liciterId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\",\r\n\"parcelaId\" : \"6a411c13-a195-48f7-8dbd-67596c3974c0\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
