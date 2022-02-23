@@ -93,6 +93,7 @@ namespace LiciterService.Controllers
             }
 
             LiceLiciterDto lice = liceService.GetLica(liciter.liceId).Result;
+            liciter.Lice = lice;
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
