@@ -16,5 +16,7 @@ namespace OglasService.Models
         /// ID sluzbeni list
         /// </summary>
         public Guid SluzbeniListId { get; set; }
+
+        public Guid javnoNadmetanjeID { get; set; }
     }
 }

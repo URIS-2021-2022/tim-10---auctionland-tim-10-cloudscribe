@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using OglasService.Data;
 using OglasService.Entities;
+using OglasService.ServiceCalls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,8 @@ namespace OglasService
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<IOglasRepository, OglasRepository>();
             services.AddScoped<ISluzbeniListRepository, SluzbeniListRepository>();
+            services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddSingleton<IJavnoNadmetanjeService, JavnoNadmetanjeService>();
 
 
             services.AddDbContextPool<OglasContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OglasDB")).UseLazyLoadingProxies());

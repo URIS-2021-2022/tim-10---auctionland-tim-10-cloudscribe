@@ -16,5 +16,7 @@ namespace OglasService.Models
         /// Tekst oglasa
         /// </summary>
         public string TekstOglasa { get; set; }
+
+        public Guid javnoNadmetanjeID { get; set; }
     }
 }

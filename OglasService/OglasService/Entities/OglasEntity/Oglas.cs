@@ -20,6 +20,8 @@ namespace OglasService.Entities
         /// </summary>
         public string TekstOglasa { get; set; }
 
+        public Guid javnoNadmetanjeID { get; set; }
+
         /// <summary>
         /// ID sluzbenog lista
         /// </summary>
