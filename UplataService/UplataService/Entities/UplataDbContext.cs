@@ -48,7 +48,7 @@ namespace UplataService.Entities
         /// </summary>
         public virtual DbSet<Uplata> Uplata { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Overriden method which defines the configuration options used for database connectivity
         /// </summary>
         /// <param name="optionsBuilder">DbContextOptionsBuilder object</param>

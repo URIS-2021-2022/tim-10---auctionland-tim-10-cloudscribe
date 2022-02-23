@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Text;
 using UplataService.Data;
 using UplataService.Entities;
+using UplataService.Middlewares;
+using UplataService.ServiceCalls;
 
 namespace UplataService
 {
@@ -51,6 +53,7 @@ namespace UplataService
             services.AddScoped<IKursRepository, KursRepository>();
             services.AddScoped<IUplataRepository, UplataRepository>();
             services.AddScoped<IBankaUplataRepository, BankaUplataRepository>();
+            services.AddScoped<ILoggerService, LoggerService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -112,6 +115,9 @@ namespace UplataService
                     options.RoutePrefix = string.Empty;
                 });
             }
+
+            // Added custom middleware that handles HTTP requests and responses
+            app.UseMiddleware<HttpMiddleware>();
 
             app.UseHttpsRedirection();
 
