@@ -26,10 +26,9 @@ namespace LiciterService.Controllers
         private readonly IMapper mapper;
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
-        private readonly IAdresaService adresaService;
-        private readonly AdresaZastupnikDto AdresaDto;
 
-        public KupacController(IMapper mapper,LinkGenerator linkGenerator, IKupacRepository kupacRepository, ILoggerService loggerService,IAdresaService adresaService)
+
+        public KupacController(IMapper mapper,LinkGenerator linkGenerator, IKupacRepository kupacRepository, ILoggerService loggerService)
         {
            
             this.kupacRepository = kupacRepository;
@@ -38,9 +37,8 @@ namespace LiciterService.Controllers
             this.loggerService = loggerService;
             loggerDto = new LoggerDto();
             loggerDto.ServiceName = "Kupac";
-
-            this.adresaService = adresaService;
-            AdresaDto = new AdresaZastupnikDto();
+            
+           
         }
 
         /// <summary>
@@ -176,7 +174,6 @@ namespace LiciterService.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //Kupac kupacEntity = mapper.Map<Kupac>(kupac);
                 mapper.Map(kupac, oldKupac);
                 kupacRepository.SaveChanges();
                 return Ok(mapper.Map<KupacDto>(oldKupac));

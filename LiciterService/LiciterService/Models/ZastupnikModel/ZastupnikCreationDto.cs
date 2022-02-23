@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +34,9 @@ namespace LiciterService.Models
 
         public Guid AdresaId { get; set; }
 
+        [NotMapped]
+        public AdresaZastupnikDto Adresa { get; set; }
+
         /// <summary>
         /// ID kupca
         /// </summary>
@@ -51,7 +55,7 @@ namespace LiciterService.Models
                     "Upisite validan broj pasosa.",
                     new[] { "ZastupnikCreationDto" });
 
-            };
+            }
             if(NazivDrzave!="Srbija" && BrojPasosa.Length != 9)
             {
                 yield return new ValidationResult(
@@ -64,7 +68,7 @@ namespace LiciterService.Models
                     "Upisite validan jmbg.",
                     new[] { "ZastupnikCreationDto" });
 
-            };
+            }
             if (NazivDrzave == "Srbija" && Jmbg.Length != 13)
             {
                 yield return new ValidationResult(

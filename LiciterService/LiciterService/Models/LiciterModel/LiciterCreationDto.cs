@@ -21,5 +21,7 @@ namespace LiciterService.Models
 
         public Guid liceId { get; set; }
 
+        public LiceLiciterDto lice { get; set; }
+
     }
 }

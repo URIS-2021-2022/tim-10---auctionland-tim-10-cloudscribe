@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace LiciterService.Models
 {
+    [Serializable]
     public class LiceException : Exception
     {
         public LiceException(string message) : base(message)

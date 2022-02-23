@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiciterService.Migrations
 {
     [DbContext(typeof(LiciterContext))]
-    [Migration("20220222235422_first")]
+    [Migration("20220223152431_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
