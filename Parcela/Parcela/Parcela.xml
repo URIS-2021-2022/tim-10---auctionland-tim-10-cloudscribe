@@ -426,26 +426,6 @@
             Broj zaštićene zone
             </summary>
         </member>
-        <member name="P:Parcela.Models.AdresaDto.UlicaBroj">
-            <summary>
-            Ulica i broj adrese
-            </summary>
-        </member>
-        <member name="P:Parcela.Models.AdresaDto.Mesto">
-            <summary>
-            Mesto adrese
-            </summary>
-        </member>
-        <member name="P:Parcela.Models.AdresaDto.PostanskiBroj">
-            <summary>
-            Poštanski broj adrese
-            </summary>
-        </member>
-        <member name="P:Parcela.Models.AdresaDto.NazivDrzave">
-            <summary>
-            Naziv države adrese
-            </summary>
-        </member>
         <member name="P:Parcela.Models.DeoParcele.DeoParceleConfirmationDto.DeoParceleId">
             <summary>
             ID Dela parcele
