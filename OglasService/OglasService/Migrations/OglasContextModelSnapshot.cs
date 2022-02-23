@@ -31,6 +31,9 @@ namespace OglasService.Migrations
                     b.Property<string>("TekstOglasa")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("javnoNadmetanjeID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("OglasId");
 
                     b.HasIndex("SluzbeniListId");
@@ -42,13 +45,15 @@ namespace OglasService.Migrations
                         {
                             OglasId = new Guid("6a411c13-a195-48f7-8dbd-67596c397444"),
                             SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397475"),
-                            TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini"
+                            TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini",
+                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c4973c0")
                         },
                         new
                         {
                             OglasId = new Guid("6a411c13-a195-48f7-8dbd-67596c397498"),
                             SluzbeniListId = new Guid("6a411c13-a195-48f7-8dbd-67596c397411"),
-                            TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini"
+                            TekstOglasa = "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini",
+                            javnoNadmetanjeID = new Guid("6a411c13-a195-48f7-8dbd-67596c3973c0")
                         });
                 });
 

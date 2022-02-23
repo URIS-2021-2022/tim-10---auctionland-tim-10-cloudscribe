@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Routing;
 using OglasService.Data;
 using OglasService.Entities;
 using OglasService.Models;
+using OglasService.ServiceCalls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace OglasService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/oglas")]
     public class OglasController:ControllerBase
@@ -21,12 +22,19 @@ namespace OglasService.Controllers
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
         private readonly IOglasRepository oglasRepository;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDtos loggerDto;
+        private readonly IJavnoNadmetanjeService javnoNadmetanjeService;
 
-        public OglasController(IMapper mapper,LinkGenerator linkGenerator,IOglasRepository oglasRepository)
+        public OglasController(IMapper mapper,LinkGenerator linkGenerator,IOglasRepository oglasRepository,ILoggerService loggerService,IJavnoNadmetanjeService javnoNadmetanjeService)
         {
             this.mapper = mapper;
             this.linkGenerator = linkGenerator;
             this.oglasRepository = oglasRepository;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDtos();
+            loggerDto.ServiceName = "Oglas";
+            this.javnoNadmetanjeService = javnoNadmetanjeService;
         }
 
         /// <summary>
@@ -41,11 +49,18 @@ namespace OglasService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<OglasDto>> GetOglasi()
         {
+            loggerDto.HttpMethod = "GET";
             var oglasi = oglasRepository.GetOglasi();
             if(oglasi==null || oglasi.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<OglasDto>>(oglasi));
         }
 
@@ -59,11 +74,18 @@ namespace OglasService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<OglasDto> GetOglas(Guid oglasId)
         {
+            loggerDto.HttpMethod = "GET";
             var oglas = oglasRepository.GetOglasById(oglasId);
             if (oglas == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<OglasDto>(oglas));
         }
 
@@ -87,14 +109,35 @@ namespace OglasService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 Oglas oglasEntity = mapper.Map<Oglas>(oglas);
                 OglasConfirmation confirmation = oglasRepository.CreateOglas(oglasEntity);
                 oglasRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetOglas", "Oglas", new { oglasId = confirmation.OglasId });
+
+                var javnoNadmetanjeInfo = mapper.Map<OglasJavnoNadmetanjeDto>(oglas);
+
+                javnoNadmetanjeInfo.javnoNadmetanjeID = confirmation.javnoNadmetanjeID;
+                bool javnoNadmetanje = javnoNadmetanjeService.JavnoNadmetanjeInOglas(javnoNadmetanjeInfo.javnoNadmetanjeID);
+
+                if (!javnoNadmetanje)
+                {
+                    oglasRepository.DeleteOglas(confirmation.OglasId);
+                    throw new JavnoNadmetanjeException("Neuspesno kreiranje oglasa. Postoji problem sa javnom licitacijom. Molimo kontaktirajte administratora.");
+                }
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Created(location, mapper.Map<OglasConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -125,6 +168,7 @@ namespace OglasService.Controllers
                 var oldOglas = oglasRepository.GetOglasById(oglas.OglasId);
                 if (oldOglas == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //Oglas oglasEntity = mapper.Map<Oglas>(oglas);
@@ -134,6 +178,9 @@ namespace OglasService.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
@@ -155,19 +202,31 @@ namespace OglasService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var oglas = oglasRepository.GetOglasById(oglasId);
 
                 if (oglas == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 oglasRepository.DeleteOglas(oglasId);
                 oglasRepository.SaveChanges();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }

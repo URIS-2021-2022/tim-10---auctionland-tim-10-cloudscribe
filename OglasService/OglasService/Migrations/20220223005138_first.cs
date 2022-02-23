@@ -27,6 +27,7 @@ namespace OglasService.Migrations
                 {
                     OglasId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TekstOglasa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    javnoNadmetanjeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SluzbeniListId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -52,13 +53,13 @@ namespace OglasService.Migrations
 
             migrationBuilder.InsertData(
                 table: "Oglasi",
-                columns: new[] { "OglasId", "SluzbeniListId", "TekstOglasa" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397444"), new Guid("6a411c13-a195-48f7-8dbd-67596c397475"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini" });
+                columns: new[] { "OglasId", "SluzbeniListId", "TekstOglasa", "javnoNadmetanjeID" },
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397444"), new Guid("6a411c13-a195-48f7-8dbd-67596c397475"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini", new Guid("6a411c13-a195-48f7-8dbd-67596c4973c0") });
 
             migrationBuilder.InsertData(
                 table: "Oglasi",
-                columns: new[] { "OglasId", "SluzbeniListId", "TekstOglasa" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397498"), new Guid("6a411c13-a195-48f7-8dbd-67596c397411"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini" });
+                columns: new[] { "OglasId", "SluzbeniListId", "TekstOglasa", "javnoNadmetanjeID" },
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c397498"), new Guid("6a411c13-a195-48f7-8dbd-67596c397411"), "Javni oglas za davanje u zakup poljoprivrednog zemljišta u državnoj svojini", new Guid("6a411c13-a195-48f7-8dbd-67596c3973c0") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Oglasi_SluzbeniListId",

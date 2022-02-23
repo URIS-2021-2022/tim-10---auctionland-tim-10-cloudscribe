@@ -19,6 +19,8 @@ namespace OglasService.Models
         /// </summary>
         public string TekstOglasa { get; set; }
         public virtual SluzbeniList SluzbeniList { get; set; }
-        
+
+        public Guid javnoNadmetanjeID { get; set; }
+
     }
 }
