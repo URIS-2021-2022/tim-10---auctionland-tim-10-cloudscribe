@@ -6,11 +6,11 @@
     /// </summary>
     struct HttpResponseStruct
     {
-        public static string HTTP_5XX = " INTERNAL SERVER ERROR";
-        public static string HTTP_404 = " NOT FOUND";
-        public static string HTTP_403 = " FORBIDDEN";
-        public static string HTTP_401 = " UNAUTHORIZED";
-        public static string HTTP_400 = " BAD REQUEST";
-        public static string HTTP_200 = " OK";
+        public static readonly string HTTP_5XX = " INTERNAL SERVER ERROR";
+        public static readonly string HTTP_404 = " NOT FOUND";
+        public static readonly string HTTP_403 = " FORBIDDEN";
+        public static readonly string HTTP_401 = " UNAUTHORIZED";
+        public static readonly string HTTP_400 = " BAD REQUEST";
+        public static readonly string HTTP_200 = " OK";
     }
 }

@@ -63,7 +63,7 @@ namespace UplataService.Middlewares
                         break;
                 }
 
-                if (level.Equals(string.Empty))
+                if (string.IsNullOrEmpty(level))
                 {
                     level = "ERROR";
                 }
