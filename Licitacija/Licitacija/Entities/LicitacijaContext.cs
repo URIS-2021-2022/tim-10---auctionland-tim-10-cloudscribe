@@ -33,7 +33,9 @@ namespace Licitacija.Entities
                     datumRaspisivanja = DateTime.Parse("2021-06-01T09:00:00"),
                     ogranicenje = 0,
                     krugLicitacije = 1,
-                    rokZaPrijave = DateTime.Parse("2021-07-01T23:59:00")
+                    rokZaPrijave = DateTime.Parse("2021-07-01T23:59:00"),
+                    javnoNadmetanjeId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3973c0"),
+                    dokumentiId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3972b2")
                 });
 
             modelBuilder.Entity<LicitacijaModel>()
@@ -45,7 +47,9 @@ namespace Licitacija.Entities
                     datumRaspisivanja = DateTime.Parse("2021-11-15T09:00:00"),
                     ogranicenje = 1,
                     krugLicitacije = 1,
-                    rokZaPrijave = DateTime.Parse("2021-11-25T09:00:00")
+                    rokZaPrijave = DateTime.Parse("2021-11-25T09:00:00"),
+                    javnoNadmetanjeId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                    dokumentiId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3975a3")
                 });
         }
 

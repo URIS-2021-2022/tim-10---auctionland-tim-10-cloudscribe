@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Licitacija.Migrations
 {
     [DbContext(typeof(LicitacijaContext))]
-    [Migration("20220220062239_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20220223151119_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,14 +33,11 @@ namespace Licitacija.Migrations
                     b.Property<DateTime>("datumRaspisivanja")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("dokumentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("godinaLicitacije")
                         .HasColumnType("int");
 
-                    b.Property<int>("javnoNadmetanjeId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("javnoNadmetanjeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("krugLicitacije")
                         .HasColumnType("int");
@@ -61,9 +58,8 @@ namespace Licitacija.Migrations
                             licitacijaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             brojLicitacije = 1,
                             datumRaspisivanja = new DateTime(2021, 6, 1, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            dokumentId = 1,
                             godinaLicitacije = 2021,
-                            javnoNadmetanjeId = 1,
+                            javnoNadmetanjeId = new Guid("6a411c13-a195-48f7-8dbd-67596c3973c0"),
                             krugLicitacije = 1,
                             ogranicenje = 0,
                             rokZaPrijave = new DateTime(2021, 7, 1, 23, 59, 0, 0, DateTimeKind.Unspecified)
@@ -73,9 +69,8 @@ namespace Licitacija.Migrations
                             licitacijaId = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
                             brojLicitacije = 2,
                             datumRaspisivanja = new DateTime(2021, 11, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            dokumentId = 2,
                             godinaLicitacije = 2022,
-                            javnoNadmetanjeId = 2,
+                            javnoNadmetanjeId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             krugLicitacije = 1,
                             ogranicenje = 1,
                             rokZaPrijave = new DateTime(2021, 11, 25, 9, 0, 0, 0, DateTimeKind.Unspecified)

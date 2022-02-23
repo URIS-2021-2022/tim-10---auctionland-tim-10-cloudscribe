@@ -69,6 +69,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="P:Licitacija.Entities.LicitacijaConfirmation.licitacijaId">
+            <summary>
+            ID licitacije
+            </summary>
+        </member>
+        <member name="P:Licitacija.Entities.LicitacijaConfirmation.brojLicitacije">
+            <summary>
+            Broj licitacije
+            </summary>
+        </member>
+        <member name="P:Licitacija.Entities.LicitacijaConfirmation.godinaLicitacije">
+            <summary>
+            Godina licitacije
+            </summary>
+        </member>
+        <member name="P:Licitacija.Entities.LicitacijaConfirmation.datumRaspisivanja">
+            <summary>
+            Datum raspisivanja licitacije
+            </summary>
+        </member>
+        <member name="P:Licitacija.Entities.LicitacijaConfirmation.javnoNadmetanjeId">
+            <summary>
+            ID javnog nadmetanja
+            </summary>
+        </member>
         <member name="M:Licitacija.Entities.LicitacijaContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
             Popunjava bazu sa nekim inicijalnim podacima
@@ -109,6 +134,67 @@
             Rok za prijavu za licitaciju
             </summary>
         </member>
+        <member name="P:Licitacija.Models.DokumentDto.DokumentID">
+            <summary>
+            Id dokumenta
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.DokumentDto.NazivDokumenta">
+            <summary>
+            Naziv dokumenta
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.DokumentDto.Datum">
+            <summary>
+            Datum 
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.DokumentDto.Sablon">
+            <summary>
+            Sablon dokumenta
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.javnoNadmetanjeId">
+            <summary>
+            ID javne licitacije
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.vremePocetka">
+            <summary>
+            Vreme pocetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.vremeKraja">
+            <summary>
+            Vreme zavrsetka javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.pocetnaCena">
+            <summary>
+            Pocetna cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.izlicitiranaCena">
+            <summary>
+            Izlicitirana cena na javnom nadmetanju
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.katastarskaOpstina">
+            <summary>
+            Katastarska opstina vezana za javno nadmetanje
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.krug">
+            <summary>
+            Krug javnog nadmetanja
+            </summary>
+        </member>
+        <member name="P:Licitacija.Models.JavnaLicitacijaDto.status">
+            <summary>
+            Status javnog nadmetanja
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.JavnaLicitacijaDto.opisJavneLicitacije" -->
         <member name="P:Licitacija.Models.LicitacijaConfirmationDto.licitacijaId">
             <summary>
             ID licitacije
@@ -124,6 +210,9 @@
             Godina u kojoj se vrsi licitacije
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaConfirmationDto.javnaLicitacijaDto" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaConfirmationDto.dokumentId" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaConfirmationDto.dokumentDto" -->
         <member name="P:Licitacija.Models.LicitacijaCreateDto.brojLicitacije">
             <summary>
             Redni broj licitacije
@@ -154,6 +243,14 @@
             Rok za prijavu za licitaciju
             </summary>
         </member>
+        <member name="P:Licitacija.Models.LicitacijaCreateDto.javnoNadmetanjeId">
+            <summary>
+            Javno nadmetanje
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaCreateDto.javnaLicitacijaDto" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaCreateDto.dokumentId" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaCreateDto.dokumentDto" -->
         <member name="P:Licitacija.Models.LicitacijaModelDto.licitacijaId">
             <summary>
             ID licitacije
@@ -189,6 +286,14 @@
             Rok za prijavu za licitaciju
             </summary>
         </member>
+        <member name="P:Licitacija.Models.LicitacijaModelDto.javnoNadmetanjeId">
+            <summary>
+            ID javnog nadmetanja
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaModelDto.javnaLicitacijaDto" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaModelDto.dokumentId" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaModelDto.dokumentDto" -->
         <member name="P:Licitacija.Models.LicitacijaUpdateDto.licitacijaId">
             <summary>
             ID licitacije
@@ -220,5 +325,8 @@
             Rok za prijavu za licitaciju
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaUpdateDto.javnaLicitacijaDto" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaUpdateDto.dokumentId" -->
+        <!-- Badly formed XML comment ignored for member "P:Licitacija.Models.LicitacijaUpdateDto.dokumentDto" -->
     </members>
 </doc>

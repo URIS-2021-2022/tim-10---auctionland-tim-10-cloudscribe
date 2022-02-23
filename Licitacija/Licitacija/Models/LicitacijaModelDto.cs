@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -36,6 +37,26 @@ namespace Licitacija.Models
         /// Rok za prijavu za licitaciju
         /// </summary>
         public DateTime rokZaPrijave { get; set; }
+        /// <summary>
+        /// ID javnog nadmetanja
+        /// </summary>
+        [ForeignKey("JavnoNadmetanje")]
+        public Guid javnoNadmetanjeId { get; set; }
+        // <summary>
+        /// Javna licitacija
+        /// </summary>
+        [NotMapped]
+        public virtual JavnaLicitacijaDto javnaLicitacijaDto { get; set; }
+        // <summary>
+        /// Id Dokumenata
+        /// </summary>
+        [ForeignKey("Dokument")]
+        public Guid dokumentId { get; set; }
+        // <summary>
+        /// Dokumenti
+        /// </summary>
+        [NotMapped]
+        public virtual List<DokumentDto> dokumentDto { get; set; } 
 
     }
 }

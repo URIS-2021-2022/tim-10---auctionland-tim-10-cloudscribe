@@ -25,13 +25,16 @@ namespace Licitacija.Controllers
         private readonly LoggerDto loggerDto;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
-
-        public LicitacijaController(ILicitacijaRepository licitacijaRepository, ILoggerService loggerService, LinkGenerator linkGenerator, IMapper mapper)
+        private readonly IJavnoNadmetanjeService javnoNadmetanjeService;
+        private readonly IDokumentService dokumentService;
+        public LicitacijaController(ILicitacijaRepository licitacijaRepository, ILoggerService loggerService, IJavnoNadmetanjeService javnoNadmetanjeService, IDokumentService dokumentService, LinkGenerator linkGenerator, IMapper mapper)
         {
             this.licitacijaRepository = licitacijaRepository;
             this.loggerService = loggerService;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.javnoNadmetanjeService = javnoNadmetanjeService;
+            this.dokumentService = dokumentService;
             loggerDto = new LoggerDto();
             loggerDto.ServiceName = "LICITACIJA";
         }
@@ -55,6 +58,17 @@ namespace Licitacija.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            foreach (LicitacijaModel lDto in licitacije)
+            {
+                JavnaLicitacijaDto javnaLicitacija = javnoNadmetanjeService.GetJavnaLicitacijaById(lDto.javnoNadmetanjeId).Result;
+                lDto.javnaLicitacijaDto = javnaLicitacija;
+
+                DokumentDto dokument = dokumentService.GetDokumentById(lDto.dokumentiId).Result;
+                lDto.dokumentDto = dokument;
+                
+            }
+
             loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
@@ -80,6 +94,13 @@ namespace Licitacija.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            JavnaLicitacijaDto javnaLicitacija = javnoNadmetanjeService.GetJavnaLicitacijaById(licitacijaModel.javnoNadmetanjeId).Result;
+            licitacijaModel.javnaLicitacijaDto = javnaLicitacija;
+
+            DokumentDto dokument = dokumentService.GetDokumentById(licitacijaModel.dokumentiId).Result;
+            licitacijaModel.dokumentDto = dokument;
+
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
@@ -99,7 +120,9 @@ namespace Licitacija.Controllers
         /// "datumRaspisivanja" : "2021-06-01T09:00:00",
         /// "ogranicenje" : 0,
         /// "krugLicitacije" : 1,
-        /// "rokZaPrijave" : "2021-07-01T23:59:00"
+        /// "rokZaPrijave" : "2021-07-01T23:59:00",
+        /// "javnoNadmetanjeId": "6a411c13-a195-48f7-8dbd-67596c3974c0",
+        /// "dokumentId": 6a411c13-a195-48f7-8dbd-67596c3972b2"
         /// }
         ///</remarks>
         /// <returns></returns>
@@ -180,7 +203,9 @@ namespace Licitacija.Controllers
         /// "datumRaspisivanja" : "2021-06-01T09:00:00",
         /// "ogranicenje" : 1,
         /// "krugLicitacije" : 2,
-        /// "rokZaPrijave" : "2021-07-01T23:59:00"
+        /// "rokZaPrijave" : "2021-07-01T23:59:00",
+        /// "javnoNadmetanjeId": "6a411c13-a195-48f7-8dbd-67596c3974c0",
+        /// "dokumentId": 6a411c13-a195-48f7-8dbd-67596c3972b2"
         /// }
         ///</remarks>
         /// <returns></returns>

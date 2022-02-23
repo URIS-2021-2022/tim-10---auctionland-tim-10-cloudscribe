@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,7 +42,21 @@ namespace Licitacija.Models
         /// <summary>
         /// Javno nadmetanje
         /// </summary>
-
+        public Guid javnoNadmetanjeId { get; set; }
+        // <summary>
+        /// Javna licitacija
+        /// </summary>
+        [NotMapped]
+        public virtual JavnaLicitacijaDto javnaLicitacijaDto { get; set; }
+        // <summary>
+        /// Id Dokumenata
+        /// </summary>
+        public Guid dokumentId { get; set; }
+        // <summary>
+        /// Dokumenti
+        /// </summary>
+        [NotMapped]
+        public virtual DokumentDto dokumentDto { get; set; }
 
     }
 }
