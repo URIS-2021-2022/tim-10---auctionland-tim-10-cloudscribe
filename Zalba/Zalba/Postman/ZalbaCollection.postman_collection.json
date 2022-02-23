@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ca423e9b-de66-47f9-a433-dbb15cb85cd5",
+		"_postman_id": "b7ac198b-9982-4b7c-a76c-44e0902d86ae",
 		"name": "ZalbaCollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,16 +11,6 @@
 				{
 					"name": "GetIdNameDropdownItemsForTipZalbe",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NTU1MTk4LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.XJ7CuO8BJG-c24PEknd6wFISpw3M8rXMTyBqjXUP6I8",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -395,7 +385,7 @@
 	"variable": [
 		{
 			"key": "zalbaBaseUri",
-			"value": "https://localhost:44383/api"
+			"value": "https://localhost:44250/api"
 		}
 	]
 }

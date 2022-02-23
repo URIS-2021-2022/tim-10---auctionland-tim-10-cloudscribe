@@ -21,7 +21,6 @@ namespace ZalbaService.Middlewares
         public HttpMiddleware(RequestDelegate next)
         {
             _next = next;
-            //this.loggerService = loggerService;
         }
 
         /// <summary>
@@ -64,7 +63,7 @@ namespace ZalbaService.Middlewares
                         break;
                 }
 
-                if (level.Equals(string.Empty))
+                if (string.IsNullOrEmpty(level))
                 {
                     level = "ERROR";
                 }
