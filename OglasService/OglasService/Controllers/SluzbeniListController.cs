@@ -160,7 +160,6 @@ namespace OglasService.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //SluzbeniList sluzbeniListEntity = mapper.Map<SluzbeniList>(sluzbeniList);
                 mapper.Map(sluzbeniList, oldSluzbeniList);
                 sluzbeniListRepository.SaveChanges();
                 return Ok(mapper.Map<SluzbeniListDto>(oldSluzbeniList));

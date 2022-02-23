@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OglasService
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

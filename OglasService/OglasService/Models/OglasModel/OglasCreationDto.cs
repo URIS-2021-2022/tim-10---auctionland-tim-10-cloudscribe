@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,5 +19,7 @@ namespace OglasService.Models
         public Guid SluzbeniListId { get; set; }
 
         public Guid javnoNadmetanjeID { get; set; }
+
+        public virtual OglasJavnoNadmetanjeDto javnoNadmetanje { get; set; }
     }
 }

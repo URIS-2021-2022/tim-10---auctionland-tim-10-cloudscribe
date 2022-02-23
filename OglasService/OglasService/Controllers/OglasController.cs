@@ -58,6 +58,13 @@ namespace OglasService.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+
+            foreach (Oglas b in oglasi)
+            {
+                OglasJavnoNadmetanjeDto javnoNadmetanje = javnoNadmetanjeService.GetJavnaNadmetanje(b.javnoNadmetanjeID).Result;
+                b.javnoNadmetanje= javnoNadmetanje;
+            }
+
             loggerDto.Level = "INFO";
             loggerDto.Response = "200 OK";
             loggerService.CreateLog(loggerDto);
@@ -83,6 +90,10 @@ namespace OglasService.Controllers
                 loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            OglasJavnoNadmetanjeDto javnoNadmetanje = javnoNadmetanjeService.GetJavnaNadmetanje(oglas.javnoNadmetanjeID).Result;
+            oglas.javnoNadmetanje = javnoNadmetanje;
+
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
             loggerService.CreateLog(loggerDto);
@@ -116,16 +127,7 @@ namespace OglasService.Controllers
                 oglasRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetOglas", "Oglas", new { oglasId = confirmation.OglasId });
 
-                var javnoNadmetanjeInfo = mapper.Map<OglasJavnoNadmetanjeDto>(oglas);
-
-                javnoNadmetanjeInfo.javnoNadmetanjeID = confirmation.javnoNadmetanjeID;
-                bool javnoNadmetanje = javnoNadmetanjeService.JavnoNadmetanjeInOglas(javnoNadmetanjeInfo.javnoNadmetanjeID);
-
-                if (!javnoNadmetanje)
-                {
-                    oglasRepository.DeleteOglas(confirmation.OglasId);
-                    throw new JavnoNadmetanjeException("Neuspesno kreiranje oglasa. Postoji problem sa javnom licitacijom. Molimo kontaktirajte administratora.");
-                }
+              
 
                 loggerDto.Response = "201 CREATED";
                 loggerDto.Level = "INFO";
@@ -171,7 +173,6 @@ namespace OglasService.Controllers
                     loggerDto.Level = "WARN";
                     return NotFound();
                 }
-                //Oglas oglasEntity = mapper.Map<Oglas>(oglas);
                 mapper.Map(oglas, oldOglas);
                 oglasRepository.SaveChanges();
                 return Ok(mapper.Map<OglasDto>(oldOglas));
