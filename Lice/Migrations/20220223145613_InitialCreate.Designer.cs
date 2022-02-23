@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lice.Migrations
 {
     [DbContext(typeof(LiceContext))]
-    [Migration("20220223140715_InitialCreate")]
+    [Migration("20220223145613_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
