@@ -24,7 +24,12 @@ namespace Korisnik.Entities
         /// </summary>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Tip>()
+              .HasData(new
+              {
+                  TipId = Guid.Parse("bda80420-444e-40d4-a97f-2d8be0df7c0c"),
+                  TipKorisnika = "Operater"
+              });
             modelBuilder.Entity<Tip>()
                 .HasData(new
                 {
