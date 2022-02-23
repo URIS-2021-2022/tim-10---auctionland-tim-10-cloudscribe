@@ -96,6 +96,7 @@ namespace LiciterService.Controllers
             }
 
             AdresaZastupnikDto adresa = adresaService.GetAdrese(zastupnik.AdresaId).Result;
+            zastupnik.Adresa = adresa;
 
             loggerDto.Response = "200 OK";
             loggerDto.Level = "INFO";
