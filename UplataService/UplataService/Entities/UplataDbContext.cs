@@ -48,7 +48,7 @@ namespace UplataService.Entities
         /// </summary>
         public virtual DbSet<Uplata> Uplata { get; set; }
 
-        /// <summary>
+        // <summary>
         /// Overriden method which defines the configuration options used for database connectivity
         /// </summary>
         /// <param name="optionsBuilder">DbContextOptionsBuilder object</param>
@@ -77,12 +77,12 @@ namespace UplataService.Entities
 
                 entity.Property(e => e.BankaUplataId).HasColumnName("bankaUplataID");
 
-                entity.Property(e => e.Jmbg)
+                entity.Property(e => e.JMBG)
                     .HasColumnName("JMBG")
                     .HasMaxLength(13);
 
-                entity.Property(e => e.Pib)
-                    .HasColumnName("PIB")
+                entity.Property(e => e.maticniBroj)
+                    .HasColumnName("maticniBroj")
                     .HasMaxLength(10);
 
                 entity.HasOne(d => d.BankaUplata)
@@ -165,9 +165,7 @@ namespace UplataService.Entities
                     .HasColumnName("svrhaUplate")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.UplatilacId).HasColumnName("uplatilacId");
-
-                entity.Property(e => e.VisecaUplata).HasColumnName("visecaUplata");
+                entity.Property(e => e.UplatilacId).HasColumnName("uplatilacId").IsRequired(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
