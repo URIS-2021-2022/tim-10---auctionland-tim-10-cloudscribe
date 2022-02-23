@@ -17,5 +17,7 @@ namespace LiciterService.Models
 
         public Zastupnik Zastupnik { get; set; }
 
+        public Guid liceId { get; set; }
+
     }
 }

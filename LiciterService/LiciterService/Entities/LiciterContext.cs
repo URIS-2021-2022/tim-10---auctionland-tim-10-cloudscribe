@@ -32,14 +32,16 @@ namespace LiciterService.Entities
             builder.Entity<Liciter>().HasData(new
             {
                 LiciterId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                KupacId= Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
-                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a66")
+                KupacId= Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523055"),
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a66"),
+                liceId = Guid.Parse("d05f182d-7ef0-484b-9045-3f0451605cdb")
             });
             builder.Entity<Liciter>().HasData(new
             {
                 LiciterId = Guid.Parse("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
                 KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
-                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
+                ZastupnikId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a52"),
+                liceId = Guid.Parse("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab")
             });
 
             builder.Entity<Kupac>().HasData(new
@@ -55,7 +57,7 @@ namespace LiciterService.Entities
 
             builder.Entity<Kupac>().HasData(new
             {
-                KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
+                KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523055"),
                 DatumPocetkaZabrane = DateTime.Parse("2021-12-15T09:00:00"),
                 DatumPrestankaZabrane = DateTime.Parse("2022-5-15T09:00:00"),
                 DuzinaTrajanjaZabrane = 365,
@@ -70,7 +72,10 @@ namespace LiciterService.Entities
                 BrojPasosa = "987654321",
                 NazivDrzave = "Srbija",
                 BrojTable = 255,
-                KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029")
+                AdresaId = Guid.Parse("6a411c13-a195-48f7-8dbd-67596c3974c0"),
+                KupacId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523077")
+                
+
             });
             builder.Entity<Zastupnik>().HasData(new
             {
@@ -79,7 +84,10 @@ namespace LiciterService.Entities
                 BrojPasosa="123456789",
                 NazivDrzave = "Srbija",
                 BrojTable = 365,
+                AdresaId = Guid.Parse("32cd906d-8bab-457c-ade2-fbc4ba523029"),
                 KupacId = Guid.Parse("044f3de0-a9dd-4c2e-b745-89976a1b2a36")
+              
+
             });
         }
     }

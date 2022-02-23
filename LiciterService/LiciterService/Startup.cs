@@ -2,6 +2,7 @@
 using LiciterService.Data.KupacData;
 using LiciterService.Data.LiciterData;
 using LiciterService.Entities;
+using LiciterService.ServiceCalls;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +45,9 @@ namespace LiciterService
             services.AddScoped<ILiciterRepository, LiciterRepository>();
             services.AddScoped<IKupacRepository, KupacRepository>();
             services.AddScoped<IZastupnikRepository, ZastupnikRepository>();
+            services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddSingleton<IAdresaService, AdresaService>();
+            services.AddSingleton<ILiceService, LiceService>();
 
             services.AddDbContextPool<LiciterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LiciterDB")).UseLazyLoadingProxies());
 

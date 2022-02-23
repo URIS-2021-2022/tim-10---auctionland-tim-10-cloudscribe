@@ -2,6 +2,7 @@
 using LiciterService.Data;
 using LiciterService.Entities;
 using LiciterService.Models;
+using LiciterService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,14 +24,23 @@ namespace LiciterService.Controllers
         private readonly IKupacRepository kupacRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IMapper mapper;
-        
-        public KupacController(IMapper mapper,LinkGenerator linkGenerator, IKupacRepository kupacRepository)
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+        private readonly IAdresaService adresaService;
+        private readonly AdresaZastupnikDto AdresaDto;
+
+        public KupacController(IMapper mapper,LinkGenerator linkGenerator, IKupacRepository kupacRepository, ILoggerService loggerService,IAdresaService adresaService)
         {
            
             this.kupacRepository = kupacRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "Kupac";
 
+            this.adresaService = adresaService;
+            AdresaDto = new AdresaZastupnikDto();
         }
 
         /// <summary>
@@ -45,11 +55,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<KupacDto>> GetKupci()
         {
+            loggerDto.HttpMethod = "GET";
             var kupci = kupacRepository.GetKupci();
             if(kupci==null || kupci.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<KupacDto>>(kupci));
         }
 
@@ -63,11 +80,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<KupacDto> GetKupac(Guid kupacId)
         {
-           var kupac = kupacRepository.GetKupacById(kupacId);
+            loggerDto.HttpMethod = "GET";
+            var kupac = kupacRepository.GetKupacById(kupacId);
             if(kupac == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<KupacDto>(kupac));
         }
 
@@ -95,14 +119,24 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 Kupac kupacEntity = mapper.Map<Kupac>(kupac);
                 KupacConfirmation confirmation = kupacRepository.CreateKupac(kupacEntity);
                 kupacRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetKupac", "Kupac", new { kupacId = confirmation.KupacId });
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Created(location, mapper.Map<KupacConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
 
@@ -139,6 +173,7 @@ namespace LiciterService.Controllers
                 var oldKupac = kupacRepository.GetKupacById(kupac.KupacId);
                 if (oldKupac == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //Kupac kupacEntity = mapper.Map<Kupac>(kupac);
@@ -148,6 +183,9 @@ namespace LiciterService.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
@@ -168,19 +206,29 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var kupac = kupacRepository.GetKupacById(kupacId);
 
                 if (kupac == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 kupacRepository.DeleteKupac(kupacId);
                 kupacRepository.SaveChanges();
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }

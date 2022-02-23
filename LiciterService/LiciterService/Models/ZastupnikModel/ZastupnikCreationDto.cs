@@ -31,6 +31,8 @@ namespace LiciterService.Models
         [Required(ErrorMessage="Obavezno uneti broj table za licitaciju")]
         public int BrojTable { get; set; }
 
+        public Guid AdresaId { get; set; }
+
         /// <summary>
         /// ID kupca
         /// </summary>

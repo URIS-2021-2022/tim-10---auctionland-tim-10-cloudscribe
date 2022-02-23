@@ -2,6 +2,7 @@
 using LiciterService.Data;
 using LiciterService.Entities;
 using LiciterService.Models;
+using LiciterService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,12 +23,19 @@ namespace LiciterService.Controllers
         private readonly ILiciterRepository liciterRepository;
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+        private readonly ILiceService liceService;
 
-        public LiciterController(LinkGenerator linkGenerator,IMapper mapper,ILiciterRepository liciterRepository)
+        public LiciterController(LinkGenerator linkGenerator,IMapper mapper,ILiciterRepository liciterRepository, ILoggerService loggerService,ILiceService liceService)
         {
             this.liciterRepository = liciterRepository;
             this.mapper = mapper;
             this.linkGenerator = linkGenerator;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "Liciter";
+            this.liceService = liceService;
         }
 
         /// <summary>
@@ -42,11 +50,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<LiciterDto>> GetLiciteri()
         {
+            loggerDto.HttpMethod = "GET";
             var liciteri = liciterRepository.GetLiciteri();
             if (liciteri == null || liciteri.Count == 0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<LiciterDto>>(liciteri));
         }
 
@@ -60,11 +75,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<LiciterDto> GetLiciter(Guid liciterId)
         {
+            loggerDto.HttpMethod = "GET";
             var liciter = liciterRepository.GetLiciterById(liciterId);
             if (liciter == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<LiciterDto>(liciter));
 
         }
@@ -89,14 +111,35 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 Liciter liciterEntity = mapper.Map<Liciter>(liciter);
                 LiciterConfirmation confirmation = liciterRepository.CreateLiciter(liciterEntity);
                 liciterRepository.SaveChanges();
                 string location = linkGenerator.GetPathByAction("GetLiciter", "Liciter", new { liciterId = confirmation.LiciterId });
+
+                var liceInfo = mapper.Map<LiceLiciterDto>(liciter);
+
+                liceInfo.liceId = confirmation.liceId;
+                bool lice =liceService.LiceInLiciter(liceInfo.liceId);
+
+                if (!lice)
+                {
+                    liciterRepository.DeleteLiciter(confirmation.LiciterId);
+                    throw new LiceException("Neuspesna prijava licitera. Postoji problem sa licem. Molimo kontaktirajte administratora.");
+                }
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Created(location, mapper.Map<LiciterConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
         }
@@ -127,6 +170,7 @@ namespace LiciterService.Controllers
                 var oldLiciter = liciterRepository.GetLiciterById(liciter.LiciterId);
                 if (oldLiciter == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //Liciter liciterEntity = mapper.Map<Liciter>(liciter);
@@ -136,6 +180,9 @@ namespace LiciterService.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
@@ -157,19 +204,32 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var liciter = liciterRepository.GetLiciterById(liciterId);
 
                 if (liciter == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 liciterRepository.DeleteLiciter(liciterId);
                 liciterRepository.SaveChanges();
+
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }

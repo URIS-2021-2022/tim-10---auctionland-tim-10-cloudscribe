@@ -25,6 +25,8 @@ namespace LiciterService.Entities
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual Zastupnik Zastupnik { get; set; }
 
+        public Guid liceId { get; set; }
+
         /// <summary>
         /// ID kupca
         /// </summary>

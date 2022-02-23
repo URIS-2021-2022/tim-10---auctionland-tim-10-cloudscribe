@@ -26,5 +26,7 @@ namespace LiciterService.Models
         /// Naziv drzave
         /// </summary>
         public string NazivDrzave { get; set; }
+
+        public Guid AdresaId { get; set; }
     }
 }

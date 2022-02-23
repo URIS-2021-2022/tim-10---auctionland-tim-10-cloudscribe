@@ -22,6 +22,8 @@ namespace LiciterService.Entities
         /// </summary>
         public string PrezimeLicitera { get; set; }
 
+        public Guid liceId { get; set; }
+
         public Kupac Kupac { get; set; }
         public Zastupnik Zastupnik { get; set; }
     }

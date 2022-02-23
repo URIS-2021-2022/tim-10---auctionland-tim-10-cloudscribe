@@ -33,6 +33,8 @@ namespace LiciterService.Models
         /// </summary>
         public int BrojTable { get; set; }
 
+        public Guid AdresaId { get; set; }
+
         /// <summary>
         /// Zastupnik moze da ima vise kupaca
         /// </summary>
