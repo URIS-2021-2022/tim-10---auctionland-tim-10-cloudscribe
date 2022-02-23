@@ -426,7 +426,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44250
+          "Port": 44311
         }
       ],
       "UpstreamPathTemplate": "/Kurs/{kursId}",
@@ -438,7 +438,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44250
+          "Port": 44311
         }
       ],
       "UpstreamPathTemplate": "/Uplata",
@@ -450,7 +450,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44250
+          "Port": 44311
         }
       ],
       "UpstreamPathTemplate": "/Uplata/{uplataId}",
@@ -462,7 +462,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
       "UpstreamPathTemplate": "/Zalba",
@@ -474,7 +474,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
       "UpstreamPathTemplate": "/Zalba/{zalbaId}",
@@ -486,34 +486,34 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba",
+      "UpstreamPathTemplate": "/TipZalbe",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Zalba/{tipZalbeId}",
+      "DownstreamPathTemplate": "/api/TipZalbe/{tipZalbeId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba/{tipZalbeId}",
+      "UpstreamPathTemplate": "/TipZalbe/{tipZalbeId}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Zalba/{dropdown}",
+      "DownstreamPathTemplate": "/api/TipZalbe/{dropdown}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba/{dropdown}",
+      "UpstreamPathTemplate": "/TipZalbe/{dropdown}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -522,10 +522,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba",
+      "UpstreamPathTemplate": "/StatusZalbe",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -534,10 +534,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba/{statusZalbeId}",
+      "UpstreamPathTemplate": "/StatusZalbe/{statusZalbeId}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
@@ -546,10 +546,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 44255
+          "Port": 44310
         }
       ],
-      "UpstreamPathTemplate": "/Zalba/{dropdown}",
+      "UpstreamPathTemplate": "/StatusZalbe/{dropdown}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
