@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiciterService.Migrations
 {
     [DbContext(typeof(LiciterContext))]
-    [Migration("20220221195137_first")]
+    [Migration("20220222235422_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace LiciterService.Migrations
                         },
                         new
                         {
-                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
+                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523055"),
                             DatumPocetkaZabrane = new DateTime(2021, 12, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             DatumPrestankaZabrane = new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             DuzinaTrajanjaZabrane = 365,
@@ -86,6 +86,9 @@ namespace LiciterService.Migrations
                     b.Property<Guid?>("ZastupnikId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("liceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("LiciterId");
 
                     b.HasIndex("KupacId");
@@ -98,14 +101,16 @@ namespace LiciterService.Migrations
                         new
                         {
                             LiciterId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
-                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
-                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66")
+                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523055"),
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"),
+                            liceId = new Guid("d05f182d-7ef0-484b-9045-3f0451605cdb")
                         },
                         new
                         {
                             LiciterId = new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"),
                             KupacId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"),
-                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52")
+                            ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"),
+                            liceId = new Guid("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab")
                         });
                 });
 
@@ -113,6 +118,9 @@ namespace LiciterService.Migrations
                 {
                     b.Property<Guid>("ZastupnikId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AdresaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("BrojPasosa")
@@ -138,15 +146,17 @@ namespace LiciterService.Migrations
                         new
                         {
                             ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"),
+                            AdresaId = new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"),
                             BrojPasosa = "987654321",
                             BrojTable = 255,
                             Jmbg = "1635889629999",
-                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
+                            KupacId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523077"),
                             NazivDrzave = "Srbija"
                         },
                         new
                         {
                             ZastupnikId = new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"),
+                            AdresaId = new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"),
                             BrojPasosa = "123456789",
                             BrojTable = 365,
                             Jmbg = "5896634547231",

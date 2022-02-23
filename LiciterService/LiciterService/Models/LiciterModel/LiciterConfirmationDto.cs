@@ -16,5 +16,7 @@ namespace LiciterService.Models
         public Kupac Kupac { get; set; }
         public Zastupnik Zastupnik { get; set; }
 
+        public Guid liceId { get; set; }
+
     }
 }

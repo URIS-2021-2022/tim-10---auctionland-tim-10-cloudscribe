@@ -16,6 +16,7 @@ namespace LiciterService.Migrations
                     BrojPasosa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NazivDrzave = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BrojTable = table.Column<int>(type: "int", nullable: false),
+                    AdresaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     KupacId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -51,6 +52,7 @@ namespace LiciterService.Migrations
                 {
                     LiciterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ZastupnikId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    liceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     KupacId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -72,13 +74,13 @@ namespace LiciterService.Migrations
 
             migrationBuilder.InsertData(
                 table: "Zastupnici",
-                columns: new[] { "ZastupnikId", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
-                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"), "987654321", 255, "1635889629999", new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "Srbija" });
+                columns: new[] { "ZastupnikId", "AdresaId", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
+                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"), new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), "987654321", 255, "1635889629999", new Guid("32cd906d-8bab-457c-ade2-fbc4ba523077"), "Srbija" });
 
             migrationBuilder.InsertData(
                 table: "Zastupnici",
-                columns: new[] { "ZastupnikId", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
-                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"), "123456789", 365, "5896634547231", new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), "Srbija" });
+                columns: new[] { "ZastupnikId", "AdresaId", "BrojPasosa", "BrojTable", "Jmbg", "KupacId", "NazivDrzave" },
+                values: new object[] { new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"), new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), "123456789", 365, "5896634547231", new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), "Srbija" });
 
             migrationBuilder.InsertData(
                 table: "Kupci",
@@ -88,17 +90,17 @@ namespace LiciterService.Migrations
             migrationBuilder.InsertData(
                 table: "Kupci",
                 columns: new[] { "KupacId", "DatumPocetkaZabrane", "DatumPrestankaZabrane", "DuzinaTrajanjaZabrane", "ImaZabranu", "OstvarenaPovrsina", "ZastupnikId" },
-                values: new object[] { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), new DateTime(2021, 12, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, 15500, new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52") });
+                values: new object[] { new Guid("32cd906d-8bab-457c-ade2-fbc4ba523055"), new DateTime(2021, 12, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 5, 15, 9, 0, 0, 0, DateTimeKind.Unspecified), 365, true, 15500, new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52") });
 
             migrationBuilder.InsertData(
                 table: "Liciteri",
-                columns: new[] { "LiciterId", "KupacId", "ZastupnikId" },
-                values: new object[] { new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52") });
+                columns: new[] { "LiciterId", "KupacId", "ZastupnikId", "liceId" },
+                values: new object[] { new Guid("1c7ea607-8ddb-493a-87fa-4bf5893e965b"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a36"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a52"), new Guid("8bb61e16-0c5c-4ea1-8e2b-9c48719c7aab") });
 
             migrationBuilder.InsertData(
                 table: "Liciteri",
-                columns: new[] { "LiciterId", "KupacId", "ZastupnikId" },
-                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), new Guid("32cd906d-8bab-457c-ade2-fbc4ba523029"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66") });
+                columns: new[] { "LiciterId", "KupacId", "ZastupnikId", "liceId" },
+                values: new object[] { new Guid("6a411c13-a195-48f7-8dbd-67596c3974c0"), new Guid("32cd906d-8bab-457c-ade2-fbc4ba523055"), new Guid("044f3de0-a9dd-4c2e-b745-89976a1b2a66"), new Guid("d05f182d-7ef0-484b-9045-3f0451605cdb") });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Kupci_ZastupnikId",

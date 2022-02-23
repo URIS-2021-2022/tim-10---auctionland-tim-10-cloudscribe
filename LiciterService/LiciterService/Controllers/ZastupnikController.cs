@@ -2,6 +2,7 @@
 using LiciterService.Data;
 using LiciterService.Entities;
 using LiciterService.Models;
+using LiciterService.ServiceCalls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +24,19 @@ namespace LiciterService.Controllers
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
 
-        public ZastupnikController(IZastupnikRepository zastupnikRepository,IMapper mapper,LinkGenerator linkGenerator)
+        private readonly ILoggerService loggerService;
+        private readonly LoggerDto loggerDto;
+        private readonly IAdresaService adresaService;
+
+        public ZastupnikController(IZastupnikRepository zastupnikRepository,IMapper mapper,LinkGenerator linkGenerator,ILoggerService loggerService,IAdresaService adresaService)
         {
             this.zastupnikRepository = zastupnikRepository;
             this.mapper = mapper;
             this.linkGenerator = linkGenerator;
+            this.loggerService = loggerService;
+            loggerDto = new LoggerDto();
+            loggerDto.ServiceName = "Zastupnik";
+            this.adresaService = adresaService;
         }
 
         /// <summary>
@@ -42,11 +51,19 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<List<ZastupnikDto>> GetZastupnici()
         {
+            loggerDto.HttpMethod = "GET";
             var zastupnici = zastupnikRepository.GetZastupnici();
             if (zastupnici == null || zastupnici.Count==0)
             {
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+
+            loggerDto.Level = "INFO";
+            loggerDto.Response = "200 OK";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<List<ZastupnikDto>>(zastupnici));
         }
         /// <summary>
@@ -60,11 +77,18 @@ namespace LiciterService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<ZastupnikDto> GetZastupnik(Guid zastupnikId)
         {
+            loggerDto.HttpMethod = "GET";
             var zastupnik = zastupnikRepository.GetZastupnikById(zastupnikId);
             if (zastupnik == null)
             {
+                loggerDto.Response = "404 NOT FOUND";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return NotFound();
             }
+            loggerDto.Response = "200 OK";
+            loggerDto.Level = "INFO";
+            loggerService.CreateLog(loggerDto);
             return Ok(mapper.Map<ZastupnikDto>(zastupnik));
         }
 
@@ -91,15 +115,36 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "POST";
+
                 Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
                 ZastupnikConfirmation confirmation = zastupnikRepository.CreateZastupnik(zastupnikEntity);
                 zastupnikRepository.SaveChanges();
 
                 string location = linkGenerator.GetPathByAction("GetZastupnik", "Zastupnik", new { zastupnikId = confirmation.ZastupnikId });
+
+                var adresaInfo = mapper.Map<AdresaZastupnikDto>(zastupnik);
+
+                adresaInfo.AdresaId = confirmation.AdresaId;
+                bool adresa = adresaService.AdresaInLiciter(adresaInfo.AdresaId);
+
+                if (!adresa)
+                {
+                    zastupnikRepository.DeleteZastupnik(confirmation.ZastupnikId);
+                    throw new AdresaException("Neuspesna prijava zastupnika. Postoji problem sa adresom. Molimo kontaktirajte administratora.");
+                }
+
+                loggerDto.Response = "201 CREATED";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
+
                 return Created(location, mapper.Map<ZastupnikConfirmationDto>(confirmation));
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Create error");
             }
 
@@ -133,6 +178,7 @@ namespace LiciterService.Controllers
                 var oldZastupnik = zastupnikRepository.GetZastupnikById(zastupnik.ZastupnikId);
                 if (oldZastupnik == null)
                 {
+                    loggerDto.Level = "WARN";
                     return NotFound();
                 }
                 //Zastupnik zastupnikEntity = mapper.Map<Zastupnik>(zastupnik);
@@ -143,6 +189,9 @@ namespace LiciterService.Controllers
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Update error");
             }
         }
@@ -161,19 +210,29 @@ namespace LiciterService.Controllers
         {
             try
             {
+                loggerDto.HttpMethod = "DELETE";
                 var zastupnik = zastupnikRepository.GetZastupnikById(zastupnikId);
 
                 if (zastupnik == null)
                 {
+                    loggerDto.Response = "404 NOT FOUND";
+                    loggerDto.Level = "ERROR";
+                    loggerService.CreateLog(loggerDto);
                     return NotFound();
                 }
 
                 zastupnikRepository.DeleteZastupnik(zastupnikId);
                 zastupnikRepository.SaveChanges();
+                loggerDto.Response = "204 NO CONTENT";
+                loggerDto.Level = "INFO";
+                loggerService.CreateLog(loggerDto);
                 return NoContent();
             }
             catch (Exception)
             {
+                loggerDto.Response = "500 INTERNAL SERVER ERROR";
+                loggerDto.Level = "ERROR";
+                loggerService.CreateLog(loggerDto);
                 return StatusCode(StatusCodes.Status500InternalServerError, "Delete error");
             }
         }

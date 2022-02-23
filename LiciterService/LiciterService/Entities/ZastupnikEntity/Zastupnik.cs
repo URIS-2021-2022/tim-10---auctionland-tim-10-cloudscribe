@@ -36,11 +36,15 @@ namespace LiciterService.Entities
         /// </summary>
         public int BrojTable { get; set; }
 
-        
+        public Guid AdresaId { get; set; }
+
         [ForeignKey("Kupac")]
         public Guid KupacId { get; set; }
 
         [System.Text.Json.Serialization.JsonIgnore]
         public virtual List<Kupac> Kupci { get; set; }
+
+        
+
     }
 }
