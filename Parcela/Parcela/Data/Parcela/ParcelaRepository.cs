@@ -45,11 +45,7 @@ namespace Parcela.Data.Parcela
         {
             return context.Parcela.Include( p => p.KatastarskaOpstinaEntity).Include(s => s.ZasticenaZonaEntity).ToList();
 
-            /*
-            return (from e in context.Parcela
-                    where string.IsNullOrEmpty(brojParcele) || e.BrojParcele == brojParcele &&
-                          string.IsNullOrEmpty(katastarskaOpstina) || e.KatastarskaOpstina == katastarskaOpstina
-                    select e).ToList(); */
+            
         }
 
         public ParcelaEntity GetParcelaById(Guid parcelaId)
