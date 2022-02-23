@@ -47,5 +47,12 @@ namespace Lice.Entities
             /// </summary>
             /// 
             public string prezime { get; set; }
-        }
+
+            /// <summary>
+            /// JMBG lica
+            /// </summary>
+            public string JMBG { get; set; }
+
+
+    }
 }

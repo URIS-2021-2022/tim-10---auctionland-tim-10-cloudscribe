@@ -53,5 +53,11 @@ namespace Lice.Models.PravnoLice
         /// </summary>
         [Required(ErrorMessage = "Obavezno je uneti broj faksa.")]
         public int faks { get; set; }
+
+        /// <summary>
+        /// Matični broj pravnog lica
+        /// </summary>
+        [Required(ErrorMessage = "Obavezno je uneti matični broj.")]
+        public string maticniBroj { get; set; }
     }
 }

@@ -58,7 +58,8 @@ namespace Lice.Entities
                     brojRacuna = "80045875687",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     ime = "Marko",
-                    prezime = "Marković"
+                    prezime = "Marković",
+                    JMBG = "2506995745621"
                 });
             modelBuilder.Entity<FizickoLiceEntity>()
                 .HasData(new
@@ -70,7 +71,8 @@ namespace Lice.Entities
                     brojRacuna = "8008465687",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     ime = "Nikola",
-                    prezime = "Nikolić"
+                    prezime = "Nikolić",
+                    JMBG = "1407994556214"
                 });
             modelBuilder.Entity<PravnoLiceEntity>()
                 .HasData(new
@@ -82,7 +84,8 @@ namespace Lice.Entities
                     brojRacuna = "800458757",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     naziv = "Masterplast",
-                    faks = 024601785
+                    faks = 024601785,
+                    maticniBroj = "25485674"
                 });
             modelBuilder.Entity<PravnoLiceEntity>()
                 .HasData(new
@@ -94,7 +97,8 @@ namespace Lice.Entities
                     brojRacuna = "8004574587",
                     prioritetId = Guid.Parse("26797103-3a18-4750-9f27-33416e6e30d4"),
                     naziv = "Pannonglobal",
-                    faks = 024601785
+                    faks = 024601785,
+                    maticniBroj = "75486254"
                 });
 
         }
