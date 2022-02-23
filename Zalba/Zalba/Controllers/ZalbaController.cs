@@ -80,7 +80,7 @@ namespace ZalbaService.Controllers
             // Perform validation 
             string validationResult = zalbaRepository.ValidateZalba(zalbaDto.BrojOdluke, zalbaDto.BrojResenja, zalbaDto.DatumResenja, zalbaDto.TipZalbeId);
             
-            if (!validationResult.Equals(string.Empty))
+            if (string.IsNullOrEmpty(validationResult))
             {
                 return BadRequest(validationResult);
             }
@@ -188,7 +188,7 @@ namespace ZalbaService.Controllers
         {
             string validationResult = zalbaRepository.ValidateZalba(updateZalbaDto.BrojOdluke, updateZalbaDto.BrojResenja, updateZalbaDto.DatumResenja, updateZalbaDto.TipZalbeId);
 
-            if (!validationResult.Equals(string.Empty))
+            if (string.IsNullOrEmpty(validationResult))
             {
                 return BadRequest(validationResult);
             }
