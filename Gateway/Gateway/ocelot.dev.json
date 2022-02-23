@@ -551,6 +551,78 @@
       ],
       "UpstreamPathTemplate": "/Zalba/{dropdown}",
       "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/licitacije",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44267
+        }
+      ],
+      "UpstreamPathTemplate": "/licitacije",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/licitacije/{licitacijaId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44267
+        }
+      ],
+      "UpstreamPathTemplate": "/licitacije/{licitacijaId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/javneLicitacije",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44268
+        }
+      ],
+      "UpstreamPathTemplate": "/javneLicitacije",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/javneLicitacije/{javnoNadmetanjeId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44268
+        }
+      ],
+      "UpstreamPathTemplate": "/javneLicitacije/{javnoNadmetanjeId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jzop",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44268
+        }
+      ],
+      "UpstreamPathTemplate": "/jzop",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jzop/{javnoNadmetanjeId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44268
+        }
+      ],
+      "UpstreamPathTemplate": "/jzop/{javnoNadmetanjeId}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ]
     }
   ],
   "GlobalConfiguration": {
