@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using OglasService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,22 +17,33 @@ namespace OglasService.ServiceCalls
         {
             this.configuration = configuration;
         }
-        public bool JavnoNadmetanjeInOglas(Guid javnoNadmetanjeID)
-        {
-            using (HttpClient client = new HttpClient())
-            {
 
-                var x = configuration["Services:JavnoNadmetanjeService"];
-                Uri url = new Uri($"{ configuration["Services:JavnoNadmetanjeService"] }api/javneLicitacije");
-                HttpContent content = new StringContent(JsonConvert.SerializeObject(javnoNadmetanjeID));
-                content.Headers.ContentType.MediaType = "application/json";
-                HttpResponseMessage response = client.PostAsync(url, content).Result;
-                if (!response.IsSuccessStatusCode)
+        public async Task<OglasJavnoNadmetanjeDto> GetJavnaNadmetanje(Guid javnoNadmetanjeID)
+        {
+            try
+            {
+                using var httpClient = new HttpClient();
+                Uri url = new Uri($"{ configuration["Services:JavnoNadmetanjeService"] }api/javneLicitacije/" + javnoNadmetanjeID);
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Add("Accept", "application/json");
+                request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNjQ1NjkyMjY3LCJpc3MiOiJVUklTLnVucy5hYy5ycyIsImF1ZCI6IlVSSVMudW5zLmFjLnJzIn0.4mVTn2lU_h9PHq6i0AvN_GeMHG6AssnkUx4hrpSTdYc");
+                var response = await httpClient.SendAsync(request);
+                if (response.IsSuccessStatusCode)
                 {
-                    return true;
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (string.IsNullOrEmpty(content))
+                    {
+                        return default;
+                    }
+                    return JsonConvert.DeserializeObject<OglasJavnoNadmetanjeDto>(content);
                 }
-                return false;
+                return default;
+            }
+            catch
+            {
+                return default;
             }
         }
     }
+    
 }

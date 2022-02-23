@@ -20,7 +20,8 @@ namespace OglasService.Models
         public string TekstOglasa { get; set; }
         public virtual SluzbeniList SluzbeniList { get; set; }
 
-        public Guid javnoNadmetanjeID { get; set; }
+        [NotMapped]
+        public virtual OglasJavnoNadmetanjeDto javnoNadmetanje { get; set; }
 
     }
 }

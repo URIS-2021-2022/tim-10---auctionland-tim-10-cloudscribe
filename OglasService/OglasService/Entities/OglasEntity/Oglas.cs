@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OglasService.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,7 +21,11 @@ namespace OglasService.Entities
         /// </summary>
         public string TekstOglasa { get; set; }
 
+        [ForeignKey("javnoNadmetanje")]
         public Guid javnoNadmetanjeID { get; set; }
+
+        [NotMapped]
+        public virtual OglasJavnoNadmetanjeDto javnoNadmetanje { get; set; }
 
         /// <summary>
         /// ID sluzbenog lista
