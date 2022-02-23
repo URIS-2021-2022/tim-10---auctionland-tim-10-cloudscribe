@@ -3,8 +3,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using UplataService.Data;
 using UplataService.Entities;
+using UplataService.Models;
+using UplataService.ServiceCalls;
 
 namespace UplataService.Controllers
 {
@@ -18,16 +22,19 @@ namespace UplataService.Controllers
     {
         private readonly IUplataRepository uplataRepository;
         private readonly IBankaUplataRepository bankaUplataRepository;
+        private readonly ILiceService liceService;
 
         /// <summary>
         /// Constructor which takes uplataRepository instance as parameter through Dependency Injection
         /// </summary>
         /// <param name="uplataRepository">uplataRepository instance</param>
         /// <param name="bankaUplataRepository">bankaUplataRepository instance</param>
-        public UplataController(IUplataRepository uplataRepository, IBankaUplataRepository bankaUplataRepository)
+        /// <param name="liceService">LiceService instance</param>
+        public UplataController(IUplataRepository uplataRepository, IBankaUplataRepository bankaUplataRepository, ILiceService liceService)
         {
             this.uplataRepository = uplataRepository;
             this.bankaUplataRepository = bankaUplataRepository;
+            this.liceService = liceService;
 
         }
 
@@ -72,16 +79,22 @@ namespace UplataService.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult RecordUplatas(int brojNadmetanja)
         {
-            List<BankaUplata> uplatas = bankaUplataRepository.GetAllUplatasByBrojNadmetanja(brojNadmetanja);
+            List<BankaUplata> bankaUplatas = bankaUplataRepository.GetAllUplatasByBrojNadmetanja(brojNadmetanja);
 
-            // TODO: waiting for fizicka and pravna lica from other microservices so it can be mapped and saved
+            // List of FizickoLiceDtos retrieved from LiceService
+            List<FizickoLiceDto> fizickoLiceDtos = liceService.GetFizickaLica().Result;
+
+            // List of PravnoLiceDtos retrieved from LiceService
+            List<PravnoLiceDto> pravnoLiceDtos = liceService.GetPravnaLica().Result;
+
+            // List of new Uplata entities which will be added to the database
+            List<Uplata> newUplatas = uplataRepository.RecordUplatas(bankaUplatas, fizickoLiceDtos, pravnoLiceDtos, brojNadmetanja);
+
+            uplataRepository.AddUplatas(newUplatas);
 
             try
             {
-                if (!uplataRepository.SaveChanges())
-                {
-                    throw new Exception("Uplatas haven't been recorded successfully.");
-                }
+                uplataRepository.SaveChanges();
             }
             catch (Exception)
             {

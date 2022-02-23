@@ -17,12 +17,12 @@ namespace UplataService.Entities
         /// <summary>
         /// public ID 
         /// </summary>
-        public string Jmbg { get; set; }
+        public string JMBG { get; set; }
 
         /// <summary>
         /// Foreign key
         /// </summary>
-        public string Pib { get; set; }
+        public string maticniBroj { get; set; }
 
         /// <summary>
         /// Foreign key

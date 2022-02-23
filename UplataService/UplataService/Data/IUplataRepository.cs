@@ -38,8 +38,17 @@ namespace UplataService.Data
         /// <summary>
         /// Definition for RecordUplatas
         /// </summary>
+        /// <param name="bankaUplatas"></param>
+        /// <param name="fizickoLiceDtos"></param>
+        /// <param name="pravnoLiceDtos"></param>
         /// <param name="brojNadmetanja"></param>
-        public void RecordUplatas(int brojNadmetanja);
+        public List<Uplata> RecordUplatas(List<BankaUplata> bankaUplatas, List<FizickoLiceDto> fizickoLiceDtos, List<PravnoLiceDto> pravnoLiceDtos, int brojNadmetanja);
+
+        /// <summary>
+        /// Definition for AddUplatas method
+        /// </summary>
+        /// <param name="uplatas"></param>
+        public void AddUplatas(List<Uplata> uplatas);
 
         /// <summary>
         /// Definition for GetAllViseceUplate

@@ -13,6 +13,22 @@ namespace UplataService.Entities
     public partial class Uplata
     {
         /// <summary>
+        /// Constructor which takes JavnoNadmetanje ID and BankaUplata entity and maps it to Uplata entity.
+        /// Importantly, UplatilacId will initially be set to null;
+        /// </summary>
+        /// <param name="bankaUplata">BankaUplata entity.</param>
+        /// <param name="javnoNadmetanjeId">JavnoNadmetanje PK.</param>
+        public Uplata(BankaUplata bankaUplata, int javnoNadmetanjeId)
+        {
+            BrojRacuna = bankaUplata.BrojRacuna;
+            PozivNaBroj = bankaUplata.PozivNaBroj;
+            Iznos = bankaUplata.Iznos;
+            SvrhaUplate = bankaUplata.SvrhaUplate;
+            Datum = bankaUplata.Datum;
+            JavnoNadmetanjeId = javnoNadmetanjeId;
+            UplatilacId = null;
+        }
+        /// <summary>
         /// If of Uplata
         /// </summary>
         public int UplataId { get; set; }
@@ -43,11 +59,6 @@ namespace UplataService.Entities
         public DateTime? Datum { get; set; }
 
         /// <summary>
-        /// If payment is not connected to person
-        /// </summary>
-        public bool VisecaUplata { get; set; }
-
-        /// <summary>
         /// Id of JavnoNadmetanje
         /// </summary>
         public int JavnoNadmetanjeId { get; set; }
@@ -55,6 +66,6 @@ namespace UplataService.Entities
         /// <summary>
         /// Id of Uplatilac
         /// </summary>
-        public int UplatilacId { get; set; }
+        public int? UplatilacId { get; set; }
     }
 }
