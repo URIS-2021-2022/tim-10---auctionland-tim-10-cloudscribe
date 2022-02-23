@@ -26,18 +26,16 @@ namespace Korisnik.Controllers
         private readonly IKorisnikRepository korisnikRepository;
         private readonly LinkGenerator linkGenerator;
         private readonly IAuthenticationHelper authenticationHelper;
-        private readonly IHttpContextAccessor httpContextAccessor;
         private readonly ILoggerService loggerService;
         private readonly LoggerDto loggerDto;
 
         private readonly IMapper mapper;
-        public KorisnikController(IKorisnikRepository korisnikRepository, IHttpContextAccessor httpContextAccessor,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper, ILoggerService loggerService)
+        public KorisnikController(IKorisnikRepository korisnikRepository,LinkGenerator linkGenerator, IMapper mapper, IAuthenticationHelper authenticationHelper, ILoggerService loggerService)
         {
             this.korisnikRepository = korisnikRepository;
             this.linkGenerator = linkGenerator;
             this.mapper = mapper;
             this.authenticationHelper = authenticationHelper;
-            this.httpContextAccessor = httpContextAccessor;
             this.loggerService = loggerService;
             loggerDto =  new LoggerDto();
             loggerDto.ServiceName = "KORISNIK";

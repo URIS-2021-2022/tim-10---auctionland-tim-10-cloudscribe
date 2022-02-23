@@ -11,36 +11,14 @@ namespace Korisnik.Data
     public class UserMockRepository : IUserRepository
     {
         private readonly KorisnikContext context;
-        private readonly IMapper mapper;
         private readonly static int iterations = 1000;
 
-        public UserMockRepository(KorisnikContext context, IMapper mapper)
+        public UserMockRepository(KorisnikContext context)
         {
             this.context = context;
-            this.mapper = mapper;
         }
 
-        /*
-        private void FillData()
-        {
-            var user1 = HashPassword("testpassword");
-            Users.AddRange(new List<User>
-            {
-                new User
-                {
-                    KorisnikId = Guid.Parse("CFD7FA84-8A27-4119-B6DB-5CFC1B0C94E1"),
-                    KorisnikIme = "Petar",
-                    KorisnikPrezime = "Petrovic",
-                    
-                    KorisnikKorisnickoIme = "petar.petrovic",
-
-                    KorisnikLozinka = user1.Item1,
-                    TipId= Guid.Parse("53559e2b-3944-465d-8efa-b07c867f6dd9"),
-                    KomisijaId= Guid.Parse("f9ec2a20-f6e5-442b-a7ca-9420a15dacc6"),
-                    Salt = user1.Item2
-                }
-            });
-        }*/
+       
 
             /// <summary>
             /// Proverava da li postoji korisnik sa prosleđenim kredencijalima
