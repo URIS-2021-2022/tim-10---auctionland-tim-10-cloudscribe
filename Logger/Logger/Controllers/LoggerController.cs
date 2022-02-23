@@ -1,5 +1,6 @@
 ﻿
 using Logger.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using NLog;
@@ -44,8 +45,9 @@ namespace Logger.Controllers
 
                
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                loggerManager.Error("Log error");
 
             }
             return Created("", message);
